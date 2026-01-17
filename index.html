@@ -13,7 +13,7 @@
             --brand: #2563EB;     /* Azul Brillante (Acción) */
             --accent: #F59E0B;    /* Dorado/Ambar (Atención) */
             --success: #10B981;   /* Verde (Éxito) */
-            --bg: #F8FAFC;        /* Gris muy claro (Fondo) */
+            --bg: #F8FAFC;        /* Gris muy claro */
             --white: #ffffff;
         }
 
@@ -24,9 +24,10 @@
             background-color: var(--bg);
             color: #334155;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
-        /* --- NAVBAR FLOTANTE --- */
+        /* --- NAVBAR --- */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -55,7 +56,7 @@
         }
         .btn-nav:hover { background-color: var(--brand); color: white; }
 
-        /* --- HERO SECTION (VENTA) --- */
+        /* --- HERO --- */
         header {
             text-align: center;
             padding: 5rem 1rem;
@@ -73,13 +74,6 @@
         
         header p { font-size: 1.25rem; color: #64748b; max-width: 700px; margin: 0 auto 2.5rem; }
 
-        .badge {
-            background-color: #dbeafe; color: var(--brand);
-            padding: 0.4rem 0.8rem; border-radius: 50px;
-            font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
-            display: inline-block; margin-bottom: 1rem;
-        }
-
         .cta-primary {
             background-color: var(--brand); color: white;
             padding: 1rem 2.5rem; border-radius: 12px;
@@ -87,9 +81,9 @@
             box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
             transition: transform 0.2s; display: inline-block;
         }
-        .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.5); }
+        .cta-primary:hover { transform: translateY(-3px); }
 
-        /* --- GRID DE SERVICIOS --- */
+        /* --- GRID SERVICIOS --- */
         .services-section { padding: 4rem 5%; }
         .section-title { text-align: center; margin-bottom: 3rem; font-size: 2rem; font-weight: 700; color: var(--primary); }
 
@@ -103,16 +97,14 @@
 
         .card {
             background: white; border-radius: 16px; padding: 2rem;
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s ease; position: relative; overflow: hidden;
+            border: 1px solid #f1f5f9; position: relative;
+            transition: all 0.3s ease;
         }
-        
         .card:hover { transform: translateY(-5px); border-color: var(--brand); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05); }
 
         .icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
         .card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary); }
-        .card p { color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        
+        .card p { color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem; min-height: 60px; }
         .price { font-weight: 700; color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 1rem; }
         
         .btn-pay {
@@ -123,12 +115,11 @@
         }
         .btn-pay:hover { background-color: var(--primary); color: white; }
 
-        /* --- ZONA DE GENERACIÓN (FORMULARIO APP) --- */
+        /* --- GENERADOR (APP) --- */
         #app-generator {
             background-color: var(--primary);
             padding: 5rem 5%;
             color: white;
-            position: relative;
         }
 
         .app-container {
@@ -143,16 +134,233 @@
 
         .app-header { text-align: center; margin-bottom: 2rem; }
         .app-header h2 { font-size: 1.8rem; font-weight: 800; }
-        .app-header p { color: #64748b; }
 
-        /* Estilos del Formulario */
         .input-group { margin-bottom: 1.5rem; }
         .input-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; color: #475569; }
         
         .input-control {
             width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0;
             border-radius: 10px; font-size: 1rem; font-family: 'Inter', sans-serif;
-            transition: border-color 0.2s;
         }
         .input-control:focus { outline: none; border-color: var(--brand); background: #f8fafc; }
-        textarea.input-control { min-height: 120px; resize: vertical
+        textarea.input-control { min-height: 120px; resize: vertical; }
+
+        .btn-generate {
+            width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: 700;
+            color: white; background: linear-gradient(135deg, var(--brand) 0%, #1d4ed8 100%);
+            border: none; border-radius: 12px; cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+            transition: transform 0.1s;
+        }
+        .btn-generate:hover { opacity: 0.9; }
+        .btn-generate:disabled { background: #cbd5e1; cursor: wait; }
+
+        /* Status Styles */
+        #statusMessage { margin-top: 1.5rem; display: none; padding: 1rem; border-radius: 8px; text-align: center; }
+        .loading-box { background: #eff6ff; color: var(--brand); border: 1px solid #bfdbfe; }
+        .success-box { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+        .error-box { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+        
+        .spinner {
+            border: 3px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%; border-top: 3px solid var(--brand);
+            width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 0 auto 10px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Footer */
+        footer { text-align: center; padding: 3rem; color: #94a3b8; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GUANES <span>LEGAL</span></div>
+        <a href="#app-generator" class="btn-nav">Ya tengo Código</a>
+    </nav>
+
+    <header>
+        <h1>Justicia Digital<br>al Instante.</h1>
+        <p>Documentos jurídicos redactados por IA y supervisados por expertos. Sin citas, sin filas.</p>
+        <a href="#servicios" class="cta-primary">Ver Servicios ($50.000)</a>
+    </header>
+
+    <section id="servicios" class="services-section">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <span class="icon">👷‍♂️</span>
+                <h3>Liquidación Laboral</h3>
+                <p>Calculadora de liquidación, indemnización y carta de cobro administrativo.</p>
+                <span class="price">$50.000 COP</span>
+                <a href="https://checkout.wompi.co/l/rdKnxp" target="_blank" class="btn-pay">Pagar Ahora</a>
+            </div>
+
+            <div class="card">
+                <span class="icon">📷</span>
+                <h3>Fotomultas</h3>
+                <p>Análisis de caducidad y Derecho de Petición para exoneración.</p>
+                <span class="price">$50.000 COP</span>
+                <a href="https://checkout.wompi.co/l/rdKnxp" target="_blank" class="btn-pay">Pagar Ahora</a>
+            </div>
+
+            <div class="card">
+                <span class="icon">🏥</span>
+                <h3>Tutelas Salud</h3>
+                <p>Acción de Tutela con Medida Provisional para urgencias.</p>
+                <span class="price">$50.000 COP</span>
+                <a href="https://checkout.wompi.co/l/rdKnxp" target="_blank" class="btn-pay">Pagar Ahora</a>
+            </div>
+
+            <div class="card">
+                <span class="icon">💰</span>
+                <h3>Cobro de Deudas</h3>
+                <p>Recuperación de cartera y cobro pre-jurídico persuasivo.</p>
+                <span class="price">$50.000 COP</span>
+                <a href="https://checkout.wompi.co/l/rdKnxp" target="_blank" class="btn-pay">Pagar Ahora</a>
+            </div>
+
+            <div class="card">
+                <span class="icon">📊</span>
+                <h3>Concepto Jurídico</h3>
+                <p>Análisis de viabilidad y estrategia antes de demandar.</p>
+                <span class="price">$50.000 COP</span>
+                <a href="https://checkout.wompi.co/l/rdKnxp" target="_blank" class="btn-pay">Pagar Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="app-generator">
+        <div class="app-container">
+            <div class="app-header">
+                <h2>Generador de Documentos</h2>
+                <p>Ingrese su código de pago y los detalles del caso.</p>
+            </div>
+
+            <form id="legalForm">
+                
+                <div class="input-group">
+                    <label>Tipo de Trámite:</label>
+                    <select class="input-control" name="Menu" required>
+                        <option value="" disabled selected>-- Seleccione --</option>
+                        <option value="Liquidación y Demandas Laborales">Liquidación Laboral</option>
+                        <option value="Derecho de Petición y Fotomultas">Fotomultas / Tránsito</option>
+                        <option value="Acciones de Tutela">Tutela Salud</option>
+                        <option value="Cobro Jurídico">Cobro de Dinero</option>
+                        <option value="Concepto de Viabilidad y Análisis de Caso">Concepto de Viabilidad</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Referencia de Pago (Wompi):</label>
+                    <input type="text" class="input-control" name="ReferenciaPago" placeholder="Ej: k1z-abc..." required>
+                </div>
+
+                <div class="grid" style="gap: 1rem; margin-bottom: 0;">
+                    <div class="input-group">
+                        <label>Nombre Cliente:</label>
+                        <input type="text" class="input-control" name="Nombre" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Cédula / ID:</label>
+                        <input type="text" class="input-control" name="ID" required>
+                    </div>
+                </div>
+
+                <div class="grid" style="gap: 1rem; margin-bottom: 0;">
+                    <div class="input-group">
+                        <label>Correo:</label>
+                        <input type="email" class="input-control" name="Correo" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Ciudad:</label>
+                        <input type="text" class="input-control" name="Ciudad" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Contraparte (Demandado / Empresa):</label>
+                    <input type="text" class="input-control" name="Contraparte" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Monto / Salario (Si aplica):</label>
+                    <input type="text" class="input-control" name="Monto" placeholder="$0.00">
+                </div>
+
+                <div class="input-group">
+                    <label>Relato de los Hechos:</label>
+                    <textarea class="input-control" name="Relato" placeholder="Describa fechas, hechos y qué solicita..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-generate" id="submitBtn">GENERAR DOCUMENTO AHORA</button>
+            </form>
+
+            <div id="statusMessage"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 GUANES Legal Tech. Dirección: Dr. Manuel Enrique Prada Forero.</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // ⚠️ PEGUE SU LINK DE N8N AQUÍ ⚠️
+        // ==========================================
+        const WEBHOOK_URL = "SU_URL_DE_N8N_AQUI"; 
+        // ==========================================
+
+        const form = document.getElementById('legalForm');
+        const statusDiv = document.getElementById('statusMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "PROCESANDO...";
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-box loading-box';
+            statusDiv.innerHTML = '<div class="spinner"></div><p>Analizando caso y redactando documento...</p>';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            data.MarcaTemporal = new Date().toISOString();
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `Documento_Guanes_${data.Nombre.replace(/\s+/g, '_')}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    
+                    statusDiv.className = 'status-box success-box';
+                    statusDiv.innerHTML = '✅ <b>¡ÉXITO!</b> Documento descargado.';
+                    form.reset();
+                } else {
+                    throw new Error('Error n8n');
+                }
+            } catch (error) {
+                console.error(error);
+                statusDiv.className = 'status-box error-box';
+                statusDiv.innerHTML = '❌ <b>ERROR:</b> No se pudo conectar con el servidor.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "GENERAR DOCUMENTO AHORA";
+            }
+        });
+    </script>
+</body>
+</html>
