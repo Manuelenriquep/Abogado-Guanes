@@ -4,333 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUANES | Justicia Digital Premium</title>
-    <meta name="description" content="Despacho jurídico digital. Trámites legales automatizados bajo supervisión experta.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #0F172A;     /* Azul Profundo (Autoridad) */
-            --brand: #2563EB;       /* Azul Tech */
-            --accent: #F59E0B;      /* Dorado Premium */
-            --bg: #F0F4F8;          /* Gris azulado muy suave */
-            --white: #ffffff;
-            --gradient: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            --primary: #0F172A; --brand: #2563EB; --accent: #F59E0B;
+            --bg: #F0F4F8; --gradient: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
         }
-
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: #334155; margin: 0; line-height: 1.6; }
         * { box-sizing: border-box; }
 
-        /* --- HERO & HEADER (MÁS VIVO) --- */
-        header { 
-            background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); 
-            padding: 5rem 1rem 4rem; 
-            text-align: center; 
-            border-bottom: 1px solid #cbd5e1;
-        }
-        h1 { 
-            font-size: 3rem; 
-            font-weight: 800; 
-            color: var(--primary); 
-            margin-bottom: 0.5rem; 
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-        .badge { 
-            background: linear-gradient(90deg, #eff6ff 0%, #dbeafe 100%); 
-            color: var(--brand); 
-            padding: 8px 20px; 
-            border-radius: 50px; 
-            font-weight: 700; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            border: 1px solid #bfdbfe;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
-        }
+        header { background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); padding: 5rem 1rem 4rem; text-align: center; border-bottom: 1px solid #cbd5e1; }
+        h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.1; }
+        .badge { background: #dbeafe; color: var(--brand); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.5rem; display: inline-block; }
 
-        /* --- FORMULARIO APP (CAJA FLOTANTE) --- */
-        #app-generator { 
-            background: var(--primary); 
-            padding: 4rem 1rem; 
-            background-image: radial-gradient(#1e293b 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-        .app-box { 
-            background: white; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            border-radius: 20px; 
-            padding: 3rem; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
-            border-top: 6px solid var(--accent); /* Toque Dorado */
-        }
+        #app-generator { background: var(--primary); padding: 4rem 1rem; background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 20px 20px; }
+        .app-box { background: white; max-width: 800px; margin: 0 auto; border-radius: 20px; padding: 3rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border-top: 6px solid var(--accent); }
 
         .input-group { margin-bottom: 1.5rem; }
         label { display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: #1e293b; }
-        .input-control { 
-            width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; font-family: inherit; transition: 0.3s;
-            background-color: #f8fafc;
-        }
-        .input-control:focus { outline: none; border-color: var(--brand); background: #fff; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .input-control { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; font-family: inherit; background: #f8fafc; transition: 0.3s; }
+        .input-control:focus { outline: none; border-color: var(--brand); background: #fff; }
         
-        /* BOTÓN DE ACCIÓN (MÁS LLAMATIVO) */
-        .btn-generate { 
-            width: 100%; padding: 1.2rem; font-size: 1.2rem; font-weight: 800; color: white; 
-            background: var(--gradient); border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; 
-            margin-top: 1.5rem; text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
-        }
-        .btn-generate:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.5); filter: brightness(1.1); }
-        .btn-generate:disabled { background: #94a3b8; cursor: not-allowed; transform: none; }
+        .btn-generate { width: 100%; padding: 1.2rem; font-size: 1.2rem; font-weight: 800; color: white; background: var(--gradient); border: none; border-radius: 12px; cursor: pointer; margin-top: 1.5rem; text-transform: uppercase; box-shadow: 0 10px 15px -3px rgba(37,99,235,0.4); transition: 0.3s; }
+        .btn-generate:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        .btn-generate:disabled { background: #94a3b8; cursor: wait; transform: none; }
 
-        /* UTILIDADES */
         .hidden { display: none; }
-        .highlight-box { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid transparent; }
+        .highlight-box { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; }
         
-        /* TEMA LABORAL (AZUL) */
-        .theme-laboral { background: #eff6ff; border: 1px solid #bfdbfe; }
-        .theme-laboral h4 { color: var(--brand); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
-        
-        /* TEMA CONTRATOS (NARANJA/DORADO) */
-        .theme-contratos { background: #fff7ed; border: 1px solid #fed7aa; }
-        .theme-contratos h4 { color: #ea580c; margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        /* Temas por color según área */
+        .theme-laboral { background: #eff6ff; border-color: #bfdbfe; }
+        .theme-contratos { background: #fff7ed; border-color: #fed7aa; }
+        .theme-transito { background: #f0fdf4; border-color: #bbf7d0; } /* Verde */
+        .theme-salud { background: #fef2f2; border-color: #fecaca; } /* Rojo */
+        .theme-civil { background: #faf5ff; border-color: #e9d5ff; } /* Morado */
 
-        /* FOOTER */
-        footer { text-align: center; padding: 3rem; color: #64748b; font-size: 0.9rem; background: #0f172a; border-top: 5px solid var(--brand); }
-        
-        /* GRID */
+        h4 i { margin-right: 8px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         @media(max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2.2rem; } .app-box { padding: 1.5rem; } }
-
-        /* ESTILO PARA SELECT PRINCIPAL */
-        #servicioSelect {
-            font-size: 1.1rem;
-            color: var(--primary);
-            font-weight: 600;
-            border-color: var(--brand);
-        }
     </style>
 </head>
 <body>
 
     <header>
-        <span class="badge">✨ Oficina Virtual 24/7 con IA</span>
+        <span class="badge">✨ Oficina Virtual 24/7</span>
         <h1>GUANES <span style="color:var(--brand);">LEGAL</span></h1>
-        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: #475569;">
-            Documentos legales perfectos en segundos. <br>
-            <b>Supervisión experta del Dr. Manuel Prada Forero.</b>
-        </p>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 10px auto; color: #475569;">Supervisión experta del Dr. Manuel Prada Forero.</p>
     </header>
 
     <section id="app-generator">
         <div class="app-box">
-            <div style="text-align: center; margin-bottom: 2.5rem;">
-                <h2 style="color: var(--primary); margin: 0; font-size: 1.8rem;">Radicación de Caso</h2>
-                <p style="color: #64748b; margin-top: 5px;">Ingrese su código Wompi y completaremos su trámite.</p>
-            </div>
+            <h2 style="text-align:center; color:var(--primary); margin-bottom: 2rem;">Radicación de Caso</h2>
 
             <form id="legalForm">
                 
                 <div class="input-group">
-                    <label style="color: var(--brand); font-size: 1.1rem;">1. ¿Qué trámite desea realizar?</label>
-                    <select class="input-control" name="Menu" id="servicioSelect" onchange="toggleFields()" required style="background: #eff6ff;">
-                        <option value="" disabled selected>👇 Seleccione una opción aquí</option>
+                    <label style="color: var(--brand); font-size: 1.1rem;">Seleccione el Trámite:</label>
+                    <select class="input-control" name="Menu" id="servicioSelect" onchange="toggleFields()" required style="background: #eff6ff; border-color: var(--brand); font-weight: 600;">
+                        <option value="" disabled selected>👇 Seleccione aquí...</option>
                         <option value="Liquidación y Demandas Laborales">👷‍♂️ Laboral: Liquidación / Despido</option>
                         <option value="Contratos y Arrendamientos">🏠 Contratos: Arrendamiento / Compraventa</option>
-                        <option value="Derecho de Petición y Fotomultas">📷 Tránsito: Fotomultas</option>
-                        <option value="Acciones de Tutela">🏥 Salud: Acción de Tutela</option>
-                        <option value="Cobro Jurídico">💰 Civil: Cobro de Deudas</option>
+                        <option value="Derecho de Petición y Fotomultas">📷 Tránsito: Fotomultas / Comparendos</option>
+                        <option value="Acciones de Tutela">🏥 Salud: Tutela (Medicamentos/Citas)</option>
+                        <option value="Cobro Jurídico">💰 Civil: Cobro de Deudas (Cartera)</option>
                         <option value="Concepto de Viabilidad y Análisis de Caso">⚖️ Consultoría: Concepto Jurídico</option>
                     </select>
                 </div>
 
-                <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
-
                 <div class="grid-2">
-                    <div class="input-group">
-                        <label><i class="fas fa-receipt" style="color:var(--accent);"></i> Código Wompi:</label>
-                        <input type="text" class="input-control" name="ReferenciaPago" placeholder="Ej: k1z-abc..." required>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-id-card" style="color:var(--accent);"></i> Cédula Cliente:</label>
-                        <input type="text" class="input-control" name="ID" required>
-                    </div>
+                    <div class="input-group"><label>Código Wompi:</label><input type="text" class="input-control" name="ReferenciaPago" placeholder="Ej: TEST" required></div>
+                    <div class="input-group"><label>Cédula Cliente:</label><input type="text" class="input-control" name="ID" required></div>
+                </div>
+                <div class="grid-2">
+                    <div class="input-group"><label>Nombre Completo:</label><input type="text" class="input-control" name="Nombre" required></div>
+                    <div class="input-group"><label>Email (Para el PDF):</label><input type="email" class="input-control" name="Correo" required></div>
+                </div>
+                <div class="grid-2">
+                    <div class="input-group"><label>Ciudad:</label><input type="text" class="input-control" name="Ciudad" required></div>
+                    <div class="input-group"><label>Contraparte (A quién reclamamos):</label><input type="text" class="input-control" name="Contraparte" placeholder="Empresa, EPS, Tránsito o Persona" required></div>
                 </div>
 
-                <div class="grid-2">
-                    <div class="input-group">
-                        <label>Nombre Completo:</label>
-                        <input type="text" class="input-control" name="Nombre" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Correo Electrónico:</label>
-                        <input type="email" class="input-control" name="Correo" placeholder="Para enviar el PDF" required>
-                    </div>
-                </div>
-
-                <div class="grid-2">
-                    <div class="input-group">
-                        <label>Ciudad:</label>
-                        <input type="text" class="input-control" name="Ciudad" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Contraparte (A quién reclamamos):</label>
-                        <input type="text" class="input-control" name="Contraparte" placeholder="Empresa, Persona o Entidad" required>
-                    </div>
-                </div>
+                <hr style="border:0; border-top:1px solid #e2e8f0; margin:2rem 0;">
 
                 <div id="camposLaborales" class="hidden highlight-box theme-laboral">
-                    <h4><i class="fas fa-briefcase"></i> Detalles Laborales</h4>
-                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 1.5rem;">Por favor indique fechas exactas para el cálculo matemático.</p>
-                    
+                    <h4 style="color:var(--brand);"><i class="fas fa-briefcase"></i> Datos Laborales</h4>
                     <div class="grid-2">
-                        <div class="input-group">
-                            <label>Fecha de Ingreso:</label>
-                            <input type="date" class="input-control" name="fecha_inicio">
-                        </div>
-                        <div class="input-group">
-                            <label>Fecha de Retiro:</label>
-                            <input type="date" class="input-control" name="fecha_fin">
-                        </div>
+                        <div class="input-group"><label>Fecha Ingreso:</label><input type="date" class="input-control" name="fecha_inicio"></div>
+                        <div class="input-group"><label>Fecha Retiro:</label><input type="date" class="input-control" name="fecha_fin"></div>
                     </div>
-
                     <div class="grid-2">
+                        <div class="input-group"><label>Salario ($):</label><input type="number" class="input-control" name="salario"></div>
                         <div class="input-group">
-                            <label>Último Salario Mensual ($):</label>
-                            <input type="number" class="input-control" name="salario" placeholder="Ej: 2500000">
-                        </div>
-                        <div class="input-group">
-                            <label>Motivo de Salida:</label>
+                            <label>Motivo Salida:</label>
                             <select class="input-control" name="motivo_salida">
-                                <option value="Despido Sin Justa Causa">Despido Sin Justa Causa (Injusto)</option>
-                                <option value="Renuncia Voluntaria">Renuncia Voluntaria</option>
-                                <option value="Terminación de Contrato">Terminación de Contrato Fijo</option>
-                                <option value="Despido Con Justa Causa">Despido Con Justa Causa</option>
+                                <option value="Despido Sin Justa Causa">Despido Injusto</option>
+                                <option value="Renuncia Voluntaria">Renuncia</option>
+                                <option value="Terminación de Contrato">Fin de Contrato</option>
+                                <option value="Despido Con Justa Causa">Despido Justo</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
                 <div id="camposContratos" class="hidden highlight-box theme-contratos">
-                    <h4><i class="fas fa-file-signature"></i> Datos del Inmueble</h4>
-                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 1.5rem;">Información necesaria para blindar el contrato.</p>
-                    
-                    <div class="input-group">
-                        <label>Dirección Exacta:</label>
-                        <input type="text" class="input-control" name="arriendo_direccion" placeholder="Dirección completa con ciudad">
-                    </div>
-
+                    <h4 style="color:#ea580c;"><i class="fas fa-file-contract"></i> Datos del Inmueble</h4>
+                    <div class="input-group"><label>Dirección:</label><input type="text" class="input-control" name="arriendo_direccion"></div>
                     <div class="grid-2">
-                        <div class="input-group">
-                            <label>Canon / Valor ($):</label>
-                            <input type="number" class="input-control" name="arriendo_canon">
-                        </div>
-                        <div class="input-group">
-                            <label>Duración (Meses):</label>
-                            <input type="number" class="input-control" name="arriendo_duracion" placeholder="12">
-                        </div>
+                        <div class="input-group"><label>Canon ($):</label><input type="number" class="input-control" name="arriendo_canon"></div>
+                        <div class="input-group"><label>Duración (Meses):</label><input type="number" class="input-control" name="arriendo_duracion"></div>
                     </div>
-
                     <div class="grid-2">
-                        <div class="input-group">
-                            <label>Fecha Inicio:</label>
-                            <input type="date" class="input-control" name="arriendo_inicio">
-                        </div>
-                        <div class="input-group">
-                            <label>Uso:</label>
-                            <select class="input-control" name="arriendo_uso">
-                                <option value="Vivienda Urbana">Vivienda Urbana</option>
-                                <option value="Local Comercial">Local Comercial</option>
-                                <option value="Oficina">Oficina</option>
-                            </select>
-                        </div>
+                        <div class="input-group"><label>Inicio:</label><input type="date" class="input-control" name="arriendo_inicio"></div>
+                        <div class="input-group"><label>Uso:</label><select class="input-control" name="arriendo_uso"><option>Vivienda Urbana</option><option>Comercial</option><option>Oficina</option></select></div>
                     </div>
+                </div>
 
+                <div id="camposTransito" class="hidden highlight-box theme-transito">
+                    <h4 style="color:#166534;"><i class="fas fa-car"></i> Datos del Comparendo</h4>
+                    <div class="grid-2">
+                        <div class="input-group"><label>Placa Vehículo:</label><input type="text" class="input-control" name="transito_placa" placeholder="ABC-123"></div>
+                        <div class="input-group"><label>Fecha Infracción:</label><input type="date" class="input-control" name="transito_fecha"></div>
+                    </div>
                     <div class="input-group">
-                        <label>Servicios Públicos:</label>
-                        <select class="input-control" name="arriendo_servicios">
-                            <option value="A cargo del Arrendatario">Paga el Inquilino</option>
-                            <option value="Compartidos">Compartidos</option>
-                            <option value="Incluidos">Incluidos en Canon</option>
+                        <label>¿Le notificaron a tiempo a su dirección?</label>
+                        <select class="input-control" name="transito_notificacion">
+                            <option value="NO me notificaron">NO (Me enteré después/Al vender)</option>
+                            <option value="SI me notificaron">SÍ me llegó la carta</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label>Número de Comparendo (Opcional):</label><input type="text" class="input-control" name="transito_numero"></div>
+                </div>
+
+                <div id="camposSalud" class="hidden highlight-box theme-salud">
+                    <h4 style="color:#dc2626;"><i class="fas fa-heartbeat"></i> Datos de la Tutela</h4>
+                    <div class="input-group">
+                        <label>¿Qué le están negando?</label>
+                        <input type="text" class="input-control" name="salud_negacion" placeholder="Ej: Entrega de Insulina, Cita con Especialista, Cirugía...">
+                    </div>
+                    <div class="input-group">
+                        <label>Nivel de Urgencia (Riesgo de Vida):</label>
+                        <select class="input-control" name="salud_riesgo">
+                            <option value="Urgencia Vital (Peligro de Muerte)">ALTO - Mi vida corre peligro (Medida Provisional)</option>
+                            <option value="Afectación Calidad de Vida">MEDIO - Afecta mi calidad de vida</option>
+                            <option value="Trámite Administrativo">BAJO - Es un tema administrativo</option>
                         </select>
                     </div>
                 </div>
 
+                <div id="camposCivil" class="hidden highlight-box theme-civil">
+                    <h4 style="color:#7e22ce;"><i class="fas fa-money-bill-wave"></i> Datos de la Deuda</h4>
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label>Tipo de Soporte:</label>
+                            <select class="input-control" name="civil_tipo">
+                                <option value="Letra de Cambio">Letra de Cambio</option>
+                                <option value="Factura">Factura de Venta</option>
+                                <option value="Contrato Incumplido">Contrato Incumplido</option>
+                                <option value="Acuerdo Verbal">Préstamo Verbal (Sin papeles)</option>
+                            </select>
+                        </div>
+                        <div class="input-group"><label>Fecha Vencimiento:</label><input type="date" class="input-control" name="civil_vencimiento"></div>
+                    </div>
+                    <div class="input-group"><label>Monto de la Deuda ($):</label><input type="number" class="input-control" name="civil_monto"></div>
+                </div>
+
                 <div id="campoRelato">
                     <div class="input-group">
-                        <label>Relato de los Hechos (Detalles):</label>
-                        <textarea class="input-control" name="Relato" style="min-height: 120px;" placeholder="Cuente qué pasó, qué solicita y detalles importantes..."></textarea>
-                    </div>
-                    
-                    <div class="input-group" id="campoMonto">
-                        <label>Monto en Disputa (Opcional):</label>
-                        <input type="text" class="input-control" name="Monto" placeholder="Ej: $10.000.000">
+                        <label>Detalles Adicionales (Importante):</label>
+                        <textarea class="input-control" name="Relato" style="min-height: 100px;" placeholder="Agregue cualquier otro detalle clave para el abogado..."></textarea>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-generate" id="submitBtn">
-                    <i class="fas fa-bolt"></i> GENERAR DOCUMENTO JURÍDICO
+                    <i class="fas fa-bolt"></i> GENERAR DOCUMENTO
                 </button>
 
             </form>
-
-            <div id="statusMessage" style="display:none; margin-top:1.5rem; text-align:center; padding:1.5rem; border-radius:10px;"></div>
+            <div id="statusMessage"></div>
         </div>
     </section>
 
     <footer>
-        <h3 style="color:white; margin-bottom: 10px;">GUANES Legal Tech</h3>
-        <p>Director Jurídico: Dr. Manuel Enrique Prada Forero</p>
-        <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 20px;">
-            © 2026 GUANES. Todos los derechos reservados.<br>
-            Herramienta de uso profesional. Obligación de medio, no de resultado.
-        </p>
+        <p>© 2026 GUANES Legal Tech | Dr. Manuel Enrique Prada Forero</p>
     </footer>
 
     <script>
         // ==========================================
         // ⚠️ SU WEBHOOK DE N8N VA AQUÍ ⚠️
         // ==========================================
-        const WEBHOOK_URL = "https://guanes.app.n8n.cloud/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810";
+        const WEBHOOK_URL = "https://guanes.app.n8n.cloud/webhook-test/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
         // ==========================================
 
         function toggleFields() {
-            const servicio = document.getElementById('servicioSelect').value;
+            const s = document.getElementById('servicioSelect').value;
             
-            const divLaboral = document.getElementById('camposLaborales');
-            const divContratos = document.getElementById('camposContratos');
-            const divRelato = document.getElementById('campoRelato');
-            const divMonto = document.getElementById('campoMonto');
+            // IDs de todos los módulos
+            const mods = {
+                laboral: document.getElementById('camposLaborales'),
+                contratos: document.getElementById('camposContratos'),
+                transito: document.getElementById('camposTransito'),
+                salud: document.getElementById('camposSalud'),
+                civil: document.getElementById('camposCivil')
+            };
 
-            // Reset
-            divLaboral.classList.add('hidden');
-            divContratos.classList.add('hidden');
-            divRelato.classList.remove('hidden'); 
-            divMonto.classList.remove('hidden');
+            // 1. Ocultar todo
+            Object.values(mods).forEach(d => {
+                d.classList.add('hidden');
+                setRequired(d, false); // Quitar required
+            });
 
-            // Limpiar required
-            setRequired('camposLaborales', false);
-            setRequired('camposContratos', false);
-
-            if (servicio.includes("Laboral")) {
-                divLaboral.classList.remove('hidden');
-                divRelato.classList.add('hidden');
-                setRequired('camposLaborales', true);
-            } 
-            else if (servicio.includes("Contratos")) {
-                divContratos.classList.remove('hidden');
-                divRelato.classList.add('hidden');
-                setRequired('camposContratos', true);
-            }
+            // 2. Mostrar según selección
+            if (s.includes("Laboral")) show(mods.laboral);
+            else if (s.includes("Contratos")) show(mods.contratos);
+            else if (s.includes("Tránsito") || s.includes("Fotomultas")) show(mods.transito);
+            else if (s.includes("Tutela") || s.includes("Salud")) show(mods.salud);
+            else if (s.includes("Cobro") || s.includes("Civil")) show(mods.civil);
         }
 
-        function setRequired(divId, isRequired) {
-            const div = document.getElementById(divId);
-            const inputs = div.querySelectorAll('input, select');
-            inputs.forEach(input => input.required = isRequired);
+        function show(div) {
+            div.classList.remove('hidden');
+            setRequired(div, true);
+        }
+
+        function setRequired(div, isReq) {
+            div.querySelectorAll('input, select').forEach(i => i.required = isReq);
+            // El campo opcional de comparendo no debe ser required nunca
+            const opcional = div.querySelector('[name="transito_numero"]');
+            if(opcional) opcional.required = false;
         }
 
         const form = document.getElementById('legalForm');
@@ -339,13 +241,12 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESANDO...';
             statusDiv.style.display = 'block';
             statusDiv.style.background = '#eff6ff';
             statusDiv.style.color = '#2563EB';
-            statusDiv.innerHTML = '<h3 style="margin:0">⏳ Analizando Caso...</h3><p>La IA está calculando valores y redactando el documento.</p>';
+            statusDiv.innerHTML = '<h3>⏳ Analizando Caso...</h3><p>Validando jurisprudencia y redactando...</p>';
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
@@ -370,20 +271,17 @@
                     
                     statusDiv.style.background = '#ecfdf5';
                     statusDiv.style.color = '#047857';
-                    statusDiv.innerHTML = '<h3 style="margin:0">✅ ¡DOCUMENTO LISTO!</h3><p>Se ha descargado automáticamente en su dispositivo.</p>';
+                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Descarga completada con éxito.</p>';
                     form.reset();
                     toggleFields();
-                } else {
-                    throw new Error('Error en servidor');
-                }
+                } else { throw new Error('Error'); }
             } catch (error) {
-                console.error(error);
                 statusDiv.style.background = '#fef2f2';
                 statusDiv.style.color = '#b91c1c';
-                statusDiv.innerHTML = '<h3 style="margin:0">❌ ERROR DE CONEXIÓN</h3><p>Verifique su internet o el código Wompi e intente de nuevo.</p>';
+                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Verifique su conexión.</p>';
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-bolt"></i> GENERAR DOCUMENTO JURÍDICO';
+                submitBtn.innerHTML = '<i class="fas fa-bolt"></i> GENERAR DOCUMENTO';
             }
         });
     </script>
