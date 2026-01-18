@@ -34,12 +34,13 @@
         .hidden { display: none; }
         .highlight-box { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; }
         
-        /* Temas por color según área */
+        /* Temas por color */
         .theme-laboral { background: #eff6ff; border-color: #bfdbfe; }
-        .theme-contratos { background: #fff7ed; border-color: #fed7aa; }
-        .theme-transito { background: #f0fdf4; border-color: #bbf7d0; } /* Verde */
-        .theme-salud { background: #fef2f2; border-color: #fecaca; } /* Rojo */
-        .theme-civil { background: #faf5ff; border-color: #e9d5ff; } /* Morado */
+        .theme-inmuebles { background: #fff7ed; border-color: #fed7aa; } /* Naranja */
+        .theme-vehiculos { background: #ecfeff; border-color: #a5f3fc; } /* Cyan */
+        .theme-transito { background: #f0fdf4; border-color: #bbf7d0; } 
+        .theme-salud { background: #fef2f2; border-color: #fecaca; } 
+        .theme-civil { background: #faf5ff; border-color: #e9d5ff; } 
 
         h4 i { margin-right: 8px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -65,7 +66,8 @@
                     <select class="input-control" name="Menu" id="servicioSelect" onchange="toggleFields()" required style="background: #eff6ff; border-color: var(--brand); font-weight: 600;">
                         <option value="" disabled selected>👇 Seleccione aquí...</option>
                         <option value="Liquidación y Demandas Laborales">👷‍♂️ Laboral: Liquidación / Despido</option>
-                        <option value="Contratos y Arrendamientos">🏠 Contratos: Arrendamiento / Compraventa</option>
+                        <option value="Contratos Inmobiliarios">🏠 Inmuebles: Arriendo / Compraventa Casa</option>
+                        <option value="Compraventa Vehículos">🚗 Vehículos: Compraventa Carro/Moto</option>
                         <option value="Derecho de Petición y Fotomultas">📷 Tránsito: Fotomultas / Comparendos</option>
                         <option value="Acciones de Tutela">🏥 Salud: Tutela (Medicamentos/Citas)</option>
                         <option value="Cobro Jurídico">💰 Civil: Cobro de Deudas (Cartera)</option>
@@ -83,7 +85,7 @@
                 </div>
                 <div class="grid-2">
                     <div class="input-group"><label>Ciudad:</label><input type="text" class="input-control" name="Ciudad" required></div>
-                    <div class="input-group"><label>Contraparte (A quién reclamamos):</label><input type="text" class="input-control" name="Contraparte" placeholder="Empresa, EPS, Tránsito o Persona" required></div>
+                    <div class="input-group"><label>Contraparte (A quién reclamamos):</label><input type="text" class="input-control" name="Contraparte" placeholder="Empresa, Persona o Entidad" required></div>
                 </div>
 
                 <hr style="border:0; border-top:1px solid #e2e8f0; margin:2rem 0;">
@@ -108,47 +110,69 @@
                     </div>
                 </div>
 
-                <div id="camposContratos" class="hidden highlight-box theme-contratos">
-                    <h4 style="color:#ea580c;"><i class="fas fa-file-contract"></i> Datos del Inmueble</h4>
-                    <div class="input-group"><label>Dirección:</label><input type="text" class="input-control" name="arriendo_direccion"></div>
+                <div id="camposInmuebles" class="hidden highlight-box theme-inmuebles">
+                    <h4 style="color:#ea580c;"><i class="fas fa-home"></i> Datos del Inmueble</h4>
+                    <div class="input-group">
+                        <label>Tipo de Contrato:</label>
+                        <select class="input-control" name="inmueble_tipo">
+                            <option value="Contrato de Arrendamiento">Arrendamiento (Alquiler)</option>
+                            <option value="Promesa de Compraventa">Promesa de Compraventa (Venta)</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label>Dirección Exacta:</label><input type="text" class="input-control" name="inmueble_direccion"></div>
                     <div class="grid-2">
-                        <div class="input-group"><label>Canon ($):</label><input type="number" class="input-control" name="arriendo_canon"></div>
-                        <div class="input-group"><label>Duración (Meses):</label><input type="number" class="input-control" name="arriendo_duracion"></div>
+                        <div class="input-group"><label>Canon / Valor ($):</label><input type="number" class="input-control" name="inmueble_valor"></div>
+                        <div class="input-group"><label>Matrícula Inmobiliaria (Si aplica):</label><input type="text" class="input-control" name="inmueble_matricula"></div>
                     </div>
                     <div class="grid-2">
-                        <div class="input-group"><label>Inicio:</label><input type="date" class="input-control" name="arriendo_inicio"></div>
-                        <div class="input-group"><label>Uso:</label><select class="input-control" name="arriendo_uso"><option>Vivienda Urbana</option><option>Comercial</option><option>Oficina</option></select></div>
+                        <div class="input-group"><label>Fecha Inicio/Firma:</label><input type="date" class="input-control" name="inmueble_fecha"></div>
+                        <div class="input-group"><label>Uso:</label><select class="input-control" name="inmueble_uso"><option>Vivienda Urbana</option><option>Comercial</option><option>Oficina</option></select></div>
+                    </div>
+                </div>
+
+                <div id="camposVehiculos" class="hidden highlight-box theme-vehiculos">
+                    <h4 style="color:#0891b2;"><i class="fas fa-car-side"></i> Compraventa Vehículo</h4>
+                    <div class="grid-2">
+                        <div class="input-group"><label>Placa:</label><input type="text" class="input-control" name="vehiculo_placa" placeholder="ABC-123" style="text-transform:uppercase;"></div>
+                        <div class="input-group"><label>Valor Venta ($):</label><input type="number" class="input-control" name="vehiculo_valor"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="input-group"><label>Marca:</label><input type="text" class="input-control" name="vehiculo_marca" placeholder="Ej: Chevrolet"></div>
+                        <div class="input-group"><label>Modelo (Año):</label><input type="text" class="input-control" name="vehiculo_modelo" placeholder="Ej: 2020"></div>
+                    </div>
+                    <div class="input-group"><label>Gastos de Traspaso:</label>
+                        <select class="input-control" name="vehiculo_traspaso">
+                            <option value="50/50">Mitad y Mitad (50/50)</option>
+                            <option value="Comprador">Paga el Comprador</option>
+                            <option value="Vendedor">Paga el Vendedor</option>
+                        </select>
                     </div>
                 </div>
 
                 <div id="camposTransito" class="hidden highlight-box theme-transito">
-                    <h4 style="color:#166534;"><i class="fas fa-car"></i> Datos del Comparendo</h4>
+                    <h4 style="color:#166534;"><i class="fas fa-traffic-light"></i> Datos del Comparendo</h4>
                     <div class="grid-2">
                         <div class="input-group"><label>Placa Vehículo:</label><input type="text" class="input-control" name="transito_placa" placeholder="ABC-123"></div>
                         <div class="input-group"><label>Fecha Infracción:</label><input type="date" class="input-control" name="transito_fecha"></div>
                     </div>
                     <div class="input-group">
-                        <label>¿Le notificaron a tiempo a su dirección?</label>
+                        <label>¿Le notificaron a tiempo?</label>
                         <select class="input-control" name="transito_notificacion">
-                            <option value="NO me notificaron">NO (Me enteré después/Al vender)</option>
+                            <option value="NO me notificaron">NO (Me enteré después)</option>
                             <option value="SI me notificaron">SÍ me llegó la carta</option>
                         </select>
                     </div>
-                    <div class="input-group"><label>Número de Comparendo (Opcional):</label><input type="text" class="input-control" name="transito_numero"></div>
                 </div>
 
                 <div id="camposSalud" class="hidden highlight-box theme-salud">
                     <h4 style="color:#dc2626;"><i class="fas fa-heartbeat"></i> Datos de la Tutela</h4>
+                    <div class="input-group"><label>¿Qué le niegan?</label><input type="text" class="input-control" name="salud_negacion" placeholder="Ej: Insulina, Cita Especialista..."></div>
                     <div class="input-group">
-                        <label>¿Qué le están negando?</label>
-                        <input type="text" class="input-control" name="salud_negacion" placeholder="Ej: Entrega de Insulina, Cita con Especialista, Cirugía...">
-                    </div>
-                    <div class="input-group">
-                        <label>Nivel de Urgencia (Riesgo de Vida):</label>
+                        <label>Nivel de Urgencia:</label>
                         <select class="input-control" name="salud_riesgo">
-                            <option value="Urgencia Vital (Peligro de Muerte)">ALTO - Mi vida corre peligro (Medida Provisional)</option>
-                            <option value="Afectación Calidad de Vida">MEDIO - Afecta mi calidad de vida</option>
-                            <option value="Trámite Administrativo">BAJO - Es un tema administrativo</option>
+                            <option value="Urgencia Vital">ALTO - Peligro de Muerte</option>
+                            <option value="Afectación Calidad de Vida">MEDIO - Calidad de Vida</option>
+                            <option value="Trámite Administrativo">BAJO - Administrativo</option>
                         </select>
                     </div>
                 </div>
@@ -160,9 +184,8 @@
                             <label>Tipo de Soporte:</label>
                             <select class="input-control" name="civil_tipo">
                                 <option value="Letra de Cambio">Letra de Cambio</option>
-                                <option value="Factura">Factura de Venta</option>
-                                <option value="Contrato Incumplido">Contrato Incumplido</option>
-                                <option value="Acuerdo Verbal">Préstamo Verbal (Sin papeles)</option>
+                                <option value="Factura">Factura</option>
+                                <option value="Acuerdo Verbal">Préstamo Verbal</option>
                             </select>
                         </div>
                         <div class="input-group"><label>Fecha Vencimiento:</label><input type="date" class="input-control" name="civil_vencimiento"></div>
@@ -172,8 +195,8 @@
 
                 <div id="campoRelato">
                     <div class="input-group">
-                        <label>Detalles Adicionales (Importante):</label>
-                        <textarea class="input-control" name="Relato" style="min-height: 100px;" placeholder="Agregue cualquier otro detalle clave para el abogado..."></textarea>
+                        <label>Detalles Adicionales:</label>
+                        <textarea class="input-control" name="Relato" style="min-height: 100px;" placeholder="Agregue detalles clave..."></textarea>
                     </div>
                 </div>
 
@@ -194,30 +217,31 @@
         // ==========================================
         // ⚠️ SU WEBHOOK DE N8N VA AQUÍ ⚠️
         // ==========================================
-        const WEBHOOK_URL = "https://guanes.app.n8n.cloud/webhook-test/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
+        const WEBHOOK_URL = "https://guanes.app.n8n.cloud/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
         // ==========================================
 
         function toggleFields() {
             const s = document.getElementById('servicioSelect').value;
             
-            // IDs de todos los módulos
             const mods = {
                 laboral: document.getElementById('camposLaborales'),
-                contratos: document.getElementById('camposContratos'),
+                inmuebles: document.getElementById('camposInmuebles'),
+                vehiculos: document.getElementById('camposVehiculos'),
                 transito: document.getElementById('camposTransito'),
                 salud: document.getElementById('camposSalud'),
                 civil: document.getElementById('camposCivil')
             };
 
-            // 1. Ocultar todo
+            // Ocultar todo
             Object.values(mods).forEach(d => {
                 d.classList.add('hidden');
-                setRequired(d, false); // Quitar required
+                setRequired(d, false);
             });
 
-            // 2. Mostrar según selección
+            // Mostrar según selección
             if (s.includes("Laboral")) show(mods.laboral);
-            else if (s.includes("Contratos")) show(mods.contratos);
+            else if (s.includes("Inmuebles")) show(mods.inmuebles);
+            else if (s.includes("Vehículos")) show(mods.vehiculos);
             else if (s.includes("Tránsito") || s.includes("Fotomultas")) show(mods.transito);
             else if (s.includes("Tutela") || s.includes("Salud")) show(mods.salud);
             else if (s.includes("Cobro") || s.includes("Civil")) show(mods.civil);
@@ -230,9 +254,6 @@
 
         function setRequired(div, isReq) {
             div.querySelectorAll('input, select').forEach(i => i.required = isReq);
-            // El campo opcional de comparendo no debe ser required nunca
-            const opcional = div.querySelector('[name="transito_numero"]');
-            if(opcional) opcional.required = false;
         }
 
         const form = document.getElementById('legalForm');
