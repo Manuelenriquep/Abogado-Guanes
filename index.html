@@ -11,87 +11,69 @@
     
     <style>
         :root {
-            --primary: #0F172A;     /* Azul Oscuro */
-            --brand: #2563EB;       /* Azul Rey */
-            --accent: #F59E0B;      /* Dorado/Ámbar */
-            --bg: #F0F4F8;          /* Fondo suave */
-            --white: #ffffff;
+            --primary: #0F172A; --brand: #2563EB; --accent: #F59E0B;
+            --bg: #F0F4F8; --white: #ffffff;
             --gradient: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
         }
 
-        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: #334155; margin: 0; line-height: 1.6; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: #334155; margin: 0; line-height: 1.6; padding-top: 40px; /* Espacio para la barra fija */ }
         * { box-sizing: border-box; }
         a { text-decoration: none; }
+
+        /* --- 1. BARRA NOTICIA DIARIA (FLASH) --- */
+        .daily-flash-bar {
+            background-color: #1e293b; color: white;
+            padding: 10px 5%;
+            font-size: 0.9rem; font-weight: 500;
+            text-align: center;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .flash-tag { background: var(--brand); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+        .flash-content { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 800px; }
 
         /* --- HEADER --- */
         header { 
             background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); 
-            padding: 5rem 1rem 5rem; /* Un poco más de espacio abajo para el noticiero */
-            text-align: center; 
-            position: relative;
+            padding: 5rem 1rem 5rem; text-align: center; position: relative;
         }
         h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.1; letter-spacing: -1px; }
-        .badge { 
-            background: #dbeafe; color: var(--brand); padding: 8px 20px; border-radius: 50px; 
-            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.5rem; display: inline-block; 
-        }
+        .badge { background: #dbeafe; color: var(--brand); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.5rem; display: inline-block; }
 
-        /* --- NUEVO: NOTICIERO LEGAL (Cintillo) --- */
-        .news-section {
-            padding: 0 5%;
-            margin-top: -40px; /* Efecto flotante sobre el header */
-            position: relative;
-            z-index: 10;
-        }
+        /* --- 2. TARJETA TEMA SEMANAL (ESTÁTICA) --- */
+        .news-section { padding: 0 5%; margin-top: -40px; position: relative; z-index: 10; }
         .news-card {
-            background: white;
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            display: flex;
-            overflow: hidden;
+            background: white; max-width: 1000px; margin: 0 auto; border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); display: flex; overflow: hidden;
             border-left: 6px solid var(--accent);
         }
         .news-icon-box {
-            background: var(--primary);
-            color: var(--accent);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-width: 100px;
-            text-align: center;
+            background: var(--primary); color: var(--accent); padding: 1.5rem;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 120px; text-align: center;
         }
         .news-content { padding: 1.5rem; flex-grow: 1; }
-        .news-date { font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px; }
+        .news-date { font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 5px; }
         .news-title { margin: 0 0 5px; color: var(--primary); font-size: 1.1rem; font-weight: 700; }
         .news-body { margin: 0; font-size: 0.95rem; color: #475569; }
 
-        /* --- SERVICIOS (Bento Grid) --- */
+        /* --- SERVICIOS --- */
         .services-section { padding: 4rem 5% 3rem; max-width: 1200px; margin: 0 auto; }
         .section-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 2rem; font-weight: 800; }
-        
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        
         .service-card {
-            background: white; padding: 1.5rem; border-radius: 12px;
-            border: 1px solid #e2e8f0; transition: all 0.3s;
+            background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; transition: all 0.3s;
             display: flex; align-items: center; gap: 1rem;
         }
         .service-card:hover { transform: translateY(-3px); border-color: var(--brand); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        
-        .s-icon { 
-            width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
-        }
+        .s-icon { width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
         .s-info h3 { margin: 0; font-size: 1.1rem; color: var(--primary); }
         .s-info p { margin: 2px 0 0; font-size: 0.9rem; color: #64748b; }
 
-        /* --- APP GENERATOR (Formulario) --- */
+        /* --- APP GENERATOR --- */
         #app-generator { background: var(--primary); padding: 4rem 1rem; background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 20px 20px; }
         .app-box { background: white; max-width: 800px; margin: 0 auto; border-radius: 20px; padding: 3rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border-top: 6px solid var(--accent); }
-
+        
         .input-group { margin-bottom: 1.5rem; }
         label { display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: #1e293b; }
         .input-control { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; background: #f8fafc; transition: 0.3s; }
@@ -99,34 +81,37 @@
         
         .btn-generate { width: 100%; padding: 1.2rem; font-size: 1.2rem; font-weight: 800; color: white; background: var(--gradient); border: none; border-radius: 12px; cursor: pointer; margin-top: 1.5rem; text-transform: uppercase; box-shadow: 0 10px 15px -3px rgba(37,99,235,0.4); transition: 0.3s; }
         .btn-generate:hover { transform: translateY(-3px); filter: brightness(1.1); }
-        .btn-generate:disabled { background: #94a3b8; cursor: wait; transform: none; }
+        .btn-generate:disabled { background: #94a3b8; cursor: wait; }
 
         .hidden { display: none; }
         .highlight-box { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; }
         
-        /* Estilos específicos de módulos */
         .theme-laboral { background: #eff6ff; border-color: #bfdbfe; }
         .theme-inmuebles { background: #fff7ed; border-color: #fed7aa; }
         .theme-vehiculos { background: #ecfeff; border-color: #a5f3fc; }
         .theme-transito { background: #f0fdf4; border-color: #bbf7d0; } 
         .theme-salud { background: #fef2f2; border-color: #fecaca; } 
         .theme-civil { background: #faf5ff; border-color: #e9d5ff; } 
-
         h4 i { margin-right: 8px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        
         footer { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.9rem; background: #020617; }
 
         @media(max-width: 600px) { 
-            .grid-2 { grid-template-columns: 1fr; } 
-            h1 { font-size: 2.2rem; } 
-            .app-box { padding: 1.5rem; }
-            .news-card { flex-direction: column; }
-            .news-icon-box { flex-direction: row; gap: 10px; padding: 1rem; }
+            .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2.2rem; } .app-box { padding: 1.5rem; }
+            .news-card { flex-direction: column; } .news-icon-box { flex-direction: row; gap: 10px; padding: 1rem; }
+            .daily-flash-bar { font-size: 0.8rem; flex-direction: column; gap: 5px; }
+            body { padding-top: 60px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="daily-flash-bar">
+        <span class="flash-tag">HOY EN COLOMBIA:</span>
+        <span class="flash-content" id="dailyNewsText">
+            <i class="fas fa-spinner fa-spin"></i> Conectando con fuentes oficiales...
+        </span>
+    </div>
 
     <header>
         <span class="badge">✨ Oficina Virtual 24/7</span>
@@ -138,13 +123,13 @@
     <div class="news-section">
         <div class="news-card">
             <div class="news-icon-box">
-                <i class="fas fa-scale-balanced" style="font-size: 1.8rem;"></i>
-                <span style="font-weight: 700; margin-top: 5px;">AL DÍA</span>
+                <i class="fas fa-bullhorn" style="font-size: 1.8rem;"></i>
+                <span style="font-weight: 700; margin-top: 5px;">DESTACADO</span>
             </div>
             <div class="news-content">
-                <span class="news-date"><i class="far fa-calendar-alt"></i> ACTUALIDAD JURÍDICA COLOMBIA</span>
-                <h3 id="newsTitle" class="news-title">Corte Suprema: Se deben pagar horas extras en teletrabajo</h3>
-                <p id="newsBody" class="news-body">Fallo reciente aclara que la desconexión laboral es un derecho fundamental. Si su empleador le exige tareas fuera de horario laboral en casa, podría constituir trabajo suplementario remunerable.</p>
+                <span class="news-date"><i class="far fa-star"></i> OPORTUNIDAD DE DEMANDA</span>
+                <h3 class="news-title">Corte Suprema: Se deben pagar horas extras en teletrabajo</h3>
+                <p class="news-body">Fallo reciente aclara que la desconexión laboral es un derecho fundamental. Si su empleador le exige tareas fuera de horario en casa, usted tiene derecho a reclamar dinero. ¡Consúltenos!</p>
             </div>
         </div>
     </div>
@@ -152,51 +137,20 @@
     <section class="services-section">
         <h2 class="section-title">Nuestros Servicios ($50.000)</h2>
         <div class="services-grid">
-            
-            <div class="service-card">
-                <div class="s-icon" style="background:#eff6ff; color:var(--brand);"><i class="fas fa-hard-hat"></i></div>
-                <div class="s-info"><h3>Laboral</h3><p>Liquidación, Despidos.</p></div>
-            </div>
-
-            <div class="service-card">
-                <div class="s-icon" style="color:#ea580c; background:#fff7ed;"><i class="fas fa-home"></i></div>
-                <div class="s-info"><h3>Inmuebles</h3><p>Arriendos y Promesas.</p></div>
-            </div>
-
-            <div class="service-card">
-                <div class="s-icon" style="color:#0891b2; background:#ecfeff;"><i class="fas fa-car"></i></div>
-                <div class="s-info"><h3>Vehículos</h3><p>Traspasos Carro/Moto.</p></div>
-            </div>
-
-            <div class="service-card">
-                <div class="s-icon" style="color:#166534; background:#f0fdf4;"><i class="fas fa-traffic-light"></i></div>
-                <div class="s-info"><h3>Fotomultas</h3><p>Derechos de Petición.</p></div>
-            </div>
-
-            <div class="service-card">
-                <div class="s-icon" style="color:#dc2626; background:#fef2f2;"><i class="fas fa-heartbeat"></i></div>
-                <div class="s-info"><h3>Tutelas Salud</h3><p>Medicamentos y Citas.</p></div>
-            </div>
-
-            <div class="service-card">
-                <div class="s-icon" style="color:#7e22ce; background:#faf5ff;"><i class="fas fa-money-bill-wave"></i></div>
-                <div class="s-info"><h3>Cobro Deudas</h3><p>Recuperación de Cartera.</p></div>
-            </div>
-
-            <div class="service-card" style="grid-column: 1 / -1;">
-                <div class="s-icon" style="color:#475569; background:#f1f5f9;"><i class="fas fa-gavel"></i></div>
-                <div class="s-info"><h3>Consultoría Jurídica</h3><p>Análisis de Viabilidad y Conceptos.</p></div>
-            </div>
-
+            <div class="service-card"><div class="s-icon" style="background:#eff6ff; color:var(--brand);"><i class="fas fa-hard-hat"></i></div><div class="s-info"><h3>Laboral</h3><p>Liquidación, Despidos.</p></div></div>
+            <div class="service-card"><div class="s-icon" style="color:#ea580c; background:#fff7ed;"><i class="fas fa-home"></i></div><div class="s-info"><h3>Inmuebles</h3><p>Arriendos y Promesas.</p></div></div>
+            <div class="service-card"><div class="s-icon" style="color:#0891b2; background:#ecfeff;"><i class="fas fa-car"></i></div><div class="s-info"><h3>Vehículos</h3><p>Traspasos Carro/Moto.</p></div></div>
+            <div class="service-card"><div class="s-icon" style="color:#166534; background:#f0fdf4;"><i class="fas fa-traffic-light"></i></div><div class="s-info"><h3>Fotomultas</h3><p>Derechos de Petición.</p></div></div>
+            <div class="service-card"><div class="s-icon" style="color:#dc2626; background:#fef2f2;"><i class="fas fa-heartbeat"></i></div><div class="s-info"><h3>Tutelas Salud</h3><p>Medicamentos y Citas.</p></div></div>
+            <div class="service-card"><div class="s-icon" style="color:#7e22ce; background:#faf5ff;"><i class="fas fa-money-bill-wave"></i></div><div class="s-info"><h3>Cobro Deudas</h3><p>Recuperación de Cartera.</p></div></div>
+            <div class="service-card" style="grid-column: 1 / -1;"><div class="s-icon" style="color:#475569; background:#f1f5f9;"><i class="fas fa-gavel"></i></div><div class="s-info"><h3>Consultoría Jurídica</h3><p>Análisis de Viabilidad y Conceptos.</p></div></div>
         </div>
     </section>
 
     <section id="app-generator">
         <div class="app-box">
             <h2 style="text-align:center; color:var(--primary); margin-bottom: 2rem;">Radicación de Caso</h2>
-
             <form id="legalForm">
-                
                 <div class="input-group">
                     <label style="color: var(--brand); font-size: 1.1rem;">Seleccione el Trámite:</label>
                     <select class="input-control" name="Menu" id="servicioSelect" onchange="toggleFields()" required style="background: #eff6ff; border-color: var(--brand); font-weight: 600;">
@@ -210,99 +164,19 @@
                         <option value="Concepto de Viabilidad y Análisis de Caso">⚖️ Consultoría: Concepto Jurídico</option>
                     </select>
                 </div>
-
-                <div class="grid-2">
-                    <div class="input-group"><label>Código Wompi:</label><input type="text" class="input-control" name="ReferenciaPago" placeholder="Ej: TEST" required></div>
-                    <div class="input-group"><label>Cédula Cliente:</label><input type="text" class="input-control" name="ID" required></div>
-                </div>
-                <div class="grid-2">
-                    <div class="input-group"><label>Nombre Completo:</label><input type="text" class="input-control" name="Nombre" required></div>
-                    <div class="input-group"><label>Email (Para el PDF):</label><input type="email" class="input-control" name="Correo" required></div>
-                </div>
-                <div class="grid-2">
-                    <div class="input-group"><label>Ciudad:</label><input type="text" class="input-control" name="Ciudad" required></div>
-                    <div class="input-group"><label>Contraparte (A quién reclamamos):</label><input type="text" class="input-control" name="Contraparte" placeholder="Empresa, Persona o Entidad" required></div>
-                </div>
-
+                <div class="grid-2"><div class="input-group"><label>Código Wompi:</label><input type="text" class="input-control" name="ReferenciaPago" placeholder="Ej: TEST" required></div><div class="input-group"><label>Cédula Cliente:</label><input type="text" class="input-control" name="ID" required></div></div>
+                <div class="grid-2"><div class="input-group"><label>Nombre Completo:</label><input type="text" class="input-control" name="Nombre" required></div><div class="input-group"><label>Email:</label><input type="email" class="input-control" name="Correo" required></div></div>
+                <div class="grid-2"><div class="input-group"><label>Ciudad:</label><input type="text" class="input-control" name="Ciudad" required></div><div class="input-group"><label>Contraparte:</label><input type="text" class="input-control" name="Contraparte" required></div></div>
                 <hr style="border:0; border-top:1px solid #e2e8f0; margin:2rem 0;">
-
-                <div id="camposLaborales" class="hidden highlight-box theme-laboral">
-                    <h4 style="color:var(--brand);"><i class="fas fa-briefcase"></i> Datos Laborales</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Fecha Ingreso:</label><input type="date" class="input-control" name="fecha_inicio"></div>
-                        <div class="input-group"><label>Fecha Retiro:</label><input type="date" class="input-control" name="fecha_fin"></div>
-                    </div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Salario ($):</label><input type="number" class="input-control" name="salario"></div>
-                        <div class="input-group"><label>Motivo Salida:</label>
-                            <select class="input-control" name="motivo_salida">
-                                <option value="Despido Sin Justa Causa">Despido Injusto</option>
-                                <option value="Renuncia Voluntaria">Renuncia</option>
-                                <option value="Terminación de Contrato">Fin de Contrato</option>
-                                <option value="Despido Con Justa Causa">Despido Justo</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="camposInmuebles" class="hidden highlight-box theme-inmuebles">
-                    <h4 style="color:#ea580c;"><i class="fas fa-home"></i> Datos del Inmueble</h4>
-                    <div class="input-group"><label>Tipo de Contrato:</label><select class="input-control" name="inmueble_tipo"><option>Contrato de Arrendamiento</option><option>Promesa de Compraventa</option></select></div>
-                    <div class="input-group"><label>Dirección:</label><input type="text" class="input-control" name="inmueble_direccion"></div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Canon / Valor ($):</label><input type="number" class="input-control" name="inmueble_valor"></div>
-                        <div class="input-group"><label>Matrícula Inmobiliaria:</label><input type="text" class="input-control" name="inmueble_matricula"></div>
-                    </div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Inicio/Firma:</label><input type="date" class="input-control" name="inmueble_fecha"></div>
-                        <div class="input-group"><label>Uso:</label><select class="input-control" name="inmueble_uso"><option>Vivienda Urbana</option><option>Comercial</option><option>Oficina</option></select></div>
-                    </div>
-                </div>
-
-                <div id="camposVehiculos" class="hidden highlight-box theme-vehiculos">
-                    <h4 style="color:#0891b2;"><i class="fas fa-car"></i> Compraventa Vehículo</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Placa:</label><input type="text" class="input-control" name="vehiculo_placa" placeholder="ABC-123" style="text-transform:uppercase;"></div>
-                        <div class="input-group"><label>Valor Venta ($):</label><input type="number" class="input-control" name="vehiculo_valor"></div>
-                    </div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Marca:</label><input type="text" class="input-control" name="vehiculo_marca"></div>
-                        <div class="input-group"><label>Modelo:</label><input type="text" class="input-control" name="vehiculo_modelo"></div>
-                    </div>
-                    <div class="input-group"><label>Traspaso:</label><select class="input-control" name="vehiculo_traspaso"><option>50/50</option><option>Comprador</option><option>Vendedor</option></select></div>
-                </div>
-
-                <div id="camposTransito" class="hidden highlight-box theme-transito">
-                    <h4 style="color:#166534;"><i class="fas fa-traffic-light"></i> Datos del Comparendo</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Placa:</label><input type="text" class="input-control" name="transito_placa"></div>
-                        <div class="input-group"><label>Fecha Infracción:</label><input type="date" class="input-control" name="transito_fecha"></div>
-                    </div>
-                    <div class="input-group"><label>Notificación:</label><select class="input-control" name="transito_notificacion"><option>NO me notificaron</option><option>SI me notificaron</option></select></div>
-                </div>
-
-                <div id="camposSalud" class="hidden highlight-box theme-salud">
-                    <h4 style="color:#dc2626;"><i class="fas fa-heartbeat"></i> Datos de la Tutela</h4>
-                    <div class="input-group"><label>¿Qué niegan?:</label><input type="text" class="input-control" name="salud_negacion"></div>
-                    <div class="input-group"><label>Urgencia:</label><select class="input-control" name="salud_riesgo"><option>Urgencia Vital</option><option>Calidad de Vida</option><option>Administrativo</option></select></div>
-                </div>
-
-                <div id="camposCivil" class="hidden highlight-box theme-civil">
-                    <h4 style="color:#7e22ce;"><i class="fas fa-money-bill-wave"></i> Datos de la Deuda</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Tipo Soporte:</label><select class="input-control" name="civil_tipo"><option>Letra de Cambio</option><option>Factura</option><option>Verbal</option></select></div>
-                        <div class="input-group"><label>Vencimiento:</label><input type="date" class="input-control" name="civil_vencimiento"></div>
-                    </div>
-                    <div class="input-group"><label>Monto ($):</label><input type="number" class="input-control" name="civil_monto"></div>
-                </div>
-
-                <div id="campoRelato">
-                    <div class="input-group">
-                        <label>Detalles Adicionales:</label>
-                        <textarea class="input-control" name="Relato" style="min-height: 100px;" placeholder="Detalles extra..."></textarea>
-                    </div>
-                </div>
-
+                
+                <div id="camposLaborales" class="hidden highlight-box theme-laboral"><h4 style="color:var(--brand);"><i class="fas fa-briefcase"></i> Datos Laborales</h4><div class="grid-2"><div class="input-group"><label>Fecha Ingreso:</label><input type="date" class="input-control" name="fecha_inicio"></div><div class="input-group"><label>Fecha Retiro:</label><input type="date" class="input-control" name="fecha_fin"></div></div><div class="grid-2"><div class="input-group"><label>Salario ($):</label><input type="number" class="input-control" name="salario"></div><div class="input-group"><label>Motivo:</label><select class="input-control" name="motivo_salida"><option value="Despido Sin Justa Causa">Despido Injusto</option><option value="Renuncia Voluntaria">Renuncia</option><option value="Terminación de Contrato">Fin de Contrato</option><option value="Despido Con Justa Causa">Despido Justo</option></select></div></div></div>
+                <div id="camposInmuebles" class="hidden highlight-box theme-inmuebles"><h4 style="color:#ea580c;"><i class="fas fa-home"></i> Datos Inmueble</h4><div class="input-group"><label>Tipo Contrato:</label><select class="input-control" name="inmueble_tipo"><option>Arrendamiento</option><option>Promesa Venta</option></select></div><div class="input-group"><label>Dirección:</label><input type="text" class="input-control" name="inmueble_direccion"></div><div class="grid-2"><div class="input-group"><label>Valor/Canon ($):</label><input type="number" class="input-control" name="inmueble_valor"></div><div class="input-group"><label>Matrícula:</label><input type="text" class="input-control" name="inmueble_matricula"></div></div><div class="grid-2"><div class="input-group"><label>Fecha:</label><input type="date" class="input-control" name="inmueble_fecha"></div><div class="input-group"><label>Uso:</label><select class="input-control" name="inmueble_uso"><option>Vivienda</option><option>Comercial</option><option>Oficina</option></select></div></div></div>
+                <div id="camposVehiculos" class="hidden highlight-box theme-vehiculos"><h4 style="color:#0891b2;"><i class="fas fa-car"></i> Datos Vehículo</h4><div class="grid-2"><div class="input-group"><label>Placa:</label><input type="text" class="input-control" name="vehiculo_placa" style="text-transform:uppercase;"></div><div class="input-group"><label>Valor ($):</label><input type="number" class="input-control" name="vehiculo_valor"></div></div><div class="grid-2"><div class="input-group"><label>Marca:</label><input type="text" class="input-control" name="vehiculo_marca"></div><div class="input-group"><label>Modelo:</label><input type="text" class="input-control" name="vehiculo_modelo"></div></div><div class="input-group"><label>Traspaso:</label><select class="input-control" name="vehiculo_traspaso"><option>50/50</option><option>Comprador</option><option>Vendedor</option></select></div></div>
+                <div id="camposTransito" class="hidden highlight-box theme-transito"><h4 style="color:#166534;"><i class="fas fa-traffic-light"></i> Datos Comparendo</h4><div class="grid-2"><div class="input-group"><label>Placa:</label><input type="text" class="input-control" name="transito_placa"></div><div class="input-group"><label>Fecha:</label><input type="date" class="input-control" name="transito_fecha"></div></div><div class="input-group"><label>Notificación:</label><select class="input-control" name="transito_notificacion"><option>NO me notificaron</option><option>SI me notificaron</option></select></div></div>
+                <div id="camposSalud" class="hidden highlight-box theme-salud"><h4 style="color:#dc2626;"><i class="fas fa-heartbeat"></i> Datos Tutela</h4><div class="input-group"><label>Hechos:</label><input type="text" class="input-control" name="salud_negacion" placeholder="Qué le niegan"></div><div class="input-group"><label>Urgencia:</label><select class="input-control" name="salud_riesgo"><option>Urgencia Vital</option><option>Calidad de Vida</option><option>Administrativo</option></select></div></div>
+                <div id="camposCivil" class="hidden highlight-box theme-civil"><h4 style="color:#7e22ce;"><i class="fas fa-money-bill-wave"></i> Datos Deuda</h4><div class="grid-2"><div class="input-group"><label>Soporte:</label><select class="input-control" name="civil_tipo"><option>Letra de Cambio</option><option>Factura</option><option>Verbal</option></select></div><div class="input-group"><label>Vencimiento:</label><input type="date" class="input-control" name="civil_vencimiento"></div></div><div class="input-group"><label>Monto ($):</label><input type="number" class="input-control" name="civil_monto"></div></div>
+                <div id="campoRelato"><div class="input-group"><label>Detalles:</label><textarea class="input-control" name="Relato" style="min-height: 100px;" placeholder="Detalles extra..."></textarea></div></div>
+                
                 <button type="submit" class="btn-generate" id="submitBtn"><i class="fas fa-bolt"></i> GENERAR DOCUMENTO</button>
             </form>
             <div id="statusMessage"></div>
@@ -313,10 +187,25 @@
 
     <script>
         // ==========================================
-        // ⚠️ PEGUE AQUÍ SU WEBHOOK DE N8N ⚠️
+        // ⚠️ SU WEBHOOK DE N8N VA AQUÍ ⚠️
         // ==========================================
-        const WEBHOOK_URL = "https://guanes.app.n8n.cloud/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
+        const WEBHOOK_URL = "SU_URL_DE_N8N_AQUI"; 
         // ==========================================
+
+        // --- LÓGICA DE NOTICIAS DIARIAS (SIMULADA POR AHORA) ---
+        // Aquí conectaremos Google Sheets. Por hoy, ponemos un mensaje "Dummy" que cambiará.
+        setTimeout(() => {
+            const noticiasEjemplo = [
+                "Dólar TRM: $4.150 📉 | Corte Constitucional protege estabilidad laboral reforzada | Vencimiento ICA: Mañana",
+                "Nueva Reforma Laboral: Conozca los 3 cambios que afectan su contrato | Pico y Placa Solidario sube de precio",
+                "¡OJO! Si le deben liquidación, los intereses moratorios corren a diario. ¡Reclame ya!"
+            ];
+            // Elegir una al azar para simular dinamismo
+            const noticiaDelDia = noticiasEjemplo[Math.floor(Math.random() * noticiasEjemplo.length)];
+            
+            document.getElementById('dailyNewsText').innerHTML = noticiaDelDia;
+        }, 1500);
+        // --------------------------------------------------------
 
         function toggleFields() {
             const s = document.getElementById('servicioSelect').value;
@@ -337,7 +226,6 @@
             else if (s.includes("Salud")) show(mods.salud);
             else if (s.includes("Cobro")) show(mods.civil);
         }
-
         function show(div) { div.classList.remove('hidden'); setRequired(div, true); }
         function setRequired(div, isReq) { div.querySelectorAll('input, select').forEach(i => i.required = isReq); }
 
@@ -352,7 +240,7 @@
             statusDiv.style.display = 'block';
             statusDiv.style.background = '#eff6ff';
             statusDiv.style.color = '#2563EB';
-            statusDiv.innerHTML = '<h3>⏳ Analizando Caso...</h3><p>Validando jurisprudencia y redactando...</p>';
+            statusDiv.innerHTML = '<h3>⏳ Analizando Caso...</h3><p>Redactando documento...</p>';
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
@@ -375,14 +263,14 @@
                     window.URL.revokeObjectURL(url);
                     statusDiv.style.background = '#ecfdf5';
                     statusDiv.style.color = '#047857';
-                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Documento descargado con éxito.</p>';
+                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Documento descargado.</p>';
                     form.reset();
                     toggleFields();
                 } else { throw new Error('Error'); }
             } catch (error) {
                 statusDiv.style.background = '#fef2f2';
                 statusDiv.style.color = '#b91c1c';
-                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Revise conexión.</p>';
+                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Verifique conexión.</p>';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-bolt"></i> GENERAR DOCUMENTO';
