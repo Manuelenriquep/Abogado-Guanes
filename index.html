@@ -4,31 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUANES | Justicia Digital Premium</title>
+    <meta name="description" content="Abogado Digital. Trámites legales automatizados: Laboral, Tránsito, Inmuebles y Vehículos.">
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #0F172A; --brand: #2563EB; --accent: #F59E0B;
-            --bg: #F0F4F8; --gradient: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            --primary: #0F172A;     /* Azul Oscuro */
+            --brand: #2563EB;       /* Azul Rey */
+            --accent: #F59E0B;      /* Dorado/Ámbar */
+            --bg: #F0F4F8;          /* Fondo suave */
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
         }
+
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: #334155; margin: 0; line-height: 1.6; }
         * { box-sizing: border-box; }
+        a { text-decoration: none; }
 
-        /* HEADER */
-        header { background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); padding: 5rem 1rem 3rem; text-align: center; border-bottom: 1px solid #cbd5e1; }
-        h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.1; }
-        .badge { background: #dbeafe; color: var(--brand); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.5rem; display: inline-block; }
+        /* --- HEADER --- */
+        header { 
+            background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); 
+            padding: 5rem 1rem 5rem; /* Un poco más de espacio abajo para el noticiero */
+            text-align: center; 
+            position: relative;
+        }
+        h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.1; letter-spacing: -1px; }
+        .badge { 
+            background: #dbeafe; color: var(--brand); padding: 8px 20px; border-radius: 50px; 
+            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.5rem; display: inline-block; 
+        }
 
-        /* SECCIÓN SERVICIOS (GRID MEJORADO) */
-        .services-section { padding: 3rem 5%; max-width: 1200px; margin: 0 auto; }
+        /* --- NUEVO: NOTICIERO LEGAL (Cintillo) --- */
+        .news-section {
+            padding: 0 5%;
+            margin-top: -40px; /* Efecto flotante sobre el header */
+            position: relative;
+            z-index: 10;
+        }
+        .news-card {
+            background: white;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            border-left: 6px solid var(--accent);
+        }
+        .news-icon-box {
+            background: var(--primary);
+            color: var(--accent);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 100px;
+            text-align: center;
+        }
+        .news-content { padding: 1.5rem; flex-grow: 1; }
+        .news-date { font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px; }
+        .news-title { margin: 0 0 5px; color: var(--primary); font-size: 1.1rem; font-weight: 700; }
+        .news-body { margin: 0; font-size: 0.95rem; color: #475569; }
+
+        /* --- SERVICIOS (Bento Grid) --- */
+        .services-section { padding: 4rem 5% 3rem; max-width: 1200px; margin: 0 auto; }
         .section-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 2rem; font-weight: 800; }
         
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 1.5rem; 
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         
         .service-card {
             background: white; padding: 1.5rem; border-radius: 12px;
@@ -38,14 +83,12 @@
         .service-card:hover { transform: translateY(-3px); border-color: var(--brand); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         
         .s-icon { 
-            width: 50px; height: 50px; background: #eff6ff; color: var(--brand); 
-            border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-            flex-shrink: 0;
+            width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
         }
         .s-info h3 { margin: 0; font-size: 1.1rem; color: var(--primary); }
         .s-info p { margin: 2px 0 0; font-size: 0.9rem; color: #64748b; }
 
-        /* APP GENERATOR */
+        /* --- APP GENERATOR (Formulario) --- */
         #app-generator { background: var(--primary); padding: 4rem 1rem; background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 20px 20px; }
         .app-box { background: white; max-width: 800px; margin: 0 auto; border-radius: 20px; padding: 3rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border-top: 6px solid var(--accent); }
 
@@ -61,7 +104,7 @@
         .hidden { display: none; }
         .highlight-box { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; }
         
-        /* Temas */
+        /* Estilos específicos de módulos */
         .theme-laboral { background: #eff6ff; border-color: #bfdbfe; }
         .theme-inmuebles { background: #fff7ed; border-color: #fed7aa; }
         .theme-vehiculos { background: #ecfeff; border-color: #a5f3fc; }
@@ -71,7 +114,16 @@
 
         h4 i { margin-right: 8px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        @media(max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2.2rem; } .app-box { padding: 1.5rem; } .services-grid { grid-template-columns: 1fr; } }
+        
+        footer { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.9rem; background: #020617; }
+
+        @media(max-width: 600px) { 
+            .grid-2 { grid-template-columns: 1fr; } 
+            h1 { font-size: 2.2rem; } 
+            .app-box { padding: 1.5rem; }
+            .news-card { flex-direction: column; }
+            .news-icon-box { flex-direction: row; gap: 10px; padding: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -80,67 +132,60 @@
         <span class="badge">✨ Oficina Virtual 24/7</span>
         <h1>GUANES <span style="color:var(--brand);">LEGAL</span></h1>
         <p style="font-size: 1.2rem; max-width: 600px; margin: 10px auto; color: #475569;">Supervisión experta del Dr. Manuel Prada Forero.</p>
-        <a href="#app-generator" class="btn-generate" style="display:inline-block; width:auto; padding: 1rem 2rem; margin-top:1rem; text-decoration:none;">Iniciar Trámite Ahora</a>
+        <a href="#app-generator" class="btn-generate" style="display:inline-block; width:auto; padding: 1rem 2rem; margin-top:1rem;">Iniciar Trámite Ahora</a>
     </header>
+
+    <div class="news-section">
+        <div class="news-card">
+            <div class="news-icon-box">
+                <i class="fas fa-scale-balanced" style="font-size: 1.8rem;"></i>
+                <span style="font-weight: 700; margin-top: 5px;">AL DÍA</span>
+            </div>
+            <div class="news-content">
+                <span class="news-date"><i class="far fa-calendar-alt"></i> ACTUALIDAD JURÍDICA COLOMBIA</span>
+                <h3 id="newsTitle" class="news-title">Corte Suprema: Se deben pagar horas extras en teletrabajo</h3>
+                <p id="newsBody" class="news-body">Fallo reciente aclara que la desconexión laboral es un derecho fundamental. Si su empleador le exige tareas fuera de horario laboral en casa, podría constituir trabajo suplementario remunerable.</p>
+            </div>
+        </div>
+    </div>
 
     <section class="services-section">
         <h2 class="section-title">Nuestros Servicios ($50.000)</h2>
         <div class="services-grid">
             
             <div class="service-card">
-                <div class="s-icon"><i class="fas fa-hard-hat"></i></div>
-                <div class="s-info">
-                    <h3>Laboral</h3>
-                    <p>Liquidación, Despidos, Indemnizaciones.</p>
-                </div>
+                <div class="s-icon" style="background:#eff6ff; color:var(--brand);"><i class="fas fa-hard-hat"></i></div>
+                <div class="s-info"><h3>Laboral</h3><p>Liquidación, Despidos.</p></div>
             </div>
 
             <div class="service-card">
                 <div class="s-icon" style="color:#ea580c; background:#fff7ed;"><i class="fas fa-home"></i></div>
-                <div class="s-info">
-                    <h3>Inmuebles</h3>
-                    <p>Contratos de Arriendo y Promesas.</p>
-                </div>
+                <div class="s-info"><h3>Inmuebles</h3><p>Arriendos y Promesas.</p></div>
             </div>
 
             <div class="service-card">
                 <div class="s-icon" style="color:#0891b2; background:#ecfeff;"><i class="fas fa-car"></i></div>
-                <div class="s-info">
-                    <h3>Vehículos</h3>
-                    <p>Compraventa de Carros y Motos.</p>
-                </div>
+                <div class="s-info"><h3>Vehículos</h3><p>Traspasos Carro/Moto.</p></div>
             </div>
 
             <div class="service-card">
                 <div class="s-icon" style="color:#166534; background:#f0fdf4;"><i class="fas fa-traffic-light"></i></div>
-                <div class="s-info">
-                    <h3>Fotomultas</h3>
-                    <p>Derechos de Petición Tránsito.</p>
-                </div>
+                <div class="s-info"><h3>Fotomultas</h3><p>Derechos de Petición.</p></div>
             </div>
 
             <div class="service-card">
                 <div class="s-icon" style="color:#dc2626; background:#fef2f2;"><i class="fas fa-heartbeat"></i></div>
-                <div class="s-info">
-                    <h3>Tutelas Salud</h3>
-                    <p>Medicamentos, Citas, Urgencias.</p>
-                </div>
+                <div class="s-info"><h3>Tutelas Salud</h3><p>Medicamentos y Citas.</p></div>
             </div>
 
             <div class="service-card">
                 <div class="s-icon" style="color:#7e22ce; background:#faf5ff;"><i class="fas fa-money-bill-wave"></i></div>
-                <div class="s-info">
-                    <h3>Cobro de Deudas</h3>
-                    <p>Recuperación de Cartera Civil.</p>
-                </div>
+                <div class="s-info"><h3>Cobro Deudas</h3><p>Recuperación de Cartera.</p></div>
             </div>
 
             <div class="service-card" style="grid-column: 1 / -1;">
                 <div class="s-icon" style="color:#475569; background:#f1f5f9;"><i class="fas fa-gavel"></i></div>
-                <div class="s-info">
-                    <h3>Consultoría Jurídica</h3>
-                    <p>Análisis de Viabilidad y Conceptos Legales.</p>
-                </div>
+                <div class="s-info"><h3>Consultoría Jurídica</h3><p>Análisis de Viabilidad y Conceptos.</p></div>
             </div>
 
         </div>
@@ -189,8 +234,7 @@
                     </div>
                     <div class="grid-2">
                         <div class="input-group"><label>Salario ($):</label><input type="number" class="input-control" name="salario"></div>
-                        <div class="input-group">
-                            <label>Motivo Salida:</label>
+                        <div class="input-group"><label>Motivo Salida:</label>
                             <select class="input-control" name="motivo_salida">
                                 <option value="Despido Sin Justa Causa">Despido Injusto</option>
                                 <option value="Renuncia Voluntaria">Renuncia</option>
@@ -260,7 +304,6 @@
                 </div>
 
                 <button type="submit" class="btn-generate" id="submitBtn"><i class="fas fa-bolt"></i> GENERAR DOCUMENTO</button>
-
             </form>
             <div id="statusMessage"></div>
         </div>
@@ -270,7 +313,7 @@
 
     <script>
         // ==========================================
-        // ⚠️ SU WEBHOOK DE N8N VA AQUÍ ⚠️
+        // ⚠️ PEGUE AQUÍ SU WEBHOOK DE N8N ⚠️
         // ==========================================
         const WEBHOOK_URL = "https://guanes.app.n8n.cloud/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
         // ==========================================
@@ -285,7 +328,6 @@
                 salud: document.getElementById('camposSalud'),
                 civil: document.getElementById('camposCivil')
             };
-
             Object.values(mods).forEach(d => { d.classList.add('hidden'); setRequired(d, false); });
 
             if (s.includes("Laboral")) show(mods.laboral);
@@ -310,7 +352,7 @@
             statusDiv.style.display = 'block';
             statusDiv.style.background = '#eff6ff';
             statusDiv.style.color = '#2563EB';
-            statusDiv.innerHTML = '<h3>⏳ Analizando Caso...</h3><p>La IA está redactando su documento.</p>';
+            statusDiv.innerHTML = '<h3>⏳ Analizando Caso...</h3><p>Validando jurisprudencia y redactando...</p>';
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
@@ -340,7 +382,7 @@
             } catch (error) {
                 statusDiv.style.background = '#fef2f2';
                 statusDiv.style.color = '#b91c1c';
-                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Revise su conexión.</p>';
+                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Revise conexión.</p>';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-bolt"></i> GENERAR DOCUMENTO';
