@@ -15,16 +15,43 @@
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: #334155; margin: 0; line-height: 1.6; }
         * { box-sizing: border-box; }
 
-        header { background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); padding: 5rem 1rem 4rem; text-align: center; border-bottom: 1px solid #cbd5e1; }
+        /* HEADER */
+        header { background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); padding: 5rem 1rem 3rem; text-align: center; border-bottom: 1px solid #cbd5e1; }
         h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.1; }
         .badge { background: #dbeafe; color: var(--brand); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.5rem; display: inline-block; }
 
+        /* SECCIÓN SERVICIOS (GRID MEJORADO) */
+        .services-section { padding: 3rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 2rem; font-weight: 800; }
+        
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
+        
+        .service-card {
+            background: white; padding: 1.5rem; border-radius: 12px;
+            border: 1px solid #e2e8f0; transition: all 0.3s;
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .service-card:hover { transform: translateY(-3px); border-color: var(--brand); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        .s-icon { 
+            width: 50px; height: 50px; background: #eff6ff; color: var(--brand); 
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .s-info h3 { margin: 0; font-size: 1.1rem; color: var(--primary); }
+        .s-info p { margin: 2px 0 0; font-size: 0.9rem; color: #64748b; }
+
+        /* APP GENERATOR */
         #app-generator { background: var(--primary); padding: 4rem 1rem; background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 20px 20px; }
         .app-box { background: white; max-width: 800px; margin: 0 auto; border-radius: 20px; padding: 3rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border-top: 6px solid var(--accent); }
 
         .input-group { margin-bottom: 1.5rem; }
         label { display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: #1e293b; }
-        .input-control { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; font-family: inherit; background: #f8fafc; transition: 0.3s; }
+        .input-control { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; background: #f8fafc; transition: 0.3s; }
         .input-control:focus { outline: none; border-color: var(--brand); background: #fff; }
         
         .btn-generate { width: 100%; padding: 1.2rem; font-size: 1.2rem; font-weight: 800; color: white; background: var(--gradient); border: none; border-radius: 12px; cursor: pointer; margin-top: 1.5rem; text-transform: uppercase; box-shadow: 0 10px 15px -3px rgba(37,99,235,0.4); transition: 0.3s; }
@@ -34,17 +61,17 @@
         .hidden { display: none; }
         .highlight-box { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; }
         
-        /* Temas por color */
+        /* Temas */
         .theme-laboral { background: #eff6ff; border-color: #bfdbfe; }
-        .theme-inmuebles { background: #fff7ed; border-color: #fed7aa; } /* Naranja */
-        .theme-vehiculos { background: #ecfeff; border-color: #a5f3fc; } /* Cyan */
+        .theme-inmuebles { background: #fff7ed; border-color: #fed7aa; }
+        .theme-vehiculos { background: #ecfeff; border-color: #a5f3fc; }
         .theme-transito { background: #f0fdf4; border-color: #bbf7d0; } 
         .theme-salud { background: #fef2f2; border-color: #fecaca; } 
         .theme-civil { background: #faf5ff; border-color: #e9d5ff; } 
 
         h4 i { margin-right: 8px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        @media(max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2.2rem; } .app-box { padding: 1.5rem; } }
+        @media(max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2.2rem; } .app-box { padding: 1.5rem; } .services-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -53,7 +80,71 @@
         <span class="badge">✨ Oficina Virtual 24/7</span>
         <h1>GUANES <span style="color:var(--brand);">LEGAL</span></h1>
         <p style="font-size: 1.2rem; max-width: 600px; margin: 10px auto; color: #475569;">Supervisión experta del Dr. Manuel Prada Forero.</p>
+        <a href="#app-generator" class="btn-generate" style="display:inline-block; width:auto; padding: 1rem 2rem; margin-top:1rem; text-decoration:none;">Iniciar Trámite Ahora</a>
     </header>
+
+    <section class="services-section">
+        <h2 class="section-title">Nuestros Servicios ($50.000)</h2>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="s-icon"><i class="fas fa-hard-hat"></i></div>
+                <div class="s-info">
+                    <h3>Laboral</h3>
+                    <p>Liquidación, Despidos, Indemnizaciones.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="s-icon" style="color:#ea580c; background:#fff7ed;"><i class="fas fa-home"></i></div>
+                <div class="s-info">
+                    <h3>Inmuebles</h3>
+                    <p>Contratos de Arriendo y Promesas.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="s-icon" style="color:#0891b2; background:#ecfeff;"><i class="fas fa-car"></i></div>
+                <div class="s-info">
+                    <h3>Vehículos</h3>
+                    <p>Compraventa de Carros y Motos.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="s-icon" style="color:#166534; background:#f0fdf4;"><i class="fas fa-traffic-light"></i></div>
+                <div class="s-info">
+                    <h3>Fotomultas</h3>
+                    <p>Derechos de Petición Tránsito.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="s-icon" style="color:#dc2626; background:#fef2f2;"><i class="fas fa-heartbeat"></i></div>
+                <div class="s-info">
+                    <h3>Tutelas Salud</h3>
+                    <p>Medicamentos, Citas, Urgencias.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="s-icon" style="color:#7e22ce; background:#faf5ff;"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="s-info">
+                    <h3>Cobro de Deudas</h3>
+                    <p>Recuperación de Cartera Civil.</p>
+                </div>
+            </div>
+
+            <div class="service-card" style="grid-column: 1 / -1;">
+                <div class="s-icon" style="color:#475569; background:#f1f5f9;"><i class="fas fa-gavel"></i></div>
+                <div class="s-info">
+                    <h3>Consultoría Jurídica</h3>
+                    <p>Análisis de Viabilidad y Conceptos Legales.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <section id="app-generator">
         <div class="app-box">
@@ -112,106 +203,70 @@
 
                 <div id="camposInmuebles" class="hidden highlight-box theme-inmuebles">
                     <h4 style="color:#ea580c;"><i class="fas fa-home"></i> Datos del Inmueble</h4>
-                    <div class="input-group">
-                        <label>Tipo de Contrato:</label>
-                        <select class="input-control" name="inmueble_tipo">
-                            <option value="Contrato de Arrendamiento">Arrendamiento (Alquiler)</option>
-                            <option value="Promesa de Compraventa">Promesa de Compraventa (Venta)</option>
-                        </select>
-                    </div>
-                    <div class="input-group"><label>Dirección Exacta:</label><input type="text" class="input-control" name="inmueble_direccion"></div>
+                    <div class="input-group"><label>Tipo de Contrato:</label><select class="input-control" name="inmueble_tipo"><option>Contrato de Arrendamiento</option><option>Promesa de Compraventa</option></select></div>
+                    <div class="input-group"><label>Dirección:</label><input type="text" class="input-control" name="inmueble_direccion"></div>
                     <div class="grid-2">
                         <div class="input-group"><label>Canon / Valor ($):</label><input type="number" class="input-control" name="inmueble_valor"></div>
-                        <div class="input-group"><label>Matrícula Inmobiliaria (Si aplica):</label><input type="text" class="input-control" name="inmueble_matricula"></div>
+                        <div class="input-group"><label>Matrícula Inmobiliaria:</label><input type="text" class="input-control" name="inmueble_matricula"></div>
                     </div>
                     <div class="grid-2">
-                        <div class="input-group"><label>Fecha Inicio/Firma:</label><input type="date" class="input-control" name="inmueble_fecha"></div>
+                        <div class="input-group"><label>Inicio/Firma:</label><input type="date" class="input-control" name="inmueble_fecha"></div>
                         <div class="input-group"><label>Uso:</label><select class="input-control" name="inmueble_uso"><option>Vivienda Urbana</option><option>Comercial</option><option>Oficina</option></select></div>
                     </div>
                 </div>
 
                 <div id="camposVehiculos" class="hidden highlight-box theme-vehiculos">
-                    <h4 style="color:#0891b2;"><i class="fas fa-car-side"></i> Compraventa Vehículo</h4>
+                    <h4 style="color:#0891b2;"><i class="fas fa-car"></i> Compraventa Vehículo</h4>
                     <div class="grid-2">
                         <div class="input-group"><label>Placa:</label><input type="text" class="input-control" name="vehiculo_placa" placeholder="ABC-123" style="text-transform:uppercase;"></div>
                         <div class="input-group"><label>Valor Venta ($):</label><input type="number" class="input-control" name="vehiculo_valor"></div>
                     </div>
                     <div class="grid-2">
-                        <div class="input-group"><label>Marca:</label><input type="text" class="input-control" name="vehiculo_marca" placeholder="Ej: Chevrolet"></div>
-                        <div class="input-group"><label>Modelo (Año):</label><input type="text" class="input-control" name="vehiculo_modelo" placeholder="Ej: 2020"></div>
+                        <div class="input-group"><label>Marca:</label><input type="text" class="input-control" name="vehiculo_marca"></div>
+                        <div class="input-group"><label>Modelo:</label><input type="text" class="input-control" name="vehiculo_modelo"></div>
                     </div>
-                    <div class="input-group"><label>Gastos de Traspaso:</label>
-                        <select class="input-control" name="vehiculo_traspaso">
-                            <option value="50/50">Mitad y Mitad (50/50)</option>
-                            <option value="Comprador">Paga el Comprador</option>
-                            <option value="Vendedor">Paga el Vendedor</option>
-                        </select>
-                    </div>
+                    <div class="input-group"><label>Traspaso:</label><select class="input-control" name="vehiculo_traspaso"><option>50/50</option><option>Comprador</option><option>Vendedor</option></select></div>
                 </div>
 
                 <div id="camposTransito" class="hidden highlight-box theme-transito">
                     <h4 style="color:#166534;"><i class="fas fa-traffic-light"></i> Datos del Comparendo</h4>
                     <div class="grid-2">
-                        <div class="input-group"><label>Placa Vehículo:</label><input type="text" class="input-control" name="transito_placa" placeholder="ABC-123"></div>
+                        <div class="input-group"><label>Placa:</label><input type="text" class="input-control" name="transito_placa"></div>
                         <div class="input-group"><label>Fecha Infracción:</label><input type="date" class="input-control" name="transito_fecha"></div>
                     </div>
-                    <div class="input-group">
-                        <label>¿Le notificaron a tiempo?</label>
-                        <select class="input-control" name="transito_notificacion">
-                            <option value="NO me notificaron">NO (Me enteré después)</option>
-                            <option value="SI me notificaron">SÍ me llegó la carta</option>
-                        </select>
-                    </div>
+                    <div class="input-group"><label>Notificación:</label><select class="input-control" name="transito_notificacion"><option>NO me notificaron</option><option>SI me notificaron</option></select></div>
                 </div>
 
                 <div id="camposSalud" class="hidden highlight-box theme-salud">
                     <h4 style="color:#dc2626;"><i class="fas fa-heartbeat"></i> Datos de la Tutela</h4>
-                    <div class="input-group"><label>¿Qué le niegan?</label><input type="text" class="input-control" name="salud_negacion" placeholder="Ej: Insulina, Cita Especialista..."></div>
-                    <div class="input-group">
-                        <label>Nivel de Urgencia:</label>
-                        <select class="input-control" name="salud_riesgo">
-                            <option value="Urgencia Vital">ALTO - Peligro de Muerte</option>
-                            <option value="Afectación Calidad de Vida">MEDIO - Calidad de Vida</option>
-                            <option value="Trámite Administrativo">BAJO - Administrativo</option>
-                        </select>
-                    </div>
+                    <div class="input-group"><label>¿Qué niegan?:</label><input type="text" class="input-control" name="salud_negacion"></div>
+                    <div class="input-group"><label>Urgencia:</label><select class="input-control" name="salud_riesgo"><option>Urgencia Vital</option><option>Calidad de Vida</option><option>Administrativo</option></select></div>
                 </div>
 
                 <div id="camposCivil" class="hidden highlight-box theme-civil">
                     <h4 style="color:#7e22ce;"><i class="fas fa-money-bill-wave"></i> Datos de la Deuda</h4>
                     <div class="grid-2">
-                        <div class="input-group">
-                            <label>Tipo de Soporte:</label>
-                            <select class="input-control" name="civil_tipo">
-                                <option value="Letra de Cambio">Letra de Cambio</option>
-                                <option value="Factura">Factura</option>
-                                <option value="Acuerdo Verbal">Préstamo Verbal</option>
-                            </select>
-                        </div>
-                        <div class="input-group"><label>Fecha Vencimiento:</label><input type="date" class="input-control" name="civil_vencimiento"></div>
+                        <div class="input-group"><label>Tipo Soporte:</label><select class="input-control" name="civil_tipo"><option>Letra de Cambio</option><option>Factura</option><option>Verbal</option></select></div>
+                        <div class="input-group"><label>Vencimiento:</label><input type="date" class="input-control" name="civil_vencimiento"></div>
                     </div>
-                    <div class="input-group"><label>Monto de la Deuda ($):</label><input type="number" class="input-control" name="civil_monto"></div>
+                    <div class="input-group"><label>Monto ($):</label><input type="number" class="input-control" name="civil_monto"></div>
                 </div>
 
                 <div id="campoRelato">
                     <div class="input-group">
                         <label>Detalles Adicionales:</label>
-                        <textarea class="input-control" name="Relato" style="min-height: 100px;" placeholder="Agregue detalles clave..."></textarea>
+                        <textarea class="input-control" name="Relato" style="min-height: 100px;" placeholder="Detalles extra..."></textarea>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-generate" id="submitBtn">
-                    <i class="fas fa-bolt"></i> GENERAR DOCUMENTO
-                </button>
+                <button type="submit" class="btn-generate" id="submitBtn"><i class="fas fa-bolt"></i> GENERAR DOCUMENTO</button>
 
             </form>
             <div id="statusMessage"></div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 GUANES Legal Tech | Dr. Manuel Enrique Prada Forero</p>
-    </footer>
+    <footer><p>© 2026 GUANES Legal Tech | Dr. Manuel Enrique Prada Forero</p></footer>
 
     <script>
         // ==========================================
@@ -222,7 +277,6 @@
 
         function toggleFields() {
             const s = document.getElementById('servicioSelect').value;
-            
             const mods = {
                 laboral: document.getElementById('camposLaborales'),
                 inmuebles: document.getElementById('camposInmuebles'),
@@ -232,29 +286,18 @@
                 civil: document.getElementById('camposCivil')
             };
 
-            // Ocultar todo
-            Object.values(mods).forEach(d => {
-                d.classList.add('hidden');
-                setRequired(d, false);
-            });
+            Object.values(mods).forEach(d => { d.classList.add('hidden'); setRequired(d, false); });
 
-            // Mostrar según selección
             if (s.includes("Laboral")) show(mods.laboral);
             else if (s.includes("Inmuebles")) show(mods.inmuebles);
             else if (s.includes("Vehículos")) show(mods.vehiculos);
-            else if (s.includes("Tránsito") || s.includes("Fotomultas")) show(mods.transito);
-            else if (s.includes("Tutela") || s.includes("Salud")) show(mods.salud);
-            else if (s.includes("Cobro") || s.includes("Civil")) show(mods.civil);
+            else if (s.includes("Tránsito")) show(mods.transito);
+            else if (s.includes("Salud")) show(mods.salud);
+            else if (s.includes("Cobro")) show(mods.civil);
         }
 
-        function show(div) {
-            div.classList.remove('hidden');
-            setRequired(div, true);
-        }
-
-        function setRequired(div, isReq) {
-            div.querySelectorAll('input, select').forEach(i => i.required = isReq);
-        }
+        function show(div) { div.classList.remove('hidden'); setRequired(div, true); }
+        function setRequired(div, isReq) { div.querySelectorAll('input, select').forEach(i => i.required = isReq); }
 
         const form = document.getElementById('legalForm');
         const statusDiv = document.getElementById('statusMessage');
@@ -267,7 +310,7 @@
             statusDiv.style.display = 'block';
             statusDiv.style.background = '#eff6ff';
             statusDiv.style.color = '#2563EB';
-            statusDiv.innerHTML = '<h3>⏳ Analizando Caso...</h3><p>Validando jurisprudencia y redactando...</p>';
+            statusDiv.innerHTML = '<h3>⏳ Analizando Caso...</h3><p>La IA está redactando su documento.</p>';
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
@@ -279,7 +322,6 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
-
                 if (response.ok) {
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
@@ -289,17 +331,16 @@
                     document.body.appendChild(a);
                     a.click();
                     window.URL.revokeObjectURL(url);
-                    
                     statusDiv.style.background = '#ecfdf5';
                     statusDiv.style.color = '#047857';
-                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Descarga completada con éxito.</p>';
+                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Documento descargado con éxito.</p>';
                     form.reset();
                     toggleFields();
                 } else { throw new Error('Error'); }
             } catch (error) {
                 statusDiv.style.background = '#fef2f2';
                 statusDiv.style.color = '#b91c1c';
-                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Verifique su conexión.</p>';
+                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Revise su conexión.</p>';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-bolt"></i> GENERAR DOCUMENTO';
