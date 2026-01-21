@@ -193,37 +193,62 @@
 
     <footer><p>© 2026 GUANES Legal Tech | Dr. Manuel Enrique Prada Forero</p></footer>
 
-    <script>
+<script>
         // ==========================================
-        // ⚠️ SU WEBHOOK DE N8N VA AQUÍ ⚠️
+        // 1. CONFIGURACIÓN MAESTRA (PAGOS Y CEREBROS)
         // ==========================================
-        const WEBHOOK_URL = "https://guanes.app.n8n.cloud/webhook/noticias-juridicas"; 
-        // ==========================================
+        const WOMPI_PUBLIC_KEY = "pub_prod_jzFdvrOaXRlOEHifpzvBpm0FKMsq9FLh"; // ✅ SU LLAVE
+        const PRECIO_DOCUMENTO = 5000000; // $50.000 COP (en centavos)
+        
+        const WEBHOOK_FORMULARIO = "https://guanes.app.n8n.cloud/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
+        const WEBHOOK_NOTICIAS = "https://guanes.app.n8n.cloud/webhook/noticias-juridicas"; 
 
-        setTimeout(() => {
-            const noticias = ["Dólar TRM: $4.150 | Corte protege estabilidad laboral | Vencimiento ICA Mañana", "Nueva Reforma Pensional: Lo que debe saber | Pico y Placa Solidario sube"];
-            document.getElementById('dailyNewsText').innerHTML = noticias[Math.floor(Math.random() * noticias.length)];
-        }, 1500);
+        // Inyectamos el script de Wompi dinámicamente para evitar errores
+        const scriptWompi = document.createElement('script');
+        scriptWompi.src = "https://checkout.wompi.co/widget.js";
+        document.head.appendChild(scriptWompi);
 
-        // --- NUEVA FUNCIÓN MÁGICA DE ACTIVACIÓN ---
+        // ==========================================
+        // 2. LÓGICA DE NOTICIAS (PERIODISTA)
+        // ==========================================
+        async function cargarNoticias() {
+            const newsBar = document.getElementById('dailyNewsText');
+            try {
+                const response = await fetch(WEBHOOK_NOTICIAS, { method: 'POST' });
+                if (response.ok) {
+                    const data = await response.json();
+                    newsBar.style.opacity = 0;
+                    setTimeout(() => {
+                        newsBar.innerHTML = `<i class="fas fa-newspaper"></i> ${data.news_text}`;
+                        newsBar.style.opacity = 1;
+                    }, 500);
+                } else { throw new Error("Error conexión"); }
+            } catch (e) {
+                const backup = [
+                    "Corte Suprema actualiza lineamientos de estabilidad laboral reforzada.",
+                    "Vencimientos DIAN: Revise su calendario tributario este mes.",
+                    "Nueva doctrina sobre derechos de petición y tutela en salud."
+                ];
+                newsBar.innerHTML = backup[Math.floor(Math.random() * backup.length)];
+            }
+        }
+        cargarNoticias();
+
+        // ==========================================
+        // 3. NAVEGACIÓN Y FORMULARIO
+        // ==========================================
         function activarServicio(palabraClave) {
             const select = document.getElementById('servicioSelect');
             const formSection = document.getElementById('app-generator');
-
-            // 1. Scroll suave hasta el formulario
             formSection.scrollIntoView({ behavior: 'smooth' });
-
-            // 2. Buscar la opción que coincide y seleccionarla
             for (let i = 0; i < select.options.length; i++) {
                 if (select.options[i].text.includes(palabraClave) || select.options[i].value.includes(palabraClave)) {
                     select.selectedIndex = i;
                     break;
                 }
             }
-            // 3. Disparar el cambio de campos visuales
             toggleFields();
         }
-        // ------------------------------------------
 
         function toggleFields() {
             const s = document.getElementById('servicioSelect').value;
@@ -235,10 +260,11 @@
                 salud: document.getElementById('camposSalud'),
                 civil: document.getElementById('camposCivil')
             };
-            Object.values(mods).forEach(d => { d.classList.add('hidden'); setRequired(d, false); });
-
+            Object.values(mods).forEach(d => { if(d) {d.classList.add('hidden'); setRequired(d, false);} });
+            
+            // ID Contraparte siempre requerido
             const idContraparte = document.querySelector('input[name="Contraparte_ID"]');
-            idContraparte.required = true;
+            if(idContraparte) idContraparte.required = true;
 
             if (s.includes("Laboral")) show(mods.laboral);
             else if (s.includes("Inmuebles")) show(mods.inmuebles);
@@ -247,31 +273,90 @@
             else if (s.includes("Salud")) show(mods.salud);
             else if (s.includes("Cobro")) show(mods.civil);
         }
-        function show(div) { div.classList.remove('hidden'); setRequired(div, true); }
+
+        function show(div) { if(div) { div.classList.remove('hidden'); setRequired(div, true); } }
         function setRequired(div, isReq) { div.querySelectorAll('input, select').forEach(i => i.required = isReq); }
 
+        // ==========================================
+        // 4. LÓGICA DE PAGO Y GENERACIÓN (EL CORAZÓN)
+        // ==========================================
         const form = document.getElementById('legalForm');
         const statusDiv = document.getElementById('statusMessage');
         const submitBtn = document.getElementById('submitBtn');
 
+        // A. CUANDO EL USUARIO HACE CLIC EN "PAGAR Y GENERAR"
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERANDO CONTRATO...';
-            statusDiv.style.display = 'block';
-            statusDiv.style.background = '#eff6ff';
-            statusDiv.innerHTML = '<h3>⏳ Redactando...</h3><p>Validando partes e identificación...</p>';
+            
+            // 1. Validar que Wompi cargó
+            if (typeof WidgetCheckout === 'undefined') {
+                alert("El sistema de pagos está cargando. Espere 3 segundos e intente de nuevo.");
+                return;
+            }
 
+            // 2. Guardar datos en la 'Caja Fuerte' del navegador
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
             data.MarcaTemporal = new Date().toISOString();
+            localStorage.setItem('datos_pendientes_guanes', JSON.stringify(data));
+
+            // 3. Abrir Wompi
+            const referenciaUnica = 'GUANES_' + Date.now();
+            const checkout = new WidgetCheckout({
+                currency: 'COP',
+                amountInCents: PRECIO_DOCUMENTO,
+                reference: referenciaUnica,
+                publicKey: WOMPI_PUBLIC_KEY,
+                redirectUrl: window.location.href // Vuelve a esta misma página
+            });
+            
+            checkout.open(function (result) {
+                const transaction = result.transaction;
+                if (transaction.status === 'APPROVED') {
+                    // Si el pago es exitoso dentro del widget (sin redirección)
+                    procesarGeneracion(data);
+                }
+            });
+        });
+
+        // B. CUANDO EL CLIENTE VUELVE DE WOMPI (REDIRECCIÓN)
+        window.onload = function() {
+            // Revisamos si en la URL hay un ?id= de Wompi
+            const urlParams = new URLSearchParams(window.location.search);
+            const wompiId = urlParams.get('id');
+            
+            if (wompiId) {
+                // Verificar si tenemos datos guardados
+                const datosGuardados = localStorage.getItem('datos_pendientes_guanes');
+                if (datosGuardados) {
+                    const data = JSON.parse(datosGuardados);
+                    statusDiv.style.display = 'block';
+                    statusDiv.innerHTML = '<h3>💰 Pago Detectado</h3><p>Validando y generando documento...</p>';
+                    
+                    // Limpiamos la URL para que no se vea fea
+                    window.history.replaceState({}, document.title, "/");
+                    
+                    // Disparamos la generación
+                    procesarGeneracion(data);
+                }
+            }
+        };
+
+        // C. FUNCIÓN QUE LLAMA A LA IA (SOLO SI PAGÓ)
+        async function procesarGeneracion(data) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERANDO PDF...';
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = '#eff6ff';
+            statusDiv.innerHTML = '<h3>⚖️ Redactando Documento...</h3><p>El Dr. Virtual está trabajando en su caso. Por favor espere (aprox. 30 seg).</p>';
 
             try {
-                const response = await fetch(WEBHOOK_URL, {
+                const response = await fetch(WEBHOOK_FORMULARIO, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
+                
                 if (response.ok) {
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
@@ -281,17 +366,21 @@
                     document.body.appendChild(a);
                     a.click();
                     window.URL.revokeObjectURL(url);
-                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Documento descargado.</p>';
+                    
+                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Su documento se ha descargado exitosamente. Gracias por confiar en GUANES.</p>';
+                    localStorage.removeItem('datos_pendientes_guanes'); // Borrar la caja fuerte
                     form.reset();
-                    toggleFields();
-                } else { throw new Error('Error'); }
+                } else { throw new Error('Error en respuesta'); }
             } catch (error) {
-                statusDiv.innerHTML = '<h3>❌ ERROR</h3><p>Verifique conexión.</p>';
+                console.error(error);
+                statusDiv.style.background = '#fef2f2';
+                statusDiv.style.color = '#dc2626';
+                statusDiv.innerHTML = '<h3>⚠️ ATENCIÓN</h3><p>Su pago fue recibido pero hubo un error técnico generando el PDF. Contáctenos con su comprobante para enviarlo manualmente.</p>';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-bolt"></i> GENERAR DOCUMENTO';
             }
-        });
+        }
     </script>
 </body>
 </html>
