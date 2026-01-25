@@ -243,26 +243,54 @@
         // ==========================================
         async function cargarNoticias() {
             const newsBar = document.getElementById('dailyNewsText');
+            const bigTitle = document.getElementById('mainNewsTitle');
+            const bigDesc = document.getElementById('mainNewsDesc');
+
             try {
                 const response = await fetch(WEBHOOK_NOTICIAS, { method: 'POST' });
+                
                 if (response.ok) {
                     const data = await response.json();
+                    
+                    // Efecto visual de parpadeo
                     newsBar.style.opacity = 0;
+                    if(bigTitle) bigTitle.style.opacity = 0;
+
                     setTimeout(() => {
-                        newsBar.innerHTML = `<i class="fas fa-newspaper"></i> ${data.news_text}`;
+                        // 1. BARRA SUPERIOR (Link Blanco)
+                        // target="_blank" significa que abre en pestaña nueva para que no se vayan de su web
+                        newsBar.innerHTML = `
+                            <a href="${data.news_link}" target="_blank" style="color: white; text-decoration: none; cursor: pointer;">
+                                <i class="fas fa-newspaper"></i> ${data.news_text} <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i>
+                            </a>`;
                         newsBar.style.opacity = 1;
+
+                        // 2. TARJETA GRANDE (Título con Link Azul)
+                        if (bigTitle) {
+                            const tituloLimpio = data.news_text.replace("ÚLTIMA HORA: ", "");
+                            
+                            bigTitle.innerHTML = `
+                                <a href="${data.news_link}" target="_blank" style="color: var(--primary); text-decoration: hover; cursor: pointer;">
+                                    ${tituloLimpio} <i class="fas fa-external-link-alt" style="font-size: 1rem; color: var(--brand);"></i>
+                                </a>`;
+                            bigTitle.style.opacity = 1;
+                        }
+
+                        // 3. Descripción persuasiva
+                        if (bigDesc) {
+                            bigDesc.innerText = "Este evento jurídico podría afectarlo. Haga clic en el título para leer la fuente original o inicie su trámite con nosotros.";
+                        }
+
                     }, 500);
+
                 } else { throw new Error("Error conexión"); }
             } catch (e) {
-                const backup = [
-                    "Corte Suprema actualiza lineamientos de estabilidad laboral reforzada.",
-                    "Vencimientos DIAN: Revise su calendario tributario este mes.",
-                    "Nueva doctrina sobre derechos de petición y tutela en salud."
-                ];
-                newsBar.innerHTML = backup[Math.floor(Math.random() * backup.length)];
+                // Respaldo sin link (por si falla)
+                const backup = "Corte Constitucional actualiza sentencias clave.";
+                newsBar.innerHTML = backup;
+                if(bigTitle) bigTitle.innerText = backup;
             }
-        }
-        cargarNoticias();
+        };
 
         // ==========================================
         // 3. NAVEGACIÓN Y FORMULARIO
