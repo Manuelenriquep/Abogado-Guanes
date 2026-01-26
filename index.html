@@ -377,7 +377,7 @@
         });
 
         // ==========================================
-        // 3. LÓGICA DE NOTICIAS
+        // 3. LÓGICA DE NOTICIAS CON RADAR DE VENTAS
         // ==========================================
         async function cargarNoticias() {
             const newsBar = document.getElementById('dailyNewsText');
@@ -393,19 +393,39 @@
                     if(bigTitle) bigTitle.style.opacity = 0;
 
                     setTimeout(() => {
+                        // 1. Barra superior
                         newsBar.innerHTML = `<a href="${data.news_link}" target="_blank" style="color: white; text-decoration: none; cursor: pointer;"><i class="fas fa-newspaper"></i> ${data.news_text} <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>`;
                         newsBar.style.opacity = 1;
 
+                        // 2. Título Principal
                         if (bigTitle) {
                             const tituloLimpio = data.news_text.replace("ÚLTIMA HORA: ", "");
                             bigTitle.innerHTML = `<a href="${data.news_link}" target="_blank" style="color: var(--primary); text-decoration: hover; cursor: pointer;">${tituloLimpio} <i class="fas fa-external-link-alt" style="font-size: 1rem; color: var(--brand);"></i></a>`;
                             bigTitle.style.opacity = 1;
                         }
-                        if (bigDesc) bigDesc.innerText = "Este evento jurídico podría afectarlo. Haga clic en el título para leer más o inicie su trámite.";
+
+                        // 3. EL GANCHO DE VENTA (Aquí está la magia de la IA) 🧠💰
+                        if (bigDesc) {
+                             // Si n8n manda gancho, lo usamos. Si no, ponemos uno genérico.
+                            const gancho = data.marketing_hook || "Analice cómo esta decisión afecta sus derechos. Inicie consulta.";
+                            const servicio = data.service_type || "Consultoría";
+
+                            bigDesc.innerHTML = `
+                                <div style="margin-top: 15px; padding: 15px; background: #fff1f2; border-left: 4px solid #e11d48; border-radius: 4px;">
+                                    <p style="margin: 0; color: #be123c; font-weight: 700; font-size: 1rem;">
+                                        <i class="fas fa-exclamation-circle"></i> OPORTUNIDAD JURÍDICA:
+                                    </p>
+                                    <p style="margin: 5px 0 10px 0; color: #881337;">${gancho}</p>
+                                    <button onclick="activarServicio('${servicio}')" style="background: #e11d48; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; font-weight: bold;">
+                                        SOLICITAR ESTE SERVICIO AHORA
+                                    </button>
+                                </div>
+                            `;
+                        }
                     }, 500);
                 }
             } catch (e) {
-                // Silencioso si falla
+                console.error("Fallo radar noticias", e);
             }
         };
         cargarNoticias();
