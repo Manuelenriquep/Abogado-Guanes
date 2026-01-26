@@ -377,7 +377,7 @@
         });
 
         // ==========================================
-        // 3. LÓGICA DE NOTICIAS CON OFERTA CLARA
+        // 3. LÓGICA DE NOTICIAS CON "MEMORIA DE TIBURÓN" 🦈
         // ==========================================
         async function cargarNoticias() {
             const newsBar = document.getElementById('dailyNewsText');
@@ -385,80 +385,86 @@
             const bigDesc = document.getElementById('mainNewsDesc');
 
             try {
+                // 1. Preguntamos al Periodista (N8N) qué hay de nuevo
                 const response = await fetch(WEBHOOK_NOTICIAS, { method: 'POST' });
-                if (response.ok) {
-                    const data = await response.json();
-                    
+                if (!response.ok) throw new Error("Sin conexión");
+                const liveData = await response.json();
+
+                // 2. ACTUALIZAMOS LA BARRA PEQUEÑA (Siempre en vivo, para que se vea movimiento)
+                if (newsBar) {
                     newsBar.style.opacity = 0;
-                    if(bigTitle) bigTitle.style.opacity = 0;
-
                     setTimeout(() => {
-                        // 1. Barra superior
-                        newsBar.innerHTML = `<a href="${data.news_link}" target="_blank" style="color: white; text-decoration: none; cursor: pointer;"><i class="fas fa-newspaper"></i> ${data.news_text} <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>`;
+                        newsBar.innerHTML = `<a href="${liveData.news_link}" target="_blank" style="color: white; text-decoration: none; cursor: pointer;"><i class="fas fa-newspaper"></i> ${liveData.news_text} <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>`;
                         newsBar.style.opacity = 1;
-
-                        // 2. Título Principal
-                        if (bigTitle) {
-                            const tituloLimpio = data.news_text.replace("ÚLTIMA HORA: ", "");
-                            bigTitle.innerHTML = `<a href="${data.news_link}" target="_blank" style="color: var(--primary); text-decoration: hover; cursor: pointer;">${tituloLimpio} <i class="fas fa-external-link-alt" style="font-size: 1rem; color: var(--brand);"></i></a>`;
-                            bigTitle.style.opacity = 1;
-                        }
-
-                        // 3. EL GANCHO DE VENTA CON PRODUCTO ESPECÍFICO 🧠💰
-                        if (bigDesc) {
-                            const gancho = data.marketing_hook || "Analice cómo esta decisión afecta sus derechos.";
-                            const servicio = data.service_type || "Consultoría";
-
-                            // TRADUCTOR: De Categoría a Producto Entregable
-                            let nombreProducto = "Concepto Jurídico Personalizado";
-                            let iconoProducto = "fa-file-signature";
-
-                            if (servicio.includes("Laboral")) {
-                                nombreProducto = "Reclamación de Derechos / Liquidación";
-                                iconoProducto = "fa-hard-hat";
-                            } else if (servicio.includes("Salud")) {
-                                nombreProducto = "Acción de Tutela (Medida Urgente)";
-                                iconoProducto = "fa-heartbeat";
-                            } else if (servicio.includes("Tránsito")) {
-                                nombreProducto = "Derecho de Petición (Nulidad)";
-                                iconoProducto = "fa-traffic-light";
-                            } else if (servicio.includes("Cobro")) {
-                                nombreProducto = "Requerimiento de Pago Prejurídico";
-                                iconoProducto = "fa-money-bill-wave";
-                            }
-
-                            bigDesc.innerHTML = `
-                                <div style="margin-top: 15px; padding: 20px; background: #fff1f2; border-left: 5px solid #e11d48; border-radius: 6px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
-                                    <p style="margin: 0; color: #be123c; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
-                                        <i class="fas fa-bolt"></i> Oportunidad Jurídica Detectada
-                                    </p>
-                                    
-                                    <p style="margin: 10px 0; color: #881337; font-size: 1.1rem; line-height: 1.4;">
-                                        ${gancho}
-                                    </p>
-                                    
-                                    <div style="background: white; padding: 10px; border-radius: 5px; margin: 15px 0; border: 1px dashed #e11d48; display:flex; align-items:center; gap:10px;">
-                                        <div style="background:#e11d48; color:white; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:50%; flex-shrink:0;">
-                                            <i class="fas ${iconoProducto}"></i>
-                                        </div>
-                                        <div>
-                                            <p style="margin:0; font-size:0.8rem; color:#666;">SOLUCIÓN INMEDIATA:</p>
-                                            <p style="margin:0; font-weight:800; color:#0F172A;">Generar ${nombreProducto}</p>
-                                        </div>
-                                    </div>
-
-                                    <button onclick="activarServicio('${servicio}')" style="background: #e11d48; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 800; width: 100%; transition: 0.3s; box-shadow: 0 4px 6px rgba(225, 29, 72, 0.3);">
-                                        <i class="fas fa-download"></i> OBTENER DOCUMENTO POR $50.000
-                                    </button>
-                                </div>
-                            `;
-                        }
                     }, 500);
                 }
+
+                // 3. LOGICA DE LA TARJETA GRANDE (El Exprimidor)
+                // Definimos si la noticia nueva es una "Oportunidad" o es "Relleno"
+                const esOportunidad = liveData.service_type !== "Consultoría"; // Es oportunidad si NO es consultoría general
+
+                let dataParaMostrar = liveData; // Por defecto mostramos lo que llega
+                
+                // RECUPERAMOS LA ÚLTIMA BUENA NOTICIA GUARDADA
+                const oportunidadGuardada = localStorage.getItem('guanes_best_news');
+
+                if (esOportunidad) {
+                    // SI LA NUEVA ES BUENA: La mostramos y la guardamos como la nueva "Reina"
+                    localStorage.setItem('guanes_best_news', JSON.stringify(liveData));
+                    dataParaMostrar = liveData;
+                } else {
+                    // SI LA NUEVA ES ABURRIDA (Consultoría):
+                    if (oportunidadGuardada) {
+                        // Si tenemos una reina guardada, IGNORAMOS la nueva y mostramos la reina
+                        console.log("Noticia nueva aburrida. Manteniendo la oportunidad de negocio anterior.");
+                        dataParaMostrar = JSON.parse(oportunidadGuardada);
+                    }
+                    // Si no hay nada guardado, ni modo, mostramos la aburrida.
+                }
+
+                // 4. PINTAMOS LA TARJETA GRANDE (Con los datos elegidos: nuevos o guardados)
+                if (bigTitle) bigTitle.style.opacity = 0;
+                
+                setTimeout(() => {
+                    // Título
+                    if (bigTitle) {
+                        const tituloLimpio = dataParaMostrar.news_text.replace("ÚLTIMA HORA: ", "").substring(0, 100) + "...";
+                        bigTitle.innerHTML = `<a href="${dataParaMostrar.news_link}" target="_blank" style="color: var(--primary); text-decoration: hover; cursor: pointer;">${tituloLimpio} <i class="fas fa-external-link-alt" style="font-size: 1rem; color: var(--brand);"></i></a>`;
+                        bigTitle.style.opacity = 1;
+                    }
+
+                    // Gancho de Venta
+                    if (bigDesc) {
+                        const gancho = dataParaMostrar.marketing_hook;
+                        const servicio = dataParaMostrar.service_type;
+                        
+                        // Iconos dinámicos
+                        let icono = "fa-file-signature";
+                        let producto = "Concepto Jurídico";
+                        if(servicio.includes("Laboral")) { icono="fa-hard-hat"; producto="Liquidación / Reclamación"; }
+                        if(servicio.includes("Salud")) { icono="fa-heartbeat"; producto="Acción de Tutela"; }
+                        if(servicio.includes("Tránsito")) { icono="fa-traffic-light"; producto="Nulidad Fotomulta"; }
+                        if(servicio.includes("Cobro")) { icono="fa-money-bill-wave"; producto="Cobro Jurídico"; }
+
+                        bigDesc.innerHTML = `
+                            <div style="margin-top: 15px; padding: 20px; background: #fff1f2; border-left: 5px solid #e11d48; border-radius: 6px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                                <p style="margin: 0; color: #be123c; font-weight: 800; font-size: 0.9rem; text-transform: uppercase;">
+                                    <i class="fas fa-bolt"></i> Oportunidad de Negocio
+                                </p>
+                                <p style="margin: 10px 0; color: #881337; font-size: 1.1rem; line-height: 1.4;">${gancho}</p>
+                                <button onclick="activarServicio('${servicio}')" style="background: #e11d48; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 800; width: 100%; margin-top:10px;">
+                                    <i class="fas ${icono}"></i> GESTIONAR ${producto.toUpperCase()} ($50.000)
+                                </button>
+                            </div>
+                        `;
+                    }
+                }, 500);
+
             } catch (e) {
-                console.error("Fallo radar noticias", e);
+                console.warn("Fallo carga noticias", e);
             }
         };
+        cargarNoticias();
 
         // ==========================================
         // 4. NAVEGACIÓN Y FORMULARIO
