@@ -536,7 +536,9 @@
             
             if(data.service_type.includes("Laboral")) { icono="fa-user-shield"; accion="RECLAMAR DERECHOS"; }
             if(data.service_type.includes("Salud")) { icono="fa-heartbeat"; accion="INTERPONER TUTELA"; }
-            if(data.service_type.includes("Tránsito")) { icono="fa-traffic-light"; accion="ANULAR MULTA"; }
+            // ANTES DECÍA: accion="ANULAR MULTA";
+            // AHORA DEBE DECIR:
+            if(data.service_type.includes("Tránsito")) { icono="fa-traffic-light"; accion="SOLICITAR NULIDAD"; }
             if(data.service_type.includes("Inmuebles")) { icono="fa-home"; accion="REVISAR CONTRATO"; }
 
             container.innerHTML = `
