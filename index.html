@@ -27,6 +27,16 @@
         .news-content { padding: 1.5rem; flex-grow: 1; }
         .news-title { margin: 0 0 5px; color: var(--primary); font-size: 1.1rem; font-weight: 700; }
         
+        /* CALCULADORA (IMPRESIÓN Y ESTILOS) */
+        @media print {
+            body * { visibility: hidden; }
+            #calculadora, #calculadora * { visibility: visible; }
+            #calculadora { position: absolute; left: 0; top: 0; width: 100%; border: none !important; margin: 0 !important; padding: 0 !important; }
+            .no-print { display: none !important; } 
+            .print-only { display: block !important; }
+        }
+        .print-only { display: none; text-align: center; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+
         /* SERVICES (INTERACTIVOS) */
         .services-section { padding: 4rem 5% 3rem; max-width: 1200px; margin: 0 auto; }
         .section-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 2rem; font-weight: 800; }
@@ -94,6 +104,74 @@
             </div>
         </div>
     </div>
+
+    <section id="calculadora" style="padding: 4rem 1rem; background: #f8fafc; border-top: 5px solid var(--accent); margin-top: 2rem;">
+        <div style="max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            
+            <div class="print-only">
+                <h1 style="color: var(--primary);">GUANES ABOGADOS</h1>
+                <p>Reporte de Liquidación Laboral Preliminar</p>
+            </div>
+
+            <div class="no-print" style="text-align: center; margin-bottom: 2rem;">
+                <span style="background: var(--brand); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;">HERRAMIENTA GRATUITA</span>
+                <h2 style="color: var(--primary); margin-top: 10px;">Calculadora de Liquidación 2026</h2>
+                <p style="color: #64748b;">¿Lo despidieron o renunció? Calcule el valor legal en segundos.</p>
+            </div>
+
+            <form id="laborForm" class="no-print">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div><label>Salario Mensual ($)</label><input type="number" id="lab_salario" class="input-control" placeholder="Ej: 1600000" required style="width:100%; padding:10px;"></div>
+                    <div><label>Motivo Salida</label>
+                        <select id="lab_motivo" class="input-control" required style="width:100%; padding:10px;">
+                            <option value="renuncia">Renuncia Voluntaria / Fin Contrato</option>
+                            <option value="despido_injusto">Despido SIN Justa Causa</option>
+                            <option value="justa_causa">Despido CON Justa Causa</option>
+                        </select>
+                    </div>
+                    <div><label>Fecha Inicio</label><input type="date" id="lab_inicio" class="input-control" required style="width:100%; padding:10px;"></div>
+                    <div><label>Fecha Fin</label><input type="date" id="lab_fin" class="input-control" required style="width:100%; padding:10px;"></div>
+                </div>
+                <button type="submit" style="width: 100%; margin-top: 20px; background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 1rem;">
+                    <i class="fas fa-calculator"></i> CALCULAR LIQUIDACIÓN
+                </button>
+            </form>
+
+            <div id="laborResult" style="display: none; margin-top: 2rem; border-top: 2px dashed #e2e8f0; padding-top: 2rem;">
+                
+                <h3 style="text-align: center; color: var(--primary);">Detalle de Conceptos</h3>
+                <p style="text-align: center; font-size: 0.9rem;">Días Liquidados: <strong id="res_dias">0</strong> | Auxilio Transporte: <strong id="res_aux">...</strong></p>
+                
+                <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem;">
+                    <tr style="background: #f1f5f9;"><th style="padding:8px; text-align:left;">Concepto</th><th style="padding:8px; text-align:right;">Valor Estimado</th></tr>
+                    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Cesantías (Art. 249 CST)</td><td style="padding:8px; border-bottom:1px solid #eee; text-align:right;" id="res_cesantias">$0</td></tr>
+                    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Intereses (Ley 52/1975)</td><td style="padding:8px; border-bottom:1px solid #eee; text-align:right;" id="res_intereses">$0</td></tr>
+                    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Prima (Art. 306 CST)</td><td style="padding:8px; border-bottom:1px solid #eee; text-align:right;" id="res_prima">$0</td></tr>
+                    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Vacaciones (Art. 186 CST)</td><td style="padding:8px; border-bottom:1px solid #eee; text-align:right;" id="res_vacaciones">$0</td></tr>
+                    <tr style="color:var(--accent); font-weight:bold;"><td style="padding:8px;">Indemnización (<span id="res_norma_indem" style="font-size:0.8rem;"></span>)</td><td style="padding:8px; text-align:right;" id="res_indemnizacion">$0</td></tr>
+                    <tr style="background:var(--primary); color:white; font-size:1.2rem;"><td style="padding:15px;">TOTAL A RECLAMAR</td><td style="padding:15px; text-align:right; font-weight:800;" id="res_total">$0</td></tr>
+                </table>
+
+                <div class="no-print" style="margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button onclick="window.print()" style="background: #64748b; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer;">
+                        <i class="fas fa-print"></i> Imprimir Concepto
+                    </button>
+                    <a href="https://q-win.com" target="_blank" style="background: #ea580c; color: white; text-align: center; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        🍀 Probar Suerte en Q-Win
+                    </a>
+                </div>
+                
+                <div class="no-print" style="margin-top: 15px; background: #eff6ff; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe; text-align: center;">
+                    <p style="margin:0 0 10px 0; color: var(--primary);"><strong>¿El empleador se niega a pagar este valor?</strong></p>
+                    <button onclick="activarServicio('Laboral')" style="background: var(--brand); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Descargar Reclamación Formal ($50.000)</button>
+                </div>
+
+                <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 20px; text-align: justify; line-height: 1.2;">
+                    <strong>AVISO LEGAL:</strong> Documento informativo de carácter académico generado por Guanes Abogados. No constituye título ejecutivo ni sentencia judicial. Los valores son aproximados según los datos suministrados.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <section class="services-section">
         <h2 class="section-title">Nuestros Servicios ($50.000)</h2>
@@ -233,221 +311,64 @@
         // ==========================================
         // 1. CONFIGURACIÓN MAESTRA (PAGOS Y CEREBROS)
         // ==========================================
-        const WOMPI_PUBLIC_KEY = "pub_prod_jzFdvrOaXRlOEHifpzvBpm0FKMsq9FLh"; // ✅ SU LLAVE
-        const PRECIO_DOCUMENTO = 5000000; // $50.000 COP (en centavos)
+        const WOMPI_PUBLIC_KEY = "pub_prod_jzFdvrOaXRlOEHifpzvBpm0FKMsq9FLh"; 
+        const PRECIO_DOCUMENTO = 5000000; // $50.000 COP
         
+        // URLS DE RAILWAY (NUEVAS Y CORRECTAS)
         const WEBHOOK_FORMULARIO = "https://n8n-production-612f.up.railway.app/webhook/noticias-juridicas"; 
         const WEBHOOK_NOTICIAS = "https://n8n-production-612f.up.railway.app/webhook/noticias-juridicas"; 
+        const WEBHOOK_CALCULADORA = "https://n8n-production-612f.up.railway.app/webhook/calculadora-laboral"; // ✅ AGREGADA
 
-        // Inyectamos el script de Wompi dinámicamente para evitar errores
+        // Inyectamos Wompi
         const scriptWompi = document.createElement('script');
         scriptWompi.src = "https://checkout.wompi.co/widget.js";
         document.head.appendChild(scriptWompi);
 
         // ==========================================
-        // 2. LÓGICA DE NOTICIAS (PERIODISTA)
+        // 2. LÓGICA DE LA CALCULADORA LABORAL (NUEVA)
         // ==========================================
-        async function cargarNoticias() {
-            const newsBar = document.getElementById('dailyNewsText');
-            const bigTitle = document.getElementById('mainNewsTitle');
-            const bigDesc = document.getElementById('mainNewsDesc');
-
-            try {
-                const response = await fetch(WEBHOOK_NOTICIAS, { method: 'POST' });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    
-                    // Efecto visual de parpadeo
-                    newsBar.style.opacity = 0;
-                    if(bigTitle) bigTitle.style.opacity = 0;
-
-                    setTimeout(() => {
-                        // 1. BARRA SUPERIOR (Link Blanco)
-                        // target="_blank" significa que abre en pestaña nueva para que no se vayan de su web
-                        newsBar.innerHTML = `
-                            <a href="${data.news_link}" target="_blank" style="color: white; text-decoration: none; cursor: pointer;">
-                                <i class="fas fa-newspaper"></i> ${data.news_text} <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i>
-                            </a>`;
-                        newsBar.style.opacity = 1;
-
-                        // 2. TARJETA GRANDE (Título con Link Azul)
-                        if (bigTitle) {
-                            const tituloLimpio = data.news_text.replace("ÚLTIMA HORA: ", "");
-                            
-                            bigTitle.innerHTML = `
-                                <a href="${data.news_link}" target="_blank" style="color: var(--primary); text-decoration: hover; cursor: pointer;">
-                                    ${tituloLimpio} <i class="fas fa-external-link-alt" style="font-size: 1rem; color: var(--brand);"></i>
-                                </a>`;
-                            bigTitle.style.opacity = 1;
-                        }
-
-                        // 3. Descripción persuasiva
-                        if (bigDesc) {
-                            bigDesc.innerText = "Este evento jurídico podría afectarlo. Haga clic en el título para leer la fuente original o inicie su trámite con nosotros.";
-                        }
-
-                    }, 500);
-
-                } else { throw new Error("Error conexión"); }
-            } catch (e) {
-                // Respaldo sin link (por si falla)
-                const backup = "Corte Constitucional actualiza sentencias clave.";
-                newsBar.innerHTML = backup;
-                if(bigTitle) bigTitle.innerText = backup;
-            }
-        };
-
-        // ==========================================
-        // 3. NAVEGACIÓN Y FORMULARIO
-        // ==========================================
-        function activarServicio(palabraClave) {
-            const select = document.getElementById('servicioSelect');
-            const formSection = document.getElementById('app-generator');
-            formSection.scrollIntoView({ behavior: 'smooth' });
-            for (let i = 0; i < select.options.length; i++) {
-                if (select.options[i].text.includes(palabraClave) || select.options[i].value.includes(palabraClave)) {
-                    select.selectedIndex = i;
-                    break;
-                }
-            }
-            toggleFields();
-        }
-
-        function toggleFields() {
-            const s = document.getElementById('servicioSelect').value;
-            const mods = {
-                laboral: document.getElementById('camposLaborales'),
-                inmuebles: document.getElementById('camposInmuebles'),
-                vehiculos: document.getElementById('camposVehiculos'),
-                transito: document.getElementById('camposTransito'),
-                salud: document.getElementById('camposSalud'),
-                civil: document.getElementById('camposCivil')
-            };
-            Object.values(mods).forEach(d => { if(d) {d.classList.add('hidden'); setRequired(d, false);} });
-            
-            // ID Contraparte siempre requerido
-            const idContraparte = document.querySelector('input[name="Contraparte_ID"]');
-            if(idContraparte) idContraparte.required = true;
-
-            if (s.includes("Laboral")) show(mods.laboral);
-            else if (s.includes("Inmuebles")) show(mods.inmuebles);
-            else if (s.includes("Vehículos")) show(mods.vehiculos);
-            else if (s.includes("Tránsito")) show(mods.transito);
-            else if (s.includes("Salud")) show(mods.salud);
-            else if (s.includes("Cobro")) show(mods.civil);
-        }
-
-        function show(div) { if(div) { div.classList.remove('hidden'); setRequired(div, true); } }
-        function setRequired(div, isReq) { div.querySelectorAll('input, select').forEach(i => i.required = isReq); }
-
-        // ==========================================
-        // 4. LÓGICA DE PAGO Y GENERACIÓN (EL CORAZÓN)
-        // ==========================================
-        const form = document.getElementById('legalForm');
-        const statusDiv = document.getElementById('statusMessage');
-        const submitBtn = document.getElementById('submitBtn');
-
-        // A. CUANDO EL USUARIO HACE CLIC EN "PAGAR Y GENERAR"
-        form.addEventListener('submit', async (e) => {
+        document.getElementById('laborForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // 1. Validar que Wompi cargó
-            if (typeof WidgetCheckout === 'undefined') {
-                alert("El sistema de pagos está cargando. Espere 3 segundos e intente de nuevo.");
-                return;
-            }
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> CALCULANDO...'; btn.disabled = true;
 
-            // 2. Guardar datos en la 'Caja Fuerte' del navegador
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-            data.MarcaTemporal = new Date().toISOString();
-            localStorage.setItem('datos_pendientes_guanes', JSON.stringify(data));
-
-            // 3. Abrir Wompi
-            const referenciaUnica = 'GUANES_' + Date.now();
-            const checkout = new WidgetCheckout({
-                currency: 'COP',
-                amountInCents: PRECIO_DOCUMENTO,
-                reference: referenciaUnica,
-                publicKey: WOMPI_PUBLIC_KEY,
-                redirectUrl: window.location.href // Vuelve a esta misma página
-            });
-            
-            checkout.open(function (result) {
-                const transaction = result.transaction;
-                if (transaction.status === 'APPROVED') {
-                    // Si el pago es exitoso dentro del widget (sin redirección)
-                    data.Transaccion_ID = transaction.id; // Guardamos el ID
-                    procesarGeneracion(data);
-                }
-            });
-        });
-
-        // B. CUANDO EL CLIENTE VUELVE DE WOMPI (REDIRECCIÓN)
-        window.onload = function() {
-            // Revisamos si en la URL hay un ?id= de Wompi
-            const urlParams = new URLSearchParams(window.location.search);
-            const wompiId = urlParams.get('id');
-            
-            if (wompiId) {
-                // Verificar si tenemos datos guardados
-                const datosGuardados = localStorage.getItem('datos_pendientes_guanes');
-                if (datosGuardados) {
-                    const data = JSON.parse(datosGuardados);
-                    data.Transaccion_ID = wompiId; // Guardamos el ID
-                    
-                    statusDiv.style.display = 'block';
-                    statusDiv.innerHTML = '<h3>💰 Pago Detectado</h3><p>Validando y generando documento...</p>';
-                    
-                    // Limpiamos la URL para que no se vea fea
-                    window.history.replaceState({}, document.title, "/");
-                    
-                    // Disparamos la generación
-                    procesarGeneracion(data);
-                }
-            }
-        };
-
-        // C. FUNCIÓN QUE LLAMA A LA IA (SOLO SI PAGÓ)
-        async function procesarGeneracion(data) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERANDO PDF...';
-            statusDiv.style.display = 'block';
-            statusDiv.style.background = '#eff6ff';
-            statusDiv.innerHTML = '<h3>⚖️ Redactando Documento...</h3><p>El Dr. Virtual está trabajando en su caso. Por favor espere (aprox. 30 seg).</p>';
+            const data = {
+                salario: document.getElementById('lab_salario').value,
+                motivo: document.getElementById('lab_motivo').value,
+                fechaInicio: document.getElementById('lab_inicio').value,
+                fechaFin: document.getElementById('lab_fin').value
+            };
 
             try {
-                const response = await fetch(WEBHOOK_FORMULARIO, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                const req = await fetch(WEBHOOK_CALCULADORA, { 
+                    method:'POST', 
+                    headers:{'Content-Type':'application/json'}, 
+                    body:JSON.stringify(data) 
                 });
-                
-                if (response.ok) {
-                    const blob = await response.blob();
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `Documento_GUANES_${data.Nombre.replace(/\s+/g, '_')}.pdf`;
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                    
-                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Su documento se ha descargado exitosamente. Gracias por confiar en GUANES.</p>';
-                    localStorage.removeItem('datos_pendientes_guanes'); // Borrar la caja fuerte
-                    form.reset();
-                } else { throw new Error('Error en respuesta'); }
-            } catch (error) {
-                console.error(error);
-                statusDiv.style.background = '#fef2f2';
-                statusDiv.style.color = '#dc2626';
-                statusDiv.innerHTML = '<h3>⚠️ ATENCIÓN</h3><p>Su pago fue recibido pero hubo un error técnico generando el PDF. Contáctenos con su comprobante para enviarlo manualmente.</p>';
+                const res = await req.json();
+
+                if(res.error) { alert(res.mensaje || "Error en fechas"); return; }
+
+                const fmt = (n) => new Intl.NumberFormat('es-CO', {style:'currency', currency:'COP', maximumFractionDigits:0}).format(n);
+
+                // Llenar tabla
+                document.getElementById('res_dias').innerText = res.dias_liquidados;
+                document.getElementById('res_aux').innerText = res.auxilio_estado;
+                document.getElementById('res_cesantias').innerText = fmt(res.conceptos.cesantias);
+                document.getElementById('res_intereses').innerText = fmt(res.conceptos.intereses);
+                document.getElementById('res_prima').innerText = fmt(res.conceptos.prima);
+                document.getElementById('res_vacaciones').innerText = fmt(res.conceptos.vacaciones);
+                document.getElementById('res_indemnizacion').innerText = fmt(res.conceptos.indemnizacion);
+                document.getElementById('res_norma_indem').innerText = res.norma_indem;
+                document.getElementById('res_total').innerText = fmt(res.total);
+
+                // Mostrar
+                const resultDiv = document.getElementById('laborResult');
+                resultDiv.style.display = 'block';
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+
+            } catch(e) { 
+                console.error(e);
+                alert("Error de conexión. Intente nuevamente."); 
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> PAGAR $50.000 Y GENERAR';
-            }
-        }
-    </script>
-</body>
-</html>
