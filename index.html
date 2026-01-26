@@ -377,93 +377,127 @@
         });
 
         // ==========================================
-        // 3. LÓGICA DE NOTICIAS CON "MEMORIA DE TIBURÓN" 🦈
+        // 3. SISTEMA CON "VENTANA DE PROMOCIÓN" (3 DÍAS) ⏳
         // ==========================================
         async function cargarNoticias() {
             const newsBar = document.getElementById('dailyNewsText');
-            const bigTitle = document.getElementById('mainNewsTitle');
-            const bigDesc = document.getElementById('mainNewsDesc');
+            
+            // CONFIGURACIÓN: ¿Cuántos días dura su campaña?
+            const DIAS_PROMOCION = 3; 
+            const TIEMPO_LIMITE = DIAS_PROMOCION * 24 * 60 * 60 * 1000; // Convertido a milisegundos
 
             try {
-                // 1. Preguntamos al Periodista (N8N) qué hay de nuevo
+                // 1. REVISAR QUÉ TENEMOS EN BODEGA (LocalStorage)
+                let vitalGuardada = JSON.parse(localStorage.getItem('guanes_vital_promo'));
+                let patrimonioGuardado = JSON.parse(localStorage.getItem('guanes_patrimonio_promo'));
+                const ahora = Date.now();
+
+                // 2. VERIFICAR SI LAS CAMPAÑAS SIGUEN VIGENTES
+                let mostrarVital = null;
+                let mostrarPatrimonio = null;
+
+                // Chequeo Ventana Izquierda (Vital)
+                if (vitalGuardada && (ahora - vitalGuardada.timestamp < TIEMPO_LIMITE)) {
+                    console.log("🔒 Campaña Vital activa (Restan horas). No se cambia.");
+                    mostrarVital = vitalGuardada.data;
+                }
+
+                // Chequeo Ventana Derecha (Patrimonio)
+                if (patrimonioGuardado && (ahora - patrimonioGuardado.timestamp < TIEMPO_LIMITE)) {
+                    console.log("🔒 Campaña Patrimonio activa. No se cambia.");
+                    mostrarPatrimonio = patrimonioGuardado.data;
+                }
+
+                // 3. CONSULTAR NOTICIAS NUEVAS (Solo si necesitamos renovar o para la barra superior)
                 const response = await fetch(WEBHOOK_NOTICIAS, { method: 'POST' });
-                if (!response.ok) throw new Error("Sin conexión");
-                const liveData = await response.json();
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Barra Superior (Siempre fresca)
+                    if(newsBar) {
+                        newsBar.style.opacity = 0;
+                        setTimeout(() => {
+                            newsBar.innerHTML = `<a href="${data.news_link}" target="_blank" style="color: white; text-decoration: none;"><i class="fas fa-newspaper"></i> ${data.news_text}</a>`;
+                            newsBar.style.opacity = 1;
+                        }, 500);
+                    }
 
-                // 2. ACTUALIZAMOS LA BARRA PEQUEÑA (Siempre en vivo, para que se vea movimiento)
-                if (newsBar) {
-                    newsBar.style.opacity = 0;
-                    setTimeout(() => {
-                        newsBar.innerHTML = `<a href="${liveData.news_link}" target="_blank" style="color: white; text-decoration: none; cursor: pointer;"><i class="fas fa-newspaper"></i> ${liveData.news_text} <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>`;
-                        newsBar.style.opacity = 1;
-                    }, 500);
+                    // 4. DECISIÓN DE NEGOCIO: ¿REEMPLAZAMOS LA CAMPAÑA GRANDE?
+                    const tipo = data.service_type || "Consultoría";
+
+                    // ESTRATEGIA VITAL (Izquierda)
+                    if (!mostrarVital) { 
+                        // Si NO hay campaña activa o ya venció los 3 días...
+                        if (tipo.includes("Laboral") || tipo.includes("Salud") || tipo.includes("Pensión")) {
+                            // ¡Nueva oportunidad detectada! La guardamos con la fecha de HOY
+                            const nuevaPromo = { data: data, timestamp: Date.now() };
+                            localStorage.setItem('guanes_vital_promo', JSON.stringify(nuevaPromo));
+                            mostrarVital = data;
+                        } else {
+                            // Si no hay nada nuevo bueno, usamos un Default Policial o lo que haya
+                            mostrarVital = {
+                                news_text: "Fallo Judicial: Protección a estabilidad laboral reforzada",
+                                news_link: "https://ramajudicial.gov.co",
+                                marketing_hook: "Si fue despedido estando enfermo o embarazada, la ley ordena su reintegro inmediato.",
+                                service_type: "Laboral"
+                            };
+                        }
+                    }
+
+                    // ESTRATEGIA PATRIMONIO (Derecha)
+                    if (!mostrarPatrimonio) {
+                         // Si NO hay campaña activa o ya venció...
+                        if (tipo.includes("Tránsito") || tipo.includes("Inmuebles") || tipo.includes("Cobro") || tipo.includes("Civil")) {
+                            const nuevaPromo = { data: data, timestamp: Date.now() };
+                            localStorage.setItem('guanes_patrimonio_promo', JSON.stringify(nuevaPromo));
+                            mostrarPatrimonio = data;
+                        } else {
+                            mostrarPatrimonio = {
+                                news_text: "Alerta Conductores: Cámaras de Fotodetección ilegales",
+                                news_link: "https://www.mintransporte.gov.co",
+                                marketing_hook: "¿Le llegó una fotomulta vieja? No pague. La ley le permite anularla por debido proceso.",
+                                service_type: "Tránsito"
+                            };
+                        }
+                    }
                 }
 
-                // 3. LOGICA DE LA TARJETA GRANDE (El Exprimidor)
-                // Definimos si la noticia nueva es una "Oportunidad" o es "Relleno"
-                const esOportunidad = liveData.service_type !== "Consultoría"; // Es oportunidad si NO es consultoría general
+                // 5. RENDERIZAR FINAL
+                if(mostrarVital) renderCard('Vital', mostrarVital);
+                if(mostrarPatrimonio) renderCard('Patrimonio', mostrarPatrimonio);
 
-                let dataParaMostrar = liveData; // Por defecto mostramos lo que llega
-                
-                // RECUPERAMOS LA ÚLTIMA BUENA NOTICIA GUARDADA
-                const oportunidadGuardada = localStorage.getItem('guanes_best_news');
+            } catch (e) { console.warn("Offline", e); }
+        }
 
-                if (esOportunidad) {
-                    // SI LA NUEVA ES BUENA: La mostramos y la guardamos como la nueva "Reina"
-                    localStorage.setItem('guanes_best_news', JSON.stringify(liveData));
-                    dataParaMostrar = liveData;
-                } else {
-                    // SI LA NUEVA ES ABURRIDA (Consultoría):
-                    if (oportunidadGuardada) {
-                        // Si tenemos una reina guardada, IGNORAMOS la nueva y mostramos la reina
-                        console.log("Noticia nueva aburrida. Manteniendo la oportunidad de negocio anterior.");
-                        dataParaMostrar = JSON.parse(oportunidadGuardada);
-                    }
-                    // Si no hay nada guardado, ni modo, mostramos la aburrida.
-                }
+        function renderCard(tipo, data) {
+            const bodyId = `card${tipo}Body`;
+            const container = document.getElementById(bodyId);
+            if(!container) return;
 
-                // 4. PINTAMOS LA TARJETA GRANDE (Con los datos elegidos: nuevos o guardados)
-                if (bigTitle) bigTitle.style.opacity = 0;
-                
-                setTimeout(() => {
-                    // Título
-                    if (bigTitle) {
-                        const tituloLimpio = dataParaMostrar.news_text.replace("ÚLTIMA HORA: ", "").substring(0, 100) + "...";
-                        bigTitle.innerHTML = `<a href="${dataParaMostrar.news_link}" target="_blank" style="color: var(--primary); text-decoration: hover; cursor: pointer;">${tituloLimpio} <i class="fas fa-external-link-alt" style="font-size: 1rem; color: var(--brand);"></i></a>`;
-                        bigTitle.style.opacity = 1;
-                    }
+            let icono = "fa-file-contract";
+            let accion = "GESTIONAR CASO";
+            let colorBtn = tipo === 'Vital' ? 'btn-vital' : 'btn-patrimonio';
+            
+            if(data.service_type.includes("Laboral")) { icono="fa-user-shield"; accion="RECLAMAR DERECHOS"; }
+            if(data.service_type.includes("Salud")) { icono="fa-heartbeat"; accion="INTERPONER TUTELA"; }
+            if(data.service_type.includes("Tránsito")) { icono="fa-traffic-light"; accion="ANULAR MULTA"; }
+            if(data.service_type.includes("Inmuebles")) { icono="fa-home"; accion="REVISAR CONTRATO"; }
 
-                    // Gancho de Venta
-                    if (bigDesc) {
-                        const gancho = dataParaMostrar.marketing_hook;
-                        const servicio = dataParaMostrar.service_type;
-                        
-                        // Iconos dinámicos
-                        let icono = "fa-file-signature";
-                        let producto = "Concepto Jurídico";
-                        if(servicio.includes("Laboral")) { icono="fa-hard-hat"; producto="Liquidación / Reclamación"; }
-                        if(servicio.includes("Salud")) { icono="fa-heartbeat"; producto="Acción de Tutela"; }
-                        if(servicio.includes("Tránsito")) { icono="fa-traffic-light"; producto="Nulidad Fotomulta"; }
-                        if(servicio.includes("Cobro")) { icono="fa-money-bill-wave"; producto="Cobro Jurídico"; }
-
-                        bigDesc.innerHTML = `
-                            <div style="margin-top: 15px; padding: 20px; background: #fff1f2; border-left: 5px solid #e11d48; border-radius: 6px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
-                                <p style="margin: 0; color: #be123c; font-weight: 800; font-size: 0.9rem; text-transform: uppercase;">
-                                    <i class="fas fa-bolt"></i> Oportunidad de Negocio
-                                </p>
-                                <p style="margin: 10px 0; color: #881337; font-size: 1.1rem; line-height: 1.4;">${gancho}</p>
-                                <button onclick="activarServicio('${servicio}')" style="background: #e11d48; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 800; width: 100%; margin-top:10px;">
-                                    <i class="fas ${icono}"></i> GESTIONAR ${producto.toUpperCase()} ($50.000)
-                                </button>
-                            </div>
-                        `;
-                    }
-                }, 500);
-
-            } catch (e) {
-                console.warn("Fallo carga noticias", e);
-            }
-        };
+            container.innerHTML = `
+                <div>
+                    <h3 class="radar-title">
+                        <a href="${data.news_link}" target="_blank" style="color:inherit; text-decoration:none;">
+                            ${data.news_text.replace("ÚLTIMA HORA: ", "").substring(0, 90)}... <i class="fas fa-external-link-alt" style="font-size:0.7rem; opacity:0.5;"></i>
+                        </a>
+                    </h3>
+                    <p class="radar-hook">${data.marketing_hook}</p>
+                </div>
+                <button onclick="activarServicio('${data.service_type}')" class="radar-btn ${colorBtn}">
+                    <i class="fas ${icono}"></i> ${accion} ($50.000)
+                </button>
+            `;
+        }
+        
         cargarNoticias();
 
         // ==========================================
