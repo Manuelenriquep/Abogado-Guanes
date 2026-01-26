@@ -314,10 +314,19 @@
         const WOMPI_PUBLIC_KEY = "pub_prod_jzFdvrOaXRlOEHifpzvBpm0FKMsq9FLh"; 
         const PRECIO_DOCUMENTO = 5000000; // $50.000 COP
         
-        // URLS DE RAILWAY (NUEVAS Y CORRECTAS)
-        const WEBHOOK_FORMULARIO = "https://n8n-production-612f.up.railway.app/webhook/noticias-juridicas"; 
+     // ==========================================
+        // 1. CONFIGURACIÓN MAESTRA DE CEREBROS
+        // ==========================================
+        
+        // ⚠️ IMPORTANTE: Aquí debe ir la URL del flujo que recibe pagos y hace PDFs
+        // Vaya a n8n -> Busque el flujo de "Generación Documentos" -> Copie su Webhook
+        const WEBHOOK_FORMULARIO = "https://n8n-production-612f.up.railway.app/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
+
+        // 📰 ESTE ES EL PERIODISTA (Ya está correcto)
         const WEBHOOK_NOTICIAS = "https://n8n-production-612f.up.railway.app/webhook/noticias-juridicas"; 
-        const WEBHOOK_CALCULADORA = "https://n8n-production-612f.up.railway.app/webhook/calculadora-laboral"; // ✅ AGREGADA
+
+        // 🧮 ESTA ES LA CALCULADORA (Ya está correcto)
+        const WEBHOOK_CALCULADORA = "https://n8n-production-612f.up.railway.app/webhook/calculadora-laboral";; // ✅ AGREGADA
 
         // Inyectamos Wompi
         const scriptWompi = document.createElement('script');
