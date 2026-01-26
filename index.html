@@ -377,7 +377,7 @@
         });
 
         // ==========================================
-        // 3. LÓGICA DE NOTICIAS CON RADAR DE VENTAS
+        // 3. LÓGICA DE NOTICIAS CON OFERTA CLARA
         // ==========================================
         async function cargarNoticias() {
             const newsBar = document.getElementById('dailyNewsText');
@@ -404,20 +404,51 @@
                             bigTitle.style.opacity = 1;
                         }
 
-                        // 3. EL GANCHO DE VENTA (Aquí está la magia de la IA) 🧠💰
+                        // 3. EL GANCHO DE VENTA CON PRODUCTO ESPECÍFICO 🧠💰
                         if (bigDesc) {
-                             // Si n8n manda gancho, lo usamos. Si no, ponemos uno genérico.
-                            const gancho = data.marketing_hook || "Analice cómo esta decisión afecta sus derechos. Inicie consulta.";
+                            const gancho = data.marketing_hook || "Analice cómo esta decisión afecta sus derechos.";
                             const servicio = data.service_type || "Consultoría";
 
+                            // TRADUCTOR: De Categoría a Producto Entregable
+                            let nombreProducto = "Concepto Jurídico Personalizado";
+                            let iconoProducto = "fa-file-signature";
+
+                            if (servicio.includes("Laboral")) {
+                                nombreProducto = "Reclamación de Derechos / Liquidación";
+                                iconoProducto = "fa-hard-hat";
+                            } else if (servicio.includes("Salud")) {
+                                nombreProducto = "Acción de Tutela (Medida Urgente)";
+                                iconoProducto = "fa-heartbeat";
+                            } else if (servicio.includes("Tránsito")) {
+                                nombreProducto = "Derecho de Petición (Nulidad)";
+                                iconoProducto = "fa-traffic-light";
+                            } else if (servicio.includes("Cobro")) {
+                                nombreProducto = "Requerimiento de Pago Prejurídico";
+                                iconoProducto = "fa-money-bill-wave";
+                            }
+
                             bigDesc.innerHTML = `
-                                <div style="margin-top: 15px; padding: 15px; background: #fff1f2; border-left: 4px solid #e11d48; border-radius: 4px;">
-                                    <p style="margin: 0; color: #be123c; font-weight: 700; font-size: 1rem;">
-                                        <i class="fas fa-exclamation-circle"></i> OPORTUNIDAD JURÍDICA:
+                                <div style="margin-top: 15px; padding: 20px; background: #fff1f2; border-left: 5px solid #e11d48; border-radius: 6px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                                    <p style="margin: 0; color: #be123c; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                                        <i class="fas fa-bolt"></i> Oportunidad Jurídica Detectada
                                     </p>
-                                    <p style="margin: 5px 0 10px 0; color: #881337;">${gancho}</p>
-                                    <button onclick="activarServicio('${servicio}')" style="background: #e11d48; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; font-weight: bold;">
-                                        SOLICITAR ESTE SERVICIO AHORA
+                                    
+                                    <p style="margin: 10px 0; color: #881337; font-size: 1.1rem; line-height: 1.4;">
+                                        ${gancho}
+                                    </p>
+                                    
+                                    <div style="background: white; padding: 10px; border-radius: 5px; margin: 15px 0; border: 1px dashed #e11d48; display:flex; align-items:center; gap:10px;">
+                                        <div style="background:#e11d48; color:white; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:50%; flex-shrink:0;">
+                                            <i class="fas ${iconoProducto}"></i>
+                                        </div>
+                                        <div>
+                                            <p style="margin:0; font-size:0.8rem; color:#666;">SOLUCIÓN INMEDIATA:</p>
+                                            <p style="margin:0; font-weight:800; color:#0F172A;">Generar ${nombreProducto}</p>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="activarServicio('${servicio}')" style="background: #e11d48; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 800; width: 100%; transition: 0.3s; box-shadow: 0 4px 6px rgba(225, 29, 72, 0.3);">
+                                        <i class="fas fa-download"></i> OBTENER DOCUMENTO POR $50.000
                                     </button>
                                 </div>
                             `;
@@ -428,7 +459,6 @@
                 console.error("Fallo radar noticias", e);
             }
         };
-        cargarNoticias();
 
         // ==========================================
         // 4. NAVEGACIÓN Y FORMULARIO
