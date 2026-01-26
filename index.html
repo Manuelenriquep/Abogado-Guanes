@@ -314,19 +314,10 @@
         const WOMPI_PUBLIC_KEY = "pub_prod_jzFdvrOaXRlOEHifpzvBpm0FKMsq9FLh"; 
         const PRECIO_DOCUMENTO = 5000000; // $50.000 COP
         
-     // ==========================================
-        // 1. CONFIGURACIÓN MAESTRA DE CEREBROS
-        // ==========================================
-        
-        // ⚠️ IMPORTANTE: Aquí debe ir la URL del flujo que recibe pagos y hace PDFs
-        // Vaya a n8n -> Busque el flujo de "Generación Documentos" -> Copie su Webhook
+        // ⚠️ CEREBROS CONECTADOS
         const WEBHOOK_FORMULARIO = "https://n8n-production-612f.up.railway.app/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810"; 
-
-        // 📰 ESTE ES EL PERIODISTA (Ya está correcto)
         const WEBHOOK_NOTICIAS = "https://n8n-production-612f.up.railway.app/webhook/noticias-juridicas"; 
-
-        // 🧮 ESTA ES LA CALCULADORA (Ya está correcto)
-        const WEBHOOK_CALCULADORA = "https://n8n-production-612f.up.railway.app/webhook/calculadora-laboral";; // ✅ AGREGADA
+        const WEBHOOK_CALCULADORA = "https://n8n-production-612f.up.railway.app/webhook/calculadora-laboral"; 
 
         // Inyectamos Wompi
         const scriptWompi = document.createElement('script');
@@ -334,7 +325,7 @@
         document.head.appendChild(scriptWompi);
 
         // ==========================================
-        // 2. LÓGICA DE LA CALCULADORA LABORAL (NUEVA)
+        // 2. LÓGICA DE LA CALCULADORA LABORAL
         // ==========================================
         document.getElementById('laborForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -380,4 +371,168 @@
             } catch(e) { 
                 console.error(e);
                 alert("Error de conexión. Intente nuevamente."); 
+            } finally { 
+                btn.innerHTML = originalText; btn.disabled = false; 
+            }
+        });
+
+        // ==========================================
+        // 3. LÓGICA DE NOTICIAS
+        // ==========================================
+        async function cargarNoticias() {
+            const newsBar = document.getElementById('dailyNewsText');
+            const bigTitle = document.getElementById('mainNewsTitle');
+            const bigDesc = document.getElementById('mainNewsDesc');
+
+            try {
+                const response = await fetch(WEBHOOK_NOTICIAS, { method: 'POST' });
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    newsBar.style.opacity = 0;
+                    if(bigTitle) bigTitle.style.opacity = 0;
+
+                    setTimeout(() => {
+                        newsBar.innerHTML = `<a href="${data.news_link}" target="_blank" style="color: white; text-decoration: none; cursor: pointer;"><i class="fas fa-newspaper"></i> ${data.news_text} <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>`;
+                        newsBar.style.opacity = 1;
+
+                        if (bigTitle) {
+                            const tituloLimpio = data.news_text.replace("ÚLTIMA HORA: ", "");
+                            bigTitle.innerHTML = `<a href="${data.news_link}" target="_blank" style="color: var(--primary); text-decoration: hover; cursor: pointer;">${tituloLimpio} <i class="fas fa-external-link-alt" style="font-size: 1rem; color: var(--brand);"></i></a>`;
+                            bigTitle.style.opacity = 1;
+                        }
+                        if (bigDesc) bigDesc.innerText = "Este evento jurídico podría afectarlo. Haga clic en el título para leer más o inicie su trámite.";
+                    }, 500);
+                }
+            } catch (e) {
+                // Silencioso si falla
+            }
+        };
+        cargarNoticias();
+
+        // ==========================================
+        // 4. NAVEGACIÓN Y FORMULARIO
+        // ==========================================
+        function activarServicio(palabraClave) {
+            const select = document.getElementById('servicioSelect');
+            const formSection = document.getElementById('app-generator');
+            formSection.scrollIntoView({ behavior: 'smooth' });
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].text.includes(palabraClave) || select.options[i].value.includes(palabraClave)) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            toggleFields();
+        }
+
+        function toggleFields() {
+            const s = document.getElementById('servicioSelect').value;
+            const mods = {
+                laboral: document.getElementById('camposLaborales'),
+                inmuebles: document.getElementById('camposInmuebles'),
+                vehiculos: document.getElementById('camposVehiculos'),
+                transito: document.getElementById('camposTransito'),
+                salud: document.getElementById('camposSalud'),
+                civil: document.getElementById('camposCivil')
+            };
+            Object.values(mods).forEach(d => { if(d) {d.classList.add('hidden'); setRequired(d, false);} });
+            
+            const idContraparte = document.querySelector('input[name="Contraparte_ID"]');
+            if(idContraparte) idContraparte.required = true;
+
+            if (s.includes("Laboral")) show(mods.laboral);
+            else if (s.includes("Inmuebles")) show(mods.inmuebles);
+            else if (s.includes("Vehículos")) show(mods.vehiculos);
+            else if (s.includes("Tránsito")) show(mods.transito);
+            else if (s.includes("Salud")) show(mods.salud);
+            else if (s.includes("Cobro")) show(mods.civil);
+        }
+
+        function show(div) { if(div) { div.classList.remove('hidden'); setRequired(div, true); } }
+        function setRequired(div, isReq) { div.querySelectorAll('input, select').forEach(i => i.required = isReq); }
+
+        // ==========================================
+        // 5. LÓGICA DE PAGO Y GENERACIÓN (DOCUMENTOS)
+        // ==========================================
+        const form = document.getElementById('legalForm');
+        const statusDiv = document.getElementById('statusMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (typeof WidgetCheckout === 'undefined') { alert("Cargando pagos..."); return; }
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            data.MarcaTemporal = new Date().toISOString();
+            localStorage.setItem('datos_pendientes_guanes', JSON.stringify(data));
+
+            const referenciaUnica = 'GUANES_' + Date.now();
+            const checkout = new WidgetCheckout({
+                currency: 'COP', amountInCents: PRECIO_DOCUMENTO, reference: referenciaUnica,
+                publicKey: WOMPI_PUBLIC_KEY, redirectUrl: window.location.href
+            });
+            
+            checkout.open(function (result) {
+                if (result.transaction.status === 'APPROVED') {
+                    data.Transaccion_ID = result.transaction.id;
+                    procesarGeneracion(data);
+                }
+            });
+        });
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const wompiId = urlParams.get('id');
+            if (wompiId) {
+                const datosGuardados = localStorage.getItem('datos_pendientes_guanes');
+                if (datosGuardados) {
+                    const data = JSON.parse(datosGuardados);
+                    data.Transaccion_ID = wompiId;
+                    statusDiv.style.display = 'block';
+                    statusDiv.innerHTML = '<h3>💰 Pago Detectado</h3><p>Validando...</p>';
+                    window.history.replaceState({}, document.title, "/");
+                    procesarGeneracion(data);
+                }
+            }
+        };
+
+        async function procesarGeneracion(data) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERANDO PDF...';
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = '#eff6ff';
+            statusDiv.innerHTML = '<h3>⚖️ Redactando...</h3><p>Espere 30 seg...</p>';
+
+            try {
+                const response = await fetch(WEBHOOK_FORMULARIO, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `Documento_GUANES_${data.Nombre.replace(/\s+/g, '_')}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    
+                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Documento descargado.</p>';
+                    localStorage.removeItem('datos_pendientes_guanes');
+                    form.reset();
+                } else { throw new Error('Error respuesta'); }
+            } catch (error) {
+                statusDiv.style.background = '#fef2f2';
+                statusDiv.style.color = '#dc2626';
+                statusDiv.innerHTML = '<h3>⚠️ ERROR</h3><p>Pago recibido, pero falló la descarga. Contáctenos.</p>';
             } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> PAGAR $50.000 Y GENERAR';
+            }
+        }
+    </script>
+</body>
+</html>
