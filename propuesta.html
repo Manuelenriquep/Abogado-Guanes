@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Negocio | Codex Analítica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --brand: #2563EB;
+            --accent: #F59E0B;
+            --bg: #F0F4F8;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .paper {
+            background: white;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-weight: 800;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--brand);
+            margin-top: 2rem;
+        }
+
+        h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        p,
+        li {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .btn-copy {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .btn-copy:hover {
+            transform: scale(1.05);
+            background: var(--brand);
+        }
+
+        .btn-copy:active {
+            transform: scale(0.95);
+        }
+
+        .meta-header {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="btn-copy" onclick="copiarPropuesta()">
+        <i class="fas fa-copy"></i> COPIAR PROPUESTA
+    </button>
+
+    <div class="paper" id="proposalContent">
+        <h1>🚀 PROPUESTA DE ACTUALIZACIÓN: ECOSISTEMA CODEX & GUANES LEGAL</h1>
+
+        <div class="meta-header">
+            <strong>PARA:</strong> Junta Directiva / Socios<br>
+            <strong>ASUNTO:</strong> Expansión del Módulo "Arriendo Seguro" a Logística y Comercio (B2B)<br>
+            <strong>TECNOLOGÍA:</strong> Solana Blockchain (Squads Multisig) + Legal Engineering
+        </div>
+
+        <h2>1. EL PROBLEMA (El "Dolor" del Mercado)</h2>
+        <p>El arrendamiento tradicional en Colombia está roto:</p>
+        <ul>
+            <li><strong>Vivienda:</strong> La Ley 820 protege excesivamente al moroso (procesos de 2+ años).</li>
+            <li><strong>Comercio:</strong> El Art. 518 del C.Co obliga a pagar "Prima Comercial" y da derecho automático
+                a renovación tras 2 años.</li>
+            <li><strong>Garantías:</strong> Los fiadores son escasos y las aseguradoras lentas.</li>
+        </ul>
+
+        <h2>2. LA SOLUCIÓN: "SERVICIOS, NO ARRIENDOS"</h2>
+        <p>Hemos pivotado legal y tecnológicamente. No firmamos contratos de arrendamiento. Firmamos <strong>Contratos
+                de Servicios</strong> con Garantía Líquida en Blockchain.</p>
+
+        <h3>A. VIVIENDA → "HOSPEDAJE MERCANTIL"</h3>
+        <ul>
+            <li><strong>Marco Legal:</strong> Código de Comercio (Art. 1192).</li>
+            <li><strong>Ventaja:</strong> Se considera un servicio de alojamiento. Permite <strong>Derecho de
+                    Retención</strong> (quedarse con el equipaje/bienes) ante impago y restitución inmediata sin proceso
+                de lanzamiento largo.</li>
+            <li><strong>Público:</strong> Nómadas digitales, contratos flexibles.</li>
+        </ul>
+
+        <h3>B. BODEGAS → "DEPÓSITO Y LOGÍSTICA"</h3>
+        <ul>
+            <li><strong>Marco Legal:</strong> Contrato de Depósito Mercantil.</li>
+            <li><strong>Ventaja:</strong> Aplicación estricta del <strong>Art. 1177 C.Co (Derecho de
+                    Retención)</strong>. Si no pagan, legalmente retenemos la mercancía automáticamente hasta el pago.
+            </li>
+            <li><strong>Público:</strong> E-commerce, PyMEs, Importadores.</li>
+        </ul>
+
+        <h3>C. LOCALES → "CONCESIÓN DE ESPACIO"</h3>
+        <ul>
+            <li><strong>Marco Legal:</strong> Contrato Atípico de Concesión.</li>
+            <li><strong>Estrategia:</strong> El usuario no paga arriendo, paga "Tarifa de Concesión" que incluye
+                obligatoriamente servicios (Vigilancia, Aseo o Marketing).</li>
+            <li><strong>Ventaja:</strong> <strong>ELIMINA LA PRIMA COMERCIAL.</strong> Al ser un contrato atípico de
+                servicios complejos, no aplica el Art. 518 (derecho a renovación ni indemnización).</li>
+        </ul>
+
+        <h2>3. MODELO FINANCIERO (MÁQUINA DE DINERO) 💰</h2>
+        <p>El usuario (Inquilino/Cliente) deposita una garantía en Cripto (USDC/SOL) en nuestra Bóveda Multisig.</p>
+        <ol>
+            <li><strong>Cero Riesgo de Impago:</strong> Si fallan, ejecutamos la garantía de la Bóveda (Smart Contract /
+                Multisig).</li>
+            <li><strong>Yield Farming (Nuestro "Secret Sauce"):</strong>
+                <ul>
+                    <li>La garantía no duerme. Genera rendimientos (Staking/DeFi).</li>
+                    <li><strong>Cláusula Clave:</strong> El usuario nos <strong>CEDE el 100% de los
+                            rendimientos</strong> como pago por la gestión tecnológica.</li>
+                    <li><em>Ejemplo:</em> 100 M COP en garantías al 5% APY = 5 M COP/año de "dinero gratis" para la
+                        empresa, sin tocar el capital.</li>
+                </ul>
+            </li>
+            <li><strong>Fee de Entrada:</strong> Cobramos 15% del valor del canon (Pago Único). La competencia cobra el
+                120% (10% mensual).</li>
+        </ol>
+
+        <h2>4. ESTADO DE DESARROLLO (MVP LISTO)</h2>
+        <p>Ya implementamos en la web (<code>/arriendo-seguro</code>):</p>
+        <ol>
+            <li><strong>Calculadora de Ahorro:</strong> Para enganchar al cliente mostrando la diferencia de costos.
+            </li>
+            <li><strong>Selector Inteligente:</strong> El sistema detecta si es Vivienda, Bodega o Comercio y ajusta el
+                contrato legal automáticamente.</li>
+            <li><strong>Bóveda Multisig:</strong> Integración visual lista para recibir depósitos.</li>
+            <li><strong>Generador Legal:</strong> Crea los contratos PDF con las cláusulas de "Renuncia", "Retención" y
+                "Cesión de Yield" hardcodeadas (inmodificables).</li>
+        </ol>
+
+        <p><strong>PROXIMO PASO:</strong> Lanzamiento comercial y primera captación de garantías.</p>
+
+        <hr>
+        <p><em>Codex Analítica x Guanes Legal Tech<br>Febrero 2026</em></p>
+    </div>
+
+    <script>
+        function copiarPropuesta() {
+            // Get text content
+            const content = document.getElementById('proposalContent').innerText;
+
+            navigator.clipboard.writeText(content).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerHTML = '<i class="fas fa-check"></i> ¡COPIADO!';
+                btn.style.background = '#10B981';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> COPIAR PROPUESTA';
+                    btn.style.background = '#0F172A';
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar:', err);
+                alert('No se pudo copiar automáticamente.');
+            });
+        }
+    </script>
+</body>
+
+</html>

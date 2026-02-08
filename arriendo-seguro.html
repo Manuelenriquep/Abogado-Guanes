@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex Garantía Digital | Arriendo Seguro sin Fiador</title>
+    <meta name="description"
+        content="Arrienda inmuebles sin fiador con garantía digital en criptoactivos. Seguridad, rapidez y ahorro con Codex y Guanes Legal.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --brand: #2563EB;
+            --accent: #F59E0B;
+            --bg: #F0F4F8;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            --crypto: #10B981;
+            --success: #22c55e;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: #334155;
+            margin: 0;
+            line-height: 1.6;
+            padding-top: 40px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* HEADER */
+        header {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--brand);
+        }
+
+        .btn-back {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: var(--primary);
+            color: white;
+            padding: 6rem 1rem 4rem;
+            text-align: center;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* CALCULATOR */
+        .calculator-box {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: -3rem auto 0;
+            position: relative;
+            z-index: 10;
+            border-top: 5px solid var(--accent);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .input-control:focus {
+            border-color: var(--brand);
+            outline: none;
+        }
+
+        .result-box {
+            background: #f0fdf4;
+            border: 2px dashed var(--success);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .result-box.active {
+            display: block;
+        }
+
+        .savings-amount {
+            font-size: 2.5rem;
+            color: var(--success);
+            font-weight: 800;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 1rem;
+            background: var(--brand);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* COMPARISON TABLE */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .col-codex {
+            background: #eff6ff;
+            border-left: 2px solid var(--brand);
+            font-weight: 700;
+        }
+
+        .check-icon {
+            color: var(--success);
+        }
+
+        .cross-icon {
+            color: var(--danger);
+        }
+
+        /* MULTISIG VAULT */
+        .vault-section {
+            background: #0F172A;
+            color: white;
+        }
+
+        .vault-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .wallet-address {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 1rem 0;
+            color: var(--accent);
+            border: 1px dashed var(--accent);
+        }
+
+        /* FORM */
+        .onboarding-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .legal-check {
+            display: flex;
+            gap: 10px;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #fff7ed;
+            border-radius: 8px;
+            border: 1px solid #fed7aa;
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">GUANES <span>LEGAL</span></a>
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Arriendo Seguro <span style="color:var(--accent);">Sin Fiador</span></h1>
+            <p>La revolución del arrendamiento: Garantía Digital en Criptoactivos con Bóveda Multisig.</p>
+        </div>
+    </section>
+
+    <div class="container" style="padding-bottom: 2rem;">
+        <!-- CALCULATOR -->
+        <div class="calculator-box">
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">Calculadora de Ahorro</h2>
+            <div class="input-group">
+                <label for="canonMensual" style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Valor del
+                    Canon de Arriendo (COP)</label>
+                <input type="number" id="canonMensual" class="input-control" placeholder="Ej: 1500000">
+            </div>
+            <button class="btn-action" onclick="calcularAhorro()">
+                <i class="fas fa-calculator"></i> CALCULAR MI AHORRO
+            </button>
+
+            <div id="ahorroResult" class="result-box">
+                <p>Con una inmobiliaria tradicional pagarías aprox: <strong id="valInmobiliaria">...</strong></p>
+                <p>Con Codex Garantía Digital pagas solo: <strong id="valCodex">...</strong></p>
+                <div style="margin-top: 1rem; border-top: 1px solid #bbf7d0; padding-top: 1rem;">
+                    <span>TU AHORRO ANUAL TOTAL:</span>
+                    <span class="savings-amount" id="valAhorro">...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPARISON -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">¿Por qué Codex es Superior?</h2>
+            <div class="comparison-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Inmobiliaria Tradicional</th>
+                            <th class="col-codex">Codex Analítica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Requiere Fiador (Codeudor)</td>
+                            <td><i class="fas fa-check-circle check-icon"></i> SI (1 o 2)</td>
+                            <td class="col-codex"><i class="fas fa-times-circle cross-icon"></i> NO</td>
+                        </tr>
+                        <tr>
+                            <td>Costo del Servicio (Anual)</td>
+                            <td>~120% de un Canon</td>
+                            <td class="col-codex">15% de un Canon (Único)</td>
+                        </tr>
+                        <tr>
+                            <td>Devolución de Garantía</td>
+                            <td><i class="fas fa-times-circle cross-icon"></i> NO (Es un seguro)</td>
+                            <td class="col-codex"><i class="fas fa-check-circle check-icon"></i> 100% Reembolsable</td>
+                        </tr>
+                        <tr>
+                            <td>Tiempo de Aprobación</td>
+                            <td>3 - 5 Días</td>
+                            <td class="col-codex">2 Horas (Inmediato)</td>
+                        </tr>
+                        <tr>
+                            <td>Naturaleza Legal</td>
+                            <td>Vivienda Urbana (Difícil desalojo)</td>
+                            <td class="col-codex">Hospedaje Mercantil (Restitución Ágil)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- VAULT / BLOCKCHAIN -->
+    <section class="vault-section">
+        <div class="container">
+            <h2 class="section-title" style="color:white;">Tu Garantía en la Blockchain</h2>
+            <p style="text-align: center; color: #cbd5e1; margin-bottom: 2rem;">
+                Tus fondos son custodiados en una <strong>Bóveda Multisig de Squads (Solana)</strong>.<br>
+                Nadie puede moverlos sin múltiples firmas de seguridad.
+            </p>
+
+            <div class="vault-card">
+                <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--accent); margin-bottom: 1rem;"></i>
+                <h3>Dirección de Depósito (USDC/SOL)</h3>
+                <div class="wallet-address" id="vaultAddress">
+                    [PENDING_WALLET_ADDRESS_FROM_ADMIN]
+                </div>
+                <button class="btn-action" style="background: transparent; border: 1px solid white; margin-top: 1rem;"
+                    onclick="copiarAddress()">
+                    <i class="far fa-copy"></i> Copiar Dirección
+                </button>
+                <div style="margin-top: 1.5rem;">
+                    <i class="fas fa-qrcode" style="font-size: 5rem; color: white;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ONBOARDING FORM -->
+    <section id="onboarding">
+        <div class="container">
+            <h2 class="section-title">Inicia tu Arriendo Seguro</h2>
+            <form id="kycForm" class="onboarding-form">
+                <div class="input-group">
+                    <label>¿Qué vas a guardar/ocupar?</label>
+                    <select id="k_tipo_uso" class="input-control" required onchange="toggleServices()">
+                        <option value="vivienda">Personas (Hospedaje Mercantil)</option>
+                        <option value="bodega">Mercancías (Bodega / Depósito Smart)</option>
+                        <option value="comercio">Negocio / Marca (Concesión Comercial)</option>
+                    </select>
+                </div>
+
+                <div id="servicios-conexos" class="input-group"
+                    style="display: none; background: #f0fdf4; padding: 1rem; border-radius: 10px; border: 1px dashed #22c55e;">
+                    <label style="color:#15803d;">Servicios Conexos (Obligatorio para Concesión)</label>
+                    <p style="font-size: 0.85rem; color: #166534; margin-bottom: 10px;">Selecciona al menos uno para
+                        validar la atipicidad del contrato:</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <label style="font-weight: 400; display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="servicios" value="Vigilancia"> Vigilancia 24/7
+                        </label>
+                        <label style="font-weight: 400; display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="servicios" value="Aseo"> Aseo Especializado
+                        </label>
+                        <label style="font-weight: 400; display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="servicios" value="Marketing"> Publicidad In-Situ
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Nombre Completo / Razón Social</label>
+                    <input type="text" id="k_nombre" class="input-control" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="input-group">
+                        <label>Cédula / ID</label>
+                        <input type="number" id="k_cedula" class="input-control" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Teléfono (WhatsApp)</label>
+                        <input type="tel" id="k_telefono" class="input-control" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="k_email" class="input-control" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Subir Documento de Identidad (PDF/IMG)</label>
+                    <input type="file" id="k_doc" class="input-control" accept="image/*,.pdf" required>
+                </div>
+
+                <div class="legal-check">
+                    <input type="checkbox" id="k_legal_check" required>
+                    <label for="k_legal_check" style="font-weight: 400; font-size: 0.9rem;">
+                        <strong>OBLIGATORIO:</strong> Acepto que los fondos se transfieren bajo <strong>Mandato de
+                            Gestión</strong> y cedo los rendimientos financieros (Yield) a Codex Analítica como pago por
+                        el servicio de custodia y administración. Entiendo que el contrato se rige por las normas de
+                        <strong>Hospedaje Mercantil</strong>.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-action">
+                    <i class="fas fa-file-contract"></i> GENERAR CONTRATO & REGISTRAR
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Guanes Legal Tech | Codex Analítica. Todos los derechos reservados.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">Operado con tecnología Solana Blockchain & Squads Protocol.</p>
+    </footer>
+
+    <script src="assets/js/codex-logic.js"></script>
+</body>
+
+</html>
