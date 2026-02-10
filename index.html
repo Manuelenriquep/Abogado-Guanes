@@ -666,7 +666,10 @@
             <a href="arriendo-seguro.html" class="btn-generate">
                 Iniciar Trámite Ahora
             </a>
-
+            <button onclick="irDirectoAlServicio('cobro')" class="btn-secondary"
+                style="background:var(--primary); color:white; border:none; padding:1rem 2rem; border-radius:12px; font-weight:800; cursor:pointer; font-size:1.1rem; display:flex; align-items:center; gap:10px;">
+                🛡️ EVITAR EMBARGO / DEUDA
+            </button>
         </div>
     </header>
 
@@ -1027,6 +1030,25 @@
 
         <script>
             const WEBHOOK_PRODUCCION = "https://n8n-production-612f.up.railway.app/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810";
+
+            // 0. NAVEGACIÓN Y COMPATIBILIDAD
+            function irDirectoAlServicio(servicio) {
+                const select = document.getElementById('servicioSelector');
+                const map = {
+                    'Laboral': 'laboral',
+                    'Inmuebles': 'inmuebles',
+                    'Vehículos': 'vehiculos',
+                    'Tránsito': 'transito',
+                    'Salud': 'salud',
+                    'Cobro': 'cobro'
+                };
+                const val = map[servicio] || servicio;
+
+                select.value = val;
+                cambiarFormulario();
+                document.getElementById('app-generator').scrollIntoView({ behavior: 'smooth' });
+            }
+            window.activarServicio = irDirectoAlServicio; // Para botones antiguos
 
             // 1. CAMBIAR CAMPOS SEGÚN SELECCIÓN
             function cambiarFormulario() {
