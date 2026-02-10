@@ -320,3 +320,32 @@ Nota Legal: Pasadas 48 horas sin reporte, opera la Aceptación Tácita según T�
     Estado: EN ESPERA DE VALIDACIÓN (48H)
     `);
 }
+
+// --- QR CODE GENERATION ---
+window.addEventListener('load', function () {
+    // 1. Set Vault Address in UI
+    const vaultEl = document.getElementById('vaultAddress');
+    if (vaultEl && typeof VAULT_ADDRESS !== 'undefined') {
+        vaultEl.innerText = VAULT_ADDRESS;
+
+        // 2. Generate QR
+        const qrContainer = document.getElementById("qrcode");
+        if (qrContainer && typeof QRCode !== 'undefined') {
+            try {
+                // Clear previous content just in case
+                qrContainer.innerHTML = "";
+                new QRCode(qrContainer, {
+                    text: VAULT_ADDRESS,
+                    width: 128,
+                    height: 128,
+                    colorDark: "#0F172A",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (e) {
+                console.warn("QR Code Error:", e);
+                qrContainer.innerText = "Error generando QR";
+            }
+        }
+    }
+});
