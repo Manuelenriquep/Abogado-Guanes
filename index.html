@@ -1435,11 +1435,15 @@
                     statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Documento descargado.</p>';
                     localStorage.removeItem('datos_pendientes_guanes');
                     form.reset();
-                } else { throw new Error('Error respuesta'); }
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(`Error ${response.status}: ${errorText || response.statusText}`);
+                }
             } catch (error) {
+                console.error(error);
                 statusDiv.style.background = '#fef2f2';
                 statusDiv.style.color = '#dc2626';
-                statusDiv.innerHTML = '<h3>⚠️ ERROR</h3><p>Pago recibido, pero falló la descarga. Contáctenos.</p>';
+                statusDiv.innerHTML = `<h3>⚠️ ERROR</h3><p>Detalle: ${error.message}</p><p>Por favor, tome una captura y contáctenos.</p>`;
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-magic"></i> GENERAR DOCUMENTO (GRATIS)';
