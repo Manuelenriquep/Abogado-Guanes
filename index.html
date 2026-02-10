@@ -889,67 +889,91 @@
 
     <section id="app-generator">
         <style>
-            /* ESTILO MINIMALISTA SERIO */
+            /* ESTILO INTEGRADO PREMIUM */
             .form-container {
-                background: #f9f9f9;
-                padding: 25px;
-                border-radius: 8px;
-                border: 1px solid #ddd;
-                font-family: 'Helvetica', sans-serif;
+                background: white;
+                padding: 3rem;
+                border-radius: 20px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                font-family: 'Outfit', sans-serif;
                 max-width: 800px;
                 margin: 0 auto;
+                border-top: 6px solid var(--accent);
             }
 
             .form-group {
-                margin-bottom: 15px;
+                margin-bottom: 1.5rem;
             }
 
             label {
                 display: block;
-                font-weight: bold;
-                color: #2c3e50;
-                margin-bottom: 5px;
+                font-weight: 700;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+                font-size: 0.95rem;
             }
 
             input,
             select,
             textarea {
                 width: 100%;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                font-size: 14px;
-                box-sizing: border-box;
+                padding: 14px;
+                border: 2px solid #e2e8f0;
+                border-radius: 12px;
+                font-size: 1rem;
+                font-family: 'Outfit', sans-serif;
+                background: #f8fafc;
+                transition: 0.3s;
+                color: #334155;
+            }
+
+            input:focus,
+            select:focus,
+            textarea:focus {
+                outline: none;
+                border-color: var(--brand);
+                background: white;
+                box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
             }
 
             .hidden {
                 display: none;
             }
 
-            /* Clase para ocultar secciones */
-
             .btn-generar {
-                background-color: #27ae60;
+                background: var(--gradient);
                 color: white;
                 border: none;
-                padding: 15px;
+                padding: 1rem;
                 width: 100%;
-                font-size: 16px;
-                font-weight: bold;
+                font-size: 1.1rem;
+                font-weight: 800;
                 cursor: pointer;
-                border-radius: 5px;
-                margin-top: 10px;
+                border-radius: 12px;
+                margin-top: 1.5rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
             }
 
             .btn-generar:hover {
-                background-color: #219150;
+                transform: translateY(-2px);
+                box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.5);
+            }
+
+            .btn-generar:disabled {
+                background: #94a3b8;
+                cursor: wait;
+                transform: none;
             }
 
             .aviso {
-                font-size: 11px;
-                color: #777;
-                margin-top: 10px;
+                font-size: 0.8rem;
+                color: #94a3b8;
+                margin-top: 1.5rem;
                 text-align: center;
+                font-weight: 500;
             }
         </style>
 
