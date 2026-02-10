@@ -77,6 +77,33 @@ function copiarAddress() {
 }
 
 // --- FORM & PDF GENERATION ---
+// --- WEB3 LOGIC ---
+async function connectWalletAndSign() {
+    if (window.solana && window.solana.isPhantom) {
+        try {
+            // Connect
+            const resp = await window.solana.connect();
+            const publicKey = resp.publicKey.toString();
+            console.log("Connected to Phantom:", publicKey);
+
+            // Simulation of Signing a Message
+            const message = `Firma Digital Protocolo Guanes: Acepto términos y condiciones. Wallet: ${publicKey}`;
+            const encodedMessage = new TextEncoder().encode(message);
+            const signedMessage = await window.solana.signMessage(encodedMessage, "utf8");
+
+            return { connected: true, publicKey: publicKey };
+        } catch (err) {
+            console.error(err);
+            alert("Error al conectar Billetera: " + err.message);
+            return { connected: false };
+        }
+    } else {
+        alert("Phantom Wallet no encontrada. Por favor instálala para continuar.");
+        window.open("https://phantom.app/", "_blank");
+        return { connected: false };
+    }
+}
+
 // --- FORM & PDF GENERATION ---
 function toggleServices() {
     const tipo = document.getElementById('k_tipo_uso').value;
@@ -85,9 +112,9 @@ function toggleServices() {
 
     // Update Legal Text dynamically
     if (contractLabel) {
-        if (tipo === 'vivienda') contractLabel.innerText = "Hospedaje Mercantil";
-        else if (tipo === 'bodega') contractLabel.innerText = "Código de Comercio (Local/Bodega)";
-        else if (tipo === 'poliza') contractLabel.innerText = "Póliza de Cumplimiento";
+        if (tipo === 'vivienda_fianza') contractLabel.innerText = "Fianza Digital de Arrendamiento (Ley 820)";
+        else if (tipo === 'comercio_bodega') contractLabel.innerText = "Código de Comercio (Local/Bodega)";
+        else if (tipo === 'garantia_obras') contractLabel.innerText = "Póliza de Cumplimiento (Civil)";
     }
 
     // Hide originally, only show for specific if needed, but for now we simplify
@@ -108,6 +135,10 @@ if (form) {
             return;
         }
 
+        // WEB3 CONNECTION TRIGGER
+        const walletAuth = await connectWalletAndSign();
+        if (!walletAuth.connected) return; // Stop if not connected
+
         const tipoUso = document.getElementById('k_tipo_uso').value;
         let serviciosSeleccionados = []; // Simplified for V2
 
@@ -119,7 +150,8 @@ if (form) {
             cedula: document.getElementById('k_cedula').value,
             telefono: document.getElementById('k_telefono').value,
             email: document.getElementById('k_email').value,
-            ciudad: document.getElementById('k_ciudad').value
+            ciudad: document.getElementById('k_ciudad').value,
+            wallet: walletAuth.publicKey // Save wallet for PDF
         };
 
         // Generate PDF
@@ -139,37 +171,39 @@ async function generateContractPDF(data) {
     let bodyText = "";
     const dateStr = new Date().toLocaleDateString();
 
-    const CLAUSULA_FIANZA_LIMITADA = `CLÁUSULA DE FIANZA LIMITADA: GUANES LEGALTECH actúa exclusivamente como custodio tecnológico. Su responsabilidad financiera se limita estrictamente al monto de la garantía depositada en la Smart Vault. Agotados estos recursos, se extingue cualquier obligación de pago por parte de la plataforma.`;
+    const CLAUSULA_FIANZA_LIMITADA = `CLÁUSULA DE FIANZA LIMITADA: MANUEL ENRIQUE PRADA FORERO (GUANES LEGALTECH) actúa exclusivamente como custodio tecnológico y garante digital. Su responsabilidad financiera se limita estrictamente al monto de los activos digitales depositados en la Smart Vault. Agotados estos recursos, se extingue cualquier obligación de pago.`;
 
-    if (data.tipo === 'vivienda') {
-        title = "CONTRATO DE HOSPEDAJE MERCANTIL";
+    const OPERADOR_INFO = "MANUEL ENRIQUE PRADA FORERO, identificado con C.C. 91.200.415 y T.P. 176.633 del C.S.J.";
+
+    if (data.tipo === 'vivienda_fianza') {
+        title = "FIANZA DIGITAL DE ARRENDAMIENTO DE VIVIENDA URBANA";
         bodyText = `
     Ciudad de Firma: ${data.ciudad}
     
-    Entre los suscritos a saber: POR UNA PARTE, GUANES LEGALTECH S.A.S (en adelante EL OPERADOR), y POR OTRA PARTE, ${data.nombre} identificado con C.C. ${data.cedula} (en adelante EL HUÉSPED), hemos convenido celebrar el presente CONTRATO DE HOSPEDAJE MERCANTIL, regido por las siguientes cláusulas:
+    Entre los suscritos a saber: POR UNA PARTE, ${OPERADOR_INFO} (en adelante EL FIADOR DIGITAL), y POR OTRA PARTE, ${data.nombre} identificado con C.C. ${data.cedula} (en adelante EL ARRENDATARIO), hemos convenido celebrar el presente CONTRATO DE FIANZA, conexo al contrato de arrendamiento de vivienda urbana:
 
-    PRIMERA. NATURALEZA: El presente contrato se rige estrictamente por las normas del Código de Comercio (Arts. 1192 y ss) y NO constituye arrendamiento de vivienda urbana confome a la Ley 820 de 2003.
+    PRIMERA. OBJETO: El presente contrato constituye una GARANTÍA DE PAGO sobre los cánones de arrendamiento, regida por la autonomía de la voluntad y supletoriamente por la Ley 820 de 2003.
 
     SEGUNDA. ${CLAUSULA_GESTION_REMOTA}
 
-    TERCERA. GARANTÍA DIGITAL: El HUÉSPED constituye una garantía mediante depósito de activos digitales en la Bóveda Multisig designada por EL OPERADOR.
+    TERCERA. GARANTÍA DIGITAL: El ARRENDATARIO constituye una garantía mediante depósito de activos digitales (USDC) en la Bóveda Multisig designada. Wallet Firmante: ${data.wallet || 'N/A'}
 
-    CUARTA. GARANTÍA EN USDC Y CESIÓN DE FRUTOS: El HUÉSPED constituye garantía en USDC (SPL) los cuales serán depositados en protocolos de rendimiento (Kamino/Save). 
+    CUARTA. CUSTODIA Y RENDIMIENTOS: Los fondos serán custodiados en protocolos seguros (Kamino/Save). 
     
-    DISTRIBUCIÓN FINAL: El HUÉSPED recibirá la devolución del capital inicial (Principal) al término del contrato. El HUÉSPED cede irrevocablemente a favor de EL OPERADOR todos los rendimientos o intereses generados por dicho capital durante la custodia.
+    DISTRIBUCIÓN FINAL: El ARRENDATARIO recibirá la devolución del capital inicial (Principal) al término del contrato, siempre que se presente el paz y salvo. El ARRENDATARIO cede irrevocablemente a favor de EL FIADOR DIGITAL todos los rendimientos o intereses generados por dicho capital durante la custodia como remuneración del servicio.
 
-    QUINTA. DERECHO DE RETENCIÓN: En caso de impago del canon de hospedaje, EL OPERADOR podrá ejercer el derecho de retención sobre los bienes del HUÉSPED y ejecutar la garantía digital de forma inmediata.
+    QUINTA. EJECUCIÓN: En caso de impago reportado por el Beneficiario, EL FIADOR procederá al pago directo utilizando los fondos en custodia.
 
     SEXTA. ${CLAUSULA_FIANZA_LIMITADA}
         `;
-    } else if (data.tipo === 'bodega') {
+    } else if (data.tipo === 'comercio_bodega') {
         title = "CONTRATO DE ARRENDAMIENTO COMERCIAL (BODEGA/LOCAL)";
         bodyText = `
     Ciudad de Firma: ${data.ciudad}
 
-    Entre los suscritos, GUANES LEGALTECH S.A.S (EL ARRENDADOR TECNOLÓGICO) y ${data.nombre} con Nit/CC ${data.cedula} (EL ARRENDATARIO), celebran este CONTRATO DE ARRENDAMIENTO COMERCIAL:
+    Entre los suscritos, ${OPERADOR_INFO} (EL ARRENDADOR TECNOLÓGICO) y ${data.nombre} con Nit/CC ${data.cedula} (EL ARRENDATARIO), celebran este CONTRATO DE ARRENDAMIENTO COMERCIAL:
 
-    PRIMERA. OBJETO Y REGULACIÓN: El presente contrato se rige íntegramente por el CÓDIGO DE COMERCIO. Las partes gozan de libertad contractual para fijar garantías.
+    PRIMERA. OBJETO Y REGULACIÓN: El presente contrato se rige íntegramente por el CÓDIGO DE COMERCIO. Las partes gozan de libertad contractual para fijar garantías. Wallet Firmante: ${data.wallet || 'N/A'}
 
     SEGUNDA. ${CLAUSULA_GESTION_REMOTA}
 
@@ -179,18 +213,18 @@ async function generateContractPDF(data) {
 
     QUINTA. ${CLAUSULA_FIANZA_LIMITADA}
         `;
-    } else if (data.tipo === 'poliza') {
+    } else if (data.tipo === 'garantia_obras') {
         title = "PÓLIZA PRIVADA DE CUMPLIMIENTO Y SERVICIOS";
         bodyText = `
     Ciudad de Firma: ${data.ciudad}
 
     TOMADOR/GARANTIZADO: ${data.nombre} (ID: ${data.cedula}).
     BENEFICIARIO: Propietario / Contratante del Servicio.
-    CUSTODIO: GUANES LEGALTECH S.A.S.
+    CUSTODIO: ${OPERADOR_INFO}.
 
-    PRIMERA. OBJETO DE LA GARANTÍA: La presente Póliza Privada Digital garantiza el cumplimiento de las obligaciones derivadas del contrato de servicios/obra subyacente, hasta por el monto depositado en USDC.
+    PRIMERA. OBJETO DE LA GARANTÍA: La presente Póliza Privada Digital garantiza el cumplimiento de las obligaciones derivadas del contrato de servicios/obra subyacente, hasta por el monto depositado en USDC. Wallet Firmante: ${data.wallet || 'N/A'}
 
-    SEGUNDA. CUSTODIA MULTISIG (2 de 3): Los fondos reposan en una bóveda de firmas conjuntas. Para cualquier movimiento se requiere la firma del Árbitro (Guanes) y una de las partes.
+    SEGUNDA. CUSTODIA MULTISIG (2 de 3): Los fondos reposan en una bóveda de firmas conjuntas. Para cualquier movimiento se requiere la firma del Árbitro (Manuel E. Prada) y una de las partes.
 
     TERCERA. EJECUCIÓN: El incumplimiento probado activará la transferencia de los fondos al Beneficiario.
 
@@ -212,7 +246,7 @@ async function generateContractPDF(data) {
     const pageWidth = 170;
 
     // Common footer or final text could be added here
-    const fullText = bodyText + `\n\nFirmado digitalmente el ${dateStr}.`;
+    const fullText = bodyText + `\n\nFirmado digitalmente el ${dateStr}.\nFirma Biométrica/Wallet: ${data.wallet || 'Pending'}`;
 
     const splitText = doc.splitTextToSize(fullText, pageWidth);
     doc.text(splitText, margin, y);
@@ -227,4 +261,62 @@ async function generateContractPDF(data) {
     doc.save(`Contrato_${data.tipo}_${data.cedula}.pdf`);
 
     alert(`Contrato de ${data.tipo.toUpperCase()} generado exitosamente.\nProcede al depósito en la Bóveda.`);
+}
+
+// --- PAYMENT REPORTING LOGIC ---
+const payForm = document.getElementById('paymentForm');
+if (payForm) {
+    payForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const data = {
+            contractId: document.getElementById('pay_contract_id').value,
+            month: document.getElementById('pay_month').value,
+            amount: document.getElementById('pay_amount').value,
+            // In a real app, we would upload the file here
+            proof: "archivo_cargado_demo.pdf"
+        };
+
+        // Simulate Sending Notification
+        sendPaymentNotification(data);
+    });
+}
+
+function sendPaymentNotification(data) {
+    const formattedAmount = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(data.amount);
+
+    const emailSubject = `🟢 SOPORTE DE PAGO CARGADO - ${data.contractId}`;
+
+    // DRAFT PROVIDED BY USER
+    const emailBody = `
+Hola, [Nombre Beneficiario].
+
+El sistema ha recibido un comprobante de pago por valor de ${formattedAmount} correspondiente al mes de ${data.month}.
+
+📎 [VER COMPROBANTE ADJUNTO]
+
+⚠️ ACCIÓN REQUERIDA: Por favor verifique su cuenta bancaria.
+
+OPCIÓN A (Todo correcto): No necesita hacer nada. Si en 48 horas no recibimos noticias suyas, el sistema marcará este mes como PAGADO automáticamente.
+
+OPCIÓN B (No llegó el dinero): Si este recibo es falso o los fondos no entraron, tiene 48 horas para reportarlo haciendo clic en el siguiente botón rojo:
+
+🔴 [REPORTAR FRAUDE / NO PAGO] (Link simulado: /report-fraud?id=${data.contractId})
+
+Nota Legal: Pasadas 48 horas sin reporte, opera la Aceptación Tácita según Términos y Condiciones.
+    `;
+
+    console.log("--- SIMULANDO ENVÍO DE CORREO ---");
+    console.log("Asunto:", emailSubject);
+    console.log("Cuerpo:", emailBody);
+
+    alert(`
+    ✅ COMPROBANTE SUBIDO EXITOSAMENTE
+    
+    Hemos enviado la notificación al Beneficiario con la Regla de 48 Horas.
+    
+    ASUNTO: ${emailSubject}
+    
+    Estado: EN ESPERA DE VALIDACIÓN (48H)
+    `);
 }

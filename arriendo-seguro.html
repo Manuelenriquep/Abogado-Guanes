@@ -10,6 +10,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
@@ -419,9 +420,9 @@
                 <div class="input-group">
                     <label>¿Qué vas a guardar/ocupar?</label>
                     <select id="k_tipo_uso" class="input-control" required onchange="toggleServices()">
-                        <option value="vivienda">Vivienda - Hospedaje Mercantil</option>
-                        <option value="bodega">Local Comercial / Bodega (C. Comercio)</option>
-                        <option value="poliza">Póliza de Cumplimiento (Servicios/Obras)</option>
+                        <option value="vivienda_fianza">Vivienda Familiar (Fianza Digital de Arrendamiento)</option>
+                        <option value="comercio_bodega">Local Comercial / Bodega / Oficina</option>
+                        <option value="garantia_obras">Garantía de Cumplimiento (Obras y Servicios)</option>
                     </select>
                 </div>
 
@@ -529,9 +530,71 @@
         </div>
     </section>
 
+    <!-- PAYMENT REPORTING SECTION -->
+    <section id="pagos" style="background: #f8fafc; padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Gestión de Pagos Mensuales</h2>
+            <div class="app-box" style="border-top-color: var(--crypto);">
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 2rem;">
+                    <i class="fas fa-file-invoice-dollar"></i> Reportar Pago de Canon
+                </h3>
+                <form id="paymentForm">
+                    <div class="input-group">
+                        <label>ID Contrato / Referencia</label>
+                        <input type="text" id="pay_contract_id" class="input-control" placeholder="Ej: CTR-2026-001"
+                            required>
+                    </div>
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label>Mes a Pagar</label>
+                            <select id="pay_month" class="input-control" required>
+                                <option value="Enero">Enero</option>
+                                <option value="Febrero">Febrero</option>
+                                <option value="Marzo">Marzo</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Mayo">Mayo</option>
+                                <option value="Junio">Junio</option>
+                                <option value="Julio">Julio</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Septiembre">Septiembre</option>
+                                <option value="Octubre">Octubre</option>
+                                <option value="Noviembre">Noviembre</option>
+                                <option value="Diciembre">Diciembre</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Monto Pagado ($)</label>
+                            <input type="number" id="pay_amount" class="input-control" placeholder="Ej: 1500000"
+                                required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Comprobante de Transferencia (IMG/PDF)</label>
+                        <input type="file" id="pay_proof" class="input-control" accept="image/*,application/pdf"
+                            required>
+                    </div>
+
+                    <div
+                        style="background: #ecfdf5; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid #6ee7b7; font-size: 0.9rem;">
+                        <i class="fas fa-clock"></i> <strong>Regla de las 48 Horas:</strong>
+                        Al subir este comprobante, notificaremos automáticamente al Beneficiario.
+                        Si él no reporta fraude o no pago en <strong>48 horas</strong>, el sistema dará por
+                        <strong>PAGADO</strong> el mes (Aceptación Tácita).
+                    </div>
+
+                    <button type="submit" class="btn-action" style="background: var(--crypto);">
+                        <i class="fas fa-paper-plane"></i> SUBIR COMPROBANTE & NOTIFICAR
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2026 Guanes Legal Tech. Todos los derechos reservados.</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Operado con tecnología Solana Blockchain & Squads Protocol.</p>
+        <p>&copy; 2026 Manuel Enrique Prada Forero | Guanes.biz. Todos los derechos reservados.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">
+            Abogado Titulado T.P. 176.633 (C.S.J.) | Operado con tecnología Solana Blockchain & Squads Protocol.
+        </p>
     </footer>
 
     <script src="assets/js/codex-logic.js"></script>
