@@ -688,7 +688,7 @@
                         </p>
                     </div>
                     <button onclick="activarServicio('Salud')" class="radar-btn btn-vital">
-                        <i class="fas fa-file-medical"></i> INTERPONER TUTELA ($50.000)
+                        <i class="fas fa-file-medical"></i> INTERPONER TUTELA (GRATIS)
                     </button>
                 </div>
             </div>
@@ -818,7 +818,7 @@
                             valor?</strong></p>
                     <button onclick="activarServicio('Laboral')"
                         style="background: var(--brand); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Descargar
-                        Reclamación Formal ($50.000)</button>
+                        Reclamación Formal (GRATIS)</button>
                 </div>
 
                 <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 20px; text-align: justify; line-height: 1.2;">
@@ -831,7 +831,7 @@
     </section>
 
     <section class="services-section">
-        <h2 class="section-title">Nuestros Servicios ($50.000)</h2>
+        <h2 class="section-title">Nuestros Servicios (GRATIS POR 2 DÍAS)</h2>
         <div class="services-grid">
 
             <div class="service-card" onclick="activarServicio('Laboral')">
@@ -1070,8 +1070,8 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-generate btn-full" id="submitBtn"><i class="fas fa-credit-card"></i>
-                    PAGAR $50.000 Y GENERAR</button>
+                <button type="submit" class="btn-generate btn-full" id="submitBtn"><i class="fas fa-magic"></i>
+                    GENERAR DOCUMENTO (GRATIS)</button>
                 <p style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 10px;">
                     <i class="fas fa-lock"></i> Pago seguro vía Wompi (Bancolombia). Satisfacción garantizada.
                 </p>
@@ -1319,7 +1319,7 @@
                     <p class="radar-hook">${data.marketing_hook}</p>
                 </div>
                 <button onclick="activarServicio('${data.service_type}')" class="radar-btn ${colorBtn}">
-                    <i class="fas ${icono}"></i> ${accion} ($50.000)
+                    <i class="fas ${icono}"></i> ${accion} (GRATIS)
                 </button>
             `;
         }
@@ -1384,18 +1384,14 @@
             data.MarcaTemporal = new Date().toISOString();
             localStorage.setItem('datos_pendientes_guanes', JSON.stringify(data));
 
-            const referenciaUnica = 'GUANES_' + Date.now();
-            const checkout = new WidgetCheckout({
-                currency: 'COP', amountInCents: PRECIO_DOCUMENTO, reference: referenciaUnica,
-                publicKey: WOMPI_PUBLIC_KEY, redirectUrl: window.location.href
-            });
+            // BYPASS DE PAGO (GRATIS)
+            // const referenciaUnica = 'GUANES_' + Date.now();
+            // const checkout = new WidgetCheckout({ ... });
+            // checkout.open(...);
 
-            checkout.open(function (result) {
-                if (result.transaction.status === 'APPROVED') {
-                    data.Transaccion_ID = result.transaction.id;
-                    procesarGeneracion(data);
-                }
-            });
+            // SIMULACIÓN DIRECTA
+            data.Transaccion_ID = 'GRATIS_PROMO_' + Date.now();
+            procesarGeneracion(data);
         });
 
         window.onload = function () {
@@ -1446,7 +1442,7 @@
                 statusDiv.innerHTML = '<h3>⚠️ ERROR</h3><p>Pago recibido, pero falló la descarga. Contáctenos.</p>';
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> PAGAR $50.000 Y GENERAR';
+                submitBtn.innerHTML = '<i class="fas fa-magic"></i> GENERAR DOCUMENTO (GRATIS)';
             }
         }
     </script>
