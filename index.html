@@ -1377,21 +1377,98 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (typeof WidgetCheckout === 'undefined') { alert("Cargando sistema de pagos..."); return; }
+            if (typeof WidgetCheckout === 'undefined') { alert("Cargando sistema..."); return; }
 
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-            data.MarcaTemporal = new Date().toISOString();
-            localStorage.setItem('datos_pendientes_guanes', JSON.stringify(data));
+            const rawData = Object.fromEntries(formData.entries());
 
-            // BYPASS DE PAGO (GRATIS)
-            // const referenciaUnica = 'GUANES_' + Date.now();
-            // const checkout = new WidgetCheckout({ ... });
-            // checkout.open(...);
+            // --- LÓGICA V2.0: ESTRUCTURACIÓN DEL PAYLOAD ---
+            const servicioTexto = document.getElementById('servicioSelect').value;
+            let servicioID = "otros";
 
-            // SIMULACIÓN DIRECTA
-            data.Transaccion_ID = 'GRATIS_PROMO_' + Date.now();
-            procesarGeneracion(data);
+            if (servicioTexto.includes("Laboral")) servicioID = "laboral";
+            else if (servicioTexto.includes("Inmobiliarios")) servicioID = "inmuebles";
+            else if (servicioTexto.includes("Vehículos")) servicioID = "vehiculos";
+            else if (servicioTexto.includes("Fotomultas")) servicioID = "transito";
+            else if (servicioTexto.includes("Tutela")) servicioID = "salud";
+            else if (servicioTexto.includes("Cobro")) servicioID = "cobro";
+
+            // Construcción del objeto 'detalles' según el servicio
+            let detalles = {};
+            if (servicioID === "laboral") {
+                detalles = {
+                    contraparte: rawData.Contraparte, // Empleador
+                    contraparte_id: rawData.Contraparte_ID,
+                    salario: rawData.salario,
+                    fecha_inicio: rawData.fecha_inicio,
+                    fecha_fin: rawData.fecha_fin,
+                    motivo: rawData.motivo_salida
+                };
+            } else if (servicioID === "inmuebles") {
+                detalles = {
+                    contraparte: rawData.Contraparte, // Inquilino/Otro
+                    contraparte_id: rawData.Contraparte_ID,
+                    direccion_inmueble: rawData.inmueble_direccion,
+                    canon_valor: rawData.inmueble_valor,
+                    fecha_inicio: rawData.inmueble_fecha,
+                    rol_cliente: rawData.inmueble_rol,
+                    tipo_contrato: rawData.inmueble_tipo,
+                    matricula: rawData.inmueble_matricula
+                };
+            } else if (servicioID === "vehiculos") {
+                detalles = {
+                    contraparte: rawData.Contraparte,
+                    contraparte_id: rawData.Contraparte_ID,
+                    placa: rawData.vehiculo_placa,
+                    marca_modelo: `${rawData.vehiculo_marca} ${rawData.vehiculo_modelo}`,
+                    valor_venta: rawData.vehiculo_valor,
+                    rol_cliente: rawData.vehiculo_rol,
+                    motor_chasis: rawData.vehiculo_motor_chasis
+                };
+            } else if (servicioID === "transito") {
+                detalles = {
+                    organismo: rawData.Contraparte, // "Tránsito de..."
+                    placa: rawData.transito_placa,
+                    fecha_comparendo: rawData.transito_fecha,
+                    notificacion: rawData.transito_notificacion
+                };
+            } else if (servicioID === "salud" || servicioID === "cobro") {
+                detalles = {
+                    contraparte: rawData.Contraparte,
+                    contraparte_id: rawData.Contraparte_ID,
+                    hechos_pretension: rawData.Relato || rawData.salud_negacion || ("Cobro de: " + rawData.civil_monto),
+                    urgencia_riesgo: rawData.salud_riesgo,
+                    monto_deuda: rawData.civil_monto,
+                    vencimiento: rawData.civil_vencimiento
+                };
+            }
+
+            // Si hay relato adicional, lo adjuntamos
+            if (rawData.Relato && !detalles.hechos_pretension) {
+                detalles.notas_adicionales = rawData.Relato;
+            }
+
+            // PAYLOAD FINAL V2.0
+            const payload = {
+                "servicio": servicioID,
+                "cliente": {
+                    "nombre": rawData.Nombre,
+                    "cedula": rawData.ID,
+                    "email": rawData.Correo,
+                    "ciudad": rawData.Ciudad
+                },
+                "detalles": detalles,
+                "tipo_pago": "GRATIS_BETA",
+                "meta": {
+                    "timestamp": new Date().toISOString(),
+                    "ref": 'GRATIS_PROMO_' + Date.now()
+                }
+            };
+
+            localStorage.setItem('datos_pendientes_guanes', JSON.stringify(payload));
+
+            // ENVÍO DIRECTO (Bypass de Pagos)
+            procesarGeneracion(payload);
         });
 
         window.onload = function () {
