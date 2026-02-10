@@ -658,16 +658,15 @@
     <header>
         <span class="badge">✨ Oficina Virtual 24/7</span>
         <h1>GUANES <span style="color:var(--brand);">LEGAL</span></h1>
-        <p style="font-size: 1.2rem; max-width: 600px; margin: 10px auto; color: #475569;">Supervisión experta del Dr.
-            Manuel Enrique Prada Forero.</p>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 10px auto; color: #475569;">DOCUMENTOS LEGALES
+            INTELIGENTES. SIN CITAS. SIN ESPERAS. Genera tu defensa o contrato en segundos, validado por Inteligencia
+            Artificial y firmado digitalmente.</p>
 
         <div class="header-actions">
             <a href="arriendo-seguro.html" class="btn-generate">
                 Iniciar Trámite Ahora
             </a>
-            <a href="#" onclick="openBlockchainModal(event)" class="btn-generate btn-crypto">
-                <i class="fas fa-link"></i> Certificar en Blockchain
-            </a>
+
         </div>
     </header>
 
@@ -834,42 +833,27 @@
     <section class="services-section">
         <h2 class="section-title">Nuestros Servicios ($50.000)</h2>
         <div class="services-grid">
-            <a href="#" onclick="openBlockchainModal(event)" class="service-card card-blockchain"
-                style="text-decoration: none;">
-                <div class="s-icon" style="color:#10B981; background:white;"><i class="fas fa-link"></i></div>
-                <div class="s-info">
-                    <h3>Blockchain</h3>
-                    <p>Certificar Documento (0.05 SOL).</p>
-                </div>
-            </a>
-            <a href="arriendo-seguro.html" class="service-card"
-                style="text-decoration: none; border-color: var(--accent); background: #fffbeb;">
-                <div class="s-icon" style="color:var(--accent); background:white;"><i class="fas fa-home"></i></div>
-                <div class="s-info">
-                    <h3>Arriendo Seguro</h3>
-                    <p>Sin Fiador (Codex).</p>
-                </div>
-            </a>
+
             <div class="service-card" onclick="activarServicio('Laboral')">
                 <div class="s-icon" style="background:#eff6ff; color:var(--brand);"><i class="fas fa-hard-hat"></i>
                 </div>
                 <div class="s-info">
-                    <h3>Laboral</h3>
-                    <p>Liquidación, Despidos.</p>
+                    <h3>Reclamación Laboral</h3>
+                    <p>Despidos.</p>
                 </div>
             </div>
             <div class="service-card" onclick="activarServicio('Inmuebles')">
                 <div class="s-icon" style="color:#ea580c; background:#fff7ed;"><i class="fas fa-home"></i></div>
                 <div class="s-info">
-                    <h3>Inmuebles</h3>
-                    <p>Arriendos y Promesas.</p>
+                    <h3>Contratos Arriendo</h3>
+                    <p>Inmuebles.</p>
                 </div>
             </div>
             <div class="service-card" onclick="activarServicio('Vehículos')">
                 <div class="s-icon" style="color:#0891b2; background:#ecfeff;"><i class="fas fa-car"></i></div>
                 <div class="s-info">
-                    <h3>Vehículos</h3>
-                    <p>Traspasos Carro/Moto.</p>
+                    <h3>Contratos Vehículos</h3>
+                    <p>Compraventa.</p>
                 </div>
             </div>
             <div class="service-card" onclick="activarServicio('Tránsito')">
@@ -877,31 +861,25 @@
                 </div>
                 <div class="s-info">
                     <h3>Fotomultas</h3>
-                    <p>Derechos de Petición.</p>
+                    <p>Defensa Tránsito.</p>
                 </div>
             </div>
             <div class="service-card" onclick="activarServicio('Salud')">
                 <div class="s-icon" style="color:#dc2626; background:#fef2f2;"><i class="fas fa-heartbeat"></i></div>
                 <div class="s-info">
-                    <h3>Tutelas Salud</h3>
-                    <p>Medicamentos y Citas.</p>
+                    <h3>Tutelas</h3>
+                    <p>Salud.</p>
                 </div>
             </div>
             <div class="service-card" onclick="activarServicio('Cobro')">
                 <div class="s-icon" style="color:#7e22ce; background:#faf5ff;"><i class="fas fa-money-bill-wave"></i>
                 </div>
                 <div class="s-info">
-                    <h3>Cobro Deudas</h3>
-                    <p>Recuperación de Cartera.</p>
+                    <h3>Cobro de Deudas</h3>
+                    <p>Recuperación.</p>
                 </div>
             </div>
-            <div class="service-card" onclick="activarServicio('Consultoría')">
-                <div class="s-icon" style="color:#475569; background:#f1f5f9;"><i class="fas fa-gavel"></i></div>
-                <div class="s-info">
-                    <h3>Consultoría Jurídica</h3>
-                    <p>Análisis de Viabilidad.</p>
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -920,8 +898,7 @@
                         <option value="Derecho de Petición y Fotomultas">📷 Tránsito: Fotomultas / Comparendos</option>
                         <option value="Acciones de Tutela">🏥 Salud: Tutela (Medicamentos/Citas)</option>
                         <option value="Cobro Jurídico">💰 Civil: Cobro de Deudas (Cartera)</option>
-                        <option value="Concepto de Viabilidad y Análisis de Caso">⚖️ Consultoría: Concepto Jurídico
-                        </option>
+
                     </select>
                 </div>
 
@@ -1107,42 +1084,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- MODAL BLOCKCHAIN -->
-    <div id="blockchainModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <i class="fas fa-fingerprint"></i>
-            </div>
-            <h2 class="modal-title">Sello Digital Notarial</h2>
-            <p class="modal-text">
-                Está a punto de ingresar al módulo de certificación en <strong>Blockchain (Solana)</strong>.
-                Esta herramienta le permite crear pruebas digitales inalterables.
-            </p>
 
-            <div class="modal-benefits">
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><strong>Inmutable:</strong> Nadie puede modificar el documento o la fecha de registro.</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><strong>Económico:</strong> Costo aproximado por registro: <strong>0.05 SOL</strong> (~$4
-                        USD).</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><strong>Permanente:</strong> Su prueba existirá mientras exista Internet.</span>
-                </div>
-            </div>
-
-            <div class="modal-actions">
-                <button onclick="closeBlockchainModal()" class="btn-modal-cancel">Cancelar</button>
-                <button onclick="proceedToDapp()" class="btn-modal-confirm">
-                    Continuar a Sello <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <footer
         style="background: #0f172a; color: #cbd5e1; padding: 3rem 1rem; margin-top: 4rem; border-top: 6px solid #2563EB;">
@@ -1183,19 +1125,7 @@
         // ==========================================
         // 0. MODAL BLOCKCHAIN
         // ==========================================
-        function openBlockchainModal(e) {
-            e.preventDefault();
-            document.getElementById('blockchainModal').classList.add('active');
-        }
 
-        function closeBlockchainModal() {
-            document.getElementById('blockchainModal').classList.remove('active');
-        }
-
-        function proceedToDapp() {
-            window.open('https://sello.guanes.biz', '_blank');
-            closeBlockchainModal();
-        }
 
         function copyWallet() {
             const wallet = document.getElementById('walletAddress').innerText;
@@ -1292,8 +1222,8 @@
 
             try {
                 // 1. REVISAR QUÉ TENEMOS EN BODEGA
-                let vitalGuardada = JSON.parse(localStorage.getItem('guanes_vital_promo'));
-                let patrimonioGuardado = JSON.parse(localStorage.getItem('guanes_patrimonio_promo'));
+                let vitalGuardada = JSON.parse(localStorage.getItem('guanes_vital_promo_v2'));
+                let patrimonioGuardado = JSON.parse(localStorage.getItem('guanes_patrimonio_promo_v2'));
                 const ahora = Date.now();
 
                 // 2. VERIFICAR VIGENCIA
@@ -1322,13 +1252,13 @@
                     }
 
                     // 4. DECISIÓN: REEMPLAZAR O MANTENER
-                    const tipo = data.service_type || "Consultoría";
+                    const tipo = data.service_type || "Tránsito";
 
                     // VITAL (Izquierda)
                     if (!mostrarVital) {
                         if (tipo.includes("Laboral") || tipo.includes("Salud") || tipo.includes("Pensión")) {
                             const nuevaPromo = { data: data, timestamp: Date.now() };
-                            localStorage.setItem('guanes_vital_promo', JSON.stringify(nuevaPromo));
+                            localStorage.setItem('guanes_vital_promo_v2', JSON.stringify(nuevaPromo));
                             mostrarVital = data;
                         } else {
                             // NOTICIA POR DEFECTO (EPS) - Fallback
@@ -1345,7 +1275,7 @@
                     if (!mostrarPatrimonio) {
                         if (tipo.includes("Tránsito") || tipo.includes("Inmuebles") || tipo.includes("Cobro") || tipo.includes("Civil")) {
                             const nuevaPromo = { data: data, timestamp: Date.now() };
-                            localStorage.setItem('guanes_patrimonio_promo', JSON.stringify(nuevaPromo));
+                            localStorage.setItem('guanes_patrimonio_promo_v2', JSON.stringify(nuevaPromo));
                             mostrarPatrimonio = data;
                         } else {
                             mostrarPatrimonio = {
