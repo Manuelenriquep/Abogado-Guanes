@@ -884,200 +884,240 @@
     </section>
 
     <section id="app-generator">
-        <div class="app-box">
-            <h2 style="text-align:center; color:var(--primary); margin-bottom: 2rem;">Radicación de Caso</h2>
-            <form id="legalForm">
-                <div class="input-group">
-                    <label style="color: var(--brand);">Seleccione el Trámite:</label>
-                    <select class="input-control" name="Menu" id="servicioSelect" onchange="toggleFields()" required
-                        style="background: #eff6ff; border-color: var(--brand); font-weight: 600;">
-                        <option value="" disabled selected>👇 Seleccione aquí...</option>
-                        <option value="Liquidación y Demandas Laborales">👷‍♂️ Laboral: Liquidación / Despido</option>
-                        <option value="Contratos Inmobiliarios">🏠 Inmuebles: Arriendo / Compraventa Casa</option>
-                        <option value="Compraventa Vehículos">🚗 Vehículos: Compraventa Carro/Moto</option>
-                        <option value="Derecho de Petición y Fotomultas">📷 Tránsito: Fotomultas / Comparendos</option>
-                        <option value="Acciones de Tutela">🏥 Salud: Tutela (Medicamentos/Citas)</option>
-                        <option value="Cobro Jurídico">💰 Civil: Cobro de Deudas (Cartera)</option>
+        <style>
+            /* ESTILO MINIMALISTA SERIO */
+            .form-container {
+                background: #f9f9f9;
+                padding: 25px;
+                border-radius: 8px;
+                border: 1px solid #ddd;
+                font-family: 'Helvetica', sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+            }
 
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 5px;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+                box-sizing: border-box;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            /* Clase para ocultar secciones */
+
+            .btn-generar {
+                background-color: #27ae60;
+                color: white;
+                border: none;
+                padding: 15px;
+                width: 100%;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-top: 10px;
+            }
+
+            .btn-generar:hover {
+                background-color: #219150;
+            }
+
+            .aviso {
+                font-size: 11px;
+                color: #777;
+                margin-top: 10px;
+                text-align: center;
+            }
+        </style>
+
+        <div class="form-container">
+            <h3 style="color:#2c3e50; text-align:center;">Generador de Documentos Legales IA</h3>
+
+            <form id="legalForm">
+
+                <div class="form-group">
+                    <label>¿Qué documento necesita hoy?</label>
+                    <select id="servicioSelector" required onchange="cambiarFormulario()">
+                        <option value="" disabled selected>-- Seleccione una opción --</option>
+                        <option value="transito">🚗 Fotomultas / Tránsito</option>
+                        <option value="laboral">💼 Liquidación Laboral / Despido</option>
+                        <option value="inmuebles">🏠 Contrato de Arriendo</option>
+                        <option value="vehiculos">🚙 Compraventa de Vehículo</option>
+                        <option value="salud">🏥 Acción de Tutela (Salud)</option>
+                        <option value="cobro">💸 Cobro de Deuda</option>
                     </select>
                 </div>
 
-                <div class="highlight-box" style="border: 1px dashed #cbd5e1; background: #f8fafc;">
-                    <h4 style="margin-top:0; color:#64748b;">👤 Datos del Cliente (Quien contrata)</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Nombre Completo:</label><input type="text" class="input-control"
-                                name="Nombre" required></div>
-                        <div class="input-group"><label>Cédula / NIT:</label><input type="text" class="input-control"
-                                name="ID" required></div>
+                <div class="form-group">
+                    <label>Su Nombre Completo</label>
+                    <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Su Cédula</label>
+                    <input type="text" id="cedula" placeholder="Ej: 12345678" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico (Aquí llegará el PDF)</label>
+                    <input type="email" id="email" placeholder="juan@email.com" required>
+                </div>
+
+                <div id="campos-transito" class="hidden">
+                    <div class="form-group"><label>Placa del Vehículo</label><input type="text" id="t_placa"
+                            placeholder="Ej: ABC-123"></div>
+                    <div class="form-group"><label>Organismo de Tránsito</label><input type="text" id="t_organismo"
+                            placeholder="Ej: Medellín, Bogotá"></div>
+                    <div class="form-group"><label>Fecha del Comparendo</label><input type="date" id="t_fecha"></div>
+                </div>
+
+                <div id="campos-laboral" class="hidden">
+                    <div class="form-group"><label>Nombre de la Empresa</label><input type="text" id="l_empresa"
+                            placeholder="Ej: Soluciones SAS"></div>
+                    <div class="form-group"><label>Salario Mensual</label><input type="number" id="l_salario"
+                            placeholder="Ej: 1500000"></div>
+                    <div class="form-group"><label>Motivo de Salida</label>
+                        <select id="l_motivo">
+                            <option value="Despido Sin Justa Causa">Despido Sin Justa Causa</option>
+                            <option value="Renuncia">Renuncia Voluntaria</option>
+                            <option value="Terminación Contrato">Terminación de Contrato</option>
+                        </select>
                     </div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Email:</label><input type="email" class="input-control"
-                                name="Correo" required></div>
-                        <div class="input-group"><label>Ciudad:</label><input type="text" class="input-control"
-                                name="Ciudad" required></div>
+                    <div class="form-group"><label>Fecha Inicio</label><input type="date" id="l_inicio"></div>
+                    <div class="form-group"><label>Fecha Fin</label><input type="date" id="l_fin"></div>
+                </div>
+
+                <div id="campos-inmuebles" class="hidden">
+                    <div class="form-group"><label>Dirección del Inmueble</label><input type="text" id="i_direccion"
+                            placeholder="Ej: Calle 10 # 5-20"></div>
+                    <div class="form-group"><label>Valor del Canon</label><input type="number" id="i_canon"
+                            placeholder="Ej: 800000"></div>
+                    <div class="form-group"><label>Nombre del Inquilino</label><input type="text" id="i_inquilino">
                     </div>
                 </div>
 
-                <div class="highlight-box" style="border: 1px dashed #f87171; background: #fef2f2;">
-                    <h4 style="margin-top:0; color:#b91c1c;">⚖️ Datos de la Contraparte</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Nombre Contraparte:</label><input type="text"
-                                class="input-control" name="Contraparte" placeholder="Empresa, Persona o Entidad"
-                                required></div>
-                        <div class="input-group"><label>Cédula / NIT Contraparte:</label><input type="text"
-                                class="input-control" name="Contraparte_ID"
-                                placeholder="Obligatorio para Contratos/Demandas" required></div>
-                    </div>
+                <div id="campos-genericos" class="hidden">
+                    <div class="form-group"><label>Contraparte (A quién demandamos/cobramos)</label><input type="text"
+                            id="g_contraparte"></div>
+                    <div class="form-group"><label>Describa los Hechos (Brevemente)</label><textarea id="g_hechos"
+                            rows="3"></textarea></div>
                 </div>
 
-                <hr style="border:0; border-top:1px solid #e2e8f0; margin:2rem 0;">
-
-                <div id="camposLaborales" class="hidden highlight-box theme-laboral">
-                    <h4 style="color:var(--brand);"><i class="fas fa-briefcase"></i> Detalle Laboral</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Fecha Ingreso:</label><input type="date" class="input-control"
-                                name="fecha_inicio"></div>
-                        <div class="input-group"><label>Fecha Retiro:</label><input type="date" class="input-control"
-                                name="fecha_fin"></div>
-                    </div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Salario ($):</label><input type="number" class="input-control"
-                                name="salario"></div>
-                        <div class="input-group"><label>Motivo:</label><select class="input-control"
-                                name="motivo_salida">
-                                <option value="Despido Sin Justa Causa">Despido Injusto</option>
-                                <option value="Renuncia Voluntaria">Renuncia</option>
-                                <option value="Terminación de Contrato">Fin de Contrato</option>
-                                <option value="Despido Con Justa Causa">Despido Justo</option>
-                            </select></div>
-                    </div>
-                </div>
-
-                <div id="camposInmuebles" class="hidden highlight-box theme-inmuebles">
-                    <h4 style="color:#ea580c;"><i class="fas fa-home"></i> Detalle del Contrato</h4>
-                    <div class="input-group"><label>¿Cuál es su ROL?</label><select class="input-control"
-                            name="inmueble_rol">
-                            <option value="Soy el ARRENDADOR (Dueño)">Soy el ARRENDADOR (Dueño/Propietario)</option>
-                            <option value="Soy el ARRENDATARIO (Inquilino)">Soy el ARRENDATARIO (Inquilino)</option>
-                            <option value="Soy el VENDEDOR">Soy el VENDEDOR (Promesa de Venta)</option>
-                            <option value="Soy el COMPRADOR">Soy el COMPRADOR (Promesa de Venta)</option>
-                        </select></div>
-                    <div class="input-group"><label>Tipo Contrato:</label><select class="input-control"
-                            name="inmueble_tipo">
-                            <option>Contrato de Arrendamiento</option>
-                            <option>Promesa de Compraventa</option>
-                        </select></div>
-                    <div class="input-group"><label>Dirección Exacta del Inmueble:</label><input type="text"
-                            class="input-control" name="inmueble_direccion"></div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Valor Canon / Venta ($):</label><input type="number"
-                                class="input-control" name="inmueble_valor"></div>
-                        <div class="input-group"><label>Matrícula Inmobiliaria:</label><input type="text"
-                                class="input-control" name="inmueble_matricula"></div>
-                    </div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Ficha Catastral (Opcional Arriendo):</label><input type="text"
-                                class="input-control" name="inmueble_catastral"></div>
-                        <div class="input-group"><label>Fecha Inicio / Entrega:</label><input type="date"
-                                class="input-control" name="inmueble_fecha"></div>
-                    </div>
-                    <div class="input-group"><label>Si es Venta: ¿Dónde y Cuándo se firma Escritura?</label>
-                        <div class="grid-2"><input type="text" class="input-control" name="inmueble_notaria"
-                                placeholder="Ej: Notaría 5 de Bucaramanga"><input type="date" class="input-control"
-                                name="inmueble_fecha_escritura"></div>
-                    </div>
-                    <div class="input-group"><label>Uso del Inmueble:</label><select class="input-control"
-                            name="inmueble_uso">
-                            <option>Vivienda Urbana</option>
-                            <option>Comercial</option>
-                            <option>Oficina</option>
-                        </select></div>
-                </div>
-
-                <div id="camposVehiculos" class="hidden highlight-box theme-vehiculos">
-                    <h4 style="color:#0891b2;"><i class="fas fa-car"></i> Detalle Vehículo</h4>
-                    <div class="input-group"><label>¿Usted Vende o Compra?</label><select class="input-control"
-                            name="vehiculo_rol">
-                            <option value="Soy el VENDEDOR">Soy el VENDEDOR</option>
-                            <option value="Soy el COMPRADOR">Soy el COMPRADOR</option>
-                        </select></div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Placa:</label><input type="text" class="input-control"
-                                name="vehiculo_placa" style="text-transform:uppercase;"></div>
-                        <div class="input-group"><label>Valor Negocio ($):</label><input type="number"
-                                class="input-control" name="vehiculo_valor"></div>
-                    </div>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Marca:</label><input type="text" class="input-control"
-                                name="vehiculo_marca"></div>
-                        <div class="input-group"><label>Modelo (Año):</label><input type="text" class="input-control"
-                                name="vehiculo_modelo"></div>
-                    </div>
-                    <div class="input-group"><label>No. Motor / Chasis (Recomendado):</label><input type="text"
-                            class="input-control" name="vehiculo_motor_chasis"></div>
-                    <div class="input-group"><label>Gastos Traspaso:</label><select class="input-control"
-                            name="vehiculo_traspaso">
-                            <option>50/50</option>
-                            <option>Comprador</option>
-                            <option>Vendedor</option>
-                        </select></div>
-                </div>
-
-                <div id="camposTransito" class="hidden highlight-box theme-transito">
-                    <h4 style="color:#166534;"><i class="fas fa-traffic-light"></i> Datos Comparendo</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Placa:</label><input type="text" class="input-control"
-                                name="transito_placa"></div>
-                        <div class="input-group"><label>Fecha:</label><input type="date" class="input-control"
-                                name="transito_fecha"></div>
-                    </div>
-                    <div class="input-group"><label>Notificación:</label><select class="input-control"
-                            name="transito_notificacion">
-                            <option>NO me notificaron</option>
-                            <option>SI me notificaron</option>
-                        </select></div>
-                </div>
-
-                <div id="camposSalud" class="hidden highlight-box theme-salud">
-                    <h4 style="color:#dc2626;"><i class="fas fa-heartbeat"></i> Datos Tutela</h4>
-                    <div class="input-group"><label>Hechos (Qué niegan):</label><input type="text" class="input-control"
-                            name="salud_negacion"></div>
-                    <div class="input-group"><label>Urgencia:</label><select class="input-control" name="salud_riesgo">
-                            <option>Urgencia Vital</option>
-                            <option>Calidad de Vida</option>
-                            <option>Administrativo</option>
-                        </select></div>
-                </div>
-
-                <div id="camposCivil" class="hidden highlight-box theme-civil">
-                    <h4 style="color:#7e22ce;"><i class="fas fa-money-bill-wave"></i> Datos Deuda</h4>
-                    <div class="grid-2">
-                        <div class="input-group"><label>Soporte:</label><select class="input-control" name="civil_tipo">
-                                <option>Letra de Cambio</option>
-                                <option>Factura</option>
-                                <option>Verbal</option>
-                            </select></div>
-                        <div class="input-group"><label>Vencimiento:</label><input type="date" class="input-control"
-                                name="civil_vencimiento"></div>
-                    </div>
-                    <div class="input-group"><label>Monto ($):</label><input type="number" class="input-control"
-                            name="civil_monto"></div>
-                </div>
-
-                <div id="campoRelato">
-                    <div class="input-group"><label>Detalles Adicionales:</label><textarea class="input-control"
-                            name="Relato" style="min-height: 100px;" placeholder="Cualquier otro detalle..."></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-generate btn-full" id="submitBtn"><i class="fas fa-magic"></i>
-                    GENERAR DOCUMENTO (GRATIS)</button>
-                <p style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 10px;">
-                    <i class="fas fa-lock"></i> Pago seguro vía Wompi (Bancolombia). Satisfacción garantizada.
-                </p>
+                <button type="submit" class="btn-generar">GENERAR DOCUMENTO GRATIS ⚡</button>
+                <p class="aviso">Versión Beta Gratuita - Dr. Manuel Prada</p>
             </form>
-            <div id="statusMessage"></div>
         </div>
+
+        <script>
+            const WEBHOOK_PRODUCCION = "https://n8n-production-612f.up.railway.app/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810";
+
+            // 1. CAMBIAR CAMPOS SEGÚN SELECCIÓN
+            function cambiarFormulario() {
+                const servicio = document.getElementById('servicioSelector').value;
+
+                // Ocultar todo primero
+                document.getElementById('campos-transito').classList.add('hidden');
+                document.getElementById('campos-laboral').classList.add('hidden');
+                document.getElementById('campos-inmuebles').classList.add('hidden');
+                document.getElementById('campos-genericos').classList.add('hidden');
+
+                // Mostrar el correcto
+                if (servicio === 'transito') document.getElementById('campos-transito').classList.remove('hidden');
+                else if (servicio === 'laboral') document.getElementById('campos-laboral').classList.remove('hidden');
+                else if (servicio === 'inmuebles') document.getElementById('campos-inmuebles').classList.remove('hidden');
+                else document.getElementById('campos-genericos').classList.remove('hidden'); // Para salud, cobro, vehiculos
+            }
+
+            // 2. ENVIAR DATOS A N8N
+            document.getElementById('legalForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = document.querySelector('.btn-generar');
+                btn.innerHTML = "⏳ Redactando con IA... (Espere)";
+                btn.disabled = true;
+
+                // Recoger datos básicos
+                const data = {
+                    servicio: document.getElementById('servicioSelector').value,
+                    cliente: {
+                        nombre: document.getElementById('nombre').value,
+                        cedula: document.getElementById('cedula').value,
+                        email: document.getElementById('email').value
+                    },
+                    detalles: {}
+                };
+
+                // Recoger detalles según servicio
+                if (data.servicio === 'transito') {
+                    data.detalles.placa = document.getElementById('t_placa').value;
+                    data.detalles.organismo = document.getElementById('t_organismo').value;
+                    data.detalles.fecha_comparendo = document.getElementById('t_fecha').value;
+                } else if (data.servicio === 'laboral') {
+                    data.detalles.contraparte = document.getElementById('l_empresa').value;
+                    data.detalles.salario = document.getElementById('l_salario').value;
+                    data.detalles.motivo = document.getElementById('l_motivo').value;
+                    data.detalles.fecha_inicio = document.getElementById('l_inicio').value;
+                    data.detalles.fecha_fin = document.getElementById('l_fin').value;
+                } else if (data.servicio === 'inmuebles') {
+                    data.detalles.direccion_inmueble = document.getElementById('i_direccion').value;
+                    data.detalles.canon_valor = document.getElementById('i_canon').value;
+                    data.detalles.tipo_contrato = "Vivienda Urbana";
+                } else {
+                    // Genéricos
+                    data.detalles.contraparte = document.getElementById('g_contraparte').value;
+                    data.detalles.hechos_pretension = document.getElementById('g_hechos').value;
+                }
+
+                // ENVIAR AL WEBHOOK DE N8N (Producción)
+                try {
+                    const response = await fetch(WEBHOOK_PRODUCCION, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        // Descargar PDF (el blob)
+                        const blob = await response.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `Documento_Legal_${data.servicio}.pdf`;
+                        document.body.appendChild(a);
+                        a.click();
+                        btn.innerHTML = "✅ ¡Documento Descargado!";
+                        setTimeout(() => { btn.innerHTML = "GENERAR DOCUMENTO GRATIS ⚡"; btn.disabled = false; }, 3000);
+                    } else {
+                        // Intentar leer error
+                        const errorText = await response.text();
+                        alert(`Error al conectar: ${response.status} - ${errorText}`);
+                        btn.disabled = false;
+                        btn.innerHTML = "GENERAR DOCUMENTO GRATIS ⚡";
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert("Error de conexión. Verifique su internet.");
+                    btn.disabled = false;
+                    btn.innerHTML = "GENERAR DOCUMENTO GRATIS ⚡";
+                }
+            });
+        </script>
     </section>
 
     <a href="https://wa.me/573000000000" class="float-wa" target="_blank">
