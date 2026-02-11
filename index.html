@@ -734,11 +734,11 @@
                 <p style="color: #64748b;">¿Lo despidieron o renunció? Calcule el valor legal en segundos.</p>
             </div>
 
-            <form id="laborForm" class="no-print">
+            <form id="laborForm" class="no-print" onsubmit="event.preventDefault(); puenteCalculadora();">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div>
                         <label>Salario Mensual ($)</label>
-                        <input type="number" id="lab_salario" class="input-control" placeholder="Ej: 1300000" required
+                        <input type="number" id="calc_salario" class="input-control" placeholder="Ej: 1300000" required
                             style="width:100%; padding:10px;">
                         <p style="font-size: 0.75rem; color: #64748b; margin-top: 5px; line-height: 1.2;">
                             <i class="fas fa-info-circle"></i> Ingrese solo el <strong>Salario Básico</strong>.
@@ -746,20 +746,20 @@
                     </div>
 
                     <div><label>Motivo Salida</label>
-                        <select id="lab_motivo" class="input-control" required style="width:100%; padding:10px;">
-                            <option value="renuncia">Renuncia Voluntaria / Fin Contrato</option>
-                            <option value="despido_injusto">Despido SIN Justa Causa</option>
-                            <option value="justa_causa">Despido CON Justa Causa</option>
+                        <select id="calc_motivo" class="input-control" required style="width:100%; padding:10px;">
+                            <option value="Renuncia">Renuncia Voluntaria / Fin Contrato</option>
+                            <option value="Despido Sin Justa Causa">Despido SIN Justa Causa</option>
+                            <option value="Terminación Contrato">Terminación de Contrato</option>
                         </select>
                     </div>
-                    <div><label>Fecha Inicio</label><input type="date" id="lab_inicio" class="input-control" required
+                    <div><label>Fecha Inicio</label><input type="date" id="calc_inicio" class="input-control" required
                             style="width:100%; padding:10px;"></div>
-                    <div><label>Fecha Fin</label><input type="date" id="lab_fin" class="input-control" required
+                    <div><label>Fecha Fin</label><input type="date" id="calc_fin" class="input-control" required
                             style="width:100%; padding:10px;"></div>
                 </div>
-                <button type="submit"
+                <button type="submit" class="btn-calcular"
                     style="width: 100%; margin-top: 20px; background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 1rem;">
-                    <i class="fas fa-calculator"></i> CALCULAR LIQUIDACIÓN
+                    CALCULAR Y GENERAR DOCUMENTO ⬇️
                 </button>
             </form>
 
@@ -1211,7 +1211,42 @@
 
     <script>
         // ==========================================
-        // 0. MODAL BLOCKCHAIN
+        // 0. PUENTE DE DATOS (CALCULADORA -> FORM)
+        // ==========================================
+        function puenteCalculadora() {
+            // 1. Capturar valores de la calculadora
+            const salario = document.getElementById('calc_salario').value;
+            const motivo = document.getElementById('calc_motivo').value;
+            const inicio = document.getElementById('calc_inicio').value;
+            const fin = document.getElementById('calc_fin').value;
+
+            // 2. Validación básica
+            if (!salario) {
+                alert("Por favor ingresa un salario para calcular.");
+                return;
+            }
+
+            // 3. TELETRANSPORTACIÓN: Ir al formulario y activar modo 'Laboral'
+            irDirectoAlServicio('laboral');
+
+            // 4. INYECCIÓN DE DATOS con delay
+            setTimeout(() => {
+                document.getElementById('l_salario').value = salario;
+                document.getElementById('l_motivo').value = motivo;
+                document.getElementById('l_inicio').value = inicio;
+                document.getElementById('l_fin').value = fin;
+
+                // 5. EFECTO VISUAL
+                const campoSalario = document.getElementById('l_salario');
+                campoSalario.style.transition = "all 0.5s";
+                campoSalario.style.boxShadow = "0 0 10px #27ae60";
+
+                document.getElementById('nombre').focus();
+            }, 400);
+        }
+
+        // ==========================================
+        // 0.1 MODAL BLOCKCHAIN
         // ==========================================
 
         function copyWallet() {
