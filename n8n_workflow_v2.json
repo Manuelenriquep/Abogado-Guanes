@@ -1,226 +1,532 @@
 {
-  "name": "Guanes LegalTech V2.0 (Logic)",
-  "nodes": [
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "cb4edfe2-eaea-47dd-8f97-22afccd72810",
-        "responseMode": "responseNode",
-        "options": {}
-      },
-      "id": "webhook-trigger",
-      "name": "Webhook Entrada",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 1,
-      "position": [460, 460]
-    },
-    {
-      "parameters": {
-        "jsCode": "const input = items[0].json;\nconst servicio = input.servicio || \"otros\";\nconst detalles = input.detalles || {};\nlet resumen = \"\";\n\nif (servicio === 'laboral') {\n  resumen = `El cliente trabajó en ${detalles.contraparte} con un salario de ${detalles.salario}. Fecha Inicio: ${detalles.fecha_inicio}, Fecha Fin: ${detalles.fecha_fin}. Motivo de salida: ${detalles.motivo}.`;\n} else if (servicio === 'transito') {\n  resumen = `Solicitud de nulidad de fotomulta (Placa: ${detalles.placa}) impuesta por el tránsito de ${detalles.organismo} el día ${detalles.fecha_comparendo}. Notificación: ${detalles.notificacion}.`;\n} else if (servicio === 'inmuebles') {\n  resumen = `Contrato de ${detalles.tipo_contrato} de inmueble en ${detalles.direccion_inmueble}. Canon/Valor: ${detalles.canon_valor}. Rol del cliente: ${detalles.rol_cliente}.`;\n} else if (servicio === 'vehiculos') {\n  resumen = `Compraventa de vehículo placa ${detalles.placa} (${detalles.marca_modelo}). Valor: ${detalles.valor_venta}. Rol del cliente: ${detalles.rol_cliente}.`;\n} else if (servicio === 'salud') {\n  resumen = `Acción de Tutela contra ${detalles.contraparte} por ${detalles.hechos_pretension}. Nivel de urgencia/riesgo: ${detalles.urgencia_riesgo}.`;\n} else if (servicio === 'cobro') {\n  resumen = `Cobro de deuda a ${detalles.contraparte} por valor de ${detalles.monto_deuda}. Vencimiento: ${detalles.vencimiento}. Hechos: ${detalles.hechos_pretension}.`;\n}\n\nreturn {\n  json: {\n    ...input,\n    resumen_caso: resumen\n  }\n};"
-      },
-      "id": "traductor-code",
-      "name": "Traductor V2.0",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [680, 460]
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 }, "conditions": [{ "leftValue": "={{ $json.servicio }}", "rightValue": "laboral", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "Laboral" },
-            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 }, "conditions": [{ "leftValue": "={{ $json.servicio }}", "rightValue": "transito", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "Transito" },
-            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 }, "conditions": [{ "leftValue": "={{ $json.servicio }}", "rightValue": "inmuebles", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "Inmuebles" },
-            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 }, "conditions": [{ "leftValue": "={{ $json.servicio }}", "rightValue": "vehiculos", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "Vehiculos" },
-            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 }, "conditions": [{ "leftValue": "={{ $json.servicio }}", "rightValue": "salud", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "Salud" },
-            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 }, "conditions": [{ "leftValue": "={{ $json.servicio }}", "rightValue": "cobro", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "Cobro" }
-          ]
-        }
-      },
-      "id": "switch-router",
-      "name": "Enrutador Servicio",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3,
-      "position": [900, 460]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "contents",
-              "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO LABORALISTA. Redacta una reclamación laboral (Liquidación/Despido) basada en: \" + $json.resumen_caso + \". Usa normativa colombiana (CST). Formato HTML.\" } ] } ] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "agent-laboral",
-      "name": "Agente Laboral (Gemini)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [1180, 200]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "contents",
-              "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO DE TRÁNSITO. Redacta derecho de petición para NULIDAD de fotomulta. CASO: \" + $json.resumen_caso + \". Aplica sentencia C-038 de 2020. Formato HTML.\" } ] } ] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "agent-transito",
-      "name": "Agente Tránsito (Gemini)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [1180, 400]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "contents",
-              "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO INMOBILIARIO. Redacta contrato de inmueble (\" + $json.detalles.tipo_contrato + \") según Ley 820 de 2003. CASO: \" + $json.resumen_caso + \". Formato HTML.\" } ] } ] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "agent-inmuebles",
-      "name": "Agente Inmuebles (Gemini)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [1180, 600]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "contents",
-              "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO CIVIL. Redacta contrato de compraventa de vehículo. CASO: \" + $json.resumen_caso + \". Incluye cláusulas de saneamiento y tradición. Formato HTML.\" } ] } ] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "agent-vehiculos",
-      "name": "Agente Vehículos (Gemini)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [1180, 800]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "contents",
-              "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO CONSTITUCIONALISTA. Redacta Acción de Tutela (Salud). HECHOS: \" + $json.resumen_caso + \". Invoca derecho a la salud y vida y continuidad del tratamiento. Formato HTML.\" } ] } ] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "agent-salud",
-      "name": "Agente Salud (Gemini)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [1180, 1000]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "contents",
-              "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO DE COBRANZAS. Redacta cobro prejurídico persuasivo. DEUDA: \" + $json.resumen_caso + \". Advierte reporte a centrales y costas procesales. Formato HTML.\" } ] } ] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "agent-cobro",
-      "name": "Agente Cobro (Gemini)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [1180, 1200]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.pdfshift.io/v3/convert/pdf",
-        "sendHeaders": true,
-        "headerParameters": { "parameters": [{ "name": "x-api-key", "value": "sk_53246c4d93c016f2a26850ad125ace3d336b6dd0" }] },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "source",
-              "value": "=<!DOCTYPE html><html><body><div style='font-family:sans-serif; padding:40px;'>{{ $json.candidates[0].content.parts[0].text }}</div><div style='text-align:center; color:#888; margin-top:50px;'>Generado por Guanes LegalTech</div></body></html>"
+    "name": "Guanes LegalTech V2.0 (Logic)",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "cb4edfe2-eaea-47dd-8f97-22afccd72810",
+                "responseMode": "responseNode",
+                "options": {}
             },
-            { "name": "sandbox", "value": "false" }
-          ]
+            "id": "webhook-trigger",
+            "name": "Webhook Entrada",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                460,
+                460
+            ]
         },
-        "options": {}
-      },
-      "id": "pdfshift-node",
-      "name": "PDFShift",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [1500, 600]
-    },
-    {
-      "parameters": { "respondWith": "binary", "options": {} },
-      "id": "response-node",
-      "name": "Responder PDF",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1,
-      "position": [1750, 600]
+        {
+            "parameters": {
+                "jsCode": "const input = items[0].json;\nconst servicio = input.servicio || \"otros\";\nconst detalles = input.detalles || {};\nlet resumen = \"\";\n\nif (servicio === 'laboral') {\n  resumen = `El cliente trabajó en ${detalles.contraparte} con un salario de ${detalles.salario}. Fecha Inicio: ${detalles.fecha_inicio}, Fecha Fin: ${detalles.fecha_fin}. Motivo de salida: ${detalles.motivo}.`;\n} else if (servicio === 'transito') {\n  resumen = `Solicitud de nulidad de fotomulta (Placa: ${detalles.placa}) impuesta por el tránsito de ${detalles.organismo} el día ${detalles.fecha_comparendo}. Notificación: ${detalles.notificacion}.`;\n} else if (servicio === 'inmuebles') {\n  resumen = `Contrato de ${detalles.tipo_contrato} de inmueble en ${detalles.direccion_inmueble}. Canon/Valor: ${detalles.canon_valor}. Rol del cliente: ${detalles.rol_cliente}.`;\n} else if (servicio === 'vehiculos') {\n  resumen = `Compraventa de vehículo placa ${detalles.placa} (${detalles.marca_modelo}). Valor: ${detalles.valor_venta}. Rol del cliente: ${detalles.rol_cliente}.`;\n} else if (servicio === 'salud') {\n  resumen = `Acción de Tutela contra ${detalles.contraparte} por ${detalles.hechos_pretension}. Nivel de urgencia/riesgo: ${detalles.urgencia_riesgo}.`;\n} else if (servicio === 'cobro') {\n  resumen = `Cobro de deuda a ${detalles.contraparte} por valor de ${detalles.monto_deuda}. Vencimiento: ${detalles.vencimiento}. Hechos: ${detalles.hechos_pretension}.`;\n}\n\nreturn {\n  json: {\n    ...input,\n    resumen_caso: resumen\n  }\n};"
+            },
+            "id": "traductor-code",
+            "name": "Traductor V2.0",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                680,
+                460
+            ]
+        },
+        {
+            "parameters": {
+                "rules": {
+                    "values": [
+                        {
+                            "conditions": {
+                                "options": {
+                                    "caseSensitive": true,
+                                    "leftValue": "",
+                                    "typeValidation": "strict",
+                                    "version": 2
+                                },
+                                "conditions": [
+                                    {
+                                        "leftValue": "={{ $json.servicio }}",
+                                        "rightValue": "laboral",
+                                        "operator": {
+                                            "type": "string",
+                                            "operation": "equals"
+                                        }
+                                    }
+                                ],
+                                "combinator": "and"
+                            },
+                            "renameOutput": true,
+                            "outputKey": "Laboral"
+                        },
+                        {
+                            "conditions": {
+                                "options": {
+                                    "caseSensitive": true,
+                                    "leftValue": "",
+                                    "typeValidation": "strict",
+                                    "version": 2
+                                },
+                                "conditions": [
+                                    {
+                                        "leftValue": "={{ $json.servicio }}",
+                                        "rightValue": "transito",
+                                        "operator": {
+                                            "type": "string",
+                                            "operation": "equals"
+                                        }
+                                    }
+                                ],
+                                "combinator": "and"
+                            },
+                            "renameOutput": true,
+                            "outputKey": "Transito"
+                        },
+                        {
+                            "conditions": {
+                                "options": {
+                                    "caseSensitive": true,
+                                    "leftValue": "",
+                                    "typeValidation": "strict",
+                                    "version": 2
+                                },
+                                "conditions": [
+                                    {
+                                        "leftValue": "={{ $json.servicio }}",
+                                        "rightValue": "inmuebles",
+                                        "operator": {
+                                            "type": "string",
+                                            "operation": "equals"
+                                        }
+                                    }
+                                ],
+                                "combinator": "and"
+                            },
+                            "renameOutput": true,
+                            "outputKey": "Inmuebles"
+                        },
+                        {
+                            "conditions": {
+                                "options": {
+                                    "caseSensitive": true,
+                                    "leftValue": "",
+                                    "typeValidation": "strict",
+                                    "version": 2
+                                },
+                                "conditions": [
+                                    {
+                                        "leftValue": "={{ $json.servicio }}",
+                                        "rightValue": "vehiculos",
+                                        "operator": {
+                                            "type": "string",
+                                            "operation": "equals"
+                                        }
+                                    }
+                                ],
+                                "combinator": "and"
+                            },
+                            "renameOutput": true,
+                            "outputKey": "Vehiculos"
+                        },
+                        {
+                            "conditions": {
+                                "options": {
+                                    "caseSensitive": true,
+                                    "leftValue": "",
+                                    "typeValidation": "strict",
+                                    "version": 2
+                                },
+                                "conditions": [
+                                    {
+                                        "leftValue": "={{ $json.servicio }}",
+                                        "rightValue": "salud",
+                                        "operator": {
+                                            "type": "string",
+                                            "operation": "equals"
+                                        }
+                                    }
+                                ],
+                                "combinator": "and"
+                            },
+                            "renameOutput": true,
+                            "outputKey": "Salud"
+                        },
+                        {
+                            "conditions": {
+                                "options": {
+                                    "caseSensitive": true,
+                                    "leftValue": "",
+                                    "typeValidation": "strict",
+                                    "version": 2
+                                },
+                                "conditions": [
+                                    {
+                                        "leftValue": "={{ $json.servicio }}",
+                                        "rightValue": "cobro",
+                                        "operator": {
+                                            "type": "string",
+                                            "operation": "equals"
+                                        }
+                                    }
+                                ],
+                                "combinator": "and"
+                            },
+                            "renameOutput": true,
+                            "outputKey": "Cobro"
+                        }
+                    ]
+                }
+            },
+            "id": "switch-router",
+            "name": "Enrutador Servicio",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 3,
+            "position": [
+                900,
+                460
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "contents",
+                            "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO LABORALISTA. Redacta una reclamación laboral (Liquidación/Despido) basada en: \" + $json.resumen_caso + \". Usa normativa colombiana (CST). Formato HTML.\" } ] } ] }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "agent-laboral",
+            "name": "Agente Laboral (Gemini)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1180,
+                200
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "contents",
+                            "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO DE TRÁNSITO. Redacta derecho de petición para NULIDAD de fotomulta. CASO: \" + $json.resumen_caso + \". Aplica sentencia C-038 de 2020. Formato HTML.\" } ] } ] }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "agent-transito",
+            "name": "Agente Tránsito (Gemini)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1180,
+                400
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "contents",
+                            "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO INMOBILIARIO. Redacta contrato de inmueble (\" + $json.detalles.tipo_contrato + \") según Ley 820 de 2003. CASO: \" + $json.resumen_caso + \". Formato HTML.\" } ] } ] }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "agent-inmuebles",
+            "name": "Agente Inmuebles (Gemini)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1180,
+                600
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "contents",
+                            "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO CIVIL. Redacta contrato de compraventa de vehículo. CASO: \" + $json.resumen_caso + \". Incluye cláusulas de saneamiento y tradición. Formato HTML.\" } ] } ] }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "agent-vehiculos",
+            "name": "Agente Vehículos (Gemini)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1180,
+                800
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "contents",
+                            "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO CONSTITUCIONALISTA. Redacta Acción de Tutela (Salud). HECHOS: \" + $json.resumen_caso + \". Invoca derecho a la salud y vida y continuidad del tratamiento. Formato HTML.\" } ] } ] }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "agent-salud",
+            "name": "Agente Salud (Gemini)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1180,
+                1000
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "contents",
+                            "value": "={{ [ { \"parts\": [ { \"text\": \"ACTÚA COMO ABOGADO DE COBRANZAS. Redacta cobro prejurídico persuasivo. DEUDA: \" + $json.resumen_caso + \". Advierte reporte a centrales y costas procesales. Formato HTML.\" } ] } ] }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "agent-cobro",
+            "name": "Agente Cobro (Gemini)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1180,
+                1200
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.pdfshift.io/v3/convert/pdf",
+                "responseFormat": "file",
+                "binaryPropertyName": "data",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "x-api-key",
+                            "value": "sk_53246c4d93c016f2a26850ad125ace3d336b6dd0"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "source",
+                            "value": "=<!DOCTYPE html><html><body><div style='font-family:sans-serif; padding:40px;'>{{ $json.candidates[0].content.parts[0].text }}</div><div style='text-align:center; color:#888; margin-top:50px;'>Generado por Guanes LegalTech</div></body></html>"
+                        },
+                        {
+                            "name": "sandbox",
+                            "value": "false"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "pdfshift-node",
+            "name": "PDFShift",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.3,
+            "position": [
+                1500,
+                600
+            ]
+        },
+        {
+            "parameters": {
+                "respondWith": "binary",
+                "options": {}
+            },
+            "id": "response-node",
+            "name": "Responder PDF",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                1750,
+                600
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook Entrada": {
+            "main": [
+                [
+                    {
+                        "node": "Traductor V2.0",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Traductor V2.0": {
+            "main": [
+                [
+                    {
+                        "node": "Enrutador Servicio",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Enrutador Servicio": {
+            "main": [
+                [
+                    {
+                        "node": "Agente Laboral (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Agente Tránsito (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Agente Inmuebles (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Agente Vehículos (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Agente Salud (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Agente Cobro (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Agente Laboral (Gemini)": {
+            "main": [
+                [
+                    {
+                        "node": "PDFShift",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Agente Tránsito (Gemini)": {
+            "main": [
+                [
+                    {
+                        "node": "PDFShift",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Agente Inmuebles (Gemini)": {
+            "main": [
+                [
+                    {
+                        "node": "PDFShift",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Agente Vehículos (Gemini)": {
+            "main": [
+                [
+                    {
+                        "node": "PDFShift",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Agente Salud (Gemini)": {
+            "main": [
+                [
+                    {
+                        "node": "PDFShift",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Agente Cobro (Gemini)": {
+            "main": [
+                [
+                    {
+                        "node": "PDFShift",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "PDFShift": {
+            "main": [
+                [
+                    {
+                        "node": "Responder PDF",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
     }
-  ],
-  "connections": {
-    "Webhook Entrada": { "main": [[{ "node": "Traductor V2.0", "type": "main", "index": 0 }]] },
-    "Traductor V2.0": { "main": [[{ "node": "Enrutador Servicio", "type": "main", "index": 0 }]] },
-    "Enrutador Servicio": {
-      "main": [
-        [{ "node": "Agente Laboral (Gemini)", "type": "main", "index": 0 }],
-        [{ "node": "Agente Tránsito (Gemini)", "type": "main", "index": 0 }],
-        [{ "node": "Agente Inmuebles (Gemini)", "type": "main", "index": 0 }],
-        [{ "node": "Agente Vehículos (Gemini)", "type": "main", "index": 0 }],
-        [{ "node": "Agente Salud (Gemini)", "type": "main", "index": 0 }],
-        [{ "node": "Agente Cobro (Gemini)", "type": "main", "index": 0 }]
-      ]
-    },
-    "Agente Laboral (Gemini)": { "main": [[{ "node": "PDFShift", "type": "main", "index": 0 }]] },
-    "Agente Tránsito (Gemini)": { "main": [[{ "node": "PDFShift", "type": "main", "index": 0 }]] },
-    "Agente Inmuebles (Gemini)": { "main": [[{ "node": "PDFShift", "type": "main", "index": 0 }]] },
-    "Agente Vehículos (Gemini)": { "main": [[{ "node": "PDFShift", "type": "main", "index": 0 }]] },
-    "Agente Salud (Gemini)": { "main": [[{ "node": "PDFShift", "type": "main", "index": 0 }]] },
-    "Agente Cobro (Gemini)": { "main": [[{ "node": "PDFShift", "type": "main", "index": 0 }]] },
-    "PDFShift": { "main": [[{ "node": "Responder PDF", "type": "main", "index": 0 }]] }
-  }
 }
