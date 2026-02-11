@@ -843,7 +843,7 @@
         </div>
     </section>
 
-    <section class="services-section">
+    <section id="services" class="services-section">
         <h2 class="section-title">Nuestros Servicios (GRATIS POR 2 DÍAS)</h2>
         <div class="services-grid">
 
@@ -1562,10 +1562,22 @@
                 if (response.ok) {
                     // VERIFICAR QUE SEA UN PDF REAL
                     const contentType = response.headers.get("content-type");
+
                     if (contentType && contentType.indexOf("application/pdf") === -1) {
-                        // Si NO es PDF (probablemente es un JSON con error de n8n)
-                        const errorJson = await response.json();
-                        throw new Error(`Error del sistema: ${JSON.stringify(errorJson)}`);
+                        // Si NO es PDF, intentamos leer como texto para ver qué pasó
+                        const text = await response.text();
+
+                        if (!text) {
+                            throw new Error("El servidor respondió OK pero sin contenido. Revise los nodos de N8N.");
+                        }
+
+                        try {
+                            const errorJson = JSON.parse(text);
+                            throw new Error(`Error del sistema: ${errorJson.message || JSON.stringify(errorJson)}`);
+                        } catch (e) {
+                            // Si no es JSON, es probablemente un error HTML o texto plano
+                            throw new Error(`Respuesta inesperada del servidor: ${text.substring(0, 100)}...`);
+                        }
                     }
 
                     const blob = await response.blob();
@@ -1589,7 +1601,7 @@
                     form.reset();
                 } else {
                     const errorText = await response.text();
-                    throw new Error(`Error del servidor: ${response.status}`);
+                    throw new Error(`Error del servidor (${response.status}): ${errorText.substring(0, 100)}`);
                 }
             } catch (error) {
                 console.error(error);
