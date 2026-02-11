@@ -1560,7 +1560,21 @@
                 });
 
                 if (response.ok) {
+                    // VERIFICAR QUE SEA UN PDF REAL
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/pdf") === -1) {
+                        // Si NO es PDF (probablemente es un JSON con error de n8n)
+                        const errorJson = await response.json();
+                        throw new Error(`Error del sistema: ${JSON.stringify(errorJson)}`);
+                    }
+
                     const blob = await response.blob();
+
+                    // Doble verificación por tamaño (si es muy pequeño, sospechoso)
+                    if (blob.size < 100) {
+                        throw new Error("El archivo generado está vacío o corrupto. Verifique las API KEYs en n8n.");
+                    }
+
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
