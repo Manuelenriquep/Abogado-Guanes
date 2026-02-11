@@ -1010,6 +1010,15 @@
                 </div>
 
                 <div id="campos-transito" class="hidden">
+                    <div class="form-group">
+                        <label for="t_tipo_infraccion">¿Qué tipo de comparendo es?</label>
+                        <select id="t_tipo_infraccion" class="input-field" required
+                            style="width:100%; padding:14px; border:2px solid #e2e8f0; border-radius:12px; font-family:'Outfit',sans-serif; background:#f8fafc;">
+                            <option value="fotomulta">📸 Fotomulta (Cámara de Detección)</option>
+                            <option value="agente">👮 Comparendo Físico (Agente en vía)</option>
+                            <option value="parqueo">🅿️ Mal Parqueo (Sin conductor presente)</option>
+                        </select>
+                    </div>
                     <div class="form-group"><label>Placa del Vehículo</label><input type="text" id="t_placa"
                             placeholder="Ej: ABC-123"></div>
                     <div class="form-group"><label>Organismo de Tránsito</label><input type="text" id="t_organismo"
@@ -1543,6 +1552,7 @@
                 detalles = {
                     organismo: document.getElementById('t_organismo')?.value,
                     placa: document.getElementById('t_placa')?.value,
+                    tipo_infraccion: document.getElementById('t_tipo_infraccion')?.value || "fotomulta",
                     fecha_comparendo: document.getElementById('t_fecha')?.value,
                     notificacion: "Por correo" // Default
                 };
