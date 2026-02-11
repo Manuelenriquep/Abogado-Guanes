@@ -8,7 +8,7 @@
 
     <title>GUANES Legal Tech | Oficina Virtual & Blockchain</title>
     <meta name="description"
-        content="Plataforma legal integral: Liquidación laboral, demandas automatizadas y certificación de documentos en Blockchain (Solana).">
+        content="Abogado Digital en Colombia. Asesoría legal inmediata en Tránsito, Laboral e Inmuebles con Inteligencia Artificial. T.P. 176.633">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -656,6 +656,14 @@
     </div>
 
     <header>
+        <nav
+            style="position: absolute; top: 1rem; right: 2rem; display: flex; gap: 20px; font-weight: 700; font-size: 0.9rem; z-index: 100;">
+            <a href="index.html" style="color: var(--primary);">INICIO</a>
+            <a href="#services" style="color: var(--primary);">SERVICIOS</a>
+            <a href="#calculadora" style="color: var(--primary);">CALCULADORA</a>
+            <a href="https://wa.me/573012428215?text=Hola%20Abogado%20Guanes" target="_blank"
+                style="color: var(--brand);">CONTACTO</a>
+        </nav>
         <span class="badge">✨ Oficina Virtual 24/7</span>
         <h1>GUANES <span style="color:var(--brand);">LEGAL</span></h1>
         <p style="font-size: 1.2rem; max-width: 600px; margin: 10px auto; color: #475569;">DOCUMENTOS LEGALES
@@ -1058,6 +1066,16 @@
                             rows="3"></textarea></div>
                 </div>
 
+                <div class="form-group">
+                    <label for="observaciones"
+                        style="display:block; font-weight:bold; color:#2c3e50; margin-bottom:8px;">
+                        📝 Detalles adicionales o relato de los hechos (Opcional)
+                    </label>
+                    <textarea id="observaciones" name="observaciones" rows="4"
+                        style="width:100%; padding:14px; border:2px solid #e2e8f0; border-radius:12px; font-family:'Outfit', sans-serif; background: #f8fafc;"
+                        placeholder="Ej: Dejé la moto frente al D1 y cuando salí ya se la llevaban... / Me despidieron verbalmente sin justa causa..."></textarea>
+                </div>
+
                 <button type="submit" class="btn-generar">GENERAR DOCUMENTO GRATIS ⚡</button>
                 <p class="aviso">Versión Beta Gratuita - Dr. Manuel Prada</p>
             </form>
@@ -1102,82 +1120,12 @@
                 else document.getElementById('campos-genericos').classList.remove('hidden'); // Para salud, cobro, vehiculos
             }
 
-            // 2. ENVIAR DATOS A N8N
-            document.getElementById('legalForm').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const btn = document.querySelector('.btn-generar');
-                btn.innerHTML = "⏳ Redactando con IA... (Espere)";
-                btn.disabled = true;
-
-                // Recoger datos básicos
-                const data = {
-                    servicio: document.getElementById('servicioSelector').value,
-                    cliente: {
-                        nombre: document.getElementById('nombre').value,
-                        cedula: document.getElementById('cedula').value,
-                        email: document.getElementById('email').value
-                    },
-                    detalles: {}
-                };
-
-                // Recoger detalles según servicio
-                if (data.servicio === 'transito') {
-                    data.detalles.placa = document.getElementById('t_placa').value;
-                    data.detalles.organismo = document.getElementById('t_organismo').value;
-                    data.detalles.fecha_comparendo = document.getElementById('t_fecha').value;
-                } else if (data.servicio === 'laboral') {
-                    data.detalles.contraparte = document.getElementById('l_empresa').value;
-                    data.detalles.salario = document.getElementById('l_salario').value;
-                    data.detalles.motivo = document.getElementById('l_motivo').value;
-                    data.detalles.fecha_inicio = document.getElementById('l_inicio').value;
-                    data.detalles.fecha_fin = document.getElementById('l_fin').value;
-                } else if (data.servicio === 'inmuebles') {
-                    data.detalles.direccion_inmueble = document.getElementById('i_direccion').value;
-                    data.detalles.canon_valor = document.getElementById('i_canon').value;
-                    data.detalles.tipo_contrato = "Vivienda Urbana";
-                } else {
-                    // Genéricos
-                    data.detalles.contraparte = document.getElementById('g_contraparte').value;
-                    data.detalles.hechos_pretension = document.getElementById('g_hechos').value;
-                }
-
-                // ENVIAR AL WEBHOOK DE N8N (Producción)
-                try {
-                    const response = await fetch(WEBHOOK_PRODUCCION, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-
-                    if (response.ok) {
-                        // Descargar PDF (el blob)
-                        const blob = await response.blob();
-                        const url = window.URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = `Documento_Legal_${data.servicio}.pdf`;
-                        document.body.appendChild(a);
-                        a.click();
-                        btn.innerHTML = "✅ ¡Documento Descargado!";
-                        setTimeout(() => { btn.innerHTML = "GENERAR DOCUMENTO GRATIS ⚡"; btn.disabled = false; }, 3000);
-                    } else {
-                        // Intentar leer error
-                        const errorText = await response.text();
-                        alert(`Error al conectar: ${response.status} - ${errorText}`);
-                        btn.disabled = false;
-                        btn.innerHTML = "GENERAR DOCUMENTO GRATIS ⚡";
-                    }
-                } catch (error) {
-                    console.error(error);
-                    alert("Error de conexión. Verifique su internet.");
-                    btn.disabled = false;
-                    btn.innerHTML = "GENERAR DOCUMENTO GRATIS ⚡";
-                }
-            });
+            // 2. ENVIAR DATOS A N8N - LOGICA UNIFICADA EN EL SCRIPT INFERIOR (V2.0)
+            // Se ha eliminado este bloque para evitar doble envío.
         </script>
     </section>
 
-    <a href="https://wa.me/573000000000" class="float-wa" target="_blank">
+    <a href="https://wa.me/573012428215?text=Hola%20Abogado%20Guanes" class="float-wa" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1211,7 +1159,8 @@
             </div>
 
             <p style="font-size: 0.8rem; opacity: 0.7;">
-                © 2026 GUANES Legal Tech. Todos los derechos reservados.<br>
+                © 2026 GUANES Legal Tech. Todos los derechos reservados. | <a href="#"
+                    style="color: inherit; text-decoration: underline;">Términos y Condiciones</a><br>
                 El uso de esta plataforma implica la aceptación de nuestros términos de servicio.
                 Documentos generados con asistencia de IA bajo supervisión humana calificada.
             </p>
@@ -1556,10 +1505,19 @@
                     fecha_comparendo: document.getElementById('t_fecha')?.value,
                     notificacion: "Por correo" // Default
                 };
-            }
-            // Add other mock details for services without specific fields yet to avoid breakage
-            else {
-                detalles = { notas: "Servicio estándar sin campos específicos" };
+            } else if (servicioID === "inmuebles") {
+                detalles = {
+                    direccion_inmueble: document.getElementById('i_direccion')?.value,
+                    canon_valor: document.getElementById('i_canon')?.value,
+                    tipo_contrato: "Vivienda Urbana",
+                    inquilino: document.getElementById('i_inquilino')?.value
+                };
+            } else {
+                // Genéricos (Salud, Cobro, Vehículos, etc.)
+                detalles = {
+                    contraparte: document.getElementById('g_contraparte')?.value,
+                    hechos_pretension: document.getElementById('g_hechos')?.value
+                };
             }
 
             // PAYLOAD FINAL
@@ -1571,6 +1529,7 @@
                     "email": document.getElementById('email').value,
                     "ciudad": "Colombia" // Default or add field
                 },
+                "observaciones": document.getElementById('observaciones').value,
                 "detalles": detalles,
                 "resumen_caso": `Solicitud de servicio: ${servicioID}. Cliente: ${document.getElementById('nombre').value}.`, // Fallback for Traductor
                 "meta": {
