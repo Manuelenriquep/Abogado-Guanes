@@ -1437,6 +1437,187 @@
         }
 
         cargarNoticias();
+
+        // ==========================================
+        // 4. NAVEGACIÓN Y FORMULARIO
+        // ==========================================
+        const WEBHOOK_FORMULARIO = "https://n8n-production-612f.up.railway.app/webhook/cb4edfe2-eaea-47dd-8f97-22afccd72810";
+
+        function activarServicio(palabraClave) {
+            const select = document.getElementById('servicioSelector'); // Fixed ID
+            const formSection = document.getElementById('app-generator');
+            formSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Match flexible
+            for (let i = 0; i < select.options.length; i++) {
+                const optText = select.options[i].text.toLowerCase();
+                const optVal = select.options[i].value.toLowerCase();
+                const key = palabraClave.toLowerCase();
+                if (optText.includes(key) || optVal.includes(key)) {
+                    select.selectedIndex = i;
+                    console.log(`Servicio activado: ${select.value}`);
+                    break;
+                }
+            }
+            // Force change event
+            select.dispatchEvent(new Event('change'));
+            toggleFields();
+        }
+
+        window.activarServicio = activarServicio; // Global scope
+        window.irDirectoAlServicio = activarServicio; // Alias for compatibility
+
+        function toggleFields() {
+            const s = document.getElementById('servicioSelector').value; // Fixed ID
+            console.log("Servicio seleccionado:", s);
+
+            const mods = {
+                laboral: document.getElementById('campos-laboral'),
+                inmuebles: document.getElementById('camposInmuebles') || document.getElementById('campos-transito'), // Fallback fix
+                vehiculos: document.getElementById('camposVehiculos'),
+                transito: document.getElementById('campos-transito'),
+                salud: document.getElementById('camposSalud'),
+                civil: document.getElementById('camposCivil')
+            };
+
+            // Reset all
+            document.querySelectorAll('.hidden').forEach(el => {
+                if (el.id.startsWith('campos')) el.style.display = 'none';
+            });
+
+            // Show specific
+            if (s === 'laboral') {
+                if (mods.laboral) { mods.laboral.classList.remove('hidden'); mods.laboral.style.display = 'block'; }
+            } else if (s === 'transito') {
+                if (mods.transito) { mods.transito.classList.remove('hidden'); mods.transito.style.display = 'block'; }
+            }
+            // Note: Add other cases if the HTML elements exist.
+            // For now, based on HTML view, only 'campos-transito' and 'campos-laboral' were clearly visible in the view.
+            // I will ensure the logic covers what exists.
+        }
+
+        // Bind change event
+        document.getElementById('servicioSelector').addEventListener('change', toggleFields);
+
+
+        // ==========================================
+        // 5. LÓGICA DE PAGO Y GENERACIÓN (DOCUMENTOS)
+        // ==========================================
+        const form = document.getElementById('legalForm');
+        const statusDiv = document.createElement('div');
+        statusDiv.id = 'statusMessage';
+        statusDiv.style.display = 'none';
+        statusDiv.style.marginTop = '1rem';
+        statusDiv.style.padding = '1rem';
+        statusDiv.style.borderRadius = '8px';
+        form.appendChild(statusDiv);
+
+        const submitBtn = document.querySelector('.btn-generar');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log("Iniciando envío...");
+
+            const formData = new FormData(form);
+            const rawData = Object.fromEntries(formData.entries());
+
+            // --- LÓGICA V2.0: ESTRUCTURACIÓN DEL PAYLOAD ---
+            const servicioValue = document.getElementById('servicioSelector').value;
+            let servicioID = servicioValue; // Default to exact value (laboral, transito, etc.)
+
+            console.log("Servicio ID detectado:", servicioID);
+
+            // Construcción del objeto 'detalles'
+            let detalles = {};
+
+            // Mapeo seguro basado en IDs existentes en HTML
+            if (servicioID === "laboral") {
+                detalles = {
+                    contraparte: document.getElementById('l_empresa')?.value || "N/A",
+                    salario: document.getElementById('l_salario')?.value || "0",
+                    fecha_inicio: document.getElementById('l_inicio')?.value,
+                    fecha_fin: document.getElementById('l_fin')?.value,
+                    motivo: document.getElementById('l_motivo')?.value
+                };
+            } else if (servicioID === "transito") {
+                detalles = {
+                    organismo: document.getElementById('t_organismo')?.value,
+                    placa: document.getElementById('t_placa')?.value,
+                    fecha_comparendo: document.getElementById('t_fecha')?.value,
+                    notificacion: "Por correo" // Default
+                };
+            }
+            // Add other mock details for services without specific fields yet to avoid breakage
+            else {
+                detalles = { notas: "Servicio estándar sin campos específicos" };
+            }
+
+            // PAYLOAD FINAL
+            const payload = {
+                "servicio": servicioID,
+                "cliente": {
+                    "nombre": document.getElementById('nombre').value,
+                    "cedula": document.getElementById('cedula').value,
+                    "email": document.getElementById('email').value,
+                    "ciudad": "Colombia" // Default or add field
+                },
+                "detalles": detalles,
+                "resumen_caso": `Solicitud de servicio: ${servicioID}. Cliente: ${document.getElementById('nombre').value}.`, // Fallback for Traductor
+                "meta": {
+                    "timestamp": new Date().toISOString(),
+                    "ref": 'GRATIS_PROMO_' + Date.now()
+                }
+            };
+
+            console.log("Payload a enviar:", payload);
+            procesarGeneracion(payload);
+        });
+
+        async function procesarGeneracion(data) {
+            submitBtn.disabled = true;
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERANDO PDF...';
+
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = '#eff6ff';
+            statusDiv.style.color = '#1e3a8a';
+            statusDiv.innerHTML = '<h3>⚖️ Redactando con IA...</h3><p>Espere unos segundos...</p>';
+
+            try {
+                const response = await fetch(WEBHOOK_FORMULARIO, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `Legal_Guanes_${data.servicio}_${Date.now()}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+
+                    statusDiv.innerHTML = '<h3>✅ ¡LISTO!</h3><p>Su documento se ha descargado exitosamente.</p>';
+                    statusDiv.style.background = '#dcfce7';
+                    statusDiv.style.color = '#166534';
+                    form.reset();
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(`Error del servidor: ${response.status}`);
+                }
+            } catch (error) {
+                console.error(error);
+                statusDiv.style.background = '#fee2e2';
+                statusDiv.style.color = '#991b1b';
+                statusDiv.innerHTML = `<h3>⚠️ ERROR</h3><p>${error.message}</p>`;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        }
     </script>
 </body>
 
