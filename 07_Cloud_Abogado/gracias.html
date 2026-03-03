@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Confirmado — Guanes IA Legaltech</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #030712;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes checkDraw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .fade-up {
+            animation: fadeUp 0.7s ease forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.9s;
+        }
+
+        .ripple::before,
+        .ripple::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            animation: ripple 2.5s ease-out infinite;
+        }
+
+        .ripple::after {
+            animation-delay: 1.2s;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .check-path {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: checkDraw 0.8s ease 0.3s forwards;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .step-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center px-4 py-16 text-slate-200">
+
+    <!-- Fondo decorativo -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-emerald-500/5 rounded-full blur-[140px]">
+        </div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-2xl mx-auto text-center">
+
+        <!-- Badge PAGO CONFIRMADO -->
+        <div
+            class="fade-up mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest">
+            <span class="relative flex h-2 w-2">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+            </span>
+            Transacción Verificada
+        </div>
+
+        <!-- Ícono animado -->
+        <div class="fade-up delay-1 flex justify-center mb-8">
+            <div class="relative float">
+                <div
+                    class="ripple w-24 h-24 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center relative">
+                    <svg class="w-12 h-12" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#10b981" stroke-width="2" opacity="0.3" />
+                        <path class="check-path" d="M13 24 L21 32 L35 16" stroke="#10b981" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Titular -->
+        <h1 class="fade-up delay-1 text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+            ¡Pago Confirmado! <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Su documento está
+                en camino</span>
+        </h1>
+
+        <p class="fade-up delay-2 text-slate-400 text-lg font-light max-w-xl mx-auto mb-12 leading-relaxed">
+            Hemos recibido su pago exitosamente. Nuestro sistema de generación documental está procesando su solicitud
+            con las fuentes jurídicas vigentes a 2026.
+        </p>
+
+        <!-- Card principal -->
+        <div class="fade-up delay-2 glass rounded-2xl p-8 mb-8 text-left">
+            <h2 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+                <span class="text-emerald-400" aria-hidden="true">📋</span> ¿Qué sigue ahora?
+            </h2>
+            <div class="space-y-4">
+                <div class="step-card flex gap-4 items-start">
+                    <div
+                        class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400 font-bold text-sm">
+                        1</div>
+                    <div>
+                        <p class="text-white font-semibold text-sm mb-1">Procesamiento IA (2-5 minutos)</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">Nuestro motor jurídico genera su documento con
+                            las normas vigentes, personalizado para su caso.</p>
+                    </div>
+                </div>
+                <div class="step-card flex gap-4 items-start">
+                    <div
+                        class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-400 font-bold text-sm">
+                        2</div>
+                    <div>
+                        <p class="text-white font-semibold text-sm mb-1">Entrega a su correo</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">Recibirá el documento en formato PDF firmado
+                            digitalmente al correo que registró en el pago.</p>
+                    </div>
+                </div>
+                <div class="step-card flex gap-4 items-start">
+                    <div
+                        class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 text-blue-400 font-bold text-sm">
+                        3</div>
+                    <div>
+                        <p class="text-white font-semibold text-sm mb-1">Soporte incluido</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">¿Algo no quedó perfecto? Escriba por WhatsApp
+                            y lo ajustamos sin costo adicional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info de referencia extraída de Wompi -->
+        <div class="fade-up delay-3 glass rounded-xl p-4 mb-8 text-left" id="pago-info">
+            <p class="text-xs text-slate-500 uppercase tracking-widest mb-3 font-semibold">Resumen de transacción</p>
+            <div class="flex justify-between text-sm">
+                <span class="text-slate-400">Referencia</span>
+                <span class="text-white font-mono text-xs" id="referencia-pago">Cargando...</span>
+            </div>
+            <div class="flex justify-between text-sm mt-2">
+                <span class="text-slate-400">Monto</span>
+                <span class="text-emerald-400 font-bold">$19.900 COP</span>
+            </div>
+            <div class="flex justify-between text-sm mt-2">
+                <span class="text-slate-400">Estado</span>
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse inline-block"></span>
+                    APROBADO
+                </span>
+            </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="fade-up delay-3 flex flex-col sm:flex-row gap-3 justify-center mb-12">
+            <a href="https://wa.me/573012428215?text=Hola%2C%20acabo%20de%20realizar%20un%20pago%20en%20Guanes%20IA.%20Quiero%20confirmar%20la%20entrega%20de%20mi%20documento."
+                target="_blank" rel="noopener"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-500/20">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Confirmar por WhatsApp
+            </a>
+            <a href="/"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-slate-700 hover:border-slate-500 text-slate-300 font-semibold text-sm transition-all">
+                ← Volver al inicio
+            </a>
+        </div>
+
+        <!-- Aviso legal -->
+        <div class="fade-up delay-4">
+            <p class="text-xs text-slate-600 leading-relaxed max-w-lg mx-auto">
+                🔒 Transacción procesada bajo la Ley 527/1999 (Comercio Electrónico) y Habeas Data (Ley 1581/2012).
+                Su información no es compartida con terceros.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // ── Leer parámetros de Wompi de la URL ──────────────────
+        // Wompi redirige a /gracias?id=XXX&status=APPROVED&reference=YYY
+        const params = new URLSearchParams(window.location.search);
+        const referencia = params.get('id') || params.get('reference') || '—';
+        const estado = params.get('status') || 'APPROVED';
+
+        document.getElementById('referencia-pago').textContent = referencia;
+
+        // Si el pago fue rechazado, mostrar advertencia
+        if (estado && estado !== 'APPROVED') {
+            document.getElementById('pago-info').innerHTML = `
+                <div class="text-center py-4">
+                    <p class="text-red-400 font-bold mb-2"><span aria-hidden="true">⚠️</span> Pago No Confirmado</p>
+                    <p class="text-slate-400 text-sm">Estado: ${estado}. Por favor escriba al WhatsApp para asistencia.</p>
+                </div>
+            `;
+        }
+
+        // ── Telemetría: notificar al servidor que hubo un pago ──
+        // (Silencioso, no bloquea al usuario)
+        try {
+            fetch('https://n8n-production-612f.up.railway.app/webhook/pago-confirmado', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    referencia: referencia,
+                    estado: estado,
+                    timestamp: new Date().toISOString(),
+                    origen: 'gracias.html'
+                })
+            }).catch(() => { });
+        } catch (e) { }
+    </script>
+
+</body>
+
+</html>

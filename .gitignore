@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Bases de Datos RAG y Locales
+*.sqlite3
+*.db
+db_guanes/
+minutas_cloud.db
+
+# Credenciales y Secretos
+.env
+.env.*
+!.env.example
+secret.json
+*.pem
+*.key
+
+# Logs y Temporales
+99_Logs_y_Temporales/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node / Javascript
+node_modules/
+dist/
+.vercel
+.netlify
+
+# Sistemas Operativos
+.DS_Store
+Thumbs.db

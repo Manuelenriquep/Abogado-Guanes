@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guanes Pro - Generador de Títulos Valores</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #000;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .alerta {
+            color: #2c3e50;
+            font-size: 0.9em;
+            background: #e8f4f8;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">🏛️ Guanes PRO - B2B Solutions</h2>
+    <p style="text-align: center;">Módulo de Creación Blindada de Títulos Valores</p>
+
+    <div class="card">
+        <h3>Generador Automático de Pagaré + Carta de Instrucciones</h3>
+
+        <p class="alerta"><strong>Motor Activo:</strong> Validando contra Art. 622 y 784 del Código de Comercio de
+            Colombia y jurisprudencia unificada.</p>
+
+        <label>Monto de la Deuda (COP):</label>
+        <input type="number" placeholder="Ej. 50000000">
+
+        <label>Cédula del Deudor / Suscriptor:</label>
+        <input type="text" placeholder="Ej. 1.098.XXX.XXX">
+
+        <pre class="mermaid">
+            graph LR
+            A[Ingreso de Datos] --> B(Motor IA Guanes)
+            B --> C[Genera Pagaré Blindado]
+            B --> D[Genera Carta de Instrucciones]
+            C --> E{Exportar a PDF}
+            D --> E
+        </pre>
+
+        <a href="#" class="btn">Generar Paquete Legal Ejecutivo</a>
+    </div>
+
+</body>
+
+</html>

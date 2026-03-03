@@ -1,0 +1,1769 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CRXKFNQZFZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {dataLayer.push(arguments);};
+        gtag('js', new Date());
+
+        gtag('config', 'G-CRXKFNQZFZ');
+    </script>
+
+    <base href="https://www.concejodebucaramanga.gov.co/">
+
+        <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Mobile Specific Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml"/>
+
+<title>Página no encontrada</title>
+<meta name="twitter:title" content="Página no encontrada">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="">
+<meta name="twitter:image" content="https://www.concejodebucaramanga.gov.co/images/seo/seo-metadata-site-437.jpg">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.concejodebucaramanga.gov.co/images/seo/seo-metadata-site-437.jpg">
+<meta property="og:title" content="Página no encontrada">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Concejo Municipal de Bucaramanga">
+<meta property="og:url" content="https://www.concejodebucaramanga.gov.co/not-found">
+<link rel="canonical" href="https://www.concejodebucaramanga.gov.co/not-found"/>
+<meta name="robots" content="noindex,nofollow">
+
+
+
+    <!-- Favicons - Place favicon.ico in the root directory -->
+<link rel="icon" href="https://www.concejodebucaramanga.gov.co/assets/images/favicon.ico" type="image/x-icon">
+
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://www.youtube.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube.com" crossorigin>
+
+<!--==============================
+    All CSS File
+============================== -->
+
+
+<!-- ========== Start Stylesheet ========== -->
+
+<!-- Google Fonts -->
+<link
+    href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+<!-- Stylesheets -->
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/font-awesome-all.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/flaticon.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/owl.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/bootstrap.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/animate.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/nice-select.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/jquery-ui.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/monthly.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/color.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/style.css" rel="stylesheet">
+<link href="https://www.concejodebucaramanga.gov.co/assets/css/responsive.css" rel="stylesheet">
+
+
+<!-- CSS PREDEFINIDOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.css"
+    integrity="sha512-6fYy5vAASALx85uN0Ku1VUOuAUfoxhaxzsqCakC0LCAXfj/8s9Th1zvQo70E4i6aKE2qb1cUJvV4UV50+VnEdA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+    integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+    integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!--====== Awesome css ======-->
+
+<!--====== Modal Popups ======-->
+
+<link rel="preload" as="style" href="https://www.concejodebucaramanga.gov.co/themes/damosfrontend/popup/css/modal.css"
+    onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" type="text/css" href="https://www.concejodebucaramanga.gov.co/themes/damosfrontend/popup/css/modal.css">
+</noscript>
+
+<!--====== End Awesome css ======-->
+
+<style>
+    @media (max-width: 1220px) {
+        .slidersection.section_header {
+            height: 100% !important;
+        }
+    }
+</style>
+
+          <style>
+        header,
+        footer,
+        .blackboard {
+            display: none;
+        }
+    </style>
+
+    
+    <link rel="stylesheet" href="https://www.concejodebucaramanga.gov.co/assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://www.concejodebucaramanga.gov.co/themes/damosfrontend/css/custom.css">
+
+    
+</head>
+
+<body>
+
+    <div class="boxed_wrapper home_3">
+        
+
+        
+        <div id="search-popup" class="search-popup">
+    <div class="popup-inner">
+        <div class="upper-box clearfix">
+            <figure class="logo-box pull-left"><a href="https://www.concejodebucaramanga.gov.co"><img src="assets/images/logo-3.png"
+                        alt="LOGO Concejo de bucaramanga" loading="eager" width="212" height="56"></a>
+            </figure>
+            <div class="close-search pull-right"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="overlay-layer"></div>
+        <div class="auto-container">
+            <div class="search-form">
+                
+                <script async src="https://cse.google.com/cse.js?cx=409fc8ae718674604"></script>
+                <div class="gcse-search"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <header class="main-header">
+        <div class="header-lower">
+            <div class="outer-container">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo"><a href="https://www.concejodebucaramanga.gov.co"><img src="assets/images/logo-3.png"
+                                    alt="LOGO Concejo de bucaramanga" loading="eager" width="212" height="56"></a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+        <ul class="navigation clearfix">
+                                                <li class="">
+                        <a href="https://www.concejodebucaramanga.gov.co"
+                            class="  ">
+                            Inicio
+                        </a>
+                    </li>
+                                                                                    <li class="dropdown " style="position: relative">
+                        <a class="" href=javascript:void(0)>
+                            Concejo
+                        </a>
+
+
+                                                                        <ul class="submenu columned-menu ">
+
+                                                                                                                                <li>
+                                        <a href="concejo/historia"
+                                            target="_self">Corporación</a>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            Transparencia y Acceso a la Información</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="concejo/transparencia-y-acceso-a-la-informacion/plan-de-accion"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan de Acción</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-anticorrupcion-y-atencion-al-ciudadano-paac"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan Anticorrupcion y Atención al Ciudadano - PAAC</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-de-transicion-al-programa-de-transparencia-y-etica-publica-rter"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan de transición al programa de transparencia y ética pública- РТЕР</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-anual-de-adquisiciones"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan Anual de Adquisiciones</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/modelo-estandar-de-control-interno-meci"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Modelo Estándar de Control Interno (MECI)</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-ambiental-piga"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan Ambiental (PIGA)</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-de-tratamiento-de-riesgos-de-seguridad-y-privacidad-de-la-informacion"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan De Tratamiento De Riesgos De Seguridad Y Privacidad De La Información</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-estrategico-de-tecnologias-de-la-informacion-y-las-comunicaciones-peti"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan Estratégico De Tecnologías De La Información Y Las Comunicaciones (PETI)</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-de-trabajo-anual-de-seguridad-y-salud-en-el-trabajo"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan De Trabajo Anual De Seguridad Y Salud En El Trabajo</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-de-seguridad-y-privacidad-de-la-informacion"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan De Seguridad Y Privacidad De La Información</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-anual-mensualizado-de-caja-pac-para-la-vigencia-2026"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan Anual Mensualizado De Caja PAC Para La Vigencia 2026</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/manual-de-identidad-visual"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Manual de Identidad Visual</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/planes-programas-manuales-y-modelos-institucionales/plan-institucional-de-capacitacion-pic"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan Institucional De Capacitación- PIC</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/transparencia-y-acceso-a-la-informacion/plan-institucional-de-archivos-pinar"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Plan Institucional De Archivos (PINAR)</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejo/mesa-directiva"
+                                            target="_self">Mesa Directiva</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejo/reglamento-interno-del-concejo"
+                                            target="_self">Reglamento Interno del Concejo</a>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            Libro público y Declaraciones Concejales</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="concejo/libro-publico-de-registro-de-actividades-economicas-privadas-de-los-concejales"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Libro público de registro de actividades económicas privadas de los Concejales</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/declaraciones-de-bienes-renta-y-el-registro-de-los-conflictos-de-interes-concejales"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Declaraciones de bienes, renta y el registro de los conflictos de interés Concejales</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            Oficinas</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="concejo/oficinas/secretario-general"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Secretario General</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/oficinas/control-interno"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Control Interno</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/oficinas/juridica"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Jurídica</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="concejo/oficinas/tesoreria"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tesoreria</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejo/rendicion-de-cuentas"
+                                            target="_self">Rendición de cuentas</a>
+                                    </li>
+                                                                                    </ul>
+                    </li>
+                                                                                    <li class="dropdown " style="position: relative">
+                        <a class="" href=javascript:void(0)>
+                            Concejales
+                        </a>
+
+
+                                                                                                                            <ul class="submenu columned-menu columned-menu-3">
+
+                                                                                                                                <li>
+                                        <a href="concejales/gustavo-adolfo-ardila-ayala"
+                                            target="_self">Gustavo Adolfo Ardila Ayala</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/oscar-mauricio-arenas-valdivieso"
+                                            target="_self">Oscar Mauricio Arenas Valdivieso</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/luis-eduardo-avila-castelblanco"
+                                            target="_self">Luis Eduardo Ávila Castelblanco</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/javier-ayala-moreno"
+                                            target="_self">Javier Ayala Moreno</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/elkin-yesid-bello-pena"
+                                            target="_self">Elkin Yesid Bello Peña</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/luis-fernando-castaneda-pradilla"
+                                            target="_self">Luis Fernando Castañeda Pradilla</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/jose-david-cavanzo-ortiz"
+                                            target="_self">Jose David Cavanzo Ortiz</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/andres-felipe-diaz-arevalo"
+                                            target="_self">Andres Felipe Diaz Arevalo</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/oscar-javier-diaz-layton"
+                                            target="_self">Oscar Javier Diaz Layton</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/jorge-edgar-florez-herrera"
+                                            target="_self">Jorge Edgar Florez Herrera</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/henry-gamboa-vargas"
+                                            target="_self">Henry Gamboa Vargas</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/robin-anderson-hernandez-reyes"
+                                            target="_self">Robín Anderson Hernández Reyes</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/diego-armando-lozada-trujillo"
+                                            target="_self">Diego Armando Lozada Trujillo</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/camilo-andres-machado-ardila"
+                                            target="_self">Camilo Andres Machado Ardila</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/nelson-mantilla-blanco"
+                                            target="_self">Nelson Mantilla Blanco</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/tito-alberto-rangel-arias"
+                                            target="_self">Tito Alberto Rangel Arias</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/cristian-andres-reyes-aguilar"
+                                            target="_self">Cristian Andrés Reyes Aguilar</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/daniela-torres-zarate"
+                                            target="_self">Daniela Torres Zarate</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="concejales/leonardo-mancilla-avila"
+                                            target="_self">Leonardo Mancilla  Avila</a>
+                                    </li>
+                                                                                    </ul>
+                    </li>
+                                                                                    <li class="dropdown " style="position: relative">
+                        <a class="" href=javascript:void(0)>
+                            Comisiones
+                        </a>
+
+
+                                                                        <ul class="submenu columned-menu ">
+
+                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            Comisiones Permanente</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="comisiones/comisiones-permanente/comision-primera"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Comision Primera</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="comisiones/comisiones-permanente/comision-segunda"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Comisión Segunda</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="comisiones/comisiones-permanente/comision-tercera"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Comisión Tercera</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            Comisiones Especial</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="comisiones/comisiones-especial/equidad-de-la-mujer"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Equidad De La Mujer</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                    </ul>
+                    </li>
+                                                                                    <li class="dropdown " style="position: relative">
+                        <a class="" href=descargas>
+                            Descargas
+                        </a>
+
+
+                                                                        <ul class="submenu columned-menu ">
+
+                                                                                                                                <li>
+                                        <a href="descargas/actas-plenaria"
+                                            target="_self">Actas Plenaria</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/acuerdos-municipales"
+                                            target="_self">Acuerdos Municipales</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/decretos"
+                                            target="_self">Decretos</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/gacetas"
+                                            target="_self">Gacetas</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/resoluciones"
+                                            target="_self">Resoluciones</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/proposiciones"
+                                            target="_self">Proposiciones</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/control-politico"
+                                            target="_self">Control Político</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/actas-comisiones"
+                                            target="_self">Actas Comisiones</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="descargas/conclusiones-comision-accidentales"
+                                            target="_self">Conclusiones Comisión Accidentales</a>
+                                    </li>
+                                                                                    </ul>
+                    </li>
+                                                                                    <li class="dropdown " style="position: relative">
+                        <a class="" href=proyectos>
+                            Proyectos
+                        </a>
+
+
+                                                                                                                            <ul class="submenu columned-menu columned-menu-3">
+
+                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2009</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2009/primero-y-segundo-periodo-2009"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primero y segundo periodo 2009</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2010</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2010/extraordinaria-febrero-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Febrero 2010</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2010/primer-periodo-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo 2010</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2010/extraordinaria-mayo-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Mayo 2010</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2010/segundo-periodo-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Segundo Periodo 2010</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2010/extraordinaria-agosto-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Agosto 2010</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2010/tercer-periodo-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tercer Periodo 2010</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2010/extraordinaria-diciembre-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Diciembre 2010</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2011</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/extraordinaria-enero-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria  Enero 2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/extraordinaria-febrero-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Febrero 2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/primer-periodo-del-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo del 2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/extraordinaria-mayo-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Mayo 2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/segundo-periodo-del-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Segundo Periodo del 2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/extraordinaria-agosto-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Agosto  2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/tercer-periodo-del-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tercer Periodo del 2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2011/extraordinaria-diciembre"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Diciembre</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2012</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2012/primer-periodo-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo  2012</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2012/extraordinaria-marzo-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Marzo 2012</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2012/extraordinaria-mayo-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Mayo 2012</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2012/segundo-periodo-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Segundo Periodo 2012</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2012/extraordinaria-agosto-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Agosto 2012</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2012/tercer-periodo-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tercer Periodo 2012</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2012/extraordinaria-diciembre-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Diciembre 2012</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2013</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2013/extraordinaria-enero-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Enero 2013</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2013/primer-periodo-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo 2013</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2013/extraordinaria-mayo-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Mayo 2013</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2013/segundo-periodo-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Segundo Periodo 2013</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2013/extraordinaria-agosto-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Agosto 2013</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2013/tercer-periodo-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tercer Periodo 2013</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2013/extraordinaria-diciembre-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Diciembre 2013</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2014</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2014/extraordinaria-febrero-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Febrero 2014</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2014/primer-periodo-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo 2014</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2014/extraordinaria-mayo-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Mayo 2014</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2014/segundo-periodo-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Segundo Periodo 2014</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2014/extraordinaria-agosto-septiembre-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Agosto-Septiembre 2014</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2014/tercer-periodo-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tercer Periodo 2014</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2014/extraordinaria-diciembre-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Diciembre 2014</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2015</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2015/extraordinaria-enero-y-febrero-2015"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Enero y Febrero 2015</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2015/primer-periodo-2015"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo 2015</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2015/extraordinaria-mayo-2015"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Mayo 2015</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2015/proyectos-segundo-periodo-2015"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2015</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2015/proyectos-tercer-periodo-2015"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2015</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2015/proyectos-extraordinaria-diciembre-2015"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Diciembre 2015</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2016</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2016/proyectos-primer-periodo-2016"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2016</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2016/proyectos-extraordinaria-abril-mayo-2016"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Abril - Mayo 2016</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2016/proyectos-segundo-periodo-2016"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2016</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2016/proyectos-extraordinaria-agosto-septiembre-2016"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Agosto - Septiembre 2016</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2016/proyectos-tercer-periodo-2016"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2016</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2016/proyectos-extraordinaria-diciembre-de-2016"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Diciembre de 2016</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2017</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2017/proyectos-extraordinaria-febrero-2017"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria  Febrero 2017</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2017/proyectos-primer-periodo-2017"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2017</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2017/proyectos-extraordinaria-mayo-2017"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo 2017</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2017/proyectos-segundo-periodo-2017"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2017</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2017/proyectos-extraordinaria-agosto-2017"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Agosto 2017</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2017/proyectos-tercer-periodo-2017"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2017</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2018</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2018/proyectos-extraordinaria-febrero-2018"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Febrero 2018</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2018/proyectos-primer-periodo-2018"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2018</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2018/proyectos-extraordinaria-mayo-2018"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo 2018</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2018/proyectos-segundo-periodo-2018"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2018</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2018/proyectos-extraordinaria-agosto-y-septiembre-2018"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Agosto y Septiembre 2018</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2018/proyectos-tercer-periodo-2018"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2018</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2019</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-extraordinaria-enero-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Enero 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-extraordinaria-febrero-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Febrero 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-primer-periodo-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-extraordinaria-mayo-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-segundo-periodo-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-extraordinaria-agosto-y-septiembre-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Agosto  y Septiembre 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-tercer-periodo-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2019/proyectos-extraordinaria-diciembre-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Diciembre 2019</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2020</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2020/proyectos-primer-periodo-2020"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2020</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2020/proyectos-extraordinaria-marzo-abril-2020"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Marzo - Abril 2020</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2020/proyectos-extraordinaria-mayo-2020"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo 2020</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2020/proyectos-segundo-periodo-2020"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2020</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2020/proyectos-extraordinaria-septiembre-2020"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Septiembre 2020</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2020/proyectos-tercer-periodo-2020"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2020</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2020/proyectos-extraordinaria-diciembre-2020"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Diciembre 2020</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2021</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2021/proyectos-extraordinaria-enero-febrero-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Enero - Febrero  2021</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2021/proyectos-primer-periodo-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2021</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2021/proyectos-extraordinaria-mayo-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo 2021</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2021/proyectos-segundo-periodo-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2021</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2021/proyectos-extraordinaria-agosto-septiembre-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Agosto - Septiembre 2021</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2021/proyectos-tercer-periodo-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2021</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2021/proyectos-extraordinaria-diciembre-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Diciembre 2021</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2022</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2022/proyectos-extraordinaria-enero-febrero-2022"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Enero - Febrero 2022</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2022/proyectos-primer-periodo-2022"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2022</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2022/proyectos-extraordinaria-mayo-2022"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo 2022</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2022/proyectos-segundo-periodo-2022"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2022</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2022/proyectos-extraordinaria-septiembre-2022"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Septiembre 2022</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2022/proyectos-tercer-periodo-2022"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2022</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2022/proyectos-extraordinaria-diciembre-2022"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Diciembre 2022</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2023</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-extraordinaria-enero-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Enero - 2023</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-extraordinaria-febrero-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Febrero - 2023</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-primer-periodo-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2023</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-extraordinaria-mayo-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo - 2023</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-segundo-periodo-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Segundo Periodo 2023</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-extraordinaria-agosto-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Agosto - 2023</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-tercer-periodo-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Tercer Periodo 2023</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2023/proyectos-extraordinaria-diciembre-2023"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Diciembre - 2023</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2024</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/proyectos-primer-periodo-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Primer Periodo 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/proyectos-extraordinaria-abril-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Abril - 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/proyectos-extraordinaria-mayo-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Proyectos Extraordinaria Mayo - 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/segundo-periodo-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Segundo Periodo 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/extraordinaria-agosto-septiembre-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Agosto - Septiembre  - 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/extraordinaria-septiembre-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Septiembre - 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/tercer-periodo-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tercer Periodo 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2024/extraordinaria-diciembre-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Diciembre - 2024</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2025</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/extraordinaria-enero-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Enero - 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/primer-periodo-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/extraordinaria-mayo-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Mayo - 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/segundo-periodo-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Segundo Periodo 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/extraordinaria-agosto-septiembre-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Agosto - Septiembre - 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/extraordinaria-septiembre-del-23-al-30-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Septiembre del 23 al 30 - 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/tercer-periodo-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Tercer Periodo 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2025/extraordinaria-diciembre-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Diciembre - 2025</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            de Acuerdo 2026</a>
+                                                                                                                        <ul class="submenu ">
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2026/extraordinaria-enero-2026"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Extraordinaria Enero - 2026</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="proyectos/de-acuerdo-2026/primer-periodo-2026"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Primer Periodo 2026</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                    </ul>
+                    </li>
+                                                                                    <li class="dropdown " style="position: relative">
+                        <a class="" href=javascript:void(0)>
+                            Participación
+                        </a>
+
+
+                                                                        <ul class="submenu columned-menu ">
+
+                                                                                                                                <li>
+                                        <a href="participacion/forma-de-participacion"
+                                            target="_self">Forma De Participación</a>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            Cabildo Abierto</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2009"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2009</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2010"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2010</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2011"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2011</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2012"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2012</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2013"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2013</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2014"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2014</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto-2015"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2015</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2016"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2016</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="participacion/cabildo-abierto/cabildo-abierto-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Cabildo Abierto 2019</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="participacion/nino-y-ninas"
+                                            target="_self">Niño Y Niñas</a>
+                                    </li>
+                                                                                    </ul>
+                    </li>
+                                                                                    <li class="dropdown " style="position: relative">
+                        <a class="" href=javascript:void(0)>
+                            Contratación
+                        </a>
+
+
+                                                                        <ul class="submenu columned-menu ">
+
+                                                                                                                                <li>
+                                        <a href="contratacion/informe-de-contratacion"
+                                            target="_self">Informe de Contratacion</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="contratacion/contratacion-publica"
+                                            target="_self">Contratacion Publica</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="contratacion/manuales"
+                                            target="_self">Manuales</a>
+                                    </li>
+                                                                                                                                                                <li>
+                                        <a href="contratacion/ofertas-de-empleo"
+                                            target="_self">Ofertas de Empleo</a>
+                                    </li>
+                                                                                                                                                                                                    <li class="dropdown">
+                                        <a tabindex="0">
+                                            Convocatorias Y Concursos</a>
+                                                                                                                                                                                                            <ul class="submenu columned-menu-2">
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/secretario-a-general-periodo-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Secretario (A) General Periodo 2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/contralor-municipal-de-bucaramanga-2022-2025"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Contralor Municipal De Bucaramanga 2022-2025</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/personero-municipal-2020-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Personero Municipal 2020 – 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/secretario-a-general-periodo-2024"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Secretario (A) General Periodo 2024</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/personero-bucaramanga-2016-2019"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Personero Bucaramanga 2016 - 2019</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/contralor-municipal-de-bucaramanga-2020-2021"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Contralor Municipal De Bucaramanga 2020-2021</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/convocatoria-publica-para-la-eleccion-del-contralora-municipal-de-bucaramanga-2026-2029"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Convocatoria pública para la elección del Contralor(a) Municipal de Bucaramanga 2026-2029</a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="contratacion/convocatorias-y-concursos/convocatoria-publica-para-la-eleccion-del-secretario-a-general-del-concejo-del-municipio-de-bucaramanga-para-el-periodo-2026"
+                                                        style="text-wrap: wrap; max-width: 350px;"
+                                                        target="_self">Convocatoria pública para la elección del secretario (a) general del Concejo del Municipio de Bucaramanga para el periodo 2026</a>
+                                                </li>
+                                                                                    </ul>
+                                    </li>
+                                                                                    </ul>
+                    </li>
+                                                                <li class="d-none">
+                        <a href="oficinas"
+                            class="  ">
+                            Oficinas
+                        </a>
+                    </li>
+                                                                <li class="d-none">
+                        <a href="publicaciones"
+                            class="  ">
+                            Publicaciones
+                        </a>
+                    </li>
+                                                                <li class="d-none">
+                        <a href="cronograma"
+                            class="  ">
+                            Cronograma
+                        </a>
+                    </li>
+                                    </ul>
+    </div>
+</nav>
+
+
+
+                        <div class="menu-right-content">
+                            <div class="search-box">
+                                <div class="search-box-outer search-toggler"><img src="assets/images/icons/icon-4.png"
+                                        alt="Buscador Concejo de bucaramanga" loading="eager" width="22"
+                                        height="22"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--sticky Header-->
+        <div class="sticky-header">
+            <div class="outer-container">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo-box pull-left"><a href="#"><img src="assets/images/logo-3.png"
+                                    alt="LOGO Concejo de bucaramanga" loading="eager" width="212" height="56"></a>
+                        </figure>
+                    </div>
+                    <div class="menu-area clearfix">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                        <div class="menu-right-content">
+                            <div class="search-box">
+                                <div class="search-box-outer search-toggler"><img src="assets/images/icons/icon-4.png"
+                                        alt="Buscador Concejo de bucaramanga" loading="eager" width="22"
+                                        height="22"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        <div class="mobile-menu">
+    <div class="menu-backdrop"></div>
+    <div class="close-btn"><i class="fas fa-times"></i></div>
+    
+    <nav class="menu-box">
+        <div class="nav-logo"><!--<a href="#"><img src="assets/images/logo-4.png" alt="" title=""></a>--></div>
+        <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+        <div class="contact-info">
+            <h4>Síguenos en resdes</h4>
+            <!--<ul>
+                <li>Chicago 12, Melborne City, USA</li>
+                <li><a href="tel:+8801682648101">+88 01682648101</a></li>
+                <li><a href="mailto:info@example.com">info@example.com</a></li>
+            </ul>-->
+        </div>
+        <div class="social-links">
+            <ul class="clearfix">
+               
+                             <li><a href="https://www.facebook.com/concejodebucaramanga/" target="_blank"
+                    aria-label="Ir a Facebook">
+                                            <span class="fab fa-facebook-f"></span>
+                                        <span class="d-none">Facebook</span>
+                </a></li>
+                    <li><a href="https://www.instagram.com/concejobga/" target="_blank"
+                    aria-label="Ir a Instagram">
+                                            <span class="fab fa-instagram"></span>
+                                        <span class="d-none">Instagram</span>
+                </a></li>
+                    <li><a href="https://twitter.com/#!/concejobucara" target="_blank"
+                    aria-label="Ir a twitter">
+                                            <img src="assets/images/x-twitter-brands-solid.svg" style="filter: invert(1);
+    width: 16px;" alt="Twitter Logo" width="100">
+                                        <span class="d-none">twitter</span>
+                </a></li>
+                    <li><a href="https://www.tiktok.com/@concejobga" target="_blank"
+                    aria-label="Ir a Tiktok">
+                                            <span class="fa-brands fa-tiktok"></span>
+                                        <span class="d-none">Tiktok</span>
+                </a></li>
+                    <li><a href="https://www.youtube.com/@concejobucaramangavideosde6030/streams" target="_blank"
+                    aria-label="Ir a youtube">
+                                            <span class="fab fa-youtube"></span>
+                                        <span class="d-none">youtube</span>
+                </a></li>
+                    </ul>
+        </div>
+    </nav>
+</div>            <section class="error-section centred">
+        <div class="scroll-text">
+            <div class="text-box-one">
+                <div class="text-inner">
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                </div>
+            </div>
+            <div class="text-box-two">
+                <div class="text-inner">
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                    <h3>Página no encontrada</h3>
+                </div>
+            </div>
+        </div>
+        <div class="auto-container">
+            <div class="content-box">
+                <div class="error-image"><span>Oops! </span><img src="assets/images/icons/error-1.png" alt=""></div>
+                <h2>Oops! Página no encontrada</h2>
+                <p>La pagina que buscas no existe</p>
+                <div class="btn-box">
+                    <a href="https://www.concejodebucaramanga.gov.co" class="theme-btn btn-one">Volver al inicio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+        <footer class="footer-style-three">
+    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-18.png);"></div>
+    <div class="widget-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-8 col-md-6 col-sm-12 footer-column">
+                    <div class="footer-widget logo-widget">
+                        <div class="widget-title">
+                            <h3>CONCEJO MUNICIPAL DE BUCARAMANGA</h3>
+                        </div>
+
+                        <div class="widget-content">
+                                                            <p>
+                                    CRA. 11 # 34 - 52 Fase 2 Alcaldía de Bucaramanga (Sotano) / Bucaramanga - Colombia               NOTIFICACIONES JUDICIALES notificacionesjudiciales@concejodebucaramanga.gov.co
+                                </p>
+                                                        
+                                                            <p>
+                                                                            Teléfonos:
+                                                                                                                <a href="tel:(57) 6076420460 " class="">(57) 6076420460 </a>
+                                                                                    -
+                                                                                                                    <a href="tel: (57) 6076338469 " class=""> (57) 6076338469 </a>
+                                                                                    -
+                                                                                                                    <a href="tel:(57) 6076523073" class="">(57) 6076523073</a>
+                                                                                                            </p>
+                                                                                        <p>
+                                                                            Emails:
+                                                                                                                <a href="mailto:sistemas@concejodebucaramanga.gov.co" class="">sistemas@concejodebucaramanga.gov.co</a>
+                                                                    </p>
+                                                        <p>
+                                                                                                                                                
+                                                                                                                                                                                                                                                        <p>
+                                                Horario de atención:
+                                                <span>Lunes a Viernes</span>
+                                                <span>7:30 am  a  12:00 pm a 1:00 pm  a  5:00 pm</span>
+                                            </p>
+                                                                                                                    
+                                                                                                                                                                    
+                                                                            
+                                    
+                                                            </p>
+                            
+
+                            <br><br>
+                            <ul class="social-style-one clearfix">
+                                            <li><a href="https://www.facebook.com/concejodebucaramanga/" target="_blank"
+                    aria-label="Ir a Facebook">
+                                            <span class="fab fa-facebook-f"></span>
+                                        <span class="d-none">Facebook</span>
+                </a></li>
+                    <li><a href="https://www.instagram.com/concejobga/" target="_blank"
+                    aria-label="Ir a Instagram">
+                                            <span class="fab fa-instagram"></span>
+                                        <span class="d-none">Instagram</span>
+                </a></li>
+                    <li><a href="https://twitter.com/#!/concejobucara" target="_blank"
+                    aria-label="Ir a twitter">
+                                            <img src="assets/images/x-twitter-brands-solid.svg" style="filter: invert(1);
+    width: 20px;" alt="Twitter Logo" width="100">
+                                        <span class="d-none">twitter</span>
+                </a></li>
+                    <li><a href="https://www.tiktok.com/@concejobga" target="_blank"
+                    aria-label="Ir a Tiktok">
+                                            <span class="fa-brands fa-tiktok"></span>
+                                        <span class="d-none">Tiktok</span>
+                </a></li>
+                    <li><a href="https://www.youtube.com/@concejobucaramangavideosde6030/streams" target="_blank"
+                    aria-label="Ir a youtube">
+                                            <span class="fab fa-youtube"></span>
+                                        <span class="d-none">youtube</span>
+                </a></li>
+                                    </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                    <div class="footer-widget links-widget">
+                        <div class="widget-title">
+                            <h3>Acceso rápido</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="links-list clearfix">
+                                                                                                                                                <li>
+                                            <a href="https://edl.cnsc.gov.co/#/login"
+                                                target="_self">Desempeño Laboral EDL-APP</a>
+                                        </li>
+                                                                                                                                                                                    <li>
+                                            <a href="https://concejobga.cloud/Sitios/BPM/FlujodeTrabajo/Formularios/frmCrearActividadesExt.aspx?frm=6aj6nT0XQfEqm0rO6FI69Q%3d%3d&amp;ID=aHY4rchwp1ZHvyroDFBbCw%3d%3d&amp;ActividadID=mZm0X%2fCAzExkVN0HQoJ4bA%3d%3d"
+                                                target="_self">Contacto (PQRD)</a>
+                                        </li>
+                                                                                                                                                                                    <li>
+                                            <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faccounts.google.com%2F&amp;followup=https%3A%2F%2Faccounts.google.com%2F&amp;ifkv=AVdkyDnRlfL6P8OvQzewHErKR_92VltV2Cyl93KX0-fVGaG8Mg_Lt-dm0wZiiNJLNImRoqvnEc5f&amp;passive=1209600&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;dsh=S640417550%3A1738026353058760&amp;ddm=1"
+                                                target="_self">Ingreso Correo Corporativo</a>
+                                        </li>
+                                                                                                                                                                                    <li>
+                                            <a href="https://concejobga.cloud/Sitios/BPM/"
+                                                target="_self">Intranet</a>
+                                        </li>
+                                                                                                                                                                                    <li>
+                                            <a href="https://www.concejodebucaramanga.gov.co/archivos/intranet/validacion.php"
+                                                target="_self">Meci - Calidad</a>
+                                        </li>
+                                                                                                    
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom-three centred">
+        <div class="auto-container">
+            <div class="copyright">
+                <p>Diseñado y hospedado por <a href="https://www.damos.co" target="_blank"><span>Damos</span></a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<button class="scroll-top scroll-to-target" data-target="html">
+    <i class="flaticon-up-chevron"></i>
+</button>
+
+        
+                    <link rel="stylesheet" href="https://www.concejodebucaramanga.gov.co/themes/damoseditor/css/whatsapp-chat-support.css">
+    <link rel="stylesheet" href="https://www.concejodebucaramanga.gov.co/themes/damoseditor/css/whatsapp-chat-support-custom.css">
+
+    
+    <div class="whatsapp_chat_support wcs_fixed_left" id="example">
+
+                    <div class="wcs_button_label">
+                <span>Contáctenos</span>
+            </div>
+        
+        <!-- whatsapp btn -->
+        <div class="align-items-center d-flex justify-content-center wcs_button wcs_button_circle">
+            <span class="fab fa-whatsapp" style="font-size:35px; 
+    position: relative;"></span>
+        </div>
+
+        <div class="wcs_popup">
+
+            <!-- modal title header -->
+            <div class="wcs_popup_header">
+                <strong>Te asesoramos en línea</strong>
+                <br>
+                <div class="wcs_popup_header_description">Elija un departamento</div>
+            </div>
+
+            <!-- modal body content -->
+            <div class="wcs_popup_person_container">
+
+                                                        <div class="wcs_popup_person" data-number="+573102116069"
+                        data-availability='{                             "monday": "09:00-12:00",
+                         "tuesday": "08:00-12:00",
+                         "wednesday": "08:00-12:00",
+                         "thursday": "08:00-12:00",
+                         "friday": "08:00-12:00",
+                         "saturday": "-",
+                         "sunday": "-" }'
+                        onclick="window.asesorclic = this" data-damostext="Hola quisiera mayor información.."
+                        data-jornada=" Mañana ">
+                        <div class="wcs_popup_person_img">
+                            <img src="https://www.concejodebucaramanga.gov.co/themes/damoseditor/images/default_operator.jpg" alt="Asesor whatsapp Atención al cliente"
+                                data-altoxancho="100x100" width="100" height="100"
+                                title="Asesor whatsapp Atención al cliente" loading="lazy">
+                        </div>
+                        <div class="wcs_popup_person_content">
+                            <div class="wcs_popup_person_name">Atención al cliente</div>
+                            <div class="wcs_popup_person_description">Soporte</div>
+                            <div class="wcs_popup_person_status">En línea</div>
+                        </div>
+                    </div>
+                
+            </div>
+
+            <!-- modal close button -->
+            <div class="wcs_popup_close">
+                <span class="fa fa-close"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+                </div>
+    <script src="https://www.concejodebucaramanga.gov.co/assets/js/jquery.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/popper.min.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/bootstrap.min.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/owl.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/wow.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/validation.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/jquery.fancybox.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/appear.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/scrollbar.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/isotope.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/jquery.nice-select.min.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/jquery-ui.js"></script>
+<!--<script src="https://www.concejodebucaramanga.gov.co/assets/js/monthly.js"></script>
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/date-widget.js"></script>-->
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/bxslider.js"></script>
+
+<!-- main-js -->
+<script src="https://www.concejodebucaramanga.gov.co/assets/js/script.js"></script>
+
+<!-- PREDEFINIDOS js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.js"
+    integrity="sha512-zUaaipvMJygGPcgCxUrJkLKriLXnIjcttJ2FS5Z/mZqP4Ml1ZQPLIafi5SlRkebuhDVH5iSMdGyY8FyK6ROXTQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
+    integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--====== ModalPopup js ======-->
+<script type="text/javascript" src="https://www.concejodebucaramanga.gov.co/themes/damosfrontend/popup/js/modal-popup.js"></script>
+<script type="text/javascript" src="https://www.concejodebucaramanga.gov.co/themes/damoseditor/js/validator.js"></script>
+<script type="text/javascript" src="https://www.concejodebucaramanga.gov.co/themes/damosfrontend/customsforms/js/customsforms.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKtBAMciqXrhY2wOwX9LFV4XFHY06gbV0&callback=Function.prototype"></script>
+
+    
+            <script src="https://www.concejodebucaramanga.gov.co/themes/damoseditor/js/moment.min.js"></script>
+        <script src="https://www.concejodebucaramanga.gov.co/themes/damoseditor/js/moment-timezone-with-data.min.js"></script>
+        <script src="https://www.concejodebucaramanga.gov.co/themes/damoseditor/js/whatsapp-chat-support.js"></script>
+
+        <input type="hidden" id="hiddenphpnow" value="2026-02-28 08:23:01">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.whatsapp_chat_support').whatsappChatSupport({
+
+                    // Options
+                    popupFx: '1', // The popup effect from 0 till 14
+                    now: $('#hiddenphpnow')
+                        .val(), // When empty it will use the date and time from the user browser if not you can assign it with PHP maybe (which will be the date of the server) format: YYYY-MM-DD HH:mm:ss (2019-12-30 18:30:00)
+                    timezone: 'America/Bogota', // When using the date and time from the user browser you can transform it to your current timezone (in case your user is in a different timezone)
+                    notAvailableMsg: 'Desconectado', // message when its not an available day or once the available hours have passed
+                    almostAvailableMsg: 'Pronto estaré disponible', // if today is an available day and before the time starts
+                    defaultMsg: '', // default support msg - do not change this beacuse new function was implemented. look at beforeGoingSetText más abajo - jjHiguera
+
+                    // Events
+                    onPopupOpen: function() {},
+                    onPopupClose: function() {},
+                    beforeGoingSetText: function(text) {
+
+                        if (text.length === 0) {
+                            if (window.asesorclic !== undefined) {
+                                var el = window.asesorclic;
+                                text = $(el).data('damostext');
+                            }
+                        }
+
+                        return text;
+                    },
+
+                    whenGoingToWhatsApp: function(number, text) {},
+                });
+            });
+        </script>
+    
+    
+</body>
+
+</html>

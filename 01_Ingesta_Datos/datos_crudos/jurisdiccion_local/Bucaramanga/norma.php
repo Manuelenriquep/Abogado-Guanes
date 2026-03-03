@@ -1,0 +1,670 @@
+	
+﻿<!doctype html>
+<html lang="es">
+<head>
+
+
+
+<!-- Required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Decreto 863 de 2009 - Gestor Normativo" />
+<meta property="og:description" content="Establece que las Asociaciones de municipios o asociaciones de entidades territoriales en general, podrán presentar directamente proyectos ante los fondos y demás entidades del Estado, siempre y cuando estos proyectos sean avalados por las administraciones distritales o municipales que conformen la respectiva Asociación o de las administraciones territoriales que se beneficien de dichos proyectos." />
+<meta property="og:image" content="https://www.funcionpublica.gov.co/documents/28587425/35428802/Logo_gestor_normativo_iconos.jpg/704e6daf-bdde-be35-374c-dee67809d4d1?t=1654122375247" />
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="keywords" content="asociación,administraciones,presentación,delegatario,utilización,asociaciones,municipios,proyectos,programas">    <meta itemprop="dateModified" content="2015-12-01">
+<title>Decreto 863 de 2009 - Gestor Normativo - Función Pública</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Expires" content="0">
+<!-- <meta> -->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="css_nuevo/style_gn.css"/>
+<!--Fontawesome-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+
+<script>
+	//Cambiar tamaño fuente
+	function cambia_tamano_fuente(accion){
+		<!-- console.log('Entró a cambia_tamano_fuente'); -->
+		var vcontenido;
+		
+		//div que contiene el texto de la norma
+		var divspag = document.getElementsByTagName('div'); //descripcion-contenido
+		for ( var j = 0; j < divspag.length; j++) {
+			<!-- console.log('className: ' + divspag[j].className); -->
+			if(divspag[j].className == 'descripcion-contenido'){
+				vcontenido = divspag[j];
+			}
+		}
+		
+		<!-- console.log('ENCONTRADO!!!!: ' + vcontenido.className); -->
+		
+		
+		var elementos_parrafo = vcontenido.getElementsByTagName('p');
+		var tam_actual;
+		for ( var i = 0; i < elementos_parrafo.length; i++) {
+			<!-- console.log(elementos_parrafo[i].style.fontSize); -->
+			tam_actual = parseInt(elementos_parrafo[i].style.fontSize.replace('px',''));
+			<!-- console.log('tam_actual:' + tam_actual); -->
+			if(Number.isNaN(tam_actual))
+				tam_actual = 16;
+			<!-- console.log('tam_actual:' + tam_actual); -->
+			if(accion=='aumenta'){
+					elementos_parrafo[i].style.fontSize = (tam_actual + 1) + 'px';
+			}
+			if(accion=='reduce'){
+					elementos_parrafo[i].style.fontSize = (tam_actual - 1) + 'px';
+			}
+		}
+	}
+	
+	
+
+	
+</script>
+<style>
+p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+</style>
+
+</head>
+<body>
+
+  
+
+
+<!--header-->
+<header class="header" style="margin-top:-28px;">
+  <div class="header-top d-none d-lg-block">
+    <div class="container logo-nav-container"> <a href="https://www.gov.co/home/" class="img-fluid"><img src="img_nuevo/logo-gov1.png" alt="Logo gov.co"/></a>
+      <nav class="navigation accesibilidad">
+        <ul>
+          <li class="mr-5" style="font-size: 15px;"><a href="https://www.funcionpublica.gov.co/inicio?p_p_id=com_liferay_login_web_portlet_LoginPortlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&saveLastPath=false&_com_liferay_login_web_portlet_LoginPortlet_mvcRenderCommandName=%2Flogin%2Flogin">INGRESAR A LA INTRANET</a></li>
+          <li class="mr-1"> <button href="https://www.funcionpublica.gov.co/rss" type="button" role="button" class="btn btn-white" alt="Página principal de Función Pública"><i class="fa fa-rss pr-1 pl-1" aria-hidden="true"></i></button> </li>
+          <li class="mr-1">
+            <button type="button" class="btn btn-white" onclick="cambia_tamano_fuente('aumenta')">A+</button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-white" onclick="cambia_tamano_fuente('reduce')">A-</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- 
+  <div class="navbar-right">
+		<div id="iconos_barra">
+			<a class="navbar-link link-intranet" href="/web/intranet/inicio" title="Ingresar a la intranet">INGRESAR A LA INTRANET</a>
+			<a class="opcion" href="/rss" aria-label="Rss" target="_blank"><i class="icon-rss" aria-hidden="true"></i><span class="sr-only">RSS</span></a>
+			<a class="opcion" onclick="aumentarTexto()">A+</a>
+			<a class="opcion" onclick="reducirTexto()">A-</a>
+			<a title="Reestablecer el tama?o de la fuente" class="opcion" onclick="reducirTexto()"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+		</div>					
+	</div> -->
+  
+  
+  <!--Reemplazar img Banner acÃ¡-->
+  <!-- <div class="banner  d-none d-lg-block"><a href="#"><img src="img_nuevo/banner1.png" alt="" width="1440" class="img-fluid" height="120" border="0"/></a></div> -->
+  <!--fin banner--> 
+  <!--logo y buscador-->
+  <div class="container ">
+    <div class="row align-items-center logo2-search">
+      <div class="col-lg-4 col-md-6"> 
+		<a href="https://www.funcionpublica.gov.co" class="logo">
+			<!--<img src="https://www.funcionpublica.gov.co/documents/418537/37421537/logo-CP-2023.png/63ca9626-0978-03ad-1312-b0050ab726b0?t=1684959039170" width="285px" class="img-fluid" alt="Logo Función Pública"/>-->
+			<img src="https://www.funcionpublica.gov.co/image/layout_set_logo?img_id=224510&t=1718837174316" width="285px" class="img-fluid" alt="Logo Función Pública"/>
+		</a> 
+	  </div>
+      <div class="col-lg-4 col-md-6"> 
+		<!--<a href="https://www.funcionpublica.gov.co/" class="logo">
+			<img src="https://www.funcionpublica.gov.co/documents/418537/37421537/layout_set_logo_FP.png/0587270b-880a-4f78-9b74-aaf988700c87?t=1659904736491" width="285px" class="img-fluid" alt="Logo Función Pública"/>
+		</a>--> 
+	  </div>      
+	  <form action="/web/eva/curso-para-veedurias-ciudadanas?p_p_id=com_liferay_portal_search_web_portlet_SearchPortlet&amp;p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view&amp;_com_liferay_portal_search_web_portlet_SearchPortlet_mvcPath=%2Fsearch.jsp&amp;_com_liferay_portal_search_web_portlet_SearchPortlet_redirect=http%3A%2F%2Fwww.funcionpublica.gov.co%2Fweb%2Feva%2Fcurso-para-veedurias-ciudadanas%3Fp_p_id%3Dcom_liferay_portal_search_web_portlet_SearchPortlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview" class="form " data-fm-namespace="_com_liferay_portal_search_web_portlet_SearchPortlet_" id="_com_liferay_portal_search_web_portlet_SearchPortlet_fm" method="get" name="_com_liferay_portal_search_web_portlet_SearchPortlet_fm"> 
+	  <div class="col d-none d-lg-block  mt-md-4 align-self-end "> <span name="btnsearch" style="cursor: pointer;" class="g-pos-abs g-right-20 d-block g-width-50 h-100"> <i class="admin-search g-absolute-centered"></i> </span>
+	    <input class="field form-control" id="_com_liferay_portal_search_web_portlet_SearchPortlet_formDate" name="_com_liferay_portal_search_web_portlet_SearchPortlet_formDate" value="1535491536559" type="hidden"> 
+		<input name="p_p_id" value="com_liferay_portal_search_web_portlet_SearchPortlet" type="hidden">
+		<input name="p_p_lifecycle" value="0" type="hidden">
+		<input name="p_p_state" value="maximized" type="hidden">
+		<input name="p_p_mode" value="view" type="hidden">
+		<input name="_com_liferay_portal_search_web_portlet_SearchPortlet_mvcPath" value="/search.jsp" type="hidden">
+		<input name="_com_liferay_portal_search_web_portlet_SearchPortlet_redirect" value="/web/eva/curso-para-veedurias-ciudadanas?p_p_id=com_liferay_portal_search_web_portlet_SearchPortlet&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view" type="hidden"> 
+        <input name="_com_liferay_portal_search_web_portlet_SearchPortlet_keywords" class="form-control mr-sm-2 buscador_fp" type="search" placeholder="Buscar..." aria-label="Search">
+		</div>
+	  </form>
+      
+    </div>
+  </div>
+  
+  <!--menu principal-->
+  <div class="container">
+  
+
+  
+  
+  
+  
+    <nav class="navbar navbar-expand-lg navbar-light"> <a class="navbar-brand" href="https://www.funcionpublica.gov.co/web/eva">EVA</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item "> <a class="nav-link" href="https://www.funcionpublica.gov.co/web/eva/publicaciones">Publicaciones </a> </li>
+          <li class="nav-item active"> <a class="nav-link" href="https://www.funcionpublica.gov.co/web/eva/gestor-normativo">Gestor Normativo</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="https://www.funcionpublica.gov.co/eva/red">Red de servidores</a> </li>
+          <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cursos virtuales </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="https://www.funcionpublica.gov.co/web/eva/curso-integridad">Curso de integridad</a> <a class="dropdown-item" href="https://www.funcionpublica.gov.co/web/eva/programa-de-induccion-y-reinduccion">Programa de inducción y reinducción</a> <a class="dropdown-item" href="https://www.funcionpublica.gov.co/web/eva/curso-para-veedurias-ciudadanas">Curso para Veedurías Ciudadanas</a> <a class="dropdown-item" href="https://www.funcionpublica.gov.co/web/eva/curso-gerentes-publicos">Curso para Gerentes PÃºblicos</a> <a class="dropdown-item" href="https://www.funcionpublica.gov.co/web/eva/curso-mipg">Curso MIPG</a> <a class="dropdown-item" href="https://www.funcionpublica.gov.co/web/eva/curso-de-empleo-publico">Curso de Empleo PÃºblico</a> </div>
+          </li>
+          <li class="nav-item"> <a class="nav-link" href="https://www.funcionpublica.gov.co/eva/es/formatos-administracion-publica">Formatos</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="https://www.funcionpublica.gov.co/web/eva/contactenos">Contáctenos</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="https://www.funcionpublica.gov.co/web/eva/preguntas-frecuentes">Preguntas frecuentes</a> </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  
+  <!---breadcrumb-->
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb"  id="spanmiga" >
+        <li class="breadcrumb-item"><a href="https://www.funcionpublica.gov.co/web/eva">EVA</a></li>
+        <li class="breadcrumb-item"><a href="https://www.funcionpublica.gov.co/web/eva/gestor-normativo">Gestor Normativo</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Normas de la Función Pública</li>
+      </ol>
+    </nav>
+  </div>
+  </div>
+  <!-- End Breadcrumbs --> 
+
+</header>
+
+<!---End header-->
+	
+	<script>
+	
+
+
+	
+	
+	
+	function Scrolldown() {
+			window.scroll(0,-30); 
+	}
+	function eliminateDuplicates(arr) {
+				//console.log(arr);
+			  var i,
+				  len=arr.length,
+				  out=[],
+				  obj={};
+
+			  for (i=len-1;i>=0;i--) {
+					obj[arr[i]]=0;
+			  }
+			  //console.log(obj);
+			  for (i in obj) {
+					out.push(i);
+					//console.log(i);
+			  }
+			  out.reverse();
+			  return out;
+	}
+		
+	function mostrar_ocultar_jurisprudencia(iddiv){
+		if(document.getElementById("juris"+iddiv).style.display=='none'){
+			document.getElementById("juris"+iddiv).style.display='block';
+		}else{
+			document.getElementById("juris"+iddiv).style.display='none';
+		}
+	}
+	
+	if (sessionStorage.migapan) {
+				sessionStorage.migapan = sessionStorage.migapan + '+Decreto 863/09|35606';
+				var normas = sessionStorage.migapan.split('+');
+				normas = eliminateDuplicates(normas);
+				sessionStorage.migapan = normas.join('+');
+	} else {
+				sessionStorage.migapan = 'Decreto 863/09|35606';
+	}
+	var migadepan = sessionStorage.migapan.split("+");
+	var txt_miga='<li class="breadcrumb-item"><a href="https://www.funcionpublica.gov.co/web/eva">EVA</a></li>'+
+        '<li class="breadcrumb-item"><a href="https://www.funcionpublica.gov.co/web/eva/gestor-normativo">Gestor Normativo</a></li>'+
+	    '<li class="breadcrumb-item"><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/consulta_avanzada.php">Consulta</a></li>';
+	for (j=0;j<migadepan.length;j++) {
+		var xnorma=migadepan[j].split("|");
+		txt_miga+='<li class="breadcrumb-item"><a href="/eva/gestornormativo/norma.php?i='+xnorma[1]+'">'+xnorma[0]+'</a></li>'; 
+	}
+	document.getElementById("spanmiga").innerHTML=txt_miga;
+	//document.getElementById("result").innerHTML = "You have clicked the button " +
+	//sessionStorage.migapan + " time(s) in this session.";
+
+	function mostrarMensajeNoDisponible() {
+		alert("Esta funcionalidad no está disponible por el momento.");
+	}
+	
+	</script>
+	<style>
+		h2,h3,h4 {
+			  text-align: center;
+			      font-size: 1em;
+			}
+		.titulo-norma{
+			  font-size: 2.441em;
+			  text-align: left;
+			}
+		h1 {
+			  text-align: center;
+			      font-size: 1em;
+			}
+		.jurisprudencia a {
+			color: #007bff!important;
+		}
+		ol {
+			padding-inline-start: 20px;
+		}
+	</style>
+  	
+  <main class="main"> 
+  <!-- Breadcrumbs -->
+  
+  <!-- getRealIP 129.222.203.106, 52.22.134.181-->  <!-- cache: cache/35606-20151201000000.fp -->  
+  
+  <div class="container">
+    <h2 class="titulo-norma"><strong>Decreto 863 de 2009</strong></h2>  
+  <div class="row" style="margin-top: 4rem">
+  <!--col left-->
+        <div class="col-lg-3 col-md-12">
+							
+		<a href="norma_pdf.php?i=35606" target="_blank">
+		<!--<a href="#" onclick="mostrarMensajeNoDisponible(); return false;" target="_blank">-->
+			<button type="button" class="btn btn-yellow">Descargar PDF</button>
+		</a>
+					 <!--accordion-->
+      <div class="accordion" id="accordion">
+	  <div class="card-accordion">
+	  <div class="card-header" id="headingOne">
+	  <h5 class="mb-0">
+	  <button class="btn btn-link collapsed  btn-accordion" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Fechas
+        </button>
+	  </h5>
+	  </div>
+	  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+			<p>Fecha de Expedición: 16 de marzo de 2009</p>
+			<p class="subrayado2"></p>
+			<p>Fecha de Entrada en Vigencia: </p>
+			<p class="subrayado2"></p>
+			<p>Medio de Publicación: </p>
+			<p class="subrayado2"></p>
+      </div>
+    </div>
+	  </div>
+	  
+	  <div class="card-accordion">
+			<div class="card-header" id="headingTwo">
+			  <h5 class="mb-0">
+				<button class="btn btn-link collapsed ; btn-accordion" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				 Temas (2)
+				</button>
+			  </h5>
+			</div>
+			
+			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+			  <div class="card-body">
+			  				  <h5 class="txt-18">ASOCIACIONES</h5> 
+				  <h6>- Subtema: De Municipios</h6>
+				  
+				  				  <p>  Establece que las Asociaciones de municipios o asociaciones de entidades territoriales en general, podrán presentar directamente proyectos ante los fondos y demás entidades del Estado, siempre y cuando estos proyectos sean avalados por las administraciones distritales o municipales que conformen la respectiva Asociación o de las administraciones territoriales que se beneficien de dichos proyectos.</p>
+										
+								  				  <h5 class="txt-18">MUNICIPIOS</h5> 
+				  <h6>- Subtema: Proyectos y Programas</h6>
+				  
+				  				  <p>  Establece que las Asociaciones de municipios o asociaciones de entidades territoriales en general, podrán presentar directamente proyectos ante los fondos y demás entidades del Estado, siempre y cuando estos proyectos sean avalados por las administraciones distritales o municipales que conformen la respectiva Asociación o de las administraciones territoriales que se beneficien de dichos proyectos.</p>
+										
+								  			  </div>
+			</div>
+	</div>
+	  
+		
+	
+	 <div class="card-accordion">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+		<button class="btn btn-link collapsed; btn-accordion" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          Vigencias(1)
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse  show" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+	  <p><a href="norma.php?i=329#">Reglamentado parcialmente por Ley 136 de 1994</a><p>	  <p class="subrayado2"></p>
+      </div>
+    </div>
+  </div> 
+
+  </div>
+	   <!--end accordion-->
+	  </div>
+	  
+	  <!--end col left-->
+
+<!--col right-->
+<div class="col-lg-9 col-md-12">
+
+			
+											
+						
+						
+											<div class="alert alert-dismissible alert-info">
+												  <!-- <button type="button" class="close" data-dismiss="alert">X</button> -->
+												  <p ><small>Los datos publicados tienen propósitos exclusivamente informativos. El Departamento Administrativo de la Función Pública no se hace responsable de la vigencia de la presente norma. Nos encontramos en un proceso permanente de actualización de los contenidos.</small></p>
+											</div>
+
+
+	<div class="descripcion-contenido">
+		
+
+<FONT face=Arial><FONT face=Arial>
+<P align=center><STRONG>DECRETO 863 DE 2009</STRONG></P>
+<P align=center><STRONG>(Marzo 16)</STRONG></P>
+<P align=center><STRONG>"Por el cual se reglamenta parcialmente la Ley </STRONG><A href="norma.php?i=329#0">136</A><STRONG> de 1994"</STRONG></P>
+<P align=center><STRONG>EL MINISTRO DEL INTERIOR Y DE JUSTICIA DE LA REPÚBLICA DE COLOMBIA, </STRONG></P>
+<P align=center><STRONG>DELEGATARIO DE LAS FUNCIONES PRESIDENCIALES MEDIANTE DECRETO No. 783 DEL 11 de marzo de 2009</STRONG></P>
+<P align=center><STRONG>en ejercicio de sus facultades constitucionales y legales y en especial las conferidas por el numeral 11 del artículo 189 de la Constitución Política y en desarrollo de la ley 136 de 1994, y </STRONG></P>
+<P align=center><STRONG>CONSIDERANDO</STRONG></P></FONT>
+<P align=justify>Que de conformidad con lo señalado en la Ley 1151 de 20007, es política del Estado Comunitario fortalecer la asociatividad entre entidades territoriales.</P>
+<P align=justify>Que la Ley 136 de 1994 en su artículo 149 establece que las asociaciones de municipios gozarán para el desarrollo de sus objetivos, de los mismos derechos, privilegios, excepciones y prerrogativas otorgadas por la ley a los municipios.'</P>
+<P align=justify>Que el artículo 150 de la misma Ley establece que la Nación, los departamentos y otras entidades públicas o privadas, podrán ceder o aportar total o parcialmente rentas a las asociaciones de municipios,</P>
+<P align=justify>Que con el propósito de fortalecer las capacidades territoriales para promover el desarrollo regional, se considera oportuno establecer herramientas que estimulen la presentación de proyectos por parte las asociaciones de municipios o asociación de entidades territoriales en general, ante los fondos y demás entidades del Estado, con miras a fomentar las alianzas estratégicas y la utilización de economías de escala, que logren resultados en términos de costo beneficio.</P></FONT><B>
+<P align=center>DECRETA</P><FONT face=Arial>
+<P align=justify>Artículo Primero.- Presentación de proyectos.</B> Las Asociaciones de municipios o asociaciones de entidades territoriales en general, podrán presentar directamente proyectos ante los fondos y demás entidades del Estado, siempre y cuando estos proyectos sean avalados por las administraciones distritales o municipales que conformen la respectiva Asociación o de las administraciones territoriales que se beneficien de dichos proyectos.</P><B>
+<P align=justify>Parágrafo.</B> Los citados proyectos deben ser acordes con el objeto previsto en los estatutos de la respectiva Asociación.</P><B>
+<P align=justify>Artículo Segundo.- Vigencia y derogatorias<I>. </B></I>El presente decreto rige a partir de la fecha de su publicación y deroga las normas que le sean contrarias.</P><B>
+<P align=center>PUBLÍQUESE, COMUNÍQUESE Y CÚMPLASE</P>
+<P align=center>Dado en Bogotá a los 16 días de marzo de 2009</P>
+<P align=center>El Ministro del Interior y de Justicia</P>
+<P align=center>FABIO VALENCIA COSSIO</P></B></FONT>
+	</div>
+	
+		
+</div>
+<!--end col right-->
+	  
+  </div>
+    </div>
+  
+  </main>
+	
+	
+    <div class="container">
+
+		<style type="text/css">
+		.stl-1-white-blue-second {
+			background-color: transparent;
+			border: 2px solid #1E3559 !important;
+			color: #1E3559;
+			transition-duration: .4s;
+			border-radius: 3px;
+			padding: 10px 30px;
+			font-size: 1.0em;
+			font-weight: 700;
+			display: inline-block;
+		}
+
+		.stl-1-white-blue-second:hover {
+			background-color: #1E3559;
+			color: #fff;
+			border: 2px solid #1E3559;
+			border-radius: 3px;
+			padding: 10px 30px;
+			font-weight: 700;
+			text-decoration: none;
+		}
+
+		.stl-1-white-blue-second:active {
+			background-color: #bfbfbf;
+			color: white;
+		}
+
+		</style>
+		<a href="javascript:history.back(1)">
+			<div class="col-md-4"><button type="submit" class="stl-1-white-blue-second mtop20">Volver Atrás</button>
+			</div>
+		</a>
+</div>
+
+
+<footer class="footer">
+  <div class="menu-gobierno">
+    <div class="container">
+      <div class="row" style="align-items: center">
+        <div class="col-lg-4 col-md-12 text-center mb-5"> <a href="https://www.presidencia.gov.co/" class="logo img-fluid"><img width="40%" src="https://www.funcionpublica.gov.co/documents/418537/37421537/logo-gobierno.png/af775a00-cdd7-3268-7e00-d2d89fabf76b?t=1659904736649" alt="Gobierno de Colombia"/></a> </div>
+        <div class="col-lg-2 col-md-3">
+          <ul>
+            <!-- <li><a href="https://www.presidencia.gov.co/">Presidencia</a></li> -->
+            <li><a href="https://www.vicepresidencia.gov.co/">Vicepresidencia</a></li>
+            <li><a href="https://www.minjusticia.gov.co/">MinJusticia</a></li>
+            <li><a href="https://www.mindefensa.gov.co/irj/portal/Mindefensa">MinDefensa</a></li>
+            <li><a href="https://www.mintrabajo.gov.co/web/guest/inicio">MinTrabajo</a></li>
+            <li><a href="https://www.mininterior.gov.co/">MinInterior</a></li>
+            <li><a href="https://minciencias.gov.co/">MinCiencias</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3">
+          <ul>
+            <li><a href="https://www.cancilleria.gov.co/">MinRelaciones</a></li>
+            <li><a href="https://www.minhacienda.gov.co/">MinHacienda</a></li>
+            <li><a href="https://www.minsalud.gov.co/portada-covid-19.html">MinSalud</a></li>
+            <li><a href="https://www.minenergia.gov.co/">MinEnergía</a></li>
+            <li><a href="https://www.mincit.gov.co/">MinComercio</a></li>
+            <li><a href="https://www.mindeporte.gov.co/">MinDeporte</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3">
+          <ul>
+            <li><a href="https://www.mintic.gov.co/portal/inicio/">MinTIC</a></li>
+            <li><a href="https://www.mineducacion.gov.co/portal/">MinEducacion</a></li>
+            <li><a href="https://www.mincultura.gov.co/Paginas/Inicio.aspx">MinCultura</a></li>
+            <li><a href="https://www.minagricultura.gov.co/paginas/default.aspx">MinAgricultura</a></li>
+            <li><a href="https://www.minambiente.gov.co">MinAmbiente</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3">
+          <ul>
+            <li><a href="https://www.mintransporte.gov.co/">MinTransporte</a></li>
+            <li><a href="http://www.minvivienda.gov.co/">MinVivienda</a></li>
+            <li><a href="https://www.urnadecristal.gov.co/">Urna de Cristal</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-menu">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="row text-center align-items-center">
+            <div class="col-lg-12 col-sm-6 mb-5">
+              <p><a haref="#"><img src="https://www.funcionpublica.gov.co/o/Fpublica-2021-theme/images/logos/logofinal_gov.png" class="img-fluid p-2" alt="Logo gov.co"/></a></p>
+            </div>
+            <div class="col-lg-12 col-sm-6 mb-5">
+              <p><a haref="#"><img src="img_nuevo/colombia-co.png" class="img-fluid" alt="Logo Marca Pais Colombia"/></a></p>
+            </div>
+          </div>
+          <div class="d-none d-lg-block">
+            <p style="text-align: left; text-transform: uppercase; font-size: 17px;">entidad del sector</p>
+            <p class="subrayado1"></p>
+            <br>
+            <br>
+            <p><a haref="#"><img src="img_nuevo/logo-esap.png" class="img-fluid" alt="Logo ESAP"/></a></p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-7">
+          <p style="text-align: left; text-transform: uppercase; font-size: 17px;">función publica</p>
+          <p class="subrayado1"></p>
+          <!--direccion-->
+          <div style="background-image: url(img_nuevo/map2.png); background-repeat: no-repeat;background-position: center top;">
+            <div class="d-flex">
+              <div class="mr-2"> <i class="fa fa-map-marker bg-white-opacity-0_1 g-color-white-opacity-0_6"></i> </div>
+              <p class="ml-1">Carrera 6 # 12-62,<br>
+                Bogotá D.C.</p>
+            </div>
+            <!--phone-->
+            <div class="d-flex mt-1">
+              <div class="mr-2"> <i class="fa fa-phone bg-white-opacity-0_1 g-color-white-opacity-0_6"></i> </div>
+              <p class="ml-1"><strong>Código Postal: </strong>111711<br>
+                <strong>PBX:</strong> (+57) 601 7395656<br>
+                <strong>FAX:</strong> (+57) 601 7395657<br>
+              </p>
+            </div>
+          </div>
+          <!--url-->
+          <div class="d-flex">
+            <div class="mr-2"> <i class="fa fa-globe bg-white-opacity-0_1 g-color-white-opacity-0_6"></i> </div>
+            <p class="ml-1" style="word-wrap: break-word"><a href="#">www.funcionpublica.gov.co</a> <br>
+              Correo de Contacto: <a href="mailto:eva@funcionpublica.gov.co">eva@funcionpublica.gov.co</a><br>
+              <span class="d-none d-lg-block d-lg-block d-md-block"> Notificaciones judiciales:<br>
+              <a style="word-wrap: break-word" href="mailto:notificacionesjudiciales@funcionpublica.gov.co?Subject=Notificación%20judicial" target="_top">notificacionesjudiciales@funcionpublica.gov.co</a></span> <br>
+            </p>
+          </div>
+          <p class="mt-2" style="text-align: left; text-transform: uppercase; font-size: 17px;">contacto</p>
+          <p class="subrayado1"></p>
+          <p>Horario de atención presencial grupo de Servicio al ciudadano:<br>
+            Lunes a Viernes, 7:30 a.m a 6:00 p.m</p>
+          <p class="border-footer"></p>
+          <p>Recepción de correspondencia:<br>
+            Lunes a viernes, 8:00 am a 4:00 pm Jornada Continua</p>
+          <p class="subrayado2"></p>
+          <p>Línea gratuita nacional: 018000917770</p>
+          <p class="subrayado2"></p>
+        </div>
+        <div class="col-lg-4 col-md-5">
+          <p style="text-align: left; text-transform: uppercase; font-size: 17px;">servicios al ciudadano</p>
+          <p class="subrayado1"></p>
+          <p><a href="mailto:notificacionesjudiciales@funcionpublica.gov.co?Subject=Notificación%20judicial" target="_top">Notificaciones judiciales</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="mailto:actosadministrativos@funcionpublica.gov.co?Subject=Notificaciones o comunicaciones de acto administrativo" target="_top">Notificación de actos administrativos</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/notificaciones-a-terceros" target="_top">Notificaciones a terceros</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/denuncias-por-actos-de-corrupci%C3%B3n">Denuncias por actos de corrupción</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/web/intranet/registrosyencuestas">Participación ciudadana</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/preguntas-frecuentes">Preguntas frecuentes</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/formule-su-peticion">Formule su petición PQRS</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/mapa-del-sitio">Mapa del sitio</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://mail.office365.com/">Ingreso correo institucional</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/estadisticas-sitio">Estadísticas del sitio</a></p>
+          <p class="subrayado2"></p>
+          <p><a href="https://www.funcionpublica.gov.co/inicio?p_p_id=com_liferay_login_web_portlet_LoginPortlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&saveLastPath=false&_com_liferay_login_web_portlet_LoginPortlet_mvcRenderCommandName=%2Flogin%2Flogin">Acceder</a></p>
+          <p class="subrayado2"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--redes sociales-->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-lg-6"> <a href="https://www.funcionpublica.gov.co/politica-de-privacidad-y-condiciones-de-uso">Política de Privacidad &nbsp; | &nbsp; </a><a href="https://www.funcionpublica.gov.co/politica-de-privacidad-y-condiciones-de-uso"> Términos y condiciones de uso</a> </div>
+        <div class="col-sm-4 col-lg-6 text-left  text-md-right text-xl-right">
+          <nav class="navigation">
+            <ul>
+              <li class="mr-2"><a href="https://www.facebook.com/FuncionPublica" target="_blank" title="Icono facebook"> <i class="fa fa-facebook fa-2x g-color-white-opacity-0_6 link-footer-img"></i></a></li>
+              <li class="mr-2"><a href="https://www.linkedin.com/company/departamento-administrativo-de-la-funci%C3%B3n-p%C3%BAblica" target="_blank" title="Icono Linkedin"> <i class="fa fa-linkedin fa-2x g-color-white-opacity-0_6 link-footer-img" ></i> </a></li>
+              <li class="mr-2"><a href="https://twitter.com/dafp_colombia"  target="_blank" title="Icono Twitter"> <i class="fa fa-twitter fa-2x g-color-white-opacity-0_6 link-footer-img" ></i> </a></li>
+              <li><a href="https://www.instagram.com/funcionpublicacolombia/" target="_blank" title="Icono Instagram"> <i class="fa fa fa-instagram fa-2x g-color-white-opacity-0_6 link-footer-img"></i> </a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  -->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <!-- Script para mostrar el modal al cargar la página -->
+  <script>
+    $(document).ready(function(){
+      // Verificar si el sessionStorage tiene la fecha guardada
+      var modalShownTime = sessionStorage.getItem('modalShownTime');
+      if (!modalShownTime) {
+        // Si no hay fecha guardada, guardar la fecha actual
+        sessionStorage.setItem('modalShownTime', new Date().getTime());
+      } else {
+        // Si hay fecha guardada, verificar si han pasado 2 minutos desde entonces
+        var currentTime = new Date().getTime();
+		sessionStorage.setItem('modalShownTimeresta', (currentTime - modalShownTime));
+        if ((currentTime - modalShownTime) < (15 * 1000)) {
+          // Si han pasado menos de 2 minutos, no mostrar el modal
+          return;
+        }
+      }
+      // Verificar si el modal existe antes de mostrarlo
+      if ($('#exampleModal').length) {
+        $('#exampleModal').modal('show');
+		sessionStorage.setItem('modalShownTime', new Date().getTime());
+		
+      }
+    });
+  </script>
+  <!-- Lupa del buscador del Header -->
+<script>
+	 $('[name="btnsearch"]').click(function(){
+	  $('[name="_com_liferay_portal_search_web_portlet_SearchPortlet_fm"]').submit();
+	});
+</script>
+
+<!-- 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'anteriorUA-///71957172-1', 'anteriorUA-///71957172-1');
+  ga('send', 'pageview');
+
+</script>
+-->
+
+			
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DVZ2E88S6R"></script>
+<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-DVZ2E88S6R');
+</script>
+
+
+
+
+</body>
+</html>

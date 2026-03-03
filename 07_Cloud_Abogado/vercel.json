@@ -1,0 +1,75 @@
+{
+    "version": 2,
+    "name": "abogado-guanes",
+    "builds": [
+        {
+            "src": "index.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "gracias.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "sitemap.xml",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "robots.txt",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "downloads/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "js/**",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/sitemap.xml",
+            "dest": "/sitemap.xml",
+            "headers": {
+                "Content-Type": "application/xml"
+            }
+        },
+        {
+            "src": "/robots.txt",
+            "dest": "/robots.txt",
+            "headers": {
+                "Content-Type": "text/plain"
+            }
+        },
+        {
+            "src": "/gracias",
+            "dest": "/gracias.html"
+        },
+        {
+            "src": "/gracias.html",
+            "dest": "/gracias.html"
+        },
+        {
+            "src": "/downloads/(.*)",
+            "dest": "/downloads/$1"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/js/$1"
+        },
+        {
+            "src": "/(.*).html",
+            "headers": {
+                "Content-Type": "text/html; charset=UTF-8"
+            }
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html",
+            "headers": {
+                "Content-Type": "text/html; charset=UTF-8"
+            }
+        }
+    ]
+}

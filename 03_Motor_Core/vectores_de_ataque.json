@@ -1,0 +1,8 @@
+[
+    {
+        "articulo_origen": "Artículo 14",
+        "tag_comercial": "ESCUDO_B2B",
+        "resumen_solucion": "El artículo 14° del Código de Comercio de Colombia establece un mecanismo preventivo para empresas al prohibir la participación en actividades comerciales de personas inhabiles (como comerciantes en quiebra, funcionarios públicos en actividades relacionadas con sus funciones, o personas prohibidas por ley). Este marco legal actúa como un escudo B2B al limitar el acceso a mercados por parte de actores no calificados, protegiendo la integridad del sistema comercial y evitando riesgos legales.",
+        "diagrama_mermaid": "graph TD\nA[Verificar si la persona está inhabil] --> B[¿Es un comerciante?]\nB -->|Sí| C[Aplicar sanción: multas hasta 50.000 pesos]\nB -->|No| D[Permitir actividad comercial]\nA --> E[Revisar derogaciones y normas vigentes]\nE --> F[Aplicar costumbre mercantil si aplica]"
+    }
+]

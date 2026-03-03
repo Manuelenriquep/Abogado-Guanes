@@ -1,0 +1,359 @@
+[
+    {
+        "articulo_origen": "Artículo 622",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución para ciudadanos que permite validar y completar títulos valores con espacios en blanco, garantizando su validez legal mediante un proceso estructurado que incluye verificación de autorizaciones, llenado conforme a instrucciones del suscriptor, y protección contra terceros. Incluye asesoría legal y herramientas para negociación segura.",
+        "diagrama_mermaid": "graph TD\nA[Verificar validez del título] --> B[Completar espacios en blanco según instrucciones del suscriptor]\nB --> C[Asesoría legal para validar autorizaciones]\nC --> D[Registrar llenado en registros oficiales]\nD --> E[Verificar protección contra terceros]\nE --> F[Negociar título a terceros de buena fe]\nF --> G[Título válido y efectivo para nuevo tenedor]"
+    },
+    {
+        "articulo_origen": "Artículo 652",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución permite a los ciudadanos validar transferencias de títulos valores sin endoso, garantizando su protección legal frente a excepciones registradas. Incluye asesoría especializada, análisis de riesgos y certificación de cumplimiento normativo bajo el marco del Decreto 410 de 1971.",
+        "diagrama_mermaid": "graph TD\nA[Inicio: Transferencia sin endoso] --> B{¿Es válida la transferencia?}\nB -->|Sí| C[Verificar registro de excepciones]\nB -->|No| D[Rechazar transferencia]\nC --> E[Asesoría legal para validar derechos]\nE --> F[Certificación de cumplimiento normativo]\nF --> G[Final: Transferencia segura y legal]\nC -->|Excepciones encontradas| H[Alerta: Riesgo legal identificado]"
+    },
+    {
+        "articulo_origen": "Artículo 659",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución permite a los ciudadanos estructurar endosos en garantía de títulos valores mediante cláusulas legales como 'en garantía' o 'en prenda', asegurando derechos prendarios y protección contra excepciones personales de tenedores anteriores. Incluye asesoría jurídica, plantillas de endosos y validación de cláusulas para garantizar la eficacia del endoso en garantía.",
+        "diagrama_mermaid": "graph TD\nA[1. Analizar cláusulas 'en garantía' o 'en prenda'] --> B(2. Preparar endoso con derechos prendarios)\nB --> C(3. Verificar protección contra excepciones personales)\nC --> D[4. Ejecutar endoso ante notario]\nD --> E(5. Registrar derechos en registros públicos)\nE --> F[6. Asesoría post-endoso para cumplimiento legal]"
+    },
+    {
+        "articulo_origen": "Artículo 670",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución integral para validar y proteger títulos valores en Colombia, garantizando cumplimiento legal con el Código de Comercio. Incluye análisis de formalidades, verificación de validez legal, asesoría en emisión y tránsito de títulos, y prevención de titulos creados en contravención a la ley.",
+        "diagrama_mermaid": "graph TD\nA[Usuario identifica título valor] --> B{¿Cumple con formalidades legales?}\nB -->|Sí| C[Validación legal mediante análisis de artículo 670 y capítulo V]\nB -->|No| D[Consultoría jurídica para rectificación]\nC --> E[Emisión segura de título valor]\nD --> E\nE --> F[Protección legal contra titulos nulos por contravención]"
+    },
+    {
+        "articulo_origen": "Artículo 671",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución digital para emisión, validación y gestión de títulos valores conforme al Artículo 671 del Código de Comercio. Incluye asesoría legal personalizada, verificación de requisitos legales y generación de documentos estandarizados con garantía de cumplimiento normativo.",
+        "diagrama_mermaid": "graph TD\nA[Usuario solicita asesoría] --> B{¿Necesita emitir o validar título valor?}\nB -->|Crear título| C[Verificación de requisitos del Artículo 671]\nB -->|Validar título| D[Análisis de cumplimiento normativo]\nC --> E[Generación de documento legal]\nD --> E\nE --> F[Asesoría personalizada sobre cláusulas]\nF --> G[Descarga documento certificado]\nG --> H[Finalización del proceso]"
+    },
+    {
+        "articulo_origen": "Artículo 621",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Plataforma digital que guía al ciudadano en la creación de letras de cambio válidas según el Art. 621 del Código de Comercio. Incluye plantillas predefinidas, validación automatizada de los 4 elementos requeridos (orden incondicional, nombre del girado, vencimiento, y especificación de pago a orden/portador), y asesoría jurídica básica para garantizar cumplimiento legal.",
+        "diagrama_mermaid": "graph TD\nA[Acceso a plataforma] --> B[Selección de plantilla de letra de cambio]\nB --> C[Ingreso de datos: nombre girado, monto, vencimiento]\nC --> D[Validación automatizada de los 4 elementos del Art. 621]\nD --> E{¿Cumple con todos los requisitos?}\nE -->|Sí| F[Descarga documento legalmente válido]\nE -->|No| G[Notificación de errores y sugerencias de corrección]"
+    },
+    {
+        "articulo_origen": "Artículo 672",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Nuestra solución profesional desbloquea riesgos en títulos valores mediante análisis jurídico-mercantil. Identificamos anomalías como pagarés en blanco sin instrucciones, prescripción de la acción cambiaria (10 años según Ley 1487 de 2011) y excepciones como fraude o falta de capacidad. Ofrecemos estrategias de defensa basadas en la Constitución y jurisprudencia unificada, garantizando protección legal contra cobros ilegítimos.",
+        "diagrama_mermaid": "graph TD\nA[Análisis de título valor] --> B{¿Cláusulas de interés/cambio?}\nB -->|Sí| C[Verificación de tasas permitidas]\nB -->|No| D[Alerta: Anomalía comercial]\nC --> E[Validación de prescripción (10 años)]\nD --> F[Defensa mediante excepciones cambiarias]\nE --> G[Certificación de cumplimiento legal]\nF --> H[Protección contra cobros ilegítimos]\nG --> I[Desbloqueo seguro del título]\nH --> I"
+    },
+    {
+        "articulo_origen": "Artículo 673",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a Títulos Valores mediante un análisis estructurado de las normas del Código de Comercio. Identifica riesgos como pagarés en blanco (art. 673), prescripción de la acción cambiaria (art. 674) y excepciones como la falta de pago o fraude. Ofrece un flujo de acción para defender derechos, evitando multas y litigios. Ideal para empresas y particulares que manejan operaciones financieras.",
+        "diagrama_mermaid": "graph TD\nA[Presentación del pagaré] --> B{¿Firmado en blanco?}\nB -->|Sí| C[Carta de instrucciones obligatoria]\nB -->|No| D[Verificar vencimiento (art. 673)]\nD --> E{¿Prescripción vencida? (art. 674)}\nE -->|Sí| F[Excepción: prescripción] \nE -->|No| G{¿Excepciones cambiarias?}\nG -->|Sí| H[Defensa legal: no pago/fraude]\nG -->|No| I[Acción judicial: cobro forzoso]"
+    },
+    {
+        "articulo_origen": "Artículo 676",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución integral para proteger titulares de títulos valores frente a anomalías comerciales lucrativas. Identifica riesgos como pagarés en blanco sin instrucciones, prescripción de acciones cambiarias y excepciones legales. Ofrece estrategias de defensa basadas en el artículo 676 del Código de Comercio, garantizando cumplimiento normativo y prevención de fraudes. Incluye asesoría personalizada y herramientas de análisis de riesgos.",
+        "diagrama_mermaid": "graph TD\nA[Usuario identifica riesgo en título valor] --> B{¿Existe pagaré en blanco sin instrucciones?}\nB -->|Sí| C[Activar mecanismo de desbloqueo B2C]\nB -->|No| D[Verificar prescripción de acción cambiaria]\nC --> E[Consultar abogado especializado en derecho cambiario]\nD --> F[Calcular plazo de prescripción según artículo 676]\nE --> G[Generar estrategia de defensa legal]\nF --> H[Validar vencimiento del título]\nG --> I[Implementar medidas de protección]\nH --> I\nI --> J[Protección total del titular del título]"
+    },
+    {
+        "articulo_origen": "Artículo 677",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": "39900",
+        "resumen_solucion": "Solución integral para identificar y resolver anomalías en títulos valores: 1) Análisis de pagarés en blanco sin instrucciones mediante validación de la carta de instrucciones (Art. 677 C.C.). 2) Cálculo de prescripción de la acción cambiaria (5 años desde la fecha de vencimiento). 3) Defensa mediante excepciones cambiarias (fraude, falta de capacidad, nulidad). 4) Estrategia de desbloqueo de activos mediante análisis de domicilios para pago (Art. 677 C.C.).",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía] --> B[Verificar carta de instrucciones]\nB -->|Si ausente| C[Alerta: Pagaré en blanco]\nB -->|Si presente| D[Calcular prescripción]\nD --> E[Verificar vencimiento + 5 años]\nE --> F[Evaluar excepciones cambiarias]\nF -->|Fraude/falta de capacidad| G[Defensa legal]\nF -->|Nulidad| H[Reclamación ante juez]\nG --> I[Desbloqueo de activos]\nH --> I\nI --> J[Reconocimiento de derechos]"
+    },
+    {
+        "articulo_origen": "Artículo 678",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución integral para proteger titulares de títulos valores frente a anomalías comerciales: 1) Análisis de pagarés en blanco con instrucciones claras, 2) Cálculo de prescripción de la acción cambiaria (5 años desde la presentación), 3) Defensa mediante excepciones como no pago, falta de aceptación o fraude. Incluye asesoría jurídica y estrategias de desbloqueo de activos.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de anomalía] --> B{¿Pagaré en blanco sin instrucciones?}\nB -->|Sí| C[Notificación formal al girador]\nB -->|No| D[Verificación de prescripción]\nD --> E{¿Vencimiento >5 años?}\nE -->|Sí| F[Defensa por prescripción]\nE -->|No| G[Análisis de excepciones cambiarias]\nG --> H{¿No pago/aceptación?}\nH -->|Sí| I[Presentación de acción judicial]\nH -->|No| J[Reclamación de responsabilidad del girador]\nI --> K[Desbloqueo de activos]\nJ --> K"
+    },
+    {
+        "articulo_origen": "Artículo 679",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a herramientas para identificar y resolver anomalías en títulos valores. Incluye análisis de pagarés firmados en blanco, cálculo de prescripción de la acción cambiaria y estrategias para defenderse de cobros ilegales. La solución garantiza protección contra prácticas comerciales abusivas mediante el uso de la normativa vigente y la jurisprudencia unificada.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de anomalías] --> B{¿Pagaré firmado en blanco?}\nB -->|Sí| C[Carta de instrucciones obligatoria]\nB -->|No| D[Verificación de prescripción]\nD --> E[Calcular vencimiento de la deuda]\nE --> F{¿Excepciones cambiarias?}\nF -->|Sí| G[Defensa mediante aceptación/pago]\nF -->|No| H[Acción judicial de desbloqueo]\nG --> I[Protección legal asegurada]\nH --> I[Protección legal asegurada]"
+    },
+    {
+        "articulo_origen": "Artículo 682",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a herramientas para proteger los títulos valores. Identifica riesgos como pagarés en blanco sin instrucciones, prescripción de la acción cambiaria y excepciones legales. Ofrece un marco claro para defender derechos y evitar pérdidas financieras, alineado con la normativa colombiana y la jurisprudencia vigente.",
+        "diagrama_mermaid": "graph TD\nA[Verificar lugar de presentación en la letra de cambio] --> B[Confirmar si hay instrucciones explícitas para pagarés en blanco]\nB --> C{¿Existe prescripción de la acción cambiaria?}\nC -->|Sí| D[Calcular plazo de prescripción (5 años desde la emisión)]\nC -->|No| E[Identificar excepciones cambiarias: insolvencia del girado, fraude o error material]\nD --> F[Documentar evidencia de cumplimiento de plazos]\nE --> G[Presentar defensa legal ante el cobro injusto]\nF --> H[Proteger derechos mediante notificación formal]\nG --> H\nH --> I[Desbloqueo total de títulos valores mediante estrategia legal] "
+    },
+    {
+        "articulo_origen": "Artículo 683",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución aborda la protección de titulares de títulos valores mediante el análisis de la normativa vigente (Art. 683 C.C.). Detecta riesgos como pagarés en blanco, prescripción de la acción cambiaria y excepciones legales. Ofrece un marco de acción para defender derechos, garantizando cumplimiento de la jerarquía normativa y evitando conflictos con normas locales. Incluye estrategias para identificar anomalías y actuar dentro de los plazos legales.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagarés en blanco o lugar de pago no especificado] --> B{¿Existe conflicto normativo?}\nB -->|Sí| C[Alertar inaplicabilidad por inconstitucionalidad (Art. 683 C.C. vs normas locales)]\nB -->|No| D[Consultar abogado especializado en títulos valores]\nD --> E[Verificar cumplimiento del lugar de pago según Art. 683 C.C.]\nE --> F[Calcular prescripción de la acción cambiaria (5 años desde la presentación)]\nF --> G{¿Existen excepciones cambiarias?}\nG -->|Sí| H[Defenderse mediante excepciones legales (ej. falta de aceptación)]\nG -->|No| I[Presentar demanda judicial con base en el derecho cambiario]\nI --> J[Obtener resolución judicial que proteja los derechos del titular]"
+    },
+    {
+        "articulo_origen": "Artículo 684",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución aborda la identificación de anomalías en títulos valores mediante un enfoque estructurado: 1) Verificación de la designación de dirección de pago según el Art. 684, 2) Análisis de prescripción de la acción cambiaria (5 años desde la presentación), 3) Defensa mediante excepciones como la falta de aceptación o la nulidad del pagaré firmado en blanco. El proceso incluye validación de instrucciones, análisis de fechas y estrategias legales para proteger los derechos del titular.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de anomalía] --> B{¿Pagaré firmado en blanco?}\nB -->|Sí| C[Verificación de carta de instrucciones]\nB -->|No| D[Análisis de prescripción (5 años)]\nC --> E[Notificación de nulidad]\nD --> F{¿Vencimiento de la acción?}\nF -->|Sí| G[Defensa mediante excepción cambiaria]\nF -->|No| H[Reclamación judicial]\nG --> I[Protección del titular]\nH --> I"
+    },
+    {
+        "articulo_origen": "Artículo 685",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución ofrece un desbloqueo legal para ciudadanos afectados por anomalías en títulos valores. Basado en el Artículo 685, se identifica que la aceptación de una letra de cambio requiere firma del girado, lo que previene fraudes como pagarés firmados en blanco. Se incluye un protocolo para validar la prescripción de la acción cambiaria (5 años desde la presentación) y defensas como la excepción de la falta de instrucciones en el endosado. El proceso garantiza la protección de los derechos del titular mediante un análisis jurídico estructurado.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagarés en blanco] --> B[Verificar firma del girado según Art. 685]\nB --> C{¿Firma válida?}\nC -->|Sí| D[Asesoría sobre prescripción: 5 años desde presentación]\nC -->|No| E[Alerta: Inaplicabilidad por falta de aceptación legal]\nD --> F[Defensa contra cobro: excepción de instrucciones inexistentes]\nF --> G[Desbloqueo total del derecho del titular]\nG --> H[Certificado de seguridad jurídica]"
+    },
+    {
+        "articulo_origen": "Artículo 686",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este procedimiento garantiza la protección de los titulares de títulos valores mediante la identificación de anomalías comerciales lucrativas. El análisis del artículo 686 del Código de Comercio revela que la omisión de la fecha de aceptación de una letra de cambio puede generar prescripción de la acción cambiaria. La solución incluye: 1) Verificación de la fecha de aceptación, 2) Revisión de la carta de instrucciones para pagarés en blanco, 3) Cálculo del plazo de prescripción (5 años desde la aceptación), 4) Defensa mediante excepciones cambiarias (ej. falta de aceptación formal). La solución es válida bajo la jerarquía normativa, priorizando la Constitución y la jurisprudencia sobre normas locales.",
+        "diagrama_mermaid": "graph TD\nA[Verificar fecha de aceptación en la letra de cambio] --> B{¿Fecha de aceptación omitida?}\nB -->|Sí| C[Consignar fecha de aceptación como tenedor]\nB -->|No| D[Proceder con prescripción de 5 años]\nC --> E[Evaluar carta de instrucciones para pagarés en blanco]\nD --> F[Aplicar excepción cambiaria: falta de aceptación formal]\nE --> G[Verificar validez del pagaré firmado en blanco]\nF --> H[Defenderse contra cobro mediante excepción legal]\nG -->|Sí| I[Confirmar validez del título]\nG -->|No| J[Desbloquear título mediante acción de nulidad]"
+    },
+    {
+        "articulo_origen": "Artículo 687",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución aborda la incondicionalidad de la aceptación de letras de cambio según el Art. 687 del Código de Comercio. Identifica anomalías como aceptaciones condicionales (que son nulas) y protege al girado mediante la responsabilidad del emisor. Permite al ciudadano defenderse de cobros ilegales mediante la prescripción de la acción cambiaria y excepciones legales, garantizando su derecho a la propiedad de los títulos valores.",
+        "diagrama_mermaid": "graph TD\nA[Problema: Aceptación condicional de letra de cambio] --> B{¿La aceptación es condicional?}\nB -->|Sí| C[La aceptación es nula según Art. 687]\nB -->|No| D[La aceptación es válida, pero el girado es responsable]\nC --> E[Defensa: Solicitar responsabilidad del emisor mediante acción de nulidad]\nD --> F[Verificar prescripción de la acción cambiaria (5 años desde la aceptación)]\nE --> G[Resultado: Protección legal del titular del título]\nF --> G\nG --> H[Conclusión: Garantía de derechos y defensa contra cobros ilegales]"
+    },
+    {
+        "articulo_origen": "Artículo 688",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "El artículo 688 del Código de Comercio protege a los titulares de letras de cambio al permitirles desbloquear pagos fraudulentos mediante la identificación de aceptaciones rehusadas. Nuestra solución incluye: 1) Análisis de tachaduras en aceptaciones, 2) Verificación de prescripción de la acción cambiaria (5 años desde la presentación), 3) Defensa contra cobros ilegales mediante excepciones como la falta de instrucciones en pagarés en blanco. El proceso garantiza la protección legal del ciudadano frente a prácticas comerciales lucrativas anómalas.",
+        "diagrama_mermaid": "graph TD\nA[Identificar tachadura en aceptación] --> B{¿Es aceptación rehusada?}\nB -->|Sí| C[Verificar prescripción de 5 años]\nB -->|No| D[Analizar excepciones cambiarias]\nC --> E[Desbloquear pago mediante acción judicial]\nD --> F[Defender cobro ilegal con pruebas]\nE --> G[Resolución judicial favorable]\nF --> G"
+    },
+    {
+        "articulo_origen": "Artículo 689",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Nuestra solución integral para Títulos Valores garantiza la protección legal del ciudadano frente a anomalías comerciales lucrativas. Identificamos y resolvemos: 1) Pagarés en blanco sin instrucciones mediante validación de firmas y registros notariales; 2) Prescripción de la acción cambiaria con cálculo exacto de plazos (10 años según Ley 1433 de 2011); 3) Excepciones cambiarias como incumplimiento de condiciones o falta de capacidad del girador. Ofrecemos desbloqueo legal y defensa contra cobros ilegítimos, asegurando la inconstitucionalidad de normas locales que contradigan el Código de Comercio.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de Anomalía] --> B{¿Pagaré en blanco sin instrucciones?}\nB -->|Sí| C[Validación de firma y registro notarial]\nB -->|No| D[Verificación de prescripción (10 años)]\nC --> E[Notificación formal al girador]\nD --> F{¿Vencimiento de plazo?}\nF -->|Sí| G[Defensa por prescripción]\nF -->|No| H[Análisis de excepciones cambiarias]\nH --> I[Presentación de evidencia legal]\nI --> J[Desbloqueo definitivo del título]\nJ --> K[Protección contra cobros ilegítimos]"
+    },
+    {
+        "articulo_origen": "Artículo 690",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal protege a los titulares de títulos valores contra riesgos de quiebra, interdicción o muerte del girador. Identifica anomalías como pagarés en blanco sin instrucciones, prescripción de la acción cambiaria y excepciones cambiarias. Ofrece estrategias para defenderse de cobros ilegítimos y garantizar la vigencia de la obligación del aceptante, alineado con la normativa superior del Código de Comercio.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagarés en blanco] --> B{¿Existe carta de instrucciones?}\nB -->|Sí| C[Verificar prescripción de la acción cambiaria]\nB -->|No| D[Alertar inconstitucionalidad: falta de instrucciones]\nC --> E{¿Venció el plazo de prescripción?}\nE -->|Sí| F[Defenderse mediante prescripción]\nE -->|No| G[Proceder a cobro legal]\nD --> H[Notificar al aceptante y solicitar garantías]\nH --> I[Registrar defensa en registro público]\nG --> I\nF --> I"
+    },
+    {
+        "articulo_origen": "Artículo 691",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal ofrece un desbloqueo integral para ciudadanos afectados por anomalías en títulos valores. Aborda la presentación de letras de cambio, prescripción de deudas y excepciones cambiarias, garantizando protección contra cobros ilegítimos. Incluye estrategias para validar títulos, defender derechos y evitar riesgos de inconstitucionalidad.",
+        "diagrama_mermaid": "graph TD\nA[Verificar vencimiento de la letra] --> B{¿Presentada en los 8 días?}\nB -->|Sí| C[Confirmar pago legal]\nB -->|No| D[Reclamar por incumplimiento]\nC --> E[Verificar prescripción de la acción (5 años)]\nD --> F[Evaluar excepciones: no pago, fraude, defectos legales]\nF --> G[Presentar defensa judicial con pruebas]\nE --> H[Desbloquear derechos mediante notificación formal]"
+    },
+    {
+        "articulo_origen": "Artículo 693",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este procedimiento legal desbloquea el acceso a los títulos valores mediante tres pasos clave: 1) Verificación de la validez del pagaré mediante análisis de la carta de instrucciones y la firma en blanco (Art. 693 C.C.); 2) Cálculo de la prescripción de la acción cambiaria (5 años desde la presentación); 3) Aplicación de excepciones cambiarias como la falta de endosamiento o la nulidad del título. La solución garantiza la protección del tenedor frente a cobros ilegales y evita la inconstitucionalidad al alinearse con la jerarquía normativa.",
+        "diagrama_mermaid": "graph TD\nA[Análisis del título valor] --> B[Verificación de firma en blanco]\nA --> C[Revisión de carta de instrucciones]\nB --> D[Aplicación de Art. 693 C.C.]\nC --> E[Cálculo de prescripción (5 años)]\nD --> F[Excepción cambiaria: nulidad del título]\nE --> G[Defensa contra cobro ilegal]\nF --> G\nG --> H[Protección legal del tenedor]"
+    },
+    {
+        "articulo_origen": "Artículo 694",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a derechos del titular de títulos valores mediante tres estrategias: 1) Identificación de pagarés firmados en blanco sin instrucciones (art. 694) para evitar cobros anticipados, 2) Cálculo preciso de la prescripción de la acción cambiaria (art. 695), y 3) Aplicación de excepciones cambiarias (art. 696) para defenderse de cobros ilegales. El usuario obtiene un manual práctico, plantillas legales y asesoría personalizada para proteger sus activos financieros.",
+        "diagrama_mermaid": "graph TD\nA[Verificar validez del título] --> B{¿Firmado en blanco sin instrucciones?}\nB -->|Sí| C[Aplicar art. 694: Rechazar pago anticipado]\nB -->|No| D[Proceder al análisis de prescripción]\nD --> E{¿Vencimiento superado?}\nE -->|Sí| F[Activar excepción de prescripción (art. 695)]\nE -->|No| G[Evaluar excepciones cambiarias (art. 696)]\nC --> H[Notificar al emisor con carta formal]\nF --> H\nG --> H\nH --> I[Protección legal contra cobros ilegales]"
+    },
+    {
+        "articulo_origen": "Artículo 695",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a la seguridad financiera mediante un análisis profundo de Títulos Valores. Aborda tres anormalidades clave: 1) Pagarés en blanco sin instrucciones claras (riesgo de fraude), 2) Prescripción de la acción cambiaria (vencimiento de la deuda), 3) Excepciones cambiarias (defensa contra cobros ilegítimos). Ofrece estrategias para validar pagos, proteger derechos y evitar responsabilidades legales, alineado con la jerarquía normativa colombiana.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: Pagarés en blanco] --> B[Verificar prescripción: 10 años desde el vencimiento]\nB --> C{¿Instrucciones claras en el pagaré?}\nC -->|Sí| D[Validar pago mediante carta de instrucciones]\nC -->|No| E[Activar excepción: incumplimiento de condiciones]\nE --> F[Notificar al girador mediante carta certificada]\nF --> G[Proteger derechos mediante acción de nulidad]\nD --> H[Confirmar validez del pago mediante notario]\nH --> I[Desbloqueo total: seguridad en transacciones]"
+    },
+    {
+        "articulo_origen": "Artículo 697",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución aborda la inconstitucionalidad de pagarés firmados en blanco sin carta de instrucciones (Art. 697 C.C.), que violan el derecho a la información y la protección de datos. El desbloqueo legal incluye: 1) Análisis de la prescripción de la acción cambiaria (5 años desde la emisión), 2) Identificación de excepciones como la falta de protesto (si no hay cláusula 'con protesto'), y 3) Defensa contra cobros ilegales mediante la prescripción o la nulidad del título. La solución garantiza la protección del ciudadano frente a prácticas comerciales abusivas.",
+        "diagrama_mermaid": "graph TD\nA[Verificar cláusula 'con protesto' en el título] --> B{¿Existe la cláusula?}\nB -->|Sí| C[Protesto obligatorio: Notificar al banco y registrar en el Registro de Títulos]\nB -->|No| D[Protesto no requerido: Evaluar riesgos de transferencia en blanco]\nD --> E[Verificar prescripción: 5 años desde la emisión]\nE --> F{¿Vencida la acción?}\nF -->|Sí| G[Defensa por prescripción: Nulidad del cobro]\nF -->|No| H[Identificar excepciones: Falsedad, error material o buena fe del pagador]\nH --> I[Generar carta de desbloqueo legal con base en el Art. 697 C.C.]"
+    },
+    {
+        "articulo_origen": "Artículo 698",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal protege a los ciudadanos frente a fraudes en títulos valores mediante: 1) Análisis de pagarés en blanco sin instrucciones, 2) Cálculo exacto de la prescripción de la acción cambiaria (5 años desde la emisión), 3) Defensa contra cobros ilegales usando excepciones como falta de formalización ante notario (Art. 698). Incluye asesoría personalizada y estrategias de desbloqueo de activos.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagaré en blanco] --> B[Consultar abogado especializado]\nB --> C[Verificar prescripción: 5 años desde emisión]\nC --> D[Evaluar excepciones cambiarias]\nD --> E[Presentar defensa legal ante notario]\nE --> F[Desbloqueo de activos y protección de derechos]"
+    },
+    {
+        "articulo_origen": "Artículo 699",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a derechos de títulos valores mediante tres estrategias: 1) Identificación de pagarés firmados en blanco como riesgo sistémico, 2) Cálculo exacto de la prescripción cambiaria (5 años desde la emisión), 3) Defensa mediante excepciones como la falta de protesto en lugares autorizados. La solución incluye un protocolo de acción judicial para evitar la pérdida de derechos.",
+        "diagrama_mermaid": "graph TD\nA[Verificar ubicación legal de protesto] --> B[Calcular prescripción cambiaria]\nA --> C[Identificar excepciones cambiarias]\nB --> D{¿Vencida la acción?}\nC --> E{¿Excepción válida?}\nD -->|Sí| F[Presentar demanda en 5 años]\nD -->|No| G[Reclamar vencimiento]\nE -->|Sí| H[Defenderse mediante excepción]\nE -->|No| I[Reconocer obligación]\nF --> J[Proteger derechos mediante protesto]\nH --> J\nI --> J"
+    },
+    {
+        "articulo_origen": "Artículo 700",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución permite desbloquear activos mediante el análisis de anomalías en títulos valores. Al identificar pagarés firmados en blanco, se aplica el artículo 700 para validar la protesta ante notario, garantizando la prescripción de la acción cambiaria. Se defiende contra cobros ilegales mediante excepciones como la falta de instrucciones en el endosamiento, protegiendo al ciudadano de prácticas comerciales fraudulentas.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagarés en blanco] --> B[Aplicar artículo 700: protesta ante notario]\nB --> C[Verificar prescripción de la acción cambiaria]\nC --> D[Defenderse con excepciones cambiarias]\nD --> E[Desbloqueo legal de activos]\nE --> F[Protección contra cobros ilegales]"
+    },
+    {
+        "articulo_origen": "Artículo 701",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a Títulos Valores mediante un análisis de riesgos comerciales lucrativos. Identifica anomalías como pagarés en blanco, prescripción de la acción cambiaria y excepciones cambiarias, ofreciendo estrategias para proteger los derechos del ciudadano. Incluye un diagrama de flujo para guiar el proceso legal y una solución escalable para casos de incumplimiento de obligaciones.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagarés en blanco] --> B[Verificar prescripción de la acción cambiaria]\nB --> C{¿Venció el plazo de prescripción?}\nC -->|Sí| D[Defenderse mediante excepción cambiaria]\nC -->|No| E[Protestar en notaría según Art. 701]\nD --> F[Presentar defensa legal ante el juez]\nE --> G[Notificar al deudor mediante notario]\nF --> H[Obtener resolución judicial]\nG --> I[Registrar protesto en registros públicos]\nH --> J[Recuperar derechos o negociar compensación]\nI --> J"
+    },
+    {
+        "articulo_origen": "Artículo 702",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a Títulos Valores mediante un análisis de riesgos comerciales lucrativos. Ofrece estrategias para evitar pagarés en blanco, gestionar la prescripción de acciones cambiarias y defenderse de cobros ilegítimos. Incluye un diagrama de flujo para guiar al ciudadano en el proceso legal, garantizando cumplimiento normativo y protección de derechos.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: Pagarés en blanco] --> B[Verificar prescripción de la acción cambiaria]\nB --> C{¿Vencimiento del título?}\nC -->|Sí| D[Defenderse mediante excepciones cambiarias]\nC -->|No| E[Reclamar vía judicial con base en el Artículo 702]\nD --> F[Notificar al emisor con carta de instrucciones]\nE --> F\nF --> G[Desbloqueo legal del título mediante procedimiento formal]"
+    },
+    {
+        "articulo_origen": "Artículo 703",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución aborda la prescripción de la acción cambiaria y excepciones como el protesto por falta de pago (Art. 703). Si el protesto no se realiza en 15 días hábiles después del vencimiento, la acción se prescribe. El ciudadano puede defenderse mediante: 1) Prueba de vencimiento no cumplido, 2) Excepción de falta de protesto, 3) Prescripción de 5 años desde el vencimiento. El desbloqueo garantiza la protección legal contra cobros ilegales.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: Protesto vencido] --> B{¿Protesto realizado en 15 días?}\nB -->|Sí| C[Confirmar validez del título]\nB -->|No| D[Defensa por prescripción]\nD --> E[Presentar excepción de falta de protesto]\nE --> F[Revisar prescripción de 5 años]\nF --> G[Desbloqueo legal del cobro]\nC --> G\nA --> H[Verificar vencimiento del título]\nH --> I[Calcular plazo de prescripción]\nI --> G"
+    },
+    {
+        "articulo_origen": "Artículo 704",
+        "tag_comercial": "[DESBLOQUEO_B20C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este análisis legal desbloquea el mecanismo de protesto de letras de cambio en Colombia, protegiendo a los titulares de títulos valores. Al identificar anomalías como pagarés en blanco sin instrucciones, la prescripción de la acción cambiaria y excepciones legales, el ciudadano puede evitar riesgos de incumplimiento y garantizar su derecho a cobrar. La solución incluye un protocolo para validar la vigencia de los títulos y defenderse de cobros ilegítimos, basado en la normativa del Código de Comercio.",
+        "diagrama_mermaid": "graph TD\nA[Verificar si el pagaré está en blanco] --> B{¿Hay instrucciones claras?}\nB -->|Sí| C[Protestar por falta de aceptación]\nB -->|No| D[Alertar riesgo de incumplimiento]\nC --> E[Verificar prescripción de la acción (5 años)]\nE --> F{¿Venció el plazo?}\nF -->|Sí| G[Excepción por prescripción]\nF -->|No| H[Defenderse mediante excepciones cambiarias]\nG --> I[Notificar al emisor]\nH --> I\nI --> J[Proteger derechos del titular]\nJ --> K[Desbloqueo legal completado]"
+    },
+    {
+        "articulo_origen": "Artículo 705",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Nuestra solución profesional desbloquea riesgos en títulos valores mediante análisis jurídico de anomalías comerciales lucrativas. Protege contra pagarés en blanco, prescripción de acciones cambiarias y excepciones cambiarias, garantizando defensas legales efectivas. Ofrecemos asesoría personalizada para evitar inconstitucionalidades y garantizar derechos del ciudadano.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de Anomalía] --> B[Análisis Jurídico]\nB --> C{¿Pagaré en blanco?}\nC -->|Sí| D[Carta de Instrucciones Legales]\nC -->|No| E[Verificación de Prescripción]\nD --> F[Protección contra Fraude]\nE --> G[Calculo de Vencimiento]\nF --> H[Defensa Cambiaria]\nG --> I[Notificación de Vencimiento]\nH --> J[Acción Legal Defensiva]\nI --> J\nJ --> K[Resolución Jurídica Final]"
+    },
+    {
+        "articulo_origen": "Artículo 706",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución propuesta aborda la protección de titulares de títulos valores mediante un proceso estructurado que identifica y neutraliza anomalías comerciales lucrativas. Se enfoca en: 1) Validación de pagarés firmados en blanco mediante análisis de la carta de instrucciones (Art. 706), 2) Cálculo de la prescripción de la acción cambiaria (Art. 715), y 3) Defensa contra cobros mediante excepciones cambiarias (Art. 717). El proceso garantiza la inconstitucionalidad de normas locales que contradigan el Código de Comercio.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de anomalía] --> B[Verificación de carta de instrucciones]\nA --> C[Análisis de prescripción (Art. 715)]\nA --> D[Defensa mediante excepciones cambiarias (Art. 717)]\nB --> E{¿Pagaré firmado en blanco?}\nE -->|Sí| F[Notificación formal al girado (Art. 706)]\nE -->|No| G[Validación de firma auténtica]\nC --> H[Calculo de vencimiento de la acción]\nD --> I[Presentación de excepción legal]\nF --> J[Protesto formal con acta notarial]\nJ --> K[Inscripción en Registro de Títulos Valores]\nK --> L[Protección contra cobros ilegales]"
+    },
+    {
+        "articulo_origen": "Artículo 709",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución integral para proteger titulares de títulos valores frente a anomalías comerciales lucrativas. Identifica pagarés firmados en blanco sin instrucciones, calcula el término de prescripción de la acción cambiaria (5 años desde la emisión) y aplica excepciones como falta de endosamiento válido o fraude. Ofrece estrategias legales para defenderse de cobros ilegítimos y garantizar la validez de los instrumentos.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagaré en blanco sin instrucciones] --> B[Calcular prescripción: 5 años desde emisión]\nB --> C{¿Existe excepción cambiaria?}\nC -->|Sí| D[Defensa legal: falta de endosamiento válido/fraude]\nC -->|No| E[Presentar acción de nulidad ante juzgado comercial]\nE --> F[Obtener resolución judicial para bloquear cobro ilegítimo]"
+    },
+    {
+        "articulo_origen": "Artículo 710",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "El artículo 710 del Código de Comercio establece que el suscriptor de un pagaré asume responsabilidades equivalentes al aceptante de una letra de cambio. Para proteger a los ciudadanos frente a anomalías lucrativas, se propone un procedimiento que identifica: 1) Pagarés en blanco sin instrucciones (violación de la formalidad legal), 2) Prescripción de la acción cambiaria (5 años desde la presentación), 3) Excepciones como falta de aceptación o endoso defectuoso. La solución incluye asesoría jurídica, análisis de documentos y estrategias de defensa basadas en la jerarquía normativa, priorizando la Constitución y jurisprudencia superior.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de anomalías] --> B{¿Pagaré en blanco sin instrucciones?}\nB -->|Sí| C[Notificación de nulidad por falta de formalidad]\nB -->|No| D[Verificación de prescripción (5 años)]\nD --> E{¿Vencimiento de la acción cambiaria?}\nE -->|Sí| F[Defensa por prescripción]\nE -->|No| G[Análisis de excepciones cambiarias]\nG --> H{¿Falta de aceptación o endoso defectuoso?}\nH -->|Sí| I[Expedición de carta de protesta]\nH -->|No| J[Reclamación ante el juez de comercio]\n\nstyle A fill:#4CAF50,stroke:#4CAF50\nstyle C fill:#2196F3,stroke:#2196F3\nstyle F fill:#FF9800,stroke:#FF9800\nstyle I fill:#FF5722,stroke:#FF5722"
+    },
+    {
+        "articulo_origen": "Artículo 711",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a herramientas para proteger títulos valores en Colombia. Aborda anomalías como pagarés en blanco, prescripción de deudas y excepciones cambiarias mediante un análisis jurídico basado en el Código de Comercio. Ofrece estrategias para defender derechos y evitar riesgos de cobros ilegítimos, garantizando cumplimiento normativo y protección de intereses económicos.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía comercial] --> B[Consultar abogado especializado]\nB --> C[Analizar artículo 711 y normas complementarias]\nC --> D[Aplicar reglas de prescripción y excepciones]\nD --> E[Generar estrategia de defensa legal]\nE --> F[Implementar medidas preventivas y correctivas]"
+    },
+    {
+        "articulo_origen": "Artículo 730",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución integral para ciudadanos afectados por anomalías en títulos valores: 1) Identificación de pagarés firmados en blanco sin instrucciones (invalidez legal). 2) Cálculo exacto de la prescripción (6 meses desde presentación para último tenedor). 3) Defensa mediante excepciones cambiarias (ej. protesta, falta de endoso válido). 4) Asesoría para reestructurar deudas antes del vencimiento legal. 5) Protección contra cobros abusivos mediante análisis de caducidad de derechos.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagaré en blanco] --> B[Calcular prescripción: 6 meses desde presentación]\nA --> C[Verificar excepciones cambiarias]\nC --> D[Protestar cheque no pagado]\nC --> E[Reclamar por falta de endoso válido]\nB --> F[Actuar antes de vencimiento legal]\nF --> G[Reestructurar deuda con asesoría jurídica]\nG --> H[Proteger derechos contra cobros abusivos]"
+    },
+    {
+        "articulo_origen": "Artículo 751",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a herramientas para proteger los títulos valores frente a prácticas comerciales lucrativas. Ofrece estrategias para identificar pagarés en blanco sin instrucciones, aplicar la prescripción de 10 años (art. 751) y defenderse de cobros mediante excepciones cambiarias. Incluye un análisis jurídico personalizado para evitar riesgos de inconstitucionalidad y garantizar la vigencia de los derechos del ciudadano.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: Pagarés en blanco sin instrucciones] --> B[Verificar prescripción: 10 años (art. 751)]\nB --> C{¿Existe excepción cambiaria?}\nC -->|Sí| D[Defenderse mediante excepción: falta de instrucciones, vencimiento, etc.]\nC -->|No| E[Aplicar prescripción de 5 años al corresponsal (art. 751)]\nD --> F[Generar carta de instrucciones y documentación legal]\nE --> F\nF --> G[Desbloqueo total: protección contra cobros ilegales]"
+    },
+    {
+        "articulo_origen": "Artículo 756",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a herramientas para proteger activos financieros frente a anomalías como pagarés en blanco, prescripción de deudas y excepciones cambiarias. Ofrece estrategias para validar la vigencia de bonos, identificar irregularidades en instrumentos de deuda y aplicar defensas legales basadas en la prescripción y la formalidad contractual. Incluye un análisis de riesgos y un protocolo de acción para evitar pérdidas económicas.",
+        "diagrama_mermaid": "graph TD\nA[Verificar publicación del bono en diario nacional] --> B[Evaluar prescripción de 4 años]\nB --> C{¿El bono está sorteados?}\nC -->|Sí| D[Calcular vencimiento de la acción]\nC -->|No| E[Alertar inconstitucionalidad por falta de publicidad]\nD --> F[Identificar excepciones cambiarias]\nF --> G[Aplicar defensa legal mediante carta de instrucciones]\nG --> H[Desbloqueo de activos mediante acción de tutela]\nH --> I[Protección total del patrimonio financiero]"
+    },
+    {
+        "articulo_origen": "Artículo 765",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a herramientas para proteger los títulos valores en Colombia. Identifica anomalías como pagarés en blanco, prescripción de acciones cambiarias y excepciones legales, garantizando defensas sólidas contra cobros ilegítimos. Combina análisis jurídico con estrategias prácticas para salvaguardar derechos del ciudadano frente a prácticas comerciales lucrativas.",
+        "diagrama_mermaid": "graph TD\nA[Análisis de normas] --> B[Verificación de anomalías]\nB --> C{¿Pagarés en blanco?}\nC -->|Sí| D[Carta de instrucciones obligatoria]\nC -->|No| E[Procedimiento legal]\nA --> F[Prescripción de acción cambiaria]\nF --> G[Calcular vencimiento legal]\nA --> H[Excepciones cambiarias]\nH --> I[Defensa contra cobro ilegítimo]\nI --> J[Resolución final con garantía de derechos]"
+    },
+    {
+        "articulo_origen": "Artículo 766",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a instrumentos financieros mediante un análisis de riesgos y defensas legales. Aborda anomalías como pagarés en blanco, prescripción de deudas y excepciones cambiarias, garantizando protección contra cobros ilegales y asegurando la vigencia de derechos. Incluye estrategias para validar documentos, calcular plazos legales y aplicar excepciones como la falta de instrucciones o vencimiento de plazos.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagaré en blanco o falta de instrucciones] --> B[Evaluar validez legal bajo el Código de Comercio]\nB --> C{¿Existe conflicto normativo?}\nC -->|Sí| D[Alertar inconstitucionalidad o ilegalidad]\nC -->|No| E[Calcular prescripción de la acción cambiaria]\nE --> F[Aplicar excepciones: falta de instrucciones o vencimiento de plazo]\nF --> G[Generar estrategia legal para defensa o desbloqueo]\nG --> H[Entregar solución con garantía de cumplimiento normativo]"
+    },
+    {
+        "articulo_origen": "Artículo 771",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": "39900",
+        "resumen_solucion": "Solución integral para desbloquear activos mediante análisis jurídico de títulos valores. Identifica anomalías como pagarés en blanco, prescripción de la acción cambiaria y excepciones legales. Aplica jerarquía normativa colombiana para garantizar validez legal y proteger derechos del ciudadano. Incluye estrategias de defensa contra cobros ilegales y prescripción de deudas.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía comercial] --> B[Verificar norma superior (Código de Comercio)]\nB --> C{¿Contradicción con norma local?}\nC -->|Sí| D[Inaplicabilidad por inconstitucionalidad]\nC -->|No| E[Aplicar artículo 771 y normas de letra de cambio]\nE --> F[Evaluar prescripción de acción cambiaria]\nE --> G[Identificar excepciones cambiarias]\nF --> H[Calcular plazo de prescripción]\nG --> I[Defensa contra cobro ilegal]\nH --> J[Notificar vencimiento legal]\nI --> K[Presentar acción de tutela o amparo]\nJ --> L[Confirmar validez del título]\nK --> M[Proteger derechos del ciudadano]"
+    },
+    {
+        "articulo_origen": "Artículo 779",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Solución integral para ciudadanos sobre Títulos Valores: Identifica y previene anomalías comerciales lucrativas como pagarés en blanco, prescripción de la acción cambiaria y excepciones cambiarias. Ofrece estrategias legales para proteger activos financieros y evitar riesgos de incumplimiento contractual, basado en el marco normativo del Código de Comercio de Colombia.",
+        "diagrama_mermaid": "graph TD\nA[Verificar pagarés firmados en blanco] --> B[Revisar carta de instrucciones]\nB --> C{¿Carta de instrucciones existente?}\nC -->|Sí| D[Confirmar validez del título]\nC -->|No| E[Alertar riesgo de desbloqueo]\n\nA --> F[Calcular prescripción de la acción cambiaria]\nF --> G{¿Vencimiento del plazo?}\nG -->|Sí| H[Proceder a cobro legal]\nG -->|No| I[Retrasar cobro hasta vencimiento]\n\nA --> J[Identificar excepciones cambiarias]\nJ --> K{¿Excepción aplicable?}\nK -->|Sí| L[Defenderse mediante excepción]\nK -->|No| M[Presentar defensa contractual]\n\nN[Consultar abogado especializado] --> O[Implementar estrategia legal]"
+    },
+    {
+        "articulo_origen": "Artículo 784",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": "39900",
+        "resumen_solucion": "Nuestra solución ofrece un desbloqueo integral de títulos valores mediante análisis jurídico especializado. Identificamos anomalías como pagarés en blanco sin instrucciones, prescripción de la acción cambiaria y excepciones para defender contra cobros. Garantizamos protección legal mediante estrategias basadas en el artículo 784 del Código de Comercio, evitando riesgos de inconstitucionalidad y asegurando el cumplimiento de normas superiores.",
+        "diagrama_mermaid": "graph TD\nA[Consultoría Jurídica] --> B[Análisis del título valor]\nB --> C{Identificar anomalías}\nC -->|Pagarés en blanco| D[Revisión de instrucciones]\nC -->|Prescripción| E[Calcular plazo legal]\nC -->|Excepciones| F[Defensa contra cobro]\nD --> G[Reclamación de instrucciones]\nE --> H[Notificación de prescripción]\nF --> I[Presentar excepciones legales]\nG --> J[Reparación del título]\nH --> J\nI --> J\nJ --> K[Resolución legal]\nK --> L[Protección de derechos]"
+    },
+    {
+        "articulo_origen": "Artículo 786",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "Este paquete legal desbloquea el acceso a Títulos Valores mediante un enfoque estructurado: 1) Identificación de anomalías como pagarés en blanco (art. 786) mediante análisis de la cadena de custodia y verificación de instrucciones escritas; 2) Cálculo de prescripción de la acción cambiaria (5 años desde la emisión según art. 786) con herramientas de fechas legales; 3) Defensa mediante excepciones cambiarias (art. 786) como falta de protesto o irregularidades en la transferencia. Incluye asesoría personalizada y plantillas legales para proteger los derechos del titular.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de anomalías] --> B[Verificación de pagarés en blanco]\nA --> C[Análisis de prescripción (5 años)]\nA --> D[Defensa mediante excepciones cambiarias]\nB --> E[Revisión de cadena de custodia y instrucciones escritas]\nC --> F[Cálculo de fechas legales y notificaciones]\nD --> G[Aplicación de art. 786: protesto, anotación de recibo y testimonio]\nE --> H[Generación de acta de irregularidad]\nF --> I[Notificación formal al acreedor]\nG --> J[Protección de derechos mediante acciones legales]\nH --> J\nI --> J"
+    },
+    {
+        "articulo_origen": "Artículo 789",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": 39900,
+        "resumen_solucion": "La solución garantiza la protección de los titulares de títulos valores mediante un análisis jurídico estructurado. Identifica anomalías como pagarés en blanco, prescripción de 3 años y excepciones cambiarias, aplicando la jerarquía normativa colombiana. Ofrece estrategias para defenderse de cobros ilegales y maximizar derechos legales, con un enfoque práctico y accesible para ciudadanos comunes.",
+        "diagrama_mermaid": "graph TD\nA[Identificación de anomalía] --> B{¿Pagaré firmado en blanco?}\nB -->|Sí| C[Carta de instrucciones obligatoria]\nB -->|No| D[Proceder a análisis de prescripción]\nD --> E[Calcular 3 años desde vencimiento]\nE --> F{¿Vencimiento superado?}\nF -->|Sí| G[Excepción de prescripción]\nF -->|No| H[Defensa mediante excepciones cambiarias]\nG --> I[Desbloqueo legal del título]\nH --> I\nI --> J[Protección de derechos del titular]"
+    },
+    {
+        "articulo_origen": "Artículo 790",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": "39900",
+        "resumen_solucion": "Este procedimiento garantiza la protección del ciudadano frente a prácticas comerciales abusivas mediante el análisis de la prescripción de la acción cambiaria. Al identificar el vencimiento del título, la necesidad de protesto y los plazos de presentación, se evita la pérdida de derechos legales. La solución incluye herramientas para detectar pagarés firmados en blanco sin instrucciones y estrategias para defenderse de cobros ilegales, asegurando la aplicación estricta del artículo 790 del Código de Comercio.",
+        "diagrama_mermaid": "graph TD\nA[Ver fecha de vencimiento del título] --> B{¿Existe protesto?}\nB -->|Sí| C[Prescripción: 1 año desde el protesto]\nB -->|No| D[Prescripción: 1 año desde el vencimiento]\nC --> E[Verificar plazos de presentación]\nD --> E\nE --> F{¿La acción está prescrita?}\nF -->|Sí| G[Alerta: Pérdida de derechos legales]\nF -->|No| H[Proceder con acción de regreso cambiario]\nH --> I[Asesoría legal para excepciones cambiarias]"
+    },
+    {
+        "articulo_origen": "Artículo 792",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": "39900",
+        "resumen_solucion": "La solución aborda la interrupción de la prescripción en títulos valores mediante un análisis de causales legales. Detecta anomalías como pagarés en blanco sin instrucciones, prescripción de la acción cambiaria (5 años) y excepciones como la falta de instrucciones en pagarés. Ofrece un desbloqueo legal para defender el derecho al vencimiento de la deuda o excluir responsabilidades.",
+        "diagrama_mermaid": "graph TD\nA[Identificar tipo de título valor] --> B[Verificar causales de interrupción]\nB --> C{¿Hay instrucciones en pagarés?}\nC -->|Sí| D[Prescripción interrumpida (5 años)]\nC -->|No| E[Excepción: pagaré en blanco sin instrucciones]\nE --> F[Defensa: no hay obligación de pago]\nD --> G[Calcular plazo de prescripción]\nG --> H[Aplicar artículo 792: interrupción por grado de signatarios]\nH --> I[Conclusión: vencimiento o defensa legal]"
+    },
+    {
+        "articulo_origen": "Artículo 807",
+        "tag_comercial": "[DESBLOQUEO_B2C]",
+        "precio_sugerido": "39900",
+        "resumen_solucion": "La solución aborda la protección de titulares de títulos valores mediante el análisis de anomalías como pagarés en blanco, prescripción de deudas y excepciones cambiarias. Aplica la normativa vigente (Ley 1564/2012) para interrumpir la prescripción y validar derechos. Incluye estrategias legales para desbloquear activos y evitar caducidad, garantizando la defensa del ciudadano frente a cobros ilegítimos.",
+        "diagrama_mermaid": "graph TD\nA[Identificar anomalía: pagarés en blanco o prescripción] --> B[Consultar abogado especializado en títulos valores]\nB --> C[Verificar validez del título mediante análisis legal]\nC --> D[Presentar acción de nulidad o interposición de excepción cambiaria]\nD --> E[Obtener suspensión de caducidad bajo Ley 1564/2012]\nE --> F[Defensa legal contra cobros vencidos o ilegítimos]\nF --> G[Desbloqueo definitivo de activos y protección de derechos]"
+    }
+]

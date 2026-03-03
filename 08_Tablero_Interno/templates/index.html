@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guanes Hub - Control Central</title>
+
+    <!-- Fuentes Premium: Outfit (Tech/Títulos) e Inter (Lectura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta Cinematográfica Oscura */
+            --bg-deep: #050505;
+            --bg-ambient: #0a0a0f;
+            --panel-bg: rgba(15, 15, 20, 0.5);
+            --panel-border: rgba(255, 255, 255, 0.05);
+            --panel-highlight: rgba(255, 255, 255, 0.1);
+
+            /* Textos */
+            --text-main: #f8fafc;
+            --text-muted: #8b8d98;
+
+            /* Acentos Neón Corporativos */
+            --accent-primary: #818cf8;
+            --accent-primary-glow: rgba(129, 140, 248, 0.3);
+            --accent-success: #10b981;
+            --accent-success-glow: rgba(16, 185, 129, 0.3);
+            --accent-warning: #f59e0b;
+            --accent-warning-glow: rgba(245, 158, 11, 0.3);
+            --accent-rag: #a855f7;
+
+            /* Efectos */
+            --glass-blur: blur(24px);
+            --glass-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+            /* UI del Árbol */
+            --folder-color: #fbbf24;
+            --file-color: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            background-image:
+                radial-gradient(circle at 10% 0%, rgba(129, 140, 248, 0.1), transparent 40%),
+                radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.05), transparent 40%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 24px;
+            display: flex;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden;
+            gap: 24px;
+            animation: appFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes appFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+        /* Layout Main Containers */
+        .sidebar {
+            width: 420px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            z-index: 2;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        /* Superficies UI Premium (Paneles Glassmorphism) */
+        .panel {
+            background: var(--panel-bg);
+            border-radius: 20px;
+            border: 1px solid var(--panel-border);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
+            padding: 24px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--glass-shadow);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            z-index: 1;
+        }
+
+        .panel:hover {
+            border-color: var(--panel-highlight);
+        }
+
+        /* Cabeceras de panel estáticas */
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            position: sticky;
+            top: 0;
+            /* Degradado sutil para blend */
+            background: linear-gradient(180deg, var(--bg-deep) 0%, rgba(5, 5, 5, 0) 100%);
+            margin-top: -24px;
+            padding-top: 24px;
+            z-index: 10;
+        }
+
+        .panel-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botones ultra limpios */
+        button {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            border: 1px solid var(--panel-border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        button:hover {
+            background: rgba(129, 140, 248, 0.1);
+            border-color: var(--accent-primary);
+            color: #fff;
+            box-shadow: 0 0 15px var(--accent-primary-glow);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Métricas (Dashboard Superior) */
+        .metrics-widget {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .metric-mini {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--panel-border);
+            padding: 24px 20px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-mini::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 2px;
+            background: var(--accent-primary);
+            box-shadow: 0 0 10px var(--accent-primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .metric-mini:hover {
+            background: rgba(129, 140, 248, 0.05);
+            border-color: rgba(129, 140, 248, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .metric-mini:hover::after {
+            opacity: 1;
+        }
+
+        .metric-mini h3 {
+            font-size: 2.8rem;
+            color: var(--text-main);
+            font-weight: 800;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .metric-mini p {
+            margin: 12px 0 0 0;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+        }
+
+        /* Estructura del Árbol de Archivos */
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .tree-root {
+            padding-left: 0;
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .tree-root>li>ul {
+            margin-left: 14px;
+            border-left: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-top: 4px;
+        }
+
+        li {
+            margin: 4px 0;
+            position: relative;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-muted);
+        }
+
+        .tree-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+        }
+
+        .premium-folder {
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .premium-folder .name {
+            color: var(--accent-warning);
+            font-weight: 600;
+        }
+
+        .caret {
+            display: inline-block;
+            width: 16px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 10px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
+        }
+
+        .tree-item:hover .caret {
+            color: #fff;
+        }
+
+        .caret-down {
+            transform: rotate(90deg);
+            color: #fff;
+        }
+
+        .nested {
+            display: none;
+            animation: treeReveal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes treeReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .active {
+            display: block;
+        }
+
+        .folder-icon {
+            color: var(--folder-color);
+        }
+
+        .name {
+            color: var(--file-color);
+        }
+
+        /* Consola de Logs Cinematográfica */
+        .logs-container {
+            background: #000;
+            color: var(--accent-success);
+            font-family: 'Fira Code', monospace;
+            padding: 24px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            flex-grow: 1;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 1), 0 0 20px rgba(16, 185, 129, 0.05);
+            text-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+            position: relative;
+        }
+
+        .logs-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(16, 185, 129, 0.02) 50%, rgba(0, 0, 0, 0) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        /* Tarjetas de Alertas / Oportunidades */
+        .alert-card {
+            background: rgba(20, 20, 25, 0.6);
+            border: 1px solid var(--panel-border);
+            border-left: 3px solid var(--accent-primary);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-card:hover {
+            transform: translateX(8px);
+            background: rgba(30, 30, 40, 0.8);
+            border-color: rgba(129, 140, 248, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .alert-card h4 {
+            margin: 0 0 16px 0;
+            color: #fff;
+            font-size: 1.15rem;
+        }
+
+        .alert-content {
+            font-size: 0.95rem;
+            color: #bdc3c7;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        /* Scrollbars UI Premium invisibles a menos de uso */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .panel:hover::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR: Metrics & Tree -->
+    <div class="sidebar">
+        <!-- Control Board -->
+        <div class="panel" style="flex-grow: 1;">
+            <div class="panel-header">
+                <h2><span aria-hidden="true">⚖️</span> Ecosistema Legal</h2>
+                <button onclick="fetchMetrics()">🔄 Refrescar</button>
+            </div>
+
+            <div class="metrics-widget" id="metrics-container">
+                <div class="metric-mini">
+                    <h3>--</h3>
+                    <p>PDF/Jurisp</p>
+                </div>
+                <div class="metric-mini">
+                    <h3>--</h3>
+                    <p>Logica .py</p>
+                </div>
+                <div class="metric-mini">
+                    <h3>--</h3>
+                    <p>Vectores RAG</p>
+                </div>
+                <div class="metric-mini">
+                    <h3>--</h3>
+                    <p>Templates</p>
+                </div>
+            </div>
+
+            <button onclick="expandAll()"
+                style="margin-bottom: 10px; background: transparent; border: 1px solid var(--border-color)">Expandir
+                todo</button>
+            <ul class="tree-root" id="tree-container">
+                <li style="color:var(--text-muted);text-align:center;padding:20px;">Cargando activos...</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT: Radar & Logs -->
+    <div class="main-content">
+        <!-- Radar de Negocios Privado -->
+        <div class="panel" style="flex: 2;">
+            <div class="panel-header">
+                <h2><span aria-hidden="true">💡</span> Radar de Oportunidades (Privado)</h2>
+                <button onclick="fetchAlerts()">🔄 Refrescar</button>
+            </div>
+            <div id="alerts-container">
+                <div style="color:var(--text-muted);text-align:center;padding:20px;">Cargando inteligencia de negocio...
+                </div>
+            </div>
+        </div>
+
+        <!-- System Logs -->
+        <div class="panel" style="flex: 1; display:flex; flex-direction:column;">
+            <div class="panel-header">
+                <h2><span aria-hidden="true">⚙️</span> Salud del Motor (Guanes Cronos)</h2>
+                <button onclick="fetchLogs()">🔄 Últimos</button>
+            </div>
+            <div class="logs-container" id="logs-container">
+                [Iniciando consola...]
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch Control Board Data
+        async function fetchMetrics() {
+            try {
+                const res = await fetch('/api/metrics');
+                const data = await res.json();
+                if (data.status === 'success') {
+                    document.getElementById('metrics-container').innerHTML = `
+                        <div class="metric-mini"><h3>${data.metrics.total_pdf}</h3><p>PDF/Jurisp</p></div>
+                        <div class="metric-mini"><h3>${data.metrics.total_py}</h3><p>Lógica .py</p></div>
+                        <div class="metric-mini" style="border-color:var(--accent-rag)"><h3 style="color:var(--accent-rag)">${data.metrics.total_rag}</h3><p>Vectores RAG</p></div>
+                        <div class="metric-mini"><h3>${data.metrics.total_templates}</h3><p>Templates</p></div>
+                    `;
+                    document.getElementById('tree-container').innerHTML = data.tree_html;
+                    attachTreeListeners();
+                }
+            } catch (e) {
+                document.getElementById('tree-container').innerHTML = `<p style="color:red">Error cargando árbol</p>`;
+            }
+        }
+
+        // Fetch Alerts
+        async function fetchAlerts() {
+            try {
+                const res = await fetch('/api/alerts');
+                const data = await res.json();
+                const container = document.getElementById('alerts-container');
+                container.innerHTML = '';
+
+                if (!data.alerts || data.alerts.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-muted)">Sin oportunidades detectadas hoy.</p>';
+                    return;
+                }
+
+                data.alerts.forEach(alert => {
+                    const cleanName = alert.filename.replace("Oportunidad_", "").replace(".md", "").replace(/_/g, " ");
+                    // Simple Markdown to HTML formatting for display
+                    let formatContent = alert.content
+                        .replace(/### 1. IMPACTO JURÍDICO[^#]+/g, match => `<strong style="color:var(--accent-primary)">IMPACTO JURÍDICO</strong><br>${match.replace(/### 1. IMPACTO JURÍDICO.*/, '')}`)
+                        .replace(/### 2. OPORTUNIDAD DE MONETIZACIÓN[^#]+/g, match => `<br><strong style="color:var(--accent-success)">OPORTUNIDAD DE MONETIZACIÓN</strong><br>${match.replace(/### 2. OPORTUNIDAD DE MONETIZACIÓN.*/, '')}`)
+                        .replace(/### 3. COPY PARA MARKETING[^#]*/g, match => `<br><strong style="color:var(--accent-warning)">COPY (POST / VENTA)</strong><br>${match.replace(/### 3. COPY PARA MARKETING.*/, '')}`)
+
+                    container.innerHTML += `
+                        <div class="alert-card">
+                            <h4>📄 Alerta Generada: ${cleanName}</h4>
+                            <div class="alert-content">${formatContent}</div>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                document.getElementById('alerts-container').innerHTML = `<p style="color:red">Error cargando alertas</p>`;
+            }
+        }
+
+        // Fetch Logs
+        async function fetchLogs() {
+            try {
+                const res = await fetch('/api/logs');
+                const data = await res.json();
+                const container = document.getElementById('logs-container');
+                container.textContent = data.logs;
+                container.scrollTop = container.scrollHeight;
+            } catch (e) {
+                document.getElementById('logs-container').textContent = 'Error cargando logs.';
+            }
+        }
+
+        // Tree Logic
+        function attachTreeListeners() {
+            document.querySelectorAll(".tree-item").forEach(function (item) {
+                item.addEventListener("click", function (e) {
+                    if (e.target.classList.contains("no-caret")) return;
+                    let nested = this.parentElement.querySelector(".nested");
+                    let caret = this.querySelector(".caret");
+                    if (nested) {
+                        nested.classList.toggle("active");
+                        if (caret) caret.classList.toggle("caret-down");
+                    }
+                });
+            });
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.nested').forEach(el => el.classList.add('active'));
+            document.querySelectorAll('.caret').forEach(el => el.classList.add('caret-down'));
+        }
+
+        // Init Polling
+        fetchMetrics();
+        fetchAlerts();
+        fetchLogs();
+
+        // Auto-refresh logs every 15s
+        setInterval(fetchLogs, 15000);
+    </script>
+</body>
+
+</html>
