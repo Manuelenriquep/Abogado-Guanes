@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 
 <head>
@@ -526,7 +526,7 @@
                             <div id="cta-indemnizacion" class="hidden mt-6 text-center animate-fade-in">
                                 <div class="bg-red-950/50 border border-red-500/50 rounded-lg p-4">
                                     <p class="text-red-300 text-sm font-semibold mb-3">
-                                        âš ï¸ Se detectó derecho a indemnización obligatoria.
+                                        ⚠️ Se detectó derecho a indemnización obligatoria.
                                     </p>
                                     <a href="https://checkout.wompi.co/l/TNx5jg" target="_blank"
                                         rel="noopener noreferrer"
@@ -1174,7 +1174,7 @@
             const userHtml = `
                 <div class="flex items-start gap-4 flex-row-reverse self-end max-w-[85%] animate-fade-in mt-4">
                     <div class="w-10 h-10 rounded-lg bg-blue-900 border border-blue-500/40 flex items-center justify-center shrink-0 text-white shadow-[0_0_15px_rgba(37,99,235,0.15)]">
-                        ðŸ‘¤
+                        👤
                     </div>
                     <div class="bg-blue-600/20 p-4 md:p-5 rounded-2xl rounded-tr-none border border-blue-500/30 text-sm md:text-base text-white shadow-lg leading-relaxed">
                         ${mensaje}
@@ -1190,7 +1190,7 @@
             const typingHtml = `
                 <div id="${typingId}" class="flex items-start gap-4 max-w-[85%] mt-4 animate-fade-in">
                     <div class="w-10 h-10 rounded-lg bg-cyan-950 border border-cyan-500/40 flex items-center justify-center shrink-0 text-cyan-400">
-                        âš–ï¸
+                        ⚖️
                     </div>
                     <div class="bg-slate-800/80 p-4 rounded-2xl rounded-tl-none border border-white/5 flex items-center gap-2">
                         <div class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
@@ -1231,7 +1231,7 @@
                 const botHtml = `
                     <div class="flex items-start gap-4 max-w-[90%] mt-4 animate-fade-in">
                         <div class="w-10 h-10 rounded-lg bg-cyan-950 border border-cyan-500/40 flex items-center justify-center shrink-0 text-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.15)]">
-                            âš–ï¸
+                            ⚖️
                         </div>
                         <div class="bg-slate-800/80 p-4 md:p-5 rounded-2xl rounded-tl-none border border-white/5 text-sm md:text-base text-slate-200 shadow-lg leading-relaxed whitespace-pre-wrap">
                             ${respuestaIA}
@@ -1247,7 +1247,7 @@
                 const errorHtml = `
                     <div class="flex items-start gap-4 max-w-[85%] mt-4 animate-fade-in">
                         <div class="w-10 h-10 rounded-lg bg-red-950 border border-red-500/40 flex items-center justify-center shrink-0 text-red-400 font-bold">
-                            âš ï¸
+                            ⚠️
                         </div>
                         <div class="bg-red-900/20 p-4 rounded-2xl rounded-tl-none border border-red-500/30 text-sm text-red-200">
                             Error de conexión con el núcleo Guanes IA. Por favor, reintente.
@@ -1311,7 +1311,7 @@
                 });
 
             } catch (error) {
-                console.warn("âš ï¸ Soluciones Guanes: Usando datos de respaldo.", error);
+                console.warn("⚠️ Soluciones Guanes: Usando datos de respaldo.", error);
                 // Fallback de autoridad si falla la carga
                 container.innerHTML = `
                     <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
@@ -1351,7 +1351,7 @@
 
             // Simple validation
             if (!fechaInicio || !fechaFin || !salario || !motivo) {
-                alert('âš ï¸ Guanes IA: Faltan parámetros para ejecutar el peritaje legal.');
+                alert('⚠️ Guanes IA: Faltan parámetros para ejecutar el peritaje legal.');
                 return;
             }
 
