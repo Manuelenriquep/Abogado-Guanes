@@ -177,15 +177,20 @@
         }
 
         button:hover {
-            background: rgba(129, 140, 248, 0.1);
+            background: rgba(129, 140, 248, 0.12);
             border-color: var(--accent-primary);
             color: #fff;
-            box-shadow: 0 0 15px var(--accent-primary-glow);
+            box-shadow: 0 0 20px var(--accent-primary-glow);
             transform: translateY(-2px);
         }
 
+        button:focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 4px;
+        }
+
         button:active {
-            transform: translateY(0);
+            transform: translateY(0) scale(0.98);
         }
 
         /* Métricas (Dashboard Superior) */
@@ -445,7 +450,8 @@
         <div class="panel" style="flex-grow: 1;">
             <div class="panel-header">
                 <h2><span aria-hidden="true">⚖️</span> Ecosistema Legal</h2>
-                <button onclick="fetchMetrics()">🔄 Refrescar</button>
+                <button onclick="fetchMetrics()" title="Refrescar métricas y activos del sistema"
+                    aria-label="Refrescar métricas">🔄 Refrescar</button>
             </div>
 
             <div class="metrics-widget" id="metrics-container">
@@ -482,7 +488,8 @@
         <div class="panel" style="flex: 2;">
             <div class="panel-header">
                 <h2><span aria-hidden="true">💡</span> Radar de Oportunidades (Privado)</h2>
-                <button onclick="fetchAlerts()">🔄 Refrescar</button>
+                <button onclick="fetchAlerts()" title="Actualizar inteligencia de negocio"
+                    aria-label="Refrescar alertas">🔄 Refrescar</button>
             </div>
             <div id="alerts-container">
                 <div style="color:var(--text-muted);text-align:center;padding:20px;">Cargando inteligencia de negocio...
@@ -494,7 +501,8 @@
         <div class="panel" style="flex: 1; display:flex; flex-direction:column;">
             <div class="panel-header">
                 <h2><span aria-hidden="true">⚙️</span> Salud del Motor (Guanes Cronos)</h2>
-                <button onclick="fetchLogs()">🔄 Últimos</button>
+                <button onclick="fetchLogs()" title="Obtener últimos registros del servidor"
+                    aria-label="Refrescar logs">🔄 Últimos</button>
             </div>
             <div class="logs-container" id="logs-container">
                 [Iniciando consola...]
